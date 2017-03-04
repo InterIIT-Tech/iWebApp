@@ -119,7 +119,7 @@ class userAPI {
 	/*
 	* checklogin to check logged in status of user
 	* returns true if logged in else false
-	*[working]
+	* [working]
 	*/
 	public function checkLogin(){
 		if(isset($_SESSION['uID']) && isset($_SESSION['uRole'])){
@@ -139,10 +139,9 @@ class userAPI {
 
 class postAPI{
 	/**
-	*
-	*Filter string for SQL Injection attack possibility
-	*@todo More Work needed
-	*/ 
+	 * Filter string for SQL Injection attack possibility
+	 * @todo More Work needed
+	 */ 
 	 public function SQLInjFilter(&$unfilteredString){
 		// $unfilteredString;
 		$unfilteredString = mb_convert_encoding($unfilteredString, 'UTF-8', 'UTF-8');
@@ -173,22 +172,47 @@ class postAPI{
 	/**
 	 * get posts from database
 	 */
-	public function getPosts($scope,$from,$to){
+	public function getPosts($scope,$from,$to,$limit = 5){
 		$res = array();
+		$multi = array();
+		$multi = explode(",", $scope);
 		$i = 0;
-		$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE ( `audience`= '$scope' and DATE(`postDate`)>'$from' and DATE(`postDate`)<'$to' )";
+		$j = 0;
+		if(!isset($multi[1])){
+
+		$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE ( `audience`= '$scope' and DATE(`postDate`)>'$from' and DATE(`postDate`)<'$to' ) ORDER BY `postDate` DESC LIMIT $limit";
+		
+		 } else {//check if working
+			
+			$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE (";
+			
+			while ($multi[$j]){
+				$sql .= " `audience`= '".$multi[$j++]."'";
+			}
+			$sql .= ") and DATE(`postDate`)>'$from' and DATE(`postDate`)<'$to' ) ORDER BY `postDate` DESC LIMIT $limit";
+		}
 			//date format '2010-04-29'
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result){
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-            		$res[i]['title']=$row['postTitle'];
-            		$res[i]['content']=$row['postContent'];
-            		$res[i++]['image']=$row['image'];
+            		$res[$i]['title']=$row['postTitle'];
+            		$res[$i]['content']=$row['postContent'];
+            		$res[$i]['image']=$row['image'];
+            		
             	}
             } else {
             	$res[] = -1;
             }
         return $res;
 	}
+}
+
+class subsAPI{
+	
+	public function subscribe($type,$id){
+		//mysql
+	}
+
+	public function updateSubs($)
 }
 ?>

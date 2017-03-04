@@ -1,7 +1,3 @@
-<?php
- require_once('htmlrender/htmlrender.php');
-
-?>
 <style>
 @import url('https://fonts.googleapis.com/css?family=Catamaran');
 .dnetext{
@@ -19,4 +15,3 @@
 </style>
 <hr>
 <div class="dnetext"><center>404<br><small>Page does not exist</small></center></div>
-<?php $obj->footer();?>

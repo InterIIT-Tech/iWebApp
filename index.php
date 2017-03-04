@@ -4,6 +4,13 @@
 * New request lands in this class. After that it is routed accordingly to the respective controller.
 * 
 */
+//to do
+//subscribe method
+//send and write notif hook
+//userrating
+//map api
+//events as posts
+
 require_once('servConf.php');
 // echo "id=".$_SESSION['uID'];
 class Routing
@@ -33,12 +40,16 @@ if (preg_match($base . '$@', $url, $match)) {
 	} else{
 		require ('render/login.html');
 	}
+} elseif (preg_match($base . 'userAPI/(.*)$@', $url, $match)) {
+	require ('render/userAPI.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');
 } elseif (preg_match($base . 'register?$@', $url, $match)) {
 	require ('render/register.php');
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');
+} elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {
+	require ('render/viewPost.php');
 } elseif (preg_match($base . 'logout?$@', $url, $match)) {
 	require ('render/logout.php');
 } else {

@@ -4,7 +4,7 @@ require_once('servConf.php');
 if(session_status() == PHP_SESSION_NONE){session_start();}
 
 date_default_timezone_set('Asia/Calcutta');
-$mySQLdate=date('Y-m-d H:i:s');
+
 
 /**
  * log function as error log
@@ -79,7 +79,7 @@ class userAPI {
             			break;
             		} else {
             		 $resp[] = -1;
-            		 $resp[] 'Unknown Username,Password combination.';
+            		 $resp[] ='Unknown Username,Password combination.';
             		}
             	}
 			}
@@ -154,11 +154,10 @@ class postAPI{
 	/**
 	*Function newPost()
 	*/
-	public function newPost($title,$content,$type,$featured=1,$postAuthor=$_SESSION['uID'],$mySQLdate,$notice,$priority,$image,$notify,$audience){
-		$pswd=sha1($pswd);
+	public function newPost($title,$content,$type,$featured,$notice,$priority,$image,$notify,$audience){
 		$ret= array();
-		
-		$sql = "INSERT INTO `posts`(postTitle,postContent,postType,featured,postAuthor,postDate,notice,priority,image,notify,audience) VALUES ('".$title."', '".$content."', '".$type."', '".$featured."','".$postAuthor."', '".$postDate."', '".$notice."', '".$priority."', '".$image."', '".$notify."','".$audience."')";
+		$locDate=date('Y-m-d H:i:s');
+		$sql = "INSERT INTO `posts`(postTitle,postContent,postType,featured,postAuthor,postDate,notice,priority,image,notify,audience) VALUES ('".$title."', '".$content."', '".$type."', '".$featured."','".$_SESSION['uID']."', '".$locDate."', '".$notice."', '".$priority."', '".$image."', '".$notify."','".$audience."')";
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 		$result = mysqli_query($link,$sql);
         if($result){
@@ -169,6 +168,27 @@ class postAPI{
         }else{ $ret[]=-1;$ret[]= mysqli_errno($link) . ": " . mysqli_error($link);}
         mysqli_close($link);
 	return $ret;
+	}
+
+	/**
+	 * get posts from database
+	 */
+	public function getPosts($scope,$from,$to){
+		$res = array();
+		$i = 0;
+		$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE ( `audience`= '$scope' and DATE(`postDate`)>'$from' and DATE(`postDate`)<'$to' )";
+			//date format '2010-04-29'
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$res[i]['title']=$row['postTitle'];
+            		$res[i]['content']=$row['postContent'];
+            		$res[i++]['image']=$row['image'];
+            	}
+            } else {
+            	$res[] = -1;
+            }
+        return $res;
 	}
 }
 ?>

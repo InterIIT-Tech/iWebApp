@@ -32,6 +32,64 @@
 				});
 			});
 		</script>
+
+		<script>
+		$(document).ready(function(){
+		     $('#login form input').keypress(function(e){
+		      if(e.keyCode==13)
+		      $('#loginSubmit').click();
+		    });
+		    $("#loginSubmit").click(function(){
+		        $("#load").fadeIn();
+		        
+		        var usrname=$("#uname").val();
+		        var pswd=$("#pswd").val();
+		        console.log("Data:"+usrname + pswd);
+		        if (usrname=='' || usrname==null){
+		        console.log("Request not Sent 1;");
+		            $("#load").fadeOut();
+		            $("#loginSubmit").fadeIn();
+		        } else if (pswd=='' || pswd ==null){
+		        console.log("Request not Sent 2;");
+		            $("#load").fadeOut();
+		            $("#loginSubmit").fadeIn();
+		        }else{
+		        console.log("Request Sent;");
+		        console.log("Request : "+ usrname+";");
+		        $.post("login",
+                        {                    
+                        usrname: usrname,
+                        pswd: pswd
+                        },
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                                $("#load").fadeOut();
+                                $("#loginSubmit").fadeIn();
+                                console.log(data);
+
+                                if(data[0]==1){
+                                    $(".inner").slideUp(600);
+                                    window.location="";
+                                }else{
+                                	$("#error").fadeIn();
+                                    $("#error").text(data[1]);
+                                }
+ 
+                            }else{
+                            	$("#error").fadeIn();
+                                $("#load").fadeOut();
+                                $("#loginSubmit").fadeIn();
+                                $("#error").text('An error occured. Please try again.');
+                                console.log("Failed "+data);
+
+                            }
+                    }
+		        ,"json");}
+		    });
+		});
+		</script>
 	</head>
 	<body>
 
@@ -55,19 +113,22 @@
 									</ul>
 								</nav>
 								<section id="login">
-								<form method="post" action="#">
+								<form action="javascript:">
+											<input type="text" id="error" value="error!" disabled style="display:none;text-align: center;background-color: red;color:white" />
 											<input type="text" name="uname" id="uname" value="" placeholder="username" />
-											<input type="password" name="psw" value="" placeholder="******">
+											<input type="password" name="psw" id="pswd" value="" placeholder="******">
 
 										<ul class="actions">
-											<li><input type="submit" value="Login!" class="special" /></li>
+											<li><input type="submit" value="Login!" id="loginSubmit" class="special" /></li>
 											<!-- <li><input type="reset" value="Reset" /></li> -->
 										</ul>
+										
 								</form>
 								</section>
-								<section id="reg">
+								<section id="reg" style="display: none;">
 									
 								</section>
+										<div id="load" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
 							</div>
 						</div>
 						

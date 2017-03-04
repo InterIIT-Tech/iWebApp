@@ -5,6 +5,7 @@
 * 
 */
 require_once('servConf.php');
+// echo "id=".$_SESSION['uID'];
 class Routing
 {
 
@@ -19,8 +20,9 @@ class Routing
 	}
 
 }
-
+// echo "check";
 $url = $_SERVER['REQUEST_URI'];
+// $url = rtrim($url,'/');
 // $url = rtrim($url,"/");
 preg_match('@(.*)index.php(.*)$@', $_SERVER['PHP_SELF'], $mat );
 $base = '@^'. $mat[1] ;
@@ -31,10 +33,10 @@ if (preg_match($base . '$@', $url, $match)) {
 	} else{
 		require ('render/login.html');
 	}
-} elseif (preg_match($base . 'index.php?$@', $url, $match)) {
-	require ('render/index.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
-	require ('render/index.html');
+	require ('render/login.php');
+} elseif (preg_match($base . 'logout?$@', $url, $match)) {
+	require ('render/logout.php');
 } else {
 	http_response_code(404);
 	require ('render/404.php');

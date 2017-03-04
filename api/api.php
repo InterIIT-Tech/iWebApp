@@ -4,6 +4,8 @@ require_once('servConf.php');
 if(session_status() == PHP_SESSION_NONE){session_start();}
 
 date_default_timezone_set('Asia/Calcutta');
+$mySQLdate=date('Y-m-d H:i:s');
+
 /**
  * log function as error log
  */
@@ -105,8 +107,10 @@ class userAPI {
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 		$result = mysqli_query($link,$sql);
         if($result){
+
         	$ret[]=1;
         	$ret[]="Successfully Registered";
+        	mkdir('gallery/'.$alias);
         }else{ $ret[]=-1;$ret[]= mysqli_errno($link) . ": " . mysqli_error($link);}
         mysqli_close($link);
 	return $ret;
@@ -126,5 +130,45 @@ class userAPI {
 	}
 
 
+}
+
+
+/**
+ * post API
+ */
+
+class postAPI{
+	/**
+	*
+	*Filter string for SQL Injection attack possibility
+	*@todo More Work needed
+	*/ 
+	 public function SQLInjFilter(&$unfilteredString){
+		// $unfilteredString;
+		$unfilteredString = mb_convert_encoding($unfilteredString, 'UTF-8', 'UTF-8');
+		$unfilteredString = htmlentities($unfilteredString, ENT_QUOTES, 'UTF-8');
+
+		
+	}
+
+	/**
+	*Function newPost()
+	*/
+	public function newPost($title,$content,$type,$featured=1,$postAuthor=$_SESSION['uID'],$mySQLdate,$notice,$priority,$image,$notify,$audience){
+		$pswd=sha1($pswd);
+		$ret= array();
+		
+		$sql = "INSERT INTO `posts`(postTitle,postContent,postType,featured,postAuthor,postDate,notice,priority,image,notify,audience) VALUES ('".$title."', '".$content."', '".$type."', '".$featured."','".$postAuthor."', '".$postDate."', '".$notice."', '".$priority."', '".$image."', '".$notify."','".$audience."')";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+
+        	$ret[]=1;
+        	$ret[]="Successfully Added post";
+        	
+        }else{ $ret[]=-1;$ret[]= mysqli_errno($link) . ": " . mysqli_error($link);}
+        mysqli_close($link);
+	return $ret;
+	}
 }
 ?>

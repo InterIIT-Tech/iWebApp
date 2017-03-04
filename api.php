@@ -13,7 +13,8 @@ class userAPI {
 	public function checkAuth($user,$pass){
 		$uID=null;
 		//mysql
-		if($uID) {$_SESSION['uID']=$uID;}
+		//uroll=admin and user::2,1
+		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole;}
 		else { header("Location: ".$webRoot);exit; }
 	}
 

@@ -35,6 +35,8 @@ if (preg_match($base . '$@', $url, $match)) {
 	}
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');
+} elseif (preg_match($base . 'register?$@', $url, $match)) {
+	require ('render/register.php');
 } elseif (preg_match($base . 'logout?$@', $url, $match)) {
 	require ('render/logout.php');
 } else {

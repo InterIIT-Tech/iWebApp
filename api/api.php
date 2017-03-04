@@ -8,7 +8,7 @@ date_default_timezone_set('Asia/Calcutta');
  * log function as error log
  */
 function logmydata($logstring){
-	$file = '../log_ppl.txt';
+	$file = '../log.txt';
 	$date=date('d_F_Y_h_i_s_A');
 	$finalstring= "\n --------------\n [".$_SERVER['REMOTE_ADDR']."] \n [$date] \n  $logstring ";
 	file_put_contents($file, $finalstring, FILE_APPEND | LOCK_EX);
@@ -56,11 +56,13 @@ class userAPI {
 	 * [Working]
 	 */
 	public function checkAuth($username,$pass){
+		$this->SQLInjFilter($username);
+		$this->SQLInjFilter($pass);
 		$resp =array();
 		$uID=null;
 		$uRole=null;
 		if(isset($username) && isset($pass)){
-			$sql = "SELECT `password`,`uID` FROM `people`  WHERE `usrname`= '".$username."'";
+			$sql = "SELECT `SHA_pswd`,`uID` FROM `users`  WHERE `uName`= '".$username."'";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if(!$result || mysqli_num_rows($result)<1){
@@ -68,7 +70,7 @@ class userAPI {
             	$resp[] = 'Unknown Username,Password combination.';
 			} else { 
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-            		if ($row['password']==sha1($pass)){
+            		if ($row['SHA_pswd']==sha1($pass)){
             			$resp[]=1;
             			$uID=$row['uID'];
             			$resp[]=$row['uID'];
@@ -90,53 +92,36 @@ class userAPI {
 	/**
 	*Function regUser()
 	*/
-	public function regUser($usrname,$name,$pswd,$type){
-		$this->SQLInjFilter($usrname);
+	public function regUser($name,$role,$alias,$pswd){
+		$this->SQLInjFilter($role);
 		$this->SQLInjFilter($name);
 		$this->SQLInjFilter($pswd);
-		$this->SQLInjFilter($type);
+		$this->SQLInjFilter($alias);
+		$pswd=sha1($pswd);
+		$ret= array();
 		//validations
 		//usrname must be same as webmailusername
-		$sql = "INSERT INTO `people`(usrname,name,password,type) VALUES ('".$usrname."', '".$name."', '".$pswd."', '".$type."')";
+		$sql = "INSERT INTO `users`(uName,uRole,SHA_pswd,uAlias) VALUES ('".$name."', '".$role."', '".$pswd."', '".$alias."')";
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 		$result = mysqli_query($link,$sql);
         if($result){
-        	return 1;
-
-        }else{ return mysqli_errno($link) . ": " . mysqli_error($link);}
+        	$ret[]=1;
+        	$ret[]="Successfully Registered";
+        }else{ $ret[]=-1;$ret[]= mysqli_errno($link) . ": " . mysqli_error($link);}
         mysqli_close($link);
+	return $ret;
 	}
-	
-	
+
 	/*
 	* checklogin to check logged in status of user
 	* returns true if logged in else false
 	*[working]
 	*/
 	public function checkLogin(){
-		if(isset($_SESSION['id']) && isset($_SESSION['uid'])){
-			$sql = "SELECT `uid`,`ip`,`ipalt` FROM `sessionActivity`  WHERE `idmd5`= '".$_SESSION['id']."'";
-			// global $conn;
-        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
-        	if($result){
-            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-                	if ($_SESSION['uid']== $row['uid'] ){
-                		//if($row['ip']==$_SERVER['REMOTE_ADDR'] || $row['ipalt']==$_SERVER['REMOTE_ADDR']){ 
-                		$this->updateLastLogin($_SESSION['id']);
-                		return true;
-                		//}
-                	} else { 
-                		$_SESSION['uid']=null;
-                		$_SESSION['id']=null;
-                		return 0;
-                	}
-            	}
-        	} else {
-        		return 0;
-                logmydata ("Error in Query Execution");
-        	}
+		if(isset($_SESSION['uID']) && isset($_SESSION['uRole'])){
+			return [1];
 		} else {
-			return 0;
+			return [0];
 		}
 	}
 

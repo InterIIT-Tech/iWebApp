@@ -1,6 +1,11 @@
 # insti-WebApp
 InterIIT-TechMeet Web application
 
+
+Set up a local apache server
+https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmyadmin-on-ubuntu-16-04
+
+
 ##Contents
  * Login page :https://html5up.net/dimension
  * About page : https://html5up.net/fractal

@@ -1,6 +1,6 @@
 <?php
-include_once('api.php');
-include_once('servConf.php');
+require_once('api.php');
+require_once('servConf.php');
 /**
  * Controller
  */

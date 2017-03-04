@@ -1,0 +1,13 @@
+.custom_head{
+	font-size: 3em !important;
+}
+.navActive{
+	background-color: rgba(19, 15, 15, 0.5); 
+}
+nav>ul>li{
+	cursor: pointer;
+}
+form>input{
+	margin-top:10px;
+	margin-bottom:10px;
+}

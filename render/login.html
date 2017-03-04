@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>Login</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/login.css" />
+		<link rel="stylesheet" href="assets/css/gen.css" />
+		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				var action=1;
+				$("#regBtn").click(function(){
+					if(action!=2){
+					$("#loginBtn").removeClass("navActive");
+					$("#login").slideUp(500);
+					$("#regBtn").addClass("navActive");
+					$("#reg").delay(500).slideDown();
+					action=2;
+					}
+				});
+				$("#loginBtn").click(function(){
+					if(action!=1){
+					$("#regBtn").removeClass("navActive");
+					$("#reg").slideUp(500);
+					$("#loginBtn").addClass("navActive");
+					$("#login").delay(500).slideDown();
+					action=1;
+					
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<div class="logo" style="background-image: url('img/iitplogo.png');background-size: cover;">
+							
+						</div>
+						<div class="content">
+							<div class="inner">
+								<span class="custom_head">Insti-WebApp</span>
+								
+								<nav>
+									<ul>
+										<li><a id="loginBtn" class="navActive">Login</a></li>
+										<li><a id="regBtn" >Register</a></li>
+										<!--<li><a href="#elements">Elements</a></li>-->
+									</ul>
+								</nav>
+								<section id="login">
+								<form method="post" action="#">
+											<input type="text" name="uname" id="uname" value="" placeholder="username" />
+											<input type="password" name="psw" value="" placeholder="******">
+
+										<ul class="actions">
+											<li><input type="submit" value="Login!" class="special" /></li>
+											<!-- <li><input type="reset" value="Reset" /></li> -->
+										</ul>
+								</form>
+								</section>
+								<section id="reg">
+									
+								</section>
+							</div>
+						</div>
+						
+					</header>
+
+
+					</div>
+
+			</div>
+
+		<!-- BG -->
+			<div id="bg"></div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

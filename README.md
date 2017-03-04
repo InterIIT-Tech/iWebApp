@@ -9,6 +9,6 @@ InterIIT-TechMeet Web application
  * Curated content, https://html5up.net/ethereal
  * relevant posts,
  * common community-contributed portals for course reviews, https://html5up.net/phantom
- * timetables,
- * share auto/taxi,
- * in-campus event calendar;
+ * timetables, https://tympanus.net/Tutorials/StickyTableHeaders/ https://html5up.net/hyperspace
+ * share auto/taxi, some good script , https://html5up.net/hyperspace
+ * in-campus event calendar; https://html5up.net/hyperspace

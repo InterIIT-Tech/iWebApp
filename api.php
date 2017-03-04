@@ -9,12 +9,14 @@ class userAPI {
 		if(!isset($IwebRoot)) exit;
 		$this->webRoot=$IwebRoot;
 	}
-	
+
 	public function checkAuth($user,$pass){
 		$uID=null;
 		//mysql
 		if($uID) {$_SESSION['uID']=$uID;}
 		else { header("Location: ".$webRoot);exit; }
 	}
+
+	
 }
 ?>

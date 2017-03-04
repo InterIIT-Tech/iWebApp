@@ -17,7 +17,9 @@ class userAPI {
 		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole;}
 		else { header("Location: ".$webRoot);exit; }
 	}
-
+	public function regUser(){
+		
+	}
 	
 }
 ?>

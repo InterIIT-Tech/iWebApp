@@ -1,4 +1,14 @@
 <?php
+
+/**
+ *		 ****	*****	******
+ *		**	**	**	**	  **
+ *		******	*****	  **
+ *		**	**	**		  **
+ *		**	**	**		******
+ */
+
+
 require_once('servConf.php');
 
 if(session_status() == PHP_SESSION_NONE){session_start();}
@@ -180,9 +190,9 @@ class postAPI{
 		$j = 0;
 		if(!isset($multi[1])){
 
-		$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE ( `audience`= '$scope' and DATE(`postDate`)>'$from' and DATE(`postDate`)<'$to' ) ORDER BY `postDate` DESC LIMIT $limit";
+			$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE ( `audience`= '$scope' and DATE(`postDate`)>'$from' and DATE(`postDate`)<'$to' ) ORDER BY `postDate` DESC LIMIT $limit";
 		
-		 } else {//check if working
+		} else {//check if working
 			
 			$sql = "SELECT `postTitle`,`postContent`,`image` FROM `posts` WHERE (";
 			
@@ -197,8 +207,7 @@ class postAPI{
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
             		$res[$i]['title']=$row['postTitle'];
             		$res[$i]['content']=$row['postContent'];
-            		$res[$i]['image']=$row['image'];
-            		
+            		$res[$i++]['image']=$row['image'];
             	}
             } else {
             	$res[] = -1;
@@ -213,6 +222,13 @@ class subsAPI{
 		//mysql
 	}
 
-	public function updateSubs($)
+	public function checkSub($type,$id){
+		//mysql
+	}
+
+	//notification table update
+	public function updateSubs($audience,$title,$content){
+
+	}
 }
 ?>

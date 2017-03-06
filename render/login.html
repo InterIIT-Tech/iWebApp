@@ -59,7 +59,7 @@
 		        console.log("Request : "+ usrname+";");
 		        $.post("login",
                         {                    
-                        usrname: usrname,
+                        username: usrname,
                         pswd: pswd
                         },
                         function(data, status){
@@ -75,14 +75,14 @@
                                     window.location="";
                                 }else{
                                 	$("#error").fadeIn();
-                                    $("#error").text(data[1]);
+                                    $("#error").val(data[1]);
                                 }
  
                             }else{
                             	$("#error").fadeIn();
                                 $("#load").fadeOut();
                                 $("#loginSubmit").fadeIn();
-                                $("#error").text('An error occured. Please try again.');
+                                $("#error").val('An error occured. Please try again.');
                                 console.log("Failed "+data);
 
                             }
@@ -91,6 +91,96 @@
 		    });
 		});
 		</script>
+
+		<script>
+		$(document).ready(function(){
+		     $('#login form input').keypress(function(e){
+		      if(e.keyCode==13)
+		      $('#regSubmit').click();
+		    });
+		    $("#regSubmit").click(function(){
+		        $("#load").fadeIn();
+		        
+		        var usrname=$("#r_uname").val();
+		        var name=$("#r_name").val();
+		        var email=$("#r_email").val();
+		        var pswd=$("#r_pswd").val();
+		        console.log("Data:"+usrname + pswd);
+		        if (usrname=='' || usrname==null){
+		        console.log("Request not Sent 1;");
+		        	$("#rerror").fadeIn();
+					$("#rerror").val('username cant be empty');
+		            $("#load").fadeOut();
+		            $("#regSubmit").fadeIn();
+		        } else if (pswd=='' || pswd ==null){
+		        console.log("Request not Sent 2;");
+		        	$("#rerror").fadeIn();
+					$("#rerror").val('Password cant be empty');
+		            $("#load").fadeOut();
+		            $("#regSubmit").fadeIn();
+		        } else if (name=='' || name ==null){
+		        console.log("Request not Sent 2;");
+		        	$("#rerror").fadeIn();
+					$("#rerror").val('Name cant be empty');
+		            $("#load").fadeOut();
+		            $("#regSubmit").fadeIn();
+		        } else if (email=='' || email ==null){
+		        console.log("Request not Sent 2;");
+		        	$("#rerror").fadeIn();
+					$("#rerror").val('Email cant be empty');
+		            $("#load").fadeOut();
+		            $("#regSubmit").fadeIn();
+		        } else if ($("#r_pswd").val()!=$("#r_cpswd").val() ){
+		        console.log("not same;");
+		        	$("#rerror").fadeIn();
+					$("#rerror").val('Confirmation password and password not same');
+		            $("#load").fadeOut();
+		            $("#regSubmit").fadeIn();
+		        } else {
+		        console.log("Request Sent;");
+		        console.log("Request : "+ usrname+";");
+		        $.post("register",
+                        {                    
+                        uAlias: usrname,
+                        pswd: pswd,
+                        name: name,
+                        email:email
+
+                        },
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                                $("#load").fadeOut();
+                                $("#regSubmit").fadeIn();
+                                console.log(data);
+
+                                if(data[0]==1){
+                                    // $(".inner").slideUp(600);
+                                    $("#rerror").fadeIn();
+                                    $("#reg input:not(#rerror)").fadeOut();
+                                    // $("nav").fadeOut();
+                                    $("#rerror").css("background-color","green");
+                                    $("#rerror").val(data[1]);
+                                }else{
+                                	$("#rerror").fadeIn();
+                                    $("#rerror").val(data[1]);
+                                }
+ 
+                            }else{
+                            	$("#rerror").fadeIn();
+                                $("#load").fadeOut();
+                                $("#regSubmit").fadeIn();
+                                $("#rerror").val('An error occured. Please try again.');
+                                console.log("Failed "+data);
+
+                            }
+                    }
+		        ,"json");}
+		    });
+		});
+		</script>
+
 	</head>
 	<body>
 
@@ -114,20 +204,33 @@
 									</ul>
 								</nav>
 								<section id="login">
-								<form action="javascript:">
-											<input type="text" id="error" value="error!" disabled style="display:none;text-align: center;background-color: red;color:white" />
-											<input type="text" name="uname" id="uname" value="" placeholder="username" />
-											<input type="password" name="psw" id="pswd" value="" placeholder="******">
+									<form action="javascript:">
+												<input type="text" id="error" value="error!" disabled style="display:none;text-align: center;background-color: red;color:white" />
+												<input type="text" name="uname" id="uname" value="" placeholder="username" />
+												<input type="password" name="psw" id="pswd" value="" placeholder="******">
 
-										<ul class="actions">
-											<li><input type="submit" value="Login!" id="loginSubmit" class="special" /></li>
-											<!-- <li><input type="reset" value="Reset" /></li> -->
-										</ul>
-										
-								</form>
+											<ul class="actions">
+												<li><input type="submit" value="Login!" id="loginSubmit" class="special" /></li>
+												<!-- <li><input type="reset" value="Reset" /></li> -->
+											</ul>
+											
+									</form>
 								</section>
 								<section id="reg" style="display: none;">
-									
+									<form action="javascript:">
+												<input type="text" id="rerror" value="error!" disabled style="display:none;text-align: center;background-color: red;color:white" />
+												<input type="text" name="uname" id="r_name" value="" placeholder="Full Name" />
+												<input type="text" name="uname" id="r_uname" value="" placeholder="username" />
+												<input type="text" name="email" id="r_email" value="" placeholder="me.cs16@iitp.ac.in" />
+												<input type="password" name="psw" id="r_pswd" value="" placeholder="******">
+												<input type="password" name="psw" id="r_cpswd" value="" placeholder="******">
+
+											<ul class="actions">
+												<li><input type="submit" value="Login!" id="regSubmit" class="special" /></li>
+												<!-- <li><input type="reset" value="Reset" /></li> -->
+											</ul>
+											
+									</form>	
 								</section>
 										<div id="load" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
 							</div>

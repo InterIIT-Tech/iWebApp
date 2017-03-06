@@ -17,3 +17,7 @@ https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-phpmy
  * timetables, https://tympanus.net/Tutorials/StickyTableHeaders/ https://html5up.net/hyperspace
  * share auto/taxi, some good script , https://html5up.net/hyperspace
  * in-campus event calendar; https://html5up.net/hyperspace
+
+##ToDo
+ [ ] Backend get sql query error and return string to jq
+ [ ] Uniqueness of username and email

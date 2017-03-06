@@ -5,7 +5,7 @@ require_once('servConf.php');
  * Login
  */
 $regUser= new userAPI($webRoot);
-echo json_encode($regUser->regUser($_POST['name'],$_POST['role']=0,$_POST['uAlias'],$_POST['pswd']));
+echo json_encode($regUser->regUser($_POST['name'],0,$_POST['uAlias'],$_POST['pswd'],$_POST['email']));
  
 // echo "plain text";
 ?>

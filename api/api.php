@@ -104,7 +104,7 @@ class userAPI {
 	/**
 	*Function regUser()
 	*/
-	public function regUser($name,$role,$alias,$pswd){
+	public function regUser($name,$role,$alias,$pswd,$email){
 		$this->SQLInjFilter($role);
 		$this->SQLInjFilter($name);
 		$this->SQLInjFilter($pswd);
@@ -113,7 +113,7 @@ class userAPI {
 		$ret= array();
 		//validations
 		//usrname must be same as webmailusername
-		$sql = "INSERT INTO `users`(uName,uRole,SHA_pswd,uAlias) VALUES ('".$name."', '".$role."', '".$pswd."', '".$alias."')";
+		$sql = "INSERT INTO `users`(uName,uRole,SHA_pswd,uAlias,email) VALUES ('".$name."', '".$role."', '".$pswd."', '".$alias."','".$email."')";
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 		$result = mysqli_query($link,$sql);
         if($result){

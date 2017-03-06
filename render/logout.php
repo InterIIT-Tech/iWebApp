@@ -5,5 +5,5 @@ $_SESSION['uID']=null;
 $_SESSION['uRole']=null;
 // echo $webRoot;
 // echo "lol";
-header("Location: ".$webRoot) 
+header("Location: ".$webRoot); 
 ?>

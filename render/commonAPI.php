@@ -23,6 +23,11 @@ switch($action){
 		//some rendering reequired
 		echo json_encode($post->getPosts($match[2],$match[3],$match[4]));
 		break;
+	case "logout":
+		$_SESSION['uID']=null;
+		$_SESSION['uRole']=null;
+		header("Location: ".$webRoot);
+		break;
 
 }
 

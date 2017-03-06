@@ -45,13 +45,13 @@ if (preg_match($base . '$@', $url, $match)) {
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');
 } elseif (preg_match($base . 'register?$@', $url, $match)) {
-	require ('render/register.php');
+	require ('render/register.php');//depreciates
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {
-	require ('render/newPost.php');
+	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {
 	require ('render/viewPost.php');
 } elseif (preg_match($base . 'logout?$@', $url, $match)) {
-	require ('render/logout.php');
+	require ('render/logout.php');//depreciated
 } else {
 	http_response_code(404);
 	require ('render/404.php');

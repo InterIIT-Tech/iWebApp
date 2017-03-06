@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 04, 2017 at 06:48 PM
+-- Generation Time: Mar 05, 2017 at 10:45 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
--- PHP Version: 7.0.15-0ubuntu0.16.04.2
+-- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -65,6 +65,19 @@ CREATE TABLE `courses` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `notify`
+--
+
+CREATE TABLE `notify` (
+  `nID` int(11) NOT NULL,
+  `nContent` varchar(2000) NOT NULL,
+  `nGroup` int(11) NOT NULL,
+  `nSender` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `posts`
 --
 
@@ -72,14 +85,29 @@ CREATE TABLE `posts` (
   `postID` int(11) NOT NULL,
   `postTitle` varchar(2000) NOT NULL,
   `postContent` varchar(10000) NOT NULL,
-  `postType` int(11) NOT NULL,
-  `featured` int(11) NOT NULL,
+  `postType` int(11) DEFAULT NULL,
+  `featured` int(11) NOT NULL DEFAULT '1',
   `postAuthor` int(11) NOT NULL,
   `postDate` datetime NOT NULL,
   `notice` int(11) NOT NULL DEFAULT '0',
   `priority` int(11) NOT NULL DEFAULT '1',
   `hidden` int(11) NOT NULL DEFAULT '0',
-  `image` varchar(2000) NOT NULL
+  `image` varchar(2000) DEFAULT NULL,
+  `notify` int(11) NOT NULL DEFAULT '1',
+  `audience` varchar(10) NOT NULL DEFAULT '1' COMMENT '1 for all and cID for course and clubid for clubs'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sublist`
+--
+
+CREATE TABLE `sublist` (
+  `subID` int(11) NOT NULL,
+  `uID` int(11) NOT NULL,
+  `coID` int(11) NOT NULL,
+  `clID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -113,9 +141,18 @@ CREATE TABLE `users` (
   `uID` int(11) NOT NULL,
   `SHA_pswd` varchar(180) NOT NULL,
   `uName` varchar(200) NOT NULL,
+  `email` varchar(2000) DEFAULT NULL,
   `uRole` int(11) NOT NULL,
   `uAlias` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`uID`, `SHA_pswd`, `uName`, `email`, `uRole`, `uAlias`) VALUES
+(1, '9d516530dba7ae296eac0599b016c6038f230397', 'Tameesh Biswas', 'biswas.cs16@iitp.ac.in', 0, 'tameeshb'),
+(3, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test User', 'test.cs16@iitp.ac.in', 0, 'test007');
 
 --
 -- Indexes for dumped tables
@@ -140,16 +177,31 @@ ALTER TABLE `courses`
   ADD PRIMARY KEY (`cID`);
 
 --
+-- Indexes for table `notify`
+--
+ALTER TABLE `notify`
+  ADD PRIMARY KEY (`nID`);
+
+--
 -- Indexes for table `posts`
 --
 ALTER TABLE `posts`
   ADD PRIMARY KEY (`postID`);
 
 --
+-- Indexes for table `sublist`
+--
+ALTER TABLE `sublist`
+  ADD PRIMARY KEY (`subID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`uID`);
+  ADD PRIMARY KEY (`uID`),
+  ADD UNIQUE KEY `uName` (`uName`),
+  ADD UNIQUE KEY `uAlias` (`uAlias`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -171,15 +223,25 @@ ALTER TABLE `comments`
 ALTER TABLE `courses`
   MODIFY `cID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `notify`
+--
+ALTER TABLE `notify`
+  MODIFY `nID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
   MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `sublist`
+--
+ALTER TABLE `sublist`
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -40,8 +40,8 @@ if (preg_match($base . '$@', $url, $match)) {
 	} else{
 		require ('render/login.html');
 	}
-} elseif (preg_match($base . 'userAPI/(.*)$@', $url, $match)) {
-	require ('render/userAPI.php');
+} elseif (preg_match($base . 'cAPI/(.*)$@', $url, $match)) {
+	require ('render/commonAPI.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');
 } elseif (preg_match($base . 'register?$@', $url, $match)) {

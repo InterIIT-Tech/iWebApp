@@ -74,12 +74,13 @@ class userAPI {
 		$uID=null;
 		$uRole=null;
 		if(isset($username) && isset($pass)){
-			$sql = "SELECT `SHA_pswd`,`uID` FROM `users`  WHERE `uName`= '".$username."'";
+			$sql = "SELECT `SHA_pswd`,`uID` FROM `users`  WHERE `uAlias`= '".$username."'";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if(!$result || mysqli_num_rows($result)<1){
             	$resp[] = -1;
-            	$resp[] = 'Unknown Username,Password combination.';
+            	$resp[] = 'Invalid Credentials';
+            	// $resp[] = "Username trouble: $username";
 			} else { 
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
             		if ($row['SHA_pswd']==sha1($pass)){
@@ -89,7 +90,7 @@ class userAPI {
             			break;
             		} else {
             		 $resp[] = -1;
-            		 $resp[] ='Unknown Username,Password combination.';
+            		 $resp[] ='Invalid Credentials';
             		}
             	}
 			}

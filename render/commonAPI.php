@@ -14,7 +14,7 @@ switch($action){
 		echo json_encode($userAPI->checkAuth($_POST['username'],$_POST['pswd']));
 		break;
 	case "regUser": 
-		echo json_encode($userAPI->regUser($_POST['name'],$_POST['role']=0,$_POST['uAlias'],$_POST['pswd']));
+		echo json_encode($userAPI->regUser($_POST['name'],$_POST['role']=0,$_POST['uAlias'],$_POST['pswd'],$_POST['email']));
 		break;
 	case "newPost":
 		$post->newPost($_POST['title'],$_POST['content'],$_POST['type'],1,$_POST['notice'],$_POST['priority'],$_POST['image'],$_POST['notify'],$_POST['audience']);

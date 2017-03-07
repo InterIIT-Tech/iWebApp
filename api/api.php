@@ -114,6 +114,36 @@ class userAPI {
 		$ret= array();
 		//validations
 		//usrname must be same as webmailusername
+		if($name ==null ||$name==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: Name";
+			return $ret;
+			exit;
+		}
+		// if($role ==null ||$role==''){
+		// 	$ret[]=-1;
+		// 	$ret[]="Missing Parameter: role";
+		// 	return $ret;
+		// 	exit;
+		// }
+		if($alias ==null ||$alias==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: username";
+			return $ret;
+			exit;
+		}
+		if($pswd ==null ||$pswd==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: Password";
+			return $ret;
+			exit;
+		}
+		if($email ==null ||$email==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: email";
+			return $ret;
+			exit;
+		}
 		$sql = "INSERT INTO `users`(uName,uRole,SHA_pswd,uAlias,email) VALUES ('".$name."', '".$role."', '".$pswd."', '".$alias."','".$email."')";
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 		$result = mysqli_query($link,$sql);
@@ -122,9 +152,13 @@ class userAPI {
         	$ret[]=1;
         	$ret[]="Successfully Registered";
         	mkdir('gallery/'.$alias);
-        }else{ $ret[]=-1;$ret[]= mysqli_errno($link) . ": " . mysqli_error($link);}
+        	mkdir("gallery/$alias", 0777);
+        	return $ret;
+        	exit;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
         mysqli_close($link);
-	return $ret;
+        return $ret;
+	
 	}
 
 	/*
@@ -229,6 +263,14 @@ class subsAPI{
 
 	//notification table update
 	public function updateSubs($audience,$title,$content){
+		//@todo
+	}
+	public function viewClubs(){
+
+		//@todo
+	}
+	public function viewCourses(){
+		//@todo
 
 	}
 }

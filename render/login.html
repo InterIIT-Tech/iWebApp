@@ -57,7 +57,7 @@
 		        }else{
 		        console.log("Request Sent;");
 		        console.log("Request : "+ usrname+";");
-		        $.post("login",
+		        $.post("cAPI/userLogin",
                         {                    
                         username: usrname,
                         pswd: pswd
@@ -139,7 +139,7 @@
 		        } else {
 		        console.log("Request Sent;");
 		        console.log("Request : "+ usrname+";");
-		        $.post("register",
+		        $.post("cAPI/regUser",
                         {                    
                         uAlias: usrname,
                         pswd: pswd,
@@ -226,7 +226,7 @@
 												<input type="password" name="psw" id="r_cpswd" value="" placeholder="******">
 
 											<ul class="actions">
-												<li><input type="submit" value="Login!" id="regSubmit" class="special" /></li>
+												<li><input type="submit" value="Register" id="regSubmit" class="special" /></li>
 												<!-- <li><input type="reset" value="Reset" /></li> -->
 											</ul>
 											

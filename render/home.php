@@ -34,7 +34,7 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>Hi, <?php echo $_SESSION['uName'];?>!</h1>
+											<h1>Hi, <?php $name=explode(" ", $_SESSION['uName']); echo $name[0];?>!</h1>
 										</header>
 									</div>
 								</section>
@@ -46,7 +46,7 @@
 									</header>
 									<div class="features">
 										<article>
-											<a href="#">
+											<a href="courses">
 											<span class="icon fa-diamond"></span>
 											<div class="content">
 												<h3>Courses</h3>
@@ -54,7 +54,7 @@
 											</div>
 										</article>
 										<article>
-											<a href="#">
+											<a href="timetable">
 											<span class="icon fa-paper-plane"></span>
 											<div class="content">
 												<h3>Time Table</h3>
@@ -62,10 +62,10 @@
 											</div>
 										</article>
 										<article>
-											<a href="#">
+											<a href="clubs">
 											<span class="icon fa-rocket"></span>
 											<div class="content">
-												<h3>XYZ</h3>
+												<h3>Clubs</h3>
 											</a>
 											</div>
 										</article>

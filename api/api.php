@@ -260,10 +260,35 @@ class subsAPI{
 	
 	public function subscribe($type,$id){
 		//mysql
+		$t=($type>1)?"clID":"coID";
+		$sql = "INSERT INTO `sublist`(uID,$t) VALUES ('".$_SESSION['uID']."','$id')";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$ret[]=1;
+        	$ret[]="Subscribed";
+        	return $ret;
+        	exit;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
+        mysqli_close($link);
+        return $ret;
 	}
 
-	public function checkSub($type,$id){
+	public function checkSub($type){
 		//mysql
+		$out=array();
+		$i=0;
+		$t=($type>1)?"clID":"coID";
+		$sql = "SELECT `$t` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					$temp=$row[$t];
+					$out[$temp]=1;
+            	}
+            	return $out;
+			}
 	}
 
 	//notification table update
@@ -282,26 +307,26 @@ class subsAPI{
 		$mech=array();
 		$civil=array();
 		$result=array();
-		$sql = "SELECT `cCode`,`cID`,`branch`,`rating` FROM `courses`  WHERE `year`= '".$year."' ORDER BY `cCode`";
+		$sql = "SELECT `cCode`,`cID`,`branch`,`rating`,`cName`,`img` FROM `courses`  WHERE `year`= '".$year."' ORDER BY `cCode`";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result){
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
             		if($row['branch']==1){
             			$c++;
-            			$cse[]=array($row['cID'],$row['cCode'],$row['rating']);
+            			$cse[]=array($row['cID'],$row['cCode'],$row['rating'],$row['cName'],$row['img']);
             		}
             		if($row['branch']==2){
             			$e++;
-            			$elec[]=array($row['cID'],$row['cCode'],$row['rating']);
+            			$elec[]=array($row['cID'],$row['cCode'],$row['rating'],$row['cName'],$row['img']);
             		}
             		if($row['branch']==3){
             			$m++;
-            			$mech[]=array($row['cID'],$row['cCode'],$row['rating']);
+            			$mech[]=array($row['cID'],$row['cCode'],$row['rating'],$row['cName'],$row['img']);
             		}
             		if($row['branch']==4){
             			$ce++;
-            			$civil[]=array($row['cID'],$row['cCode'],$row['rating']);
+            			$civil[]=array($row['cID'],$row['cCode'],$row['rating'],$row['cName'],$row['img']);
             		}
             	}
 			}

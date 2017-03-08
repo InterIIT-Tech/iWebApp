@@ -28,6 +28,14 @@ switch($action){
 		//some rendering reequired
 		echo json_encode($subs->viewCourses(1));//$_SESSION['uYear']
 		break;
+	case "Subs"://need seperate
+		//some rendering reequired
+		echo json_encode($subs->subscribe($_POST['type'],$_POST['code']));//$_SESSION['uYear']
+		break;
+	case "checkSub"://need seperate
+		//some rendering reequired
+		echo json_encode($subs->checkSub($_POST['type']));//$_SESSION['uYear']
+		break;
 	case "logout":
 		$_SESSION['uID']=null;
 		$_SESSION['uRole']=null;

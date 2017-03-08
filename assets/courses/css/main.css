@@ -3109,7 +3109,7 @@
 
 				.spotlights > section > .image {
 					width: 100%;
-					height: 50vh;
+					height: 20vh;
 				}
 
 				.spotlights > section > .content {
@@ -3128,7 +3128,7 @@
 		@media screen and (max-width: 736px) {
 
 			.spotlights > section > .image {
-				height: 50vh;
+				height: 20vh;
 				min-height: 15em;
 			}
 

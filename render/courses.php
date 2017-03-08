@@ -10,9 +10,44 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
 		<script>
+			function subscribe(type,course){
+				$.post("cAPI/Subs",
+                        {
+                        	type:1,
+                        	code:course
+                        },
+                        function(data,status){
+                        	if(status=='success'){
+                        		$("#buttonC"+course).text("Done!");
+                        		$("#buttonC"+course).css("background","rgba(33, 156, 50, 0.53)");
+                        		//alert("success");
+                        	}
+                        });
+			}
+		</script>
+		<style>
+			.subs{
+				background:rgba(33, 156, 50, 0.53) !important;
+			}
+		</style>
+		<script>
 		$(document).ready(function(){
+			var cSubs;
+			$.post("cAPI/checkSub",
+                        {type:1},
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                                cSubs = data;
+                               
+                            }else{
+                            	window.location="";
 
-		        $.post("cAPI/getCourse",
+                            }
+                    }
+		        ,"json");
+			$.post("cAPI/getCourse",
                         {},
                         function(data, status){
                         console.log("Response");
@@ -25,25 +60,86 @@
                                 var courseData;
                                 var i=0;
                                 var currElement;
-                                while(i<2){
+                                while(cse[i]){
                                 	currElement = cse[i];
-                                	console.log(currElement);
-                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><p>'+currElement[2]+'</p><ul class="actions"><li><a href="#" class="button">Subscribe</a></li></ul></div></div></section>'; 
+                                	console.log(currElement);cSubs
+                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
+                                	if(cSubs[currElement[0]]==1){
+	                                	courseData+=' class="button subs">';
+                                	}else {
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+                                	}
+                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#cseCourses").append(courseData);
                                 }
-                                
-                                console.log(data);
-                                console.log(data[0]);
- 
+                                i=0;
+                                while(ee[i]){
+                                	currElement = ee[i];
+                                	console.log(currElement);
+                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
+                                	if(cSubs[currElement[0]]==1){
+	                                	courseData+=' class="button subs">';
+                                	}else {
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+                                	}
+                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+                                	i++;
+                                	$("#eeCourses").append(courseData);
+                                }
+                                i=0;
+                                while(me[i]){
+                                	currElement = me[i];
+                                	console.log(currElement);
+                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
+                                	if(cSubs[currElement[0]]==1){
+	                                	courseData+=' class="button subs">';
+                                	}else {
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+                                	}
+                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+                                	i++;
+                                	$("#meCourses").append(courseData);
+                                }
+                                 while(ce[i]){
+                                	currElement = ce[i];
+                                	console.log(currElement);
+                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'" ';
+                                	if(cSubs[currElement[0]]==1){
+	                                	courseData+=' class="button subs">';
+	                                	courseData+='Subscribed!</a></li></ul></div></div></section>'; 
+
+                                	}else {
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+	                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+    
+                                	}
+                                	i++;
+                                	$("#ceCourses").append(courseData);
+                                }
                             }else{
                             	window.location="";
 
                             }
                     }
 		        ,"json");
+		$(".subs").text("Subscribed");
+		        
 		    
 		});
+		</script>
+		<script>
+			$(document).ready(function(){
+				setTimeout(function(){
+					$(".subs").text("Subscribed");
+				},500); 
+				$(".subs").mouseenter(function(){
+					$(this).html("Unsubscribe X");
+				});
+				$(".subs").mouseleave(function(){
+					$(this).text("Subscribed");
+				});
+			});
 		</script>
 	</head>
 	<body>
@@ -102,66 +198,9 @@
 					</section>
 
 				<!-- Electrical Course List -->
-					<section class="wrapper style2 spotlights">
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic03.jpg&quot;); background-position: 25% 25%;"><img src="img/courses/pic03.jpg" alt="" data-position="25% 25%" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section></section>
+					<section class="wrapper style2 spotlights" id="eeCourses">
+					
+					</section>
 				<!-- Mechanical Header -->
 					<section id="me" class="wrapper style3 fade-up">
 						<div class="inner">
@@ -171,66 +210,8 @@
 					</section>
 
 				<!-- Mechanical Course List -->
-					<section class="wrapper style2 spotlights">
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic03.jpg&quot;); background-position: 25% 25%;"><img src="img/courses/pic03.jpg" alt="" data-position="25% 25%" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section></section>
+					<section class="wrapper style2 spotlights" id="meCourses">
+					</section>
 				<!-- Civil Engineering Header -->
 				<section id="ce" class="wrapper style3 fade-up">
 						<div class="inner">
@@ -240,66 +221,8 @@
 					</section>
 
 				<!-- Civil Engineering Course List -->
-					<section class="wrapper style2 spotlights">
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic03.jpg&quot;); background-position: 25% 25%;"><img src="img/courses/pic03.jpg" alt="" data-position="25% 25%" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section></section>
+					<section class="wrapper style2 spotlights" id="ceCourses">
+					</section>
 			</div>
 
 		<!-- Scripts -->

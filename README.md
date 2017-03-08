@@ -7,7 +7,9 @@ InterIIT-TechMeet Web application
  * Fill corresponding fields in servConf.php to configure mySQL database
  * AllowOverride All in apache2 config file
  * Run the following in the terminal: a2enmod rewrite ; service apache2 restart
- * import iwa.sql into mySQL db.
+ * import iwa.sql into mySQL db.  
+ 
+
 ##Contents
  * Login page :https://html5up.net/dimension
  * About page : https://html5up.net/fractal

@@ -46,6 +46,10 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/login.php');
 } elseif (preg_match($base . 'courses?$@', $url, $match)) {
 	require ('render/courses.php');
+} elseif (preg_match($base . 'clubs?$@', $url, $match)) {
+	require ('render/clubs.php');
+} elseif (preg_match($base . 'viewCourse?$@', $url, $match)) {
+	require ('render/viewCourse.php');
 } elseif (preg_match($base . 'register?$@', $url, $match)) {
 	require ('render/register.php');//depreciates
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {

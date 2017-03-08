@@ -204,10 +204,10 @@
 							// <=large? Bail.
 								if (skel.breakpoint('large').active) {
 
-									//$sidebar_inner
-										//.data('locked', 0)
-										//.css('position', '')
-										//.css('top', '');
+									$sidebar_inner
+										.data('locked', 0)
+										.css('position', '')
+										.css('top', '');
 
 									return;
 

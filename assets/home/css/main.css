@@ -66,7 +66,7 @@
 	}
 
 	.row > * {
-		float: right;
+		float: left;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
@@ -3535,6 +3535,45 @@
 		}
 
 /* Sidebar */
+
+	#search form {
+		text-decoration: none;
+		position: relative;
+	}
+
+		#search form:before {
+			-moz-osx-font-smoothing: grayscale;
+			-webkit-font-smoothing: antialiased;
+			font-family: FontAwesome;
+			font-style: normal;
+			font-weight: normal;
+			text-transform: none !important;
+		}
+
+		#search form:before {
+			-moz-transform: scaleX(-1);
+			-webkit-transform: scaleX(-1);
+			-ms-transform: scaleX(-1);
+			transform: scaleX(-1);
+			color: #7f888f;
+			content: '\f002';
+			cursor: default;
+			display: block;
+			font-size: 1.5em;
+			height: 2em;
+			line-height: 2em;
+			opacity: 0.325;
+			position: absolute;
+			right: 0;
+			text-align: center;
+			top: 0;
+			width: 2em;
+		}
+
+		#search form input[type="text"] {
+			padding-right: 2.75em;
+		}
+
 	#sidebar {
 		-moz-flex-grow: 0;
 		-webkit-flex-grow: 0;
@@ -3544,15 +3583,14 @@
 		-webkit-flex-shrink: 0;
 		-ms-flex-shrink: 0;
 		flex-shrink: 0;
-		-moz-transition: margin-right 0.5s ease, box-shadow 0.5s ease;
-		-webkit-transition: margin-right 0.5s ease, box-shadow 0.5s ease;
-		-ms-transition: margin-right 0.5s ease, box-shadow 0.5s ease;
-		transition: margin-right 0.5s ease, box-shadow 0.5s ease;
+		-moz-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+		-webkit-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+		-ms-transition: margin-left 0.5s ease, box-shadow 0.5s ease;
+		transition: margin-left 0.5s ease, box-shadow 0.5s ease;
 		background-color: #f5f6f7;
 		font-size: 0.9em;
-		position: fixed;
+		position: relative;
 		width: 26em;
-		margin-top: 20em;
 	}
 
 		#sidebar h2 {
@@ -3591,15 +3629,15 @@
 
 		#sidebar .toggle {
 			text-decoration: none;
-			-moz-transition: right 0.5s ease;
-			-webkit-transition: right 0.5s ease;
-			-ms-transition: right 0.5s ease;
-			transition: right 0.5s ease;
+			-moz-transition: left 0.5s ease;
+			-webkit-transition: left 0.5s ease;
+			-ms-transition: left 0.5s ease;
+			transition: left 0.5s ease;
 			-webkit-tap-highlight-color: rgba(255, 255, 255, 0);
 			border: 0;
-			display: none;
+			display: block;
 			height: 7.5em;
-			right: 26em;
+			left: 26em;
 			line-height: 7.5em;
 			outline: 0;
 			overflow: hidden;
@@ -3624,7 +3662,7 @@
 				content: '\f0c9';
 				font-size: 2rem;
 				height: inherit;
-				right: 0;
+				left: 0;
 				line-height: inherit;
 				position: absolute;
 				text-indent: 0;
@@ -3633,15 +3671,13 @@
 			}
 
 		#sidebar.inactive {
-			margin-right: -26em;
+			margin-left: -26em;
 		}
 
 		@media screen and (max-width: 1680px) {
 
 			#sidebar {
 				width: 24em;
-				display: block;
-				position: fixed;
 			}
 
 				#sidebar > .inner {
@@ -3657,7 +3693,7 @@
 
 				#sidebar .toggle {
 					height: 6.25em;
-					right: 24em;
+					left: 24em;
 					line-height: 6.25em;
 					text-indent: 5em;
 					width: 5em;
@@ -3668,26 +3704,20 @@
 					}
 
 				#sidebar.inactive {
-					margin-right: -24em;
+					margin-left: -24em;
 				}
 
 		}
 
 		@media screen and (max-width: 1280px) {
 
-			#abc{
-				width: 72% !important;
-			}
-
 			#sidebar {
 				box-shadow: 0 0 5em 0 rgba(0, 0, 0, 0.175);
 				height: 100%;
-				right: -26em;
+				left: 0;
 				position: fixed;
 				top: 0;
 				z-index: 10000;
-				display: block;
-				margin-top: 20em;
 			}
 
 				#sidebar.inactive {
@@ -3697,12 +3727,11 @@
 				#sidebar > .inner {
 					-webkit-overflow-scrolling: touch;
 					height: 100%;
-					right: 0;
+					left: 0;
 					overflow-x: hidden;
 					overflow-y: auto;
-					position: fixed;;
+					position: absolute;
 					top: 0;
-					margin-top: 20em;
 				}
 
 					#sidebar > .inner:after {
@@ -3719,7 +3748,7 @@
 
 					#sidebar .toggle:before {
 						font-size: 1.5rem;
-						margin-right: -0.4375em;
+						margin-left: -0.4375em;
 					}
 
 				body.is-loading #sidebar {
@@ -3730,23 +3759,14 @@
 
 		@media screen and (max-width: 736px) {
 
-			#abc{
-				width: 85% !important;
-			}
-
 			#sidebar .toggle {
 				text-indent: 7.25em;
 				width: 7.25em;
-				display: block;
-			}
-
-			#sidebar{
-				margin-top: 0px;
 			}
 
 				#sidebar .toggle:before {
 					color: #7f888f;
-					margin-right: -0.0625em;
+					margin-left: -0.0625em;
 					margin-top: -0.25em;
 					font-size: 1.1rem;
 					z-index: 1;
@@ -3757,7 +3777,7 @@
 					border-radius: 0.375em;
 					content: '';
 					height: 3.5em;
-					right: 1em;
+					left: 1em;
 					position: absolute;
 					top: 1em;
 					width: 5em;
@@ -3775,7 +3795,6 @@
 		border-bottom: solid 5px #f56a6a;
 		padding: 6em 0 1em 0;
 		position: relative;
-		margin-top:-4em !important;
 	}
 
 		#header > * {
@@ -4026,7 +4045,7 @@
 			color: #9fa3a6;
 			display: none;
 			margin: 0.5em 0 1.5em 0;
-			padding-right: 1em;
+			padding-left: 1em;
 		}
 
 			#menu > ul > li > ul a, #menu > ul > li > ul span {

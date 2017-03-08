@@ -4,10 +4,47 @@
 		<title>IWA - Courses</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<!--[if lte IE 8]><script src="assets/courses/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/courses/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
+		<script>
+		$(document).ready(function(){
+
+		        $.post("cAPI/getCourse",
+                        {},
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                                var cse = data[0];
+                                var ee = data[1];
+                                var me = data[2];
+                                var ce = data[3];
+                                var courseData;
+                                var i=0;
+                                var currElement;
+                                while(i<2){
+                                	currElement = cse[i];
+                                	console.log(currElement);
+                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><p>'+currElement[2]+'</p><ul class="actions"><li><a href="#" class="button">Subscribe</a></li></ul></div></div></section>'; 
+                                	i++;
+                                	$("#cseCourses").append(courseData);
+                                }
+                                
+                                console.log(data);
+                                console.log(data[0]);
+ 
+                            }else{
+                            	window.location="";
+
+                            }
+                    }
+		        ,"json");
+		    
+		});
+		</script>
 	</head>
 	<body>
 
@@ -53,66 +90,9 @@
 					</section>
 
 				<!-- Computer Science Course List -->
-					<section class="wrapper style2 spotlights">
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-						<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic03.jpg&quot;); background-position: 25% 25%;"><img src="img/courses/pic03.jpg" alt="" data-position="25% 25%" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Ultricies aliquam</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section>
-					<section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic01.jpg&quot;); background-position: center center;"><img src="img/courses/pic01.jpg" alt="" data-position="center center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Sed ipsum dolor</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section><section class="">
-							<a href="#" class="image" style="background-image: url(&quot;img/courses/pic02.jpg&quot;); background-position: center top;"><img src="img/courses/pic02.jpg" alt="" data-position="top center" style="display: none;"></a>
-							<div class="content">
-								<div class="inner">
-									<h2>Feugiat consequat</h2>
-									<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus.</p>
-									<ul class="actions">
-										<li><a href="#" class="button">Subscribe</a></li>
-									</ul>
-								</div>
-							</div>
-						</section></section>
+					<section class="wrapper style2 spotlights" id="cseCourses">
+						
+					</section>
 				<!-- Electrical Header -->
 					<section id="ee" class="wrapper style3 fade-up">
 						<div class="inner">

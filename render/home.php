@@ -34,7 +34,7 @@
 								<section id="banner">
 									<div class="content">
 										<header>
-											<h1>Hi, Student X</h1>
+											<h1>Hi, <?php echo $_SESSION['uName'];?>!</h1>
 										</header>
 									</div>
 								</section>

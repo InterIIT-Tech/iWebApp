@@ -26,7 +26,7 @@ switch($action){
 		break;
 	case "getCourse"://need seperate
 		//some rendering reequired
-		echo json_encode($subs->viewCourses(1));
+		echo json_encode($subs->viewCourses(1));//$_SESSION['uYear']
 		break;
 	case "logout":
 		$_SESSION['uID']=null;

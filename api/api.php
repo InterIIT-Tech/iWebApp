@@ -73,8 +73,10 @@ class userAPI {
 		$resp =array();
 		$uID=null;
 		$uRole=null;
+		$uYear=null;
+		$uName=null;
 		if(isset($username) && isset($pass)){
-			$sql = "SELECT `SHA_pswd`,`uID` FROM `users`  WHERE `uAlias`= '".$username."'";
+			$sql = "SELECT `SHA_pswd`,`uID`,`year`,`uName` FROM `users`  WHERE `uAlias`= '".$username."'";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if(!$result || mysqli_num_rows($result)<1){
@@ -86,7 +88,10 @@ class userAPI {
             		if ($row['SHA_pswd']==sha1($pass)){
             			$resp[]=1;
             			$uID=$row['uID'];
+            			$uYear=$row['year'];
+            			$uName=$row['uName'];
             			$resp[]=$row['uID'];
+
             			break;
             		} else {
             		 $resp[] = -1;
@@ -95,7 +100,7 @@ class userAPI {
             	}
 			}
 		}
-		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole; $resp[]=1;}
+		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole;$_SESSION['uYear']=$uYear;$_SESSION['uName']=$uName;}
 		else { $resp[]=-1; }
 		return $resp;
 		
@@ -265,13 +270,43 @@ class subsAPI{
 	public function updateSubs($audience,$title,$content){
 		//@todo
 	}
-	public function viewClubs(){
+	// public function viewClubs(){
 
+	// 	//@todo
+	// }
+	public function viewCourses($year){
 		//@todo
-	}
-	public function viewCourses(){
-		//@todo
-
+		$cse=array();
+		$c=0;$e=0;$m=0;$ce=0;
+		$elec=array();
+		$mech=array();
+		$civil=array();
+		$result=array();
+		$sql = "SELECT `cCode`,`cID`,`branch`,`rating` FROM `courses`  WHERE `year`= '".$year."' ORDER BY `cCode`";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		if($row['branch']==1){
+            			$c++;
+            			$cse[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            		if($row['branch']==2){
+            			$e++;
+            			$elec[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            		if($row['branch']==3){
+            			$m++;
+            			$mech[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            		if($row['branch']==4){
+            			$ce++;
+            			$civil[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            	}
+			}
+			$result = array($cse,$elec,$mech,$civil);
+			return $result;//cName
 	}
 }
 ?>

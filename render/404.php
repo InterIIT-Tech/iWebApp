@@ -1,5 +1,7 @@
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>404 error : Page not found</title>
 <style>
 	
 	@import url('https://fonts.googleapis.com/css?family=Catamaran');
@@ -21,6 +23,11 @@ body{
     .dnetext {
         font-size: 2em !important;
     }
+    
+	body{
+		background-size: fill;
+	}
+
 }
 
 </style>	

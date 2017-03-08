@@ -73,8 +73,9 @@ class userAPI {
 		$resp =array();
 		$uID=null;
 		$uRole=null;
+		$uYear=null;
 		if(isset($username) && isset($pass)){
-			$sql = "SELECT `SHA_pswd`,`uID` FROM `users`  WHERE `uAlias`= '".$username."'";
+			$sql = "SELECT `SHA_pswd`,`uID`,`year` FROM `users`  WHERE `uAlias`= '".$username."'";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if(!$result || mysqli_num_rows($result)<1){
@@ -86,6 +87,7 @@ class userAPI {
             		if ($row['SHA_pswd']==sha1($pass)){
             			$resp[]=1;
             			$uID=$row['uID'];
+            			$uYear=$row['year'];
             			$resp[]=$row['uID'];
             			break;
             		} else {
@@ -95,7 +97,7 @@ class userAPI {
             	}
 			}
 		}
-		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole; $resp[]=1;}
+		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole;$_SESSION['uYear']=$uYear;}
 		else { $resp[]=-1; }
 		return $resp;
 		
@@ -114,6 +116,36 @@ class userAPI {
 		$ret= array();
 		//validations
 		//usrname must be same as webmailusername
+		if($name ==null ||$name==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: Name";
+			return $ret;
+			exit;
+		}
+		// if($role ==null ||$role==''){
+		// 	$ret[]=-1;
+		// 	$ret[]="Missing Parameter: role";
+		// 	return $ret;
+		// 	exit;
+		// }
+		if($alias ==null ||$alias==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: username";
+			return $ret;
+			exit;
+		}
+		if($pswd ==null ||$pswd==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: Password";
+			return $ret;
+			exit;
+		}
+		if($email ==null ||$email==''){
+			$ret[]=-1;
+			$ret[]="Missing Parameter: email";
+			return $ret;
+			exit;
+		}
 		$sql = "INSERT INTO `users`(uName,uRole,SHA_pswd,uAlias,email) VALUES ('".$name."', '".$role."', '".$pswd."', '".$alias."','".$email."')";
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 		$result = mysqli_query($link,$sql);
@@ -122,9 +154,13 @@ class userAPI {
         	$ret[]=1;
         	$ret[]="Successfully Registered";
         	mkdir('gallery/'.$alias);
-        }else{ $ret[]=-1;$ret[]= mysqli_errno($link) . ": " . mysqli_error($link);}
+        	mkdir("gallery/$alias", 0777);
+        	return $ret;
+        	exit;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
         mysqli_close($link);
-	return $ret;
+        return $ret;
+	
 	}
 
 	/*
@@ -229,7 +265,40 @@ class subsAPI{
 
 	//notification table update
 	public function updateSubs($audience,$title,$content){
+		//@todo
+	}
+	// public function viewClubs(){
 
+	// 	//@todo
+	// }
+	public function viewCourses($year=$_SESSION['uYear']){
+		//@todo
+		$cse=array();
+		$elec=array();
+		$mech=array();
+		$civil=array();
+		$result=array();
+		$sql = "SELECT `cCode`,`cID`,`branch`,`rating` FROM `courses`  WHERE `year`= '".$year."' GROUP BY `branch` ORDER BY ";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		if($row['branch']==1){
+            			$cse[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            		if($row['branch']==2){
+            			$elec[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            		if($row['branch']==3){
+            			$mech[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            		if($row['branch']==4){
+            			$civil[]=array($row['cID'],$row['cCode'],$row['rating']);
+            		}
+            	}
+			}
+			$result = array($cse,$elec,$mech,$civil);
+			return $result;
 	}
 }
 ?>

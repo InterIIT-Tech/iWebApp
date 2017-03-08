@@ -1,7 +1,7 @@
 <?php
 session_start();
-define("USER_NAME", "root");
-define("PASSWORD", "toor");
+define("USER_NAME", "iwa");
+define("PASSWORD", "toorToor123#");
 define("SERVER_ADDRESS", "localhost");
 define("DATABASE", "iwa");
 $webRoot="http://".$_SERVER['HTTP_HOST']."/iwa";

@@ -7,6 +7,7 @@ require_once('servConf.php');
 $action = $match[1];
 $userAPI= new userAPI($webRoot);
 $post= new postAPI();
+$subs= new subsAPI();
 
 switch($action){
 	//userAPI
@@ -22,6 +23,10 @@ switch($action){
 	case "viewPost"://need seperate
 		//some rendering reequired
 		echo json_encode($post->getPosts($match[2],$match[3],$match[4]));
+		break;
+	case "getCourse"://need seperate
+		//some rendering reequired
+		echo json_encode($subs->viewCourses(1));
 		break;
 	case "logout":
 		$_SESSION['uID']=null;

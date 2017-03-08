@@ -4,3 +4,6 @@ RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^(.*)$ iwa/index.php/?$1 [L]
+
+ErrorDocument 500 "500 internal server error!"
+ErrorDocument 403 "403 Access forbidden"

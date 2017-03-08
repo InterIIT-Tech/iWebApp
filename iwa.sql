@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 05, 2017 at 10:45 PM
+-- Generation Time: Mar 09, 2017 at 04:53 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -59,8 +59,20 @@ CREATE TABLE `courses` (
   `year` int(11) NOT NULL,
   `branch` int(11) NOT NULL COMMENT '1=cs,2=ee,3=me,4=ce,5=cb',
   `rating` float NOT NULL,
+  `img` varchar(200) DEFAULT 'pic01.jpg' COMMENT 'file name after img/courses/',
   `ratedby` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`cCode`, `cID`, `cName`, `year`, `branch`, `rating`, `img`, `ratedby`) VALUES
+('CS101', 1, 'Intro to CS', 1, 1, 5, 'cs101.jpg', 1),
+('CS112', 2, 'Intro to CS lab', 1, 1, 5, 'cs112.jpg', 1),
+('EE101', 3, 'Electrical Circuits', 1, 2, 3, 'ee101.jpg', 1),
+('ME102', 4, 'Engineering Mechanics', 1, 3, 3, 'me102.jpg', 1),
+('CE110', 5, 'Engineering Drawing', 1, 4, 1, 'ce110.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -100,14 +112,25 @@ CREATE TABLE `posts` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `rev`
+--
+
+CREATE TABLE `rev` (
+  `cID` int(11) NOT NULL,
+  `uID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `sublist`
 --
 
 CREATE TABLE `sublist` (
   `subID` int(11) NOT NULL,
   `uID` int(11) NOT NULL,
-  `coID` int(11) NOT NULL,
-  `clID` int(11) NOT NULL
+  `coID` int(11) DEFAULT NULL,
+  `clID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -142,6 +165,7 @@ CREATE TABLE `users` (
   `SHA_pswd` varchar(180) NOT NULL,
   `uName` varchar(200) NOT NULL,
   `email` varchar(2000) DEFAULT NULL,
+  `year` int(11) NOT NULL DEFAULT '1',
   `uRole` int(11) NOT NULL,
   `uAlias` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -150,9 +174,14 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uID`, `SHA_pswd`, `uName`, `email`, `uRole`, `uAlias`) VALUES
-(1, '9d516530dba7ae296eac0599b016c6038f230397', 'Tameesh Biswas', 'biswas.cs16@iitp.ac.in', 0, 'tameeshb'),
-(3, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test User', 'test.cs16@iitp.ac.in', 0, 'test007');
+INSERT INTO `users` (`uID`, `SHA_pswd`, `uName`, `email`, `year`, `uRole`, `uAlias`) VALUES
+(1, '9d516530dba7ae296eac0599b016c6038f230397', 'Tameesh Biswas', 'biswas.cs16@iitp.ac.in', 1, 0, 'tameeshb'),
+(3, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test User', 'test.cs16@iitp.ac.in', 1, 0, 'test007'),
+(5, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', 1, 0, ''),
+(7, '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 'Full name', 'email', 1, 0, 'usrname'),
+(8, '3c363836cf4e16666669a25da280a1865c2d2874', 'a', 'c', 1, 0, 'b'),
+(9, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'test', 1, 0, 'test'),
+(11, 'b444ac06613fc8d63795be9ad0beaf55011936ac', 'test1', 'test1', 1, 0, 'test1');
 
 --
 -- Indexes for dumped tables
@@ -221,7 +250,7 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `cID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `cID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `notify`
 --
@@ -236,12 +265,12 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `sublist`
 --
 ALTER TABLE `sublist`
-  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

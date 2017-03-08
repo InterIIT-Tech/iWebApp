@@ -11,15 +11,15 @@ InterIIT-TechMeet Web application
  
 
 ##Contents
- * Login page :https://html5up.net/dimension
- * About page : https://html5up.net/fractal
- * gallery :https://html5up.net/multiverse or https://html5up.net/parallelism
- * News Feed: https://html5up.net/story or https://html5up.net/editorial
- * Curated content, https://html5up.net/ethereal
+ * Login page 
+ * About page 
+ * gallery
+ * News Feed
+ * Curated content
  * relevant posts,
- * common community-contributed portals for course reviews, https://html5up.net/phantom
- * timetables, https://tympanus.net/Tutorials/StickyTableHeaders/ https://html5up.net/hyperspace
- * share auto/taxi, some good script , https://html5up.net/hyperspace
- * in-campus event calendar; https://html5up.net/hyperspace
+ * common community-contributed portals for course reviews
+ * timetables
+ * share auto/taxi, some good script
+ * in-campus event calendar
 
 ##To contribute, read CONTRIBUTING.md

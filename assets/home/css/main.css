@@ -1,12 +1,6 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,400italic,600italic|Roboto+Slab:400,700");
 
-/*
-	Editorial by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
-
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
@@ -3505,7 +3499,7 @@
 			}
 
 				#main > .inner > section {
-					padding: 5em 0 3em 0 ;
+					padding: 1em 0 0em 0 ;
 				}
 
 		}
@@ -3517,7 +3511,7 @@
 			}
 
 				#main > .inner > section {
-					padding: 4em 0 2em 0 ;
+					padding: 1em 0 0em 0 ;
 				}
 
 		}
@@ -3529,7 +3523,7 @@
 			}
 
 				#main > .inner > section {
-					padding: 3em 0 1em 0 ;
+					padding: 1em 0 0em 0 ;
 				}
 
 		}
@@ -3848,7 +3842,7 @@
 /* Banner */
 
 	#banner {
-		padding: 6em 0 4em 0 ;
+		padding: 0em 0 1em 0 ;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;

@@ -1,11 +1,17 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<title>Hyperspace by HTML5 UP</title>
-		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/courses/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/courses/css/main.css" />
+		<script src="assets/js/modernizr.custom.25376.js"></script>
+
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
 	<style>
@@ -15,12 +21,14 @@
 	</style>
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-rotateleft">
+			<div class="container">
+				<div class="wrapper">
 		<!-- Sidebar -->
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
-						<ul>
+						<ul><li><button id="showMenu">Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">NJACK</a></li>
 							<li><a href="#ee">Sparkonics</a></li>
@@ -103,6 +111,18 @@
 			<script src="assets/courses/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/courses/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/courses/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+		<script src="assets/js/menu.js"></script>
+</div></div>
+<nav class="outer-nav right vertical">
+				<a href="#" class="icon-home">Home</a>
+				<a href="#" class="icon-news">News</a>
+				<a href="#" class="icon-image">Images</a>
+				<a href="#" class="icon-upload">Uploads</a>
+				<a href="#" class="icon-star">Favorites</a>
+				<a href="#" class="icon-mail">Messages</a>
+				<a href="#" class="icon-lock">Security</a>
+			</nav>
+</div>
 	</body>
 </html>

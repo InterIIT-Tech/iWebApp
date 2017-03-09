@@ -16,6 +16,7 @@
 
 				<!-- Main -->
 					<div id="main">
+						<div style="cursor:pointer;position: absolute; width:40px;height:40px;background-size: cover; top: 20px; right: 20px;background-image: url('img/logout.png');" onclick="window.location='logout'"></div>
 						<div class="inner">
 
 							<!-- Header -->
@@ -45,7 +46,7 @@
 										<h2>Navigation</h2>
 									</header>
 									<div class="features">
-									
+
 										<article>
 											<a href="course">
 											<span class="icon fa-diamond"></span>

@@ -32,6 +32,10 @@ switch($action){
 		//some rendering reequired
 		echo json_encode($subs->subscribe($_POST['type'],$_POST['code']));//$_SESSION['uYear']
 		break;
+	case "unSubs"://need seperate
+		//some rendering reequired
+		echo json_encode($subs->unSubscribe($_POST['type'],$_POST['code']));//$_SESSION['uYear']
+		break;
 	case "checkSub"://need seperate
 		//some rendering reequired
 		echo json_encode($subs->checkSub($_POST['type']));//$_SESSION['uYear']

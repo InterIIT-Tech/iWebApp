@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Editorial by HTML5 UP</title>
+		<title>Home::iWebApp</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -46,7 +46,7 @@
 									</header>
 									<div class="features">
 										<article>
-											<a href="courses">
+											<a href="course">
 											<span class="icon fa-diamond"></span>
 											<div class="content">
 												<h3>Courses</h3>

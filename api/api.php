@@ -273,6 +273,23 @@ class subsAPI{
         mysqli_close($link);
         return $ret;
 	}
+	
+	public function unSubscribe($type,$id){
+		//mysql
+		$t=($type>1)?"clID":"coID";
+		$sql = "DELETE FROM `sublist` WHERE `$t`=$id ";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$ret[]=1;
+        	$ret[]="unSubscribed";
+        	return $ret;
+        	exit;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
+        mysqli_close($link);
+        return $ret;
+	}
+
 
 	public function checkSub($type){
 		//mysql

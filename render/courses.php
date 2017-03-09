@@ -10,17 +10,34 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
 		<script>
-			function subscribe(type,course){
-				$.post("cAPI/Subs",
+			function subscribe(type,course,sub){
+				var sendTo="cAPI/Subs";
+				if(sub==2 || $("#buttonC"+course).hasClass("subs")){
+					sendTo="cAPI/unSubs";
+				}
+				$.post(sendTo,
                         {
                         	type:1,
                         	code:course
                         },
                         function(data,status){
+                        	// $(this).text(data[1]);
+                        	console.log(data);
                         	if(status=='success'){
-                        		$("#buttonC"+course).text("Done!");
-                        		$("#buttonC"+course).css("background","rgba(33, 156, 50, 0.53)");
+                        		if(sub==2){
+	                        		$("#buttonC"+course).text("Un-Subscribed!");
+	                        		$("#buttonC"+course).removeClass("subs");
+	                        		$("#buttonC"+course).css("background","rgba(33, 156, 50, 0)");
+                        		}else{
+	                        		$("#buttonC"+course).text("Subscribed!");
+	                        		$("#buttonC"+course).addClass("subs");
+	                        		$("#buttonC"+course).attr("onclick","subscribe(1,"+course+",2)");
+	                        		$("#buttonC"+course).css("background","rgba(33, 156, 50, 0.53)");
+                        		}
                         		//alert("success");
+                        		if(sub==2){
+	                        		$("#buttonC"+course).text("Un-Subscribed!");
+	                        	}
                         	}
                         });
 			}
@@ -31,7 +48,7 @@
 			}
 		</style>
 		<script>
-		$(document).ready(function(){
+		$(document).ready(function(){//use same for unsubs
 			var cSubs;
 			$.post("cAPI/checkSub",
                         {type:1},
@@ -65,11 +82,11 @@
                                 	console.log(currElement);cSubs
                                 	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
                                 	if(cSubs[currElement[0]]==1){
-	                                	courseData+=' class="button subs">';
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
                                 	}else {
-	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#cseCourses").append(courseData);
                                 }
@@ -79,11 +96,11 @@
                                 	console.log(currElement);
                                 	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
                                 	if(cSubs[currElement[0]]==1){
-	                                	courseData+=' class="button subs">';
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
                                 	}else {
-	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';  
                                 	i++;
                                 	$("#eeCourses").append(courseData);
                                 }
@@ -93,11 +110,11 @@
                                 	console.log(currElement);
                                 	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
                                 	if(cSubs[currElement[0]]==1){
-	                                	courseData+=' class="button subs">';
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
                                 	}else {
-	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#meCourses").append(courseData);
                                 }
@@ -106,14 +123,14 @@
                                 	console.log(currElement);
                                 	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'" ';
                                 	if(cSubs[currElement[0]]==1){
-	                                	courseData+=' class="button subs">';
+	                                	courseData+='onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
 	                                	courseData+='Subscribed!</a></li></ul></div></div></section>'; 
 
                                 	}else {
-	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+');" class="button">';
-	                                	courseData+='Subscribe</a></li></ul></div></div></section>'; 
+	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
     
                                 	}
+	                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#ceCourses").append(courseData);
                                 }
@@ -133,12 +150,7 @@
 				setTimeout(function(){
 					$(".subs").text("Subscribed");
 				},500); 
-				$(".subs").mouseenter(function(){
-					$(this).html("Unsubscribe X");
-				});
-				$(".subs").mouseleave(function(){
-					$(this).text("Subscribed");
-				});
+				
 			});
 		</script>
 	</head>

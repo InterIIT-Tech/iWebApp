@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2017 at 04:27 PM
+-- Generation Time: Mar 09, 2017 at 07:26 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -139,8 +139,8 @@ CREATE TABLE `sublist` (
 --
 
 INSERT INTO `sublist` (`subID`, `uID`, `coID`, `clID`) VALUES
-(13, 11, 2, NULL),
-(14, 11, 2, NULL);
+(38, 1, 1, NULL),
+(39, 1, 2, NULL);
 
 -- --------------------------------------------------------
 
@@ -152,24 +152,26 @@ CREATE TABLE `ttable` (
   `cID` int(11) NOT NULL,
   `cName` varchar(2000) NOT NULL,
   `cCode` varchar(6) NOT NULL,
-  `mon` int(11) NOT NULL,
-  `mon_` int(11) NOT NULL,
-  `tue` int(11) NOT NULL,
-  `tue_` int(11) NOT NULL,
-  `wed` int(11) NOT NULL,
-  `wed_` int(11) NOT NULL,
-  `thur` int(11) NOT NULL,
-  `thur_` int(11) NOT NULL,
-  `fri` int(11) NOT NULL,
-  `fri_` int(11) NOT NULL
+  `cColor` varchar(6) DEFAULT '35ad5d',
+  `mon` int(11) DEFAULT NULL,
+  `mon_` int(11) DEFAULT NULL,
+  `tue` int(11) DEFAULT NULL,
+  `tue_` int(11) DEFAULT NULL,
+  `wed` int(11) DEFAULT NULL,
+  `wed_` int(11) DEFAULT NULL,
+  `thur` int(11) DEFAULT NULL,
+  `thur_` int(11) DEFAULT NULL,
+  `fri` int(11) DEFAULT NULL,
+  `fri_` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ttable`
 --
 
-INSERT INTO `ttable` (`cID`, `cName`, `cCode`, `mon`, `mon_`, `tue`, `tue_`, `wed`, `wed_`, `thur`, `thur_`, `fri`, `fri_`) VALUES
-(1, 'Intro to CS', 'CS101', 900, 1100, 900, 1100, 900, 1100, 900, 1100, 900, 1100);
+INSERT INTO `ttable` (`cID`, `cName`, `cCode`, `cColor`, `mon`, `mon_`, `tue`, `tue_`, `wed`, `wed_`, `thur`, `thur_`, `fri`, `fri_`) VALUES
+(1, 'Intro to CS', 'CS101', '35ad5d', 900, 1100, 900, 1100, NULL, NULL, 900, 1100, 900, 1100),
+(2, 'Intro to CS lab', 'CS112', '6398ed', 1400, 1700, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -241,6 +243,13 @@ ALTER TABLE `sublist`
   ADD PRIMARY KEY (`subID`);
 
 --
+-- Indexes for table `ttable`
+--
+ALTER TABLE `ttable`
+  ADD PRIMARY KEY (`cID`),
+  ADD UNIQUE KEY `cID` (`cID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -282,7 +291,7 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `sublist`
 --
 ALTER TABLE `sublist`
-  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `users`
 --

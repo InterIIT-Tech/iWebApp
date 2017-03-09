@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2017 at 04:53 AM
+-- Generation Time: Mar 09, 2017 at 04:27 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -56,6 +56,7 @@ CREATE TABLE `courses` (
   `cCode` varchar(5) NOT NULL,
   `cID` int(11) NOT NULL,
   `cName` varchar(200) NOT NULL,
+  `Description` varchar(2000) NOT NULL,
   `year` int(11) NOT NULL,
   `branch` int(11) NOT NULL COMMENT '1=cs,2=ee,3=me,4=ce,5=cb',
   `rating` float NOT NULL,
@@ -67,12 +68,12 @@ CREATE TABLE `courses` (
 -- Dumping data for table `courses`
 --
 
-INSERT INTO `courses` (`cCode`, `cID`, `cName`, `year`, `branch`, `rating`, `img`, `ratedby`) VALUES
-('CS101', 1, 'Intro to CS', 1, 1, 5, 'cs101.jpg', 1),
-('CS112', 2, 'Intro to CS lab', 1, 1, 5, 'cs112.jpg', 1),
-('EE101', 3, 'Electrical Circuits', 1, 2, 3, 'ee101.jpg', 1),
-('ME102', 4, 'Engineering Mechanics', 1, 3, 3, 'me102.jpg', 1),
-('CE110', 5, 'Engineering Drawing', 1, 4, 1, 'ce110.jpg', 1);
+INSERT INTO `courses` (`cCode`, `cID`, `cName`, `Description`, `year`, `branch`, `rating`, `img`, `ratedby`) VALUES
+('CS101', 1, 'Intro to CS', 'In this introduction to computer programming course, you’ll learn and practice key computer science concepts by building your own versions of popular web applications. You’ll learn Python, a powerful, easy-to-learn, and widely used programming language, and you’ll explore computer science basics, as you build your own search engine and social network.', 1, 1, 5, 'cs101.jpg', 1),
+('CS112', 2, 'Intro to CS lab', 'Lab sessions based on CS101', 1, 1, 5, 'cs112.jpg', 1),
+('EE101', 3, 'Electrical Circuits', 'This course introduces students to the basic components of electronics: diodes, transistors, and op amps.  It covers the basic operation and some common applications.', 1, 2, 3, 'ee101.jpg', 1),
+('ME102', 4, 'Engineering Mechanics', 'Engineering mechanics is the application of mechanics to solve problems involving common engineering elements. The goal of this Engineering Mechanics course is to expose students to problems in mechanics as applied to plausibly real-world scenarios.', 1, 3, 3, 'me102.jpg', 1),
+('CE110', 5, 'Engineering Drawing', 'An engineering drawing, a type of technical drawing, is used to fully and clearly define requirements for engineered items. Engineering drawing (the activity) produces engineering drawings (the documents). More than merely the drawing of pictures, it is also a language—a graphical language that communicates ideas and information from one mind to another.[1] Most especially, it communicates all needed information from the engineer, who designed a part, to the workers, who will make it.', 1, 4, 1, 'ce110.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -133,6 +134,14 @@ CREATE TABLE `sublist` (
   `clID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `sublist`
+--
+
+INSERT INTO `sublist` (`subID`, `uID`, `coID`, `clID`) VALUES
+(13, 11, 2, NULL),
+(14, 11, 2, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -142,6 +151,7 @@ CREATE TABLE `sublist` (
 CREATE TABLE `ttable` (
   `cID` int(11) NOT NULL,
   `cName` varchar(2000) NOT NULL,
+  `cCode` varchar(6) NOT NULL,
   `mon` int(11) NOT NULL,
   `mon_` int(11) NOT NULL,
   `tue` int(11) NOT NULL,
@@ -153,6 +163,13 @@ CREATE TABLE `ttable` (
   `fri` int(11) NOT NULL,
   `fri_` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ttable`
+--
+
+INSERT INTO `ttable` (`cID`, `cName`, `cCode`, `mon`, `mon_`, `tue`, `tue_`, `wed`, `wed_`, `thur`, `thur_`, `fri`, `fri_`) VALUES
+(1, 'Intro to CS', 'CS101', 900, 1100, 900, 1100, 900, 1100, 900, 1100, 900, 1100);
 
 -- --------------------------------------------------------
 
@@ -265,12 +282,12 @@ ALTER TABLE `posts`
 -- AUTO_INCREMENT for table `sublist`
 --
 ALTER TABLE `sublist`
-  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `uID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

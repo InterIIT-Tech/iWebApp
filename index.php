@@ -46,7 +46,7 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/login.php');
 } elseif (preg_match($base . 'timetable?$@', $url, $match)) {
 	require ('render/timetable.php');
-} elseif (preg_match($base . 'maps?$@', $url, $match)) {
+} elseif (preg_match($base . 'getting-around?$@', $url, $match)) {
 	require ('render/maps.php');
 } elseif (preg_match($base . 'course?$@', $url, $match)) {
 	require ('render/courses.php');

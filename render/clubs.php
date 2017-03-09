@@ -8,6 +8,11 @@
 		<link rel="stylesheet" href="assets/courses/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
+	<style>
+		.wrapper.fullscreen {
+			min-height: 40vh !important;
+		}
+	</style>
 	</head>
 	<body>
 
@@ -33,7 +38,7 @@
 					<section id="intro" class="wrapper style1 fullscreen fade-up">
 						<div class="inner">
 							<h1>Clubs</h1>
-							<p> Subscribe to any course here to never miss any updates.</p>
+							<p> Subscribe to any club here to never miss any updates.</p>
 							<span id = "mobile-nav">
 								<ul class="actions vertical">
 								<li><a href="#cse" class="button fit scrolly">NJACK</a></li>

@@ -72,10 +72,10 @@
 											</div>
 										</article>
 										<article>
-											<a href="#">
+											<a href="getting-around">
 											<span class="icon fa-signal"></span>
 											<div class="content">
-												<h3>UIO</h3>
+												<h3>Getting around campus</h3>
 											</a>
 											</div>
 										</article>
@@ -85,7 +85,7 @@
 							<!-- Section -->
 								<section>
 									<header class="major">
-										<h2>Curated Content</h2>
+										<h2>Campus Updates</h2>
 									</header>
 									<div class="posts">
 										<article>

@@ -6,7 +6,7 @@
 -->
 <html>
 	<head>
-		<title>Timetable</title>
+		<title>Getting around campus</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -22,7 +22,7 @@
 				<!-- Header -->
 					<header id="header">
 						
-							<a href="#menu" style="margin-left:30px ;">Menu</a>
+							<a href="#menu" style="margin-left:30px ;">Menu :: iWebApp</a>
 						</nav>
 					</header>
 
@@ -53,25 +53,27 @@
 
 									
 
-									
-                                                                 <div class="select-wrapper">
+									<h3>Take me:</h3>
+                                                                 <div class="select-wrapper" >
 																	<select name="demo-category" id="demo-category">
-																		<option value="" style="background-color: #2a2f4a ;">- Boys Hostel -</option>
+																		<option value="" style="background-color: #2a2f4a ;">- From -</option>
+																		<option value="1" style="background-color: #2a2f4a ;"> Boys Hostel</option>
 																		<option value="1" style="background-color: #2a2f4a ;"> Girls hostel</option>
 																		<option value="1" style="background-color: #2a2f4a ;" >Admin Block</option>
-																		<option value="1" style="background-color: #2a2f4a ;"> Mech Lab</option>
-																		<option value="1" style="background-color: #2a2f4a ;">  Tut Block</option>
+																		<option value="1" style="background-color: #2a2f4a ;">Mech Workshop</option>
+																		<option value="1" style="background-color: #2a2f4a ;">Tut Block</option>
 																	</select>
 																</div>
                                                                   
 
-                                                                 <div class="select-wrapper-2">
+                                                                 <div class="select-wrapper-2 half ">
 																	<select name="demo-category" id="demo-category">
-																		<option value="" style="background-color: #2a2f4a ;">- Boys -Hostel-</option>
-																		<option value="1" style="background-color: #2a2f4a ;">Girls Hostel</option>
-																		<option value="1" style="background-color: #2a2f4a ;" >Admin block</option>
-																		<option value="1" style="background-color: #2a2f4a ;">Mech lab</option>
-																			<option value="1" style="background-color: #2a2f4a ;" >Tut Block</option>
+																		<option value="" style="background-color: #2a2f4a ;">- To -</option>
+																		<option value="1" style="background-color: #2a2f4a ;"> Boys Hostel</option>
+																		<option value="1" style="background-color: #2a2f4a ;"> Girls hostel</option>
+																		<option value="1" style="background-color: #2a2f4a ;" >Admin Block</option>
+																		<option value="1" style="background-color: #2a2f4a ;">Mech Workshop</option>
+																		<option value="1" style="background-color: #2a2f4a ;">Tut Block</option>
 																	</select>
 																</div>
 											
@@ -81,8 +83,14 @@
 										</div>
 
 								</div>
-							</section>
+							</section><br>
+							<center><iframe
 
+						  height="450"
+						  frameborder="0" style="border:0;width:80%"
+						  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCDoS4zxUVccoOIkEZadbmTssHyiV__QXw
+						    &q=IIT+Patna+Bihta" allowfullscreen>
+						</iframe></center>
 					</div>
 
 		

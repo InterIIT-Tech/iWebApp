@@ -80,7 +80,7 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 					
 				</nav>
 			</header>
-
+<a style="color:rgb(85, 216, 255)" href="<?php echo $webRoot;?>/course"><-- Go back to Courses brochure.</a>
 		<!-- Wrapper -->
 			<div id="wrapper">
 

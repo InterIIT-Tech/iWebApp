@@ -45,6 +45,7 @@
 										<h2>Navigation</h2>
 									</header>
 									<div class="features">
+									
 										<article>
 											<a href="course">
 											<span class="icon fa-diamond"></span>

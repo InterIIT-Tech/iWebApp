@@ -192,6 +192,26 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 								$mon[$i]=array(' ','');
 							}
 						}
+						for ($i=0;$i<6;$i++){
+							if(!isset($tue[$i])){
+								$tue[$i]=array(' ','');
+							}
+						}
+						for ($i=0;$i<6;$i++){
+							if(!isset($wed[$i])){
+								$wed[$i]=array(' ','');
+							}
+						}
+						for ($i=0;$i<6;$i++){
+							if(!isset($thur[$i])){
+								$thur[$i]=array(' ','');
+							}
+						}
+						for ($i=0;$i<6;$i++){
+							if(!isset($fri[$i])){
+								$fri[$i]=array(' ','');
+							}
+						}
 					}
 				}
 			}

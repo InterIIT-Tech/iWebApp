@@ -22,6 +22,20 @@
 	</head>
 	<body>
 	<div id="perspective" class="perspective effect-rotateleft">
+	<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul><li><button id="showMenu">Show Menu</button></li>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#cse">NJACK</a></li>
+							<li><a href="#ee">Sparkonics</a></li>
+							<li><a href="#me">SCME</a></li>
+							<li><a href="#ce">E-Club</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
 			<div class="container">
 				<div class="wrapper">
 		<!-- Sidebar -->

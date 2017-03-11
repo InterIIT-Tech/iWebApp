@@ -48,7 +48,7 @@
 									<div class="features">
 
 										<article>
-											<a href="course">
+											<a href="courses">
 											<span class="icon fa-diamond"></span>
 											<div class="content">
 												<h3>Courses</h3>

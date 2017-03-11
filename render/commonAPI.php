@@ -22,7 +22,7 @@ switch($action){
 		break;
 	case "viewPost"://need seperate
 		//some rendering reequired
-		echo json_encode($post->getPosts($match[2],$match[3],$match[4]));
+		echo json_encode($post->getPosts($_POST['scope'],$_POST['from'],$_POST['to'],10));
 		break;
 	case "getCourse"://need seperate
 		//some rendering reequired

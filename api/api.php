@@ -184,7 +184,7 @@ class userAPI {
 
 
 /**
- * post API
+ * posts API
  */
 
 class postAPI{
@@ -222,7 +222,7 @@ class postAPI{
 	/**
 	 * get posts from database
 	 */
-	public function getPosts($scope,$from,$to,$limit = 5){
+	public function getPosts($scope,$from,$to,$limit){
 		$res = array();
 		$multi = array();
 		$multi = explode(",", $scope);

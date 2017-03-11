@@ -5,7 +5,7 @@
 * 
 */
 //to do
-//subscribe method
+//////////////subscribe method
 //send and write notif hook
 //userrating
 //map api
@@ -48,11 +48,11 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/timetable.php');
 } elseif (preg_match($base . 'getting-around?$@', $url, $match)) {
 	require ('render/maps.php');
-} elseif (preg_match($base . 'course?$@', $url, $match)) {
+} elseif (preg_match($base . 'courses?$@', $url, $match)) {
 	require ('render/courses.php');
 } elseif (preg_match($base . 'clubs?$@', $url, $match)) {
 	require ('render/clubs.php');
-} elseif (preg_match($base . 'course/view/(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
 } elseif (preg_match($base . 'register?$@', $url, $match)) {
 	require ('render/register.php');//depreciates

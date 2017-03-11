@@ -8,6 +8,27 @@
 		<link rel="stylesheet" href="assets/home/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		
+		<script>
+		$.post("cAPI/viewPost",
+                        {
+
+                        },
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                               
+                            }else{
+                            	// window.location="";
+                            	// location.reload(true);
+                            	window.location.reload();
+
+                            }
+                    }
+		        ,"json");	
+		</script>
 	</head>
 	<body>
 

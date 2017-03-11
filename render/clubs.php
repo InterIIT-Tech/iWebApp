@@ -16,14 +16,12 @@
 			$(document).ready(function(){
 				var stat=0;
 				$("#showMenu").click(function(){
-					$(".mysidebar").addClass('moveIt');
+					$(".mysidebar").fadeOut();
 					stat=1;
 				});
-				$(".content").click(function(){
+				$(".container").click(function(){
 					if(stat==1){
-					$(".mysidebar").removeClass('moveIt');
-					alert("aeS");
-					$(".mysidebar").css("transform", "translateX(0%)");
+						$(".mysidebar").fadeIn();
 						stat=0;
 					}
 				});
@@ -32,24 +30,12 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
 	<style>
-		.wrapper.fullscreen {
-			min-height: 40vh !important;
-		}
-		.outer-nav.right {
-			left:10%;
-		}
-		.moveIt{
-			-webkit-animation: mymove .3s ease-in; /* Safari 4.0 - 8.0 */
-    		animation: mymove .3s ease-in;
-    		transform: translateX(-100%);
-		}
-		@-webkit-keyframes mymove {
-		    0%   {transform: translateX(0%);}
-		    100% {transform: translateX(-100%);}
-		}
-		@keyframes mymove {
-		    0%   {transform: translateX(0%);}
-		    100% {transform: translateX(-100%);}
+			.wrapper.fullscreen {
+				min-height: 40vh !important;
+			}
+			.outer-nav.right {
+				left:10%;
+			}
 		}
 	</style>
 	</head>
@@ -59,7 +45,7 @@
 			<section id="sidebar" class="mysidebar">
 				<div class="inner">
 					<nav>
-						<ul><li><button id="showMenu" href="#back">Show Menu</button></li>
+						<ul><li><button class="button special" id="showMenu" style="margin:auto;" href="#back">Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">NJACK</a></li>
 							<li><a href="#ee">Sparkonics</a></li>
@@ -75,7 +61,7 @@
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
-						<ul><li><button id="showMenu">Show Menu</button></li>
+						<ul><li><button>Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">NJACK</a></li>
 							<li><a href="#ee">Sparkonics</a></li>

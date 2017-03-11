@@ -1,5 +1,11 @@
 <html>
 	<head>
+	<script>
+		if (location.protocol != 'https:')
+		{
+		 location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+		}
+	</script>
 		<title>Login</title>
 		<meta name="theme-color" content="#3b353e" />
 		<meta charset="utf-8" />

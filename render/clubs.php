@@ -11,22 +11,55 @@
 		<!--[if lte IE 8]><script src="assets/courses/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/courses/css/main.css" />
 		<script src="assets/js/modernizr.custom.25376.js"></script>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				var stat=0;
+				$("#showMenu").click(function(){
+					$(".mysidebar").addClass('moveIt');
+					stat=1;
+				});
+				$(".content").click(function(){
+					if(stat==1){
+					$(".mysidebar").removeClass('moveIt');
+					alert("aeS");
+					$(".mysidebar").css("transform", "translateX(0%)");
+						stat=0;
+					}
+				});
+			});
+		</script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
 	<style>
 		.wrapper.fullscreen {
 			min-height: 40vh !important;
 		}
+		.outer-nav.right {
+			left:10%;
+		}
+		.moveIt{
+			-webkit-animation: mymove .3s ease-in; /* Safari 4.0 - 8.0 */
+    		animation: mymove .3s ease-in;
+    		transform: translateX(-100%);
+		}
+		@-webkit-keyframes mymove {
+		    0%   {transform: translateX(0%);}
+		    100% {transform: translateX(-100%);}
+		}
+		@keyframes mymove {
+		    0%   {transform: translateX(0%);}
+		    100% {transform: translateX(-100%);}
+		}
 	</style>
 	</head>
 	<body>
-	<div id="perspective" class="perspective effect-rotateleft">
+	<div id="perspective" class="perspective effect-airbnb">
 	<!-- Sidebar -->
-			<section id="sidebar">
+			<section id="sidebar" class="mysidebar">
 				<div class="inner">
 					<nav>
-						<ul><li><button id="showMenu">Show Menu</button></li>
+						<ul><li><button id="showMenu" href="#back">Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">NJACK</a></li>
 							<li><a href="#ee">Sparkonics</a></li>

@@ -18,7 +18,7 @@ switch($action){
 		echo json_encode($userAPI->regUser($_POST['name'],$_POST['role']=0,$_POST['uAlias'],$_POST['pswd'],$_POST['email']));
 		break;
 	case "newPost":
-		$post->newPost($_POST['title'],$_POST['content'],$_POST['type'],1,$_POST['notice'],$_POST['priority'],$_POST['image'],$_POST['notify'],$_POST['audience']);
+		echo json_encode($post->newPost($_POST['title'],$_POST['content'],$_POST['type'],1,$_POST['notice'],$_POST['priority'],$_POST['image'],$_POST['notify'],$_POST['audience']));
 		break;
 	case "viewPost"://need seperate
 		//some rendering reequired
@@ -39,6 +39,10 @@ switch($action){
 	case "checkSub"://need seperate
 		//some rendering reequired
 		echo json_encode($subs->checkSub($_POST['type']));//$_SESSION['uYear']
+		break;
+	case "getPermissions"://need seperate
+		//some rendering reequired
+		echo json_encode($userAPI->perms());//$_SESSION['uYear']
 		break;
 	case "logout":
 		$_SESSION['uID']=null;

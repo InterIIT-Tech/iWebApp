@@ -1,10 +1,10 @@
 <html>
 	<head>
 	<script>
-		if (location.protocol != 'https:')
-		{
-		 location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
-		}
+		 if (location.protocol != 'https:' && window.location.hostname=="iwebapp.ml")
+		 {
+		  location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+		 }
 	</script>
 		<title>Login</title>
 		<meta name="theme-color" content="#3b353e" />

@@ -179,7 +179,29 @@ class userAPI {
 		}
 	}
 
-
+	public function perms(){
+		$ret=array();
+		$perms=array();
+		$sql = "SELECT `type`,`cID`,`cName` FROM `admins`  WHERE `uID`= '".$_SESSION['uID']."'";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+        		$ret[]=1;
+        		$ret[]=mysqli_num_rows($result);
+        		$i=0;
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$perms[$i]['type']=$row['type'];
+            		$perms[$i]['cID']=$row['cID'];
+            		$perms[$i++]['cName']=$row['cName'];
+            	}
+            
+            $ret[]=$perms;
+			}else{
+				$ret[]=0;
+				$ret[] = "None";
+			}
+			return $ret;
+	}
 }
 
 
@@ -244,11 +266,15 @@ class postAPI{
 			//date format '2010-04-29'
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result){
+        		$res[]=1;
+        		$res[]=mysqli_num_rows($result);
+        		$postArray=array();
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-            		$res[$i]['title']=$row['postTitle'];
-            		$res[$i]['content']=$row['postContent'];
-            		$res[$i++]['image']=$row['image'];
+            		$postArray[$i]['title']=$row['postTitle'];
+            		$postArray[$i]['content']=$row['postContent'];
+            		$postArray[$i++]['image']=$row['image'];
             	}
+            	$res[]=$postArray;
             } else {
             	$res[] = -1;
             }
@@ -351,4 +377,12 @@ class subsAPI{
 			return $result;//cName
 	}
 }
+
+/**
+ * Notification API
+ */
+class notifAPI{
+
+}
+//gallery let ppl upload photos in their usrname folders
 ?>

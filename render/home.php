@@ -122,25 +122,7 @@
 	<div class="md-modal md-effect-1" id="modal-1">
 			<div class="md-content">
 				<h3 >New Post:</h3>
-				<div id="hiddenC" style="display: none;">
-<span  class="adminRadio" class="form-el">
-					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL').fadeIn();$('#scopeSelect').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL').fadeOut();$('#scopeSelect').show();" name="pType" value="notif"> Notify</span>
-					<input type="text" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important">
-					<input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
-					<textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea>
-					
-					<div id="scopeSelect" class="form-el" style="display: none;">
-						scopeSelect:
-							<div class="select-wrapper" id="selectScope" >
-								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
-									<option value="">- Whom to notify -</option>
-								</select>
-							</div>
-					</div>
-					
-					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
-					<button class="md-close" onclick="$('#modal-1').removeClass('md-show');">Close me!</button>
-				</div>
+				
 				<div id="new-post-form">
 				<span  class="adminRadio" class="form-el">
 					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL').fadeIn();$('#scopeSelect').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL').fadeOut();$('#scopeSelect').fadeIn();" name="pType" value="notif"> Notify</span>
@@ -158,7 +140,7 @@
 					</div>
 					
 					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
-					<button class="md-close"  style="color: #fff !important;">Close</button>
+					<button onclick="$('#modal-1').removeClass('md-show');">Close me!</button>
 				</div>
 			</div>
 		</div>

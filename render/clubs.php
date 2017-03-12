@@ -21,10 +21,13 @@
 					stat=1;
 				});
 				$(".container").click(function(){
-					if(stat==1){
+					if(stat==1 && $(window).width()>723){
 						$(".mysidebar").fadeIn();
 						stat=0;
 					}
+				});
+				$("#mobile-show-menu").click(function(){
+					$('#showMenu').trigger('click');
 				});
 			});
 		</script>
@@ -37,11 +40,21 @@
 			.outer-nav.right {
 				left:10%;
 			}
+			#mobile-show-menu {
+				font-family: fontAwesome;
+				font-size: 30px;
+				position:fixed;
+				color: #312450;
+				right: 20px;
+				top: 10px; 
+				z-index: 1000;
+			}
 		}
 	</style>
 	</head>
 	<body>
 	<div id="perspective" class="perspective effect-airbnb">
+	<div id="mobile-show-menu" href="#back"></div>
 	<!-- Sidebar -->
 			<section id="sidebar" class="mysidebar">
 				<div class="inner">
@@ -72,7 +85,6 @@
 					</nav>
 				</div>
 			</section>
-
 		<!-- Wrapper -->
 			<div id="wrapper">
 

@@ -1,5 +1,3 @@
-# insti-WebApp
-InterIIT-TechMeet Web application
 
 ##Installation Instructions
  * Clone repository in [directory_name] on your server root

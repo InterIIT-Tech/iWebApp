@@ -100,7 +100,7 @@ class userAPI {
             	}
 			}
 		}
-		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole;$_SESSION['uYear']=$uYear;$_SESSION['uName']=$uName;}
+		if($uID) {$_SESSION['uID']=$uID;$_SESSION['uRole']=$uRole;$_SESSION['uYear']=$uYear;$_SESSION['uName']=$uName;$_SESSION['f403']=sha1($pass);}
 		else { $resp[]=-1; }
 		return $resp;
 		

@@ -33,7 +33,10 @@ $url = $_SERVER['REQUEST_URI'];
 // $url = rtrim($url,"/");
 preg_match('@(.*)index.php(.*)$@', $_SERVER['PHP_SELF'], $mat );
 $base = '@^'. $mat[1] ;
-	// $_SESSION['uID']=null;
+	if(!isset($_SESSION['f403'])){
+		$_SESSION['uID']=null;
+	}
+}
 
 if (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){

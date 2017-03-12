@@ -36,7 +36,7 @@ $base = '@^'. $mat[1] ;
 	if(!isset($_SESSION['f403'])){
 		$_SESSION['uID']=null;
 	}
-}
+
 
 if (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){

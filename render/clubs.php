@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<title>Hyperspace by HTML5 UP</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />

@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<title>Home::iWebApp</title>
+		<link rel="icon" type="image/png" href="favicon.png" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -122,7 +123,7 @@
 				<h3 >New Post:</h3>
 				<div id="hiddenC" style="display: none;">
 <span  class="adminRadio" class="form-el">
-					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL').fadeIn();$('#scopeSelect').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL').fadeOut();$('#scopeSelect').fadeIn();" name="pType" value="notif"> Notify</span>
+					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL').fadeIn();$('#scopeSelect').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL').fadeOut();$('#scopeSelect').show();" name="pType" value="notif"> Notify</span>
 					<input type="text" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important">
 					<input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
 					<textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea>
@@ -137,7 +138,7 @@
 					</div>
 					
 					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
-					<button class="md-close"  style="color: #fff !important;">Close</button>
+					<button class="md-close">Close me!</button>
 				</div>
 				<div id="new-post-form">
 				<span  class="adminRadio" class="form-el">
@@ -249,16 +250,16 @@
 										<h2>Notifications</h2>
 									</header>
 									<ul>
-										<li><a href="#">Alert 1</a></li>
-										<li><a href="#">Alert 2</a></li>
-										<li><a href="#">Alert 3</a></li>
-										<li><a href="#">Alert 4</a></li>
-										<li><a href="#">Alert 5</a></li>
+										<li><a>Alert 1</a></li>
+										<li><a>Alert 2</a></li>
+										<li><a>Alert 3</a></li>
+										<li><a>Alert 4</a></li>
+										<li><a>Alert 5</a></li>
 									</ul>
 								</nav>
-
+						
 							<!-- Section -->
-								<section>
+								<!-- <section>
 									<header class="major">
 										<h2>Gallery</h2>
 									</header>
@@ -279,7 +280,7 @@
 									<ul class="actions">
 										<li><a href="#" class="button">More</a></li>
 									</ul>
-								</section>
+								</section> -->
 
                             <!-- Section -->
 <section>                                     <header class="major">

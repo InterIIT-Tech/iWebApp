@@ -226,6 +226,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 	<head>
 		<title>Timetable::iWebApp</title>
 		<meta charset="utf-8" />
+		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/timetable/css/main.css" />

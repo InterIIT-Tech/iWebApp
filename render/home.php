@@ -110,6 +110,7 @@
                     }
 		        ,"json");
 				}
+				
 		</script>
 		<style>
 			#new-post-form *:not(#selectScope){
@@ -138,7 +139,7 @@
 					</div>
 					
 					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
-					<button class="md-close">Close me!</button>
+					<button class="md-close" onclick="$('#modal-1').removeClass('md-show');">Close me!</button>
 				</div>
 				<div id="new-post-form">
 				<span  class="adminRadio" class="form-el">

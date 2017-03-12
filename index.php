@@ -54,9 +54,9 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/clubs.php');
 } elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
-} elseif (preg_match($base . 'register?$@', $url, $match)) {
+} /*elseif (preg_match($base . 'register?$@', $url, $match)) {
 	require ('render/register.php');//depreciates
-} elseif (preg_match($base . 'post/new?$@', $url, $match)) {
+} */elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {
 	require ('render/viewPost.php');

@@ -44,7 +44,10 @@ if (preg_match($base . '$@', $url, $match)) {
 	} else{
 		require ('render/login.html');
 	}
-} elseif (preg_match($base . 'cAPI/(.*)$@', $url, $match)) {
+}elseif( !isset($_SESSION['uID']) ) {
+	header("Location: ".$webRoot);
+}
+ elseif (preg_match($base . 'cAPI/(.*)$@', $url, $match)) {
 	require ('render/commonAPI.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');

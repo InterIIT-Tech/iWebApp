@@ -127,23 +127,26 @@
 
 			                   
 </div>
+</div>     					
+                                    <section>
 
-   									 <div class="row" style="margin-left: 5vw;  ;margin-top:5vh; ">
 
-										<div class="col-sm-5">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something ??</label>
-										<input type="text" name="name" id="name" placeholder="Description">
+   									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
+
+										<div class="col-sm-5" style="margin-left: 4.5vw;">
+										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something :</label>
+										<input type="text" name="name" id="name" placeholder="Description??">
 										</div>
 
 
 
 
-										<div class=" col-sm-5" style="margin-left: 8vw ;">
+										<div class=" col-sm-5" style="margin-left: 4vw ;">
 										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
 										<input type="text" name="name" id="name" placeholder="Number">
 										</div>
 
-										<div class=col-sm-2 style="margin-top: 9vh ;margin-left:10vw ;border-radius: 5% ;">
+										<div class=col-sm-2 style="margin-top: 9vh ;margin-left:5vw ;border-radius: 5% ;">
 										<a href="#" class="button special"  >Submit</a>
 										
 										</div>
@@ -152,6 +155,40 @@
 
 
 									<hr width="100% ;">
+									</section>
+
+                                    <section>
+
+
+   									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
+
+										<div class="col-sm-2" style="margin-left: 4vw;border-bottom: 2vw ;">
+										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
+										<input type="text" name="name" id="name" placeholder="Description??">
+										</div>
+                                                 
+											<div class="col-sm-2" style="margin-left: 3vw;">
+										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
+										<input type="text" name="name" id="name" placeholder="Where??">
+										</div>
+
+
+
+										<div class=" col-sm-3" style="margin-left:4vw;">
+										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
+										<input type="text" name="name" id="name" placeholder="Number">
+										</div>
+
+										<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.5vw; ;border-radius: 5% ;">
+										<a href="#" class="button special"  >Submit</a>
+										
+										</div>
+
+									</div>
+
+
+									<hr width="100% ;">
+									</section>
 		<!-- Scripts -->
 			<script src="assets/lost_found/js/jquery.min.js"></script>
 			<script src="assets/lost_found/js/jquery.scrolly.min.js"></script>

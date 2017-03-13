@@ -44,13 +44,15 @@ if (preg_match($base . '$@', $url, $match)) {
 	} else{
 		require ('render/login.html');
 	}
-}elseif( !isset($_SESSION['uID']) ) {
-	header("Location: ".$webRoot);
 }
  elseif (preg_match($base . 'cAPI/(.*)$@', $url, $match)) {
 	require ('render/commonAPI.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');
+} /*elseif (preg_match($base . 'register?$@', $url, $match)) {
+	require ('render/register.php');//depreciates
+} */elseif( !isset($_SESSION['uID']) ) {
+	header("Location: ".$webRoot);
 } elseif (preg_match($base . 'timetable?$@', $url, $match)) {
 	require ('render/timetable.php');
 } elseif (preg_match($base . 'admin?$@', $url, $match)) {
@@ -66,9 +68,7 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/lost_found.php');
 } elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
-} /*elseif (preg_match($base . 'register?$@', $url, $match)) {
-	require ('render/register.php');//depreciates
-} */elseif (preg_match($base . 'post/new?$@', $url, $match)) {
+} elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {
 	require ('render/viewPost.php');

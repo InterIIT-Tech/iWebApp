@@ -1712,6 +1712,7 @@
 
 	h3 {
 		font-size: 1.35em;
+		text-align: center;
 	}
 
 	h4 {
@@ -2136,7 +2137,7 @@
 				line-height: 2.75em;
 			}
 
-				
+
 				#header nav a {
 					padding: 0 0.5em;
 				}
@@ -2205,7 +2206,7 @@
 			}
 
 			#main > * > .inner {
-				padding: 4em 0 2em 0 ;
+				padding: 0em 0 2em 0 ;
 				margin: 0 auto;
 				max-width: 65em;
 				width: calc(100% - 6em);
@@ -2214,7 +2215,7 @@
 				@media screen and (max-width: 736px) {
 
 					#main > * > .inner {
-						padding: 3em 0 1em 0 ;
+						padding: 0em 0 1em 0 ;
 						width: calc(100% - 3em);
 					}
 
@@ -2707,7 +2708,7 @@
 		position: relative;
 		width: 42% ;
 		display: inline-block;
-		
+
 	}
 
 		.select-wrapper-2:before {

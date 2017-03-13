@@ -1,4 +1,4 @@
-<?php
+x<?php
 require_once('api/api.php');
 require_once('servConf.php');
 /**
@@ -6,7 +6,6 @@ require_once('servConf.php');
  */
 $post= new postAPI();
 
-echo json_encode($post->getPosts($match[1],$match[2],$match[3]));
-// echo $match[1].' 2= '.$match[2].' 3='.$match[3];
-// echo "plain text";
+echo json_encode($post->getPosts($_POST['scope'],$_POST['from'],$_POST['to'],10));
+
 ?>

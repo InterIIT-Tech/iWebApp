@@ -86,7 +86,7 @@
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#cseCourses").append(courseData);
                                 }
@@ -100,7 +100,7 @@
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';  
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';  
                                 	i++;
                                 	$("#eeCourses").append(courseData);
                                 }
@@ -114,7 +114,7 @@
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#meCourses").append(courseData);
                                 }
@@ -130,13 +130,12 @@
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
     
                                 	}
-	                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="course/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
+	                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
                                 	i++;
                                 	$("#ceCourses").append(courseData);
                                 }
                             }else{
-                            	window.location="";
-
+                            	window.location.reload();	
                             }
                     }
 		        ,"json");

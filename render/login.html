@@ -1,6 +1,15 @@
 <html>
 	<head>
+	<script>
+		 if (location.protocol != 'https:' && ( window.location.hostname=="iwebapp.ml"|| window.location.hostname=="www.iwebapp.ml"))
+		 {
+		  location.href = 'https:' + window.location.href.substring(window.location.protocol.length);
+		 }
+	</script>
 		<title>Login</title>
+		<!-- <link rel="icon" type="image/png" href="favicon.png" /> -->
+		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
+
 		<meta name="theme-color" content="#3b353e" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
@@ -196,13 +205,12 @@
 							<div class="inner">
 								<span class="custom_head">Insti-WebApp</span>
 								
-								<nav>
+								<!-- <nav>
 									<ul>
 										<li><a id="loginBtn" class="navActive">Login</a></li>
 										<li><a id="regBtn" >Register</a></li>
-										<!--<li><a href="#elements">Elements</a></li>-->
 									</ul>
-								</nav>
+								</nav> -->
 								<section id="login">
 									<form action="javascript:">
 												<input type="text" id="error" value="error!" disabled style="display:none;text-align: center;background-color: red;color:white" />

@@ -5,7 +5,7 @@
 * 
 */
 //to do
-//subscribe method
+//////////////subscribe method
 //send and write notif hook
 //userrating
 //map api
@@ -33,6 +33,10 @@ $url = $_SERVER['REQUEST_URI'];
 // $url = rtrim($url,"/");
 preg_match('@(.*)index.php(.*)$@', $_SERVER['PHP_SELF'], $mat );
 $base = '@^'. $mat[1] ;
+	if(!isset($_SESSION['f403'])){
+		$_SESSION['uID']=null;
+	}
+
 
 if (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){
@@ -50,15 +54,15 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/admin.php');
 } elseif (preg_match($base . 'getting-around?$@', $url, $match)) {
 	require ('render/maps.php');
-} elseif (preg_match($base . 'course?$@', $url, $match)) {
+} elseif (preg_match($base . 'courses?$@', $url, $match)) {
 	require ('render/courses.php');
 } elseif (preg_match($base . 'clubs?$@', $url, $match)) {
 	require ('render/clubs.php');
-} elseif (preg_match($base . 'course/view/(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
-} elseif (preg_match($base . 'register?$@', $url, $match)) {
+} /*elseif (preg_match($base . 'register?$@', $url, $match)) {
 	require ('render/register.php');//depreciates
-} elseif (preg_match($base . 'post/new?$@', $url, $match)) {
+} */elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {
 	require ('render/viewPost.php');

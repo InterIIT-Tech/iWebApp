@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
+		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<title>Hyperspace by HTML5 UP</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
@@ -11,22 +12,54 @@
 		<!--[if lte IE 8]><script src="assets/courses/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/courses/css/main.css" />
 		<script src="assets/js/modernizr.custom.25376.js"></script>
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				var stat=0;
+				$("#showMenu").click(function(){
+					$(".mysidebar").fadeOut();
+					stat=1;
+				});
+				$(".container").click(function(){
+					if(stat==1 && $(window).width()>723){
+						$(".mysidebar").fadeIn();
+						stat=0;
+					}
+				});
+				$("#mobile-show-menu").click(function(){
+					$('#showMenu').trigger('click');
+				});
+			});
+		</script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
 	<style>
-		.wrapper.fullscreen {
-			min-height: 40vh !important;
+			.wrapper.fullscreen {
+				min-height: 40vh !important;
+			}
+			.outer-nav.right {
+				left:10%;
+			}
+			#mobile-show-menu {
+				font-family: fontAwesome;
+				font-size: 30px;
+				position:fixed;
+				color: #312450;
+				right: 20px;
+				top: 10px; 
+				z-index: 1000;
+			}
 		}
 	</style>
 	</head>
 	<body>
-	<div id="perspective" class="perspective effect-rotateleft">
+	<div id="perspective" class="perspective effect-airbnb">
+	<div id="mobile-show-menu" href="#back"></div>
 	<!-- Sidebar -->
-			<section id="sidebar">
+			<section id="sidebar" class="mysidebar">
 				<div class="inner">
 					<nav>
-						<ul><li><button id="showMenu">Show Menu</button></li>
+						<ul><li><button class="button special" id="showMenu" style="margin:auto;" href="#back">Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">NJACK</a></li>
 							<li><a href="#ee">Sparkonics</a></li>
@@ -42,7 +75,7 @@
 			<section id="sidebar">
 				<div class="inner">
 					<nav>
-						<ul><li><button id="showMenu">Show Menu</button></li>
+						<ul><li><button>Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">NJACK</a></li>
 							<li><a href="#ee">Sparkonics</a></li>
@@ -52,7 +85,6 @@
 					</nav>
 				</div>
 			</section>
-
 		<!-- Wrapper -->
 			<div id="wrapper">
 

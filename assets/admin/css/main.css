@@ -15,11 +15,6 @@
 		vertical-align: baseline;
 	}
 
-	.button{
-		background-color: rgba(0, 245, 44, 0.74) !important;
-		color: black !important;
-	}
-
 	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 		display: block;
 	}

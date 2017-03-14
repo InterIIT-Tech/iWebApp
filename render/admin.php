@@ -181,10 +181,145 @@
 
 													    <div class="form-group">
 													      <div class="col-sm-offset-2 col-sm-10">
-													        <input type="submit" class="button" value="Submit Button" style="background-color: rgba(0, 245, 44, 0.74);color: black;cursor:pointer">
+													        <input type="submit" class="button special" value="Submit" />
 													      </div>
 													    </div>
 													  </form>
+
+														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
+														<h3 style="paddingTop : 0;">Assign Role</h3>
+														</div>
+
+														<form class="form-horizontal">
+															<div class="form-group">
+													      <label class="control-label col-sm-2" for="email">User:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="email" placeholder="Enter user">
+													      </div>
+													    </div>
+
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Admin Of:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="email" placeholder="Admin of">
+													      </div>
+													    </div>
+
+															<div class="form-group" style="margin-top:2em">
+													      <div class="col-sm-offset-2 col-sm-10">
+													        <input type="submit" class="button special" value="Submit" />
+													      </div>
+													    </div>
+														</form>
+
+														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
+														<h3 style="paddingTop : 0;">Send Global Notification</h3>
+														</div>
+
+														<form class="form-horizontal">
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="pwd">Notification:</label>
+													      <div class="col-sm-10">
+																	<textarea class="form-control" rows="5" id="comment"></textarea>
+																 </div>
+													    </div>
+														</form>
+
+														<div class="form-group" style="margin-top:2em">
+															<div class="col-sm-offset-2 col-sm-10">
+																<input type="submit" class="button special" value="Submit" />
+															</div>
+														</div>
+
+														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
+														<h3 style="paddingTop : 0;">Hide Post</h3>
+														</div>
+
+														<form class="form-horizontal">
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Post ID:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="email" placeholder="Admin of">
+													      </div>
+													    </div>
+														</form>
+
+														<div class="form-group" style="margin-top:2em">
+															<div class="col-sm-offset-2 col-sm-10">
+																<input type="submit" class="button special" value="Submit" />
+															</div>
+														</div>
+
+														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
+														<h3 style="paddingTop : 0;">Add Events</h3>
+														</div>
+
+														<form class="form-horizontal">
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Date:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="date" placeholder="Date">
+													      </div>
+													    </div>
+
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Subject</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="subject" placeholder="Subject">
+													      </div>
+													    </div>
+														</form>
+
+														<div class="form-group" style="margin-top:2em">
+															<div class="col-sm-offset-2 col-sm-10">
+																<input type="submit" class="button special" value="Submit" />
+															</div>
+														</div>
+
+														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
+														<h3 style="paddingTop : 0;">Aprove Posts</h3>
+														</div>
+
+														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
+														<h3 style="paddingTop : 0;">Create Article</h3>
+														</div>
+
+														<form class="form-horizontal">
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Title:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="date" placeholder="Date">
+													      </div>
+													    </div>
+
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="pwd">Summary:</label>
+													      <div class="col-sm-10">
+																	<textarea class="form-control" rows="5" id="comment"></textarea>
+																 </div>
+													    </div>
+
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Image URL:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="subject" placeholder="Subject">
+													      </div>
+													    </div>
+
+															<div class="form-group" style="margin-top:2em">
+													      <label class="control-label col-sm-2" for="email">Read more:</label>
+													      <div class="col-sm-10">
+													        <input type="text" class="form-control" id="subject" placeholder="Subject">
+													      </div>
+													    </div>
+														</form>
+
+														<div class="form-group" style="margin-top:2em">
+															<div class="col-sm-offset-2 col-sm-10">
+																<input type="submit" class="button special" value="Submit" />
+															</div>
+														</div>
+
 											</div>
 										</div>
 

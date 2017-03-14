@@ -27,9 +27,10 @@
 								<div class="inner">
 											<div class="6u$ 12u$(medium)">
 												<!-- Form -->
-													<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:-2em">
-													<h3 style="paddingTop : 0;">New Course</h3>
+													<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:-2em;border-bottom: solid 0.5vh #847171;">
+													<h3 style="padding-top : 0;">New Course</h3>
 													</div>
+
 													<form class="form-horizontal">
 													    <div class="form-group">
 													      <label class="control-label col-sm-2" for="email">Course Name:</label>
@@ -186,8 +187,8 @@
 													    </div>
 													  </form>
 
-														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
-														<h3 style="paddingTop : 0;">Assign Role</h3>
+														<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:-1em;border-bottom: solid 0.5vh #847171;border-top: solid 0.5vh #847171;">
+														<h3 style="padding-bottom:0px;margin-top:auto;margin-bottom:auto">Assign Role</h3>
 														</div>
 
 														<form class="form-horizontal">
@@ -212,8 +213,8 @@
 													    </div>
 														</form>
 
-														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
-														<h3 style="paddingTop : 0;">Send Global Notification</h3>
+														<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:-1em;border-bottom: solid 0.5vh #847171;border-top: solid 0.5vh #847171;">
+														<h3 style="padding-bottom:0px;margin-top:auto;margin-bottom:auto">Send Global Notification</h3>
 														</div>
 
 														<form class="form-horizontal">
@@ -231,15 +232,15 @@
 															</div>
 														</div>
 
-														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
-														<h3 style="paddingTop : 0;">Hide Post</h3>
+														<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:1em;border-bottom: solid 0.5vh #847171;border-top: solid 0.5vh #847171;">
+														<h3 style="padding-bottom:0px;margin-top:auto;margin-bottom:auto">Hide Post</h3>
 														</div>
 
 														<form class="form-horizontal">
 															<div class="form-group" style="margin-top:2em">
 													      <label class="control-label col-sm-2" for="email">Post ID:</label>
 													      <div class="col-sm-10">
-													        <input type="text" class="form-control" id="email" placeholder="Admin of">
+													        <input type="text" class="form-control" id="email" placeholder="ID">
 													      </div>
 													    </div>
 														</form>
@@ -250,8 +251,8 @@
 															</div>
 														</div>
 
-														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
-														<h3 style="paddingTop : 0;">Add Events</h3>
+														<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:1em;border-bottom: solid 0.5vh #847171;border-top: solid 0.5vh #847171;">
+														<h3 style="padding-bottom:0px;margin-top:auto;margin-bottom:auto">Add Events</h3>
 														</div>
 
 														<form class="form-horizontal">
@@ -276,19 +277,19 @@
 															</div>
 														</div>
 
-														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
-														<h3 style="paddingTop : 0;">Aprove Posts</h3>
+														<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:1em;border-bottom: solid 0.5vh #847171;border-top: solid 0.5vh #847171;">
+														<h3 style="padding-bottom:0px;margin-top:auto;margin-bottom:auto">Aprove Posts</h3>
 														</div>
 
-														<div style="margin-left:auto; margin-right:auto; width : 96vw; margin-bottom:2em;margin-top:0em">
-														<h3 style="paddingTop : 0;">Create Article</h3>
+														<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:1em;border-bottom: solid 0.5vh #847171;border-top: solid 0.5vh #847171;">
+														<h3 style="padding-bottom:0px;margin-top:auto;margin-bottom:auto">Create Article</h3>
 														</div>
 
 														<form class="form-horizontal">
 															<div class="form-group" style="margin-top:2em">
 													      <label class="control-label col-sm-2" for="email">Title:</label>
 													      <div class="col-sm-10">
-													        <input type="text" class="form-control" id="date" placeholder="Date">
+													        <input type="text" class="form-control" id="date" placeholder="Title">
 													      </div>
 													    </div>
 
@@ -302,14 +303,14 @@
 															<div class="form-group" style="margin-top:2em">
 													      <label class="control-label col-sm-2" for="email">Image URL:</label>
 													      <div class="col-sm-10">
-													        <input type="text" class="form-control" id="subject" placeholder="Subject">
+													        <input type="text" class="form-control" id="subject" placeholder="URL">
 													      </div>
 													    </div>
 
 															<div class="form-group" style="margin-top:2em">
 													      <label class="control-label col-sm-2" for="email">Read more:</label>
 													      <div class="col-sm-10">
-													        <input type="text" class="form-control" id="subject" placeholder="Subject">
+													        <input type="text" class="form-control" id="subject" placeholder="Read more">
 													      </div>
 													    </div>
 														</form>

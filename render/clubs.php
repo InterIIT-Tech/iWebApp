@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<title>Hyperspace by HTML5 UP</title>
+		<title>Clubs::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
@@ -59,12 +59,13 @@
 			<section id="sidebar" class="mysidebar">
 				<div class="inner">
 					<nav>
-						<ul><li><button class="button special" id="showMenu" style="margin:auto;" href="#back">Show Menu</button></li>
+						<ul>
+							<li><button class="button special" id="showMenu" style="margin:auto;" href="#back">Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#cse">NJACK</a></li>
-							<li><a href="#ee">Sparkonics</a></li>
-							<li><a href="#me">SCME</a></li>
-							<li><a href="#ce">E-Club</a></li>
+							<li><a href="#njack">NJACK</a></li>
+							<li><a href="#sparkonics">Sparkonics</a></li>
+							<li><a href="#scme">SCME</a></li>
+							<li><a href="#eclub">E-Club</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -77,10 +78,10 @@
 					<nav>
 						<ul><li><button>Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
-							<li><a href="#cse">NJACK</a></li>
-							<li><a href="#ee">Sparkonics</a></li>
-							<li><a href="#me">SCME</a></li>
-							<li><a href="#ce">E-Club</a></li>
+							<li><a href="#njack">NJACK</a></li>
+							<li><a href="#sparkonics">Sparkonics</a></li>
+							<li><a href="#scme">SCME</a></li>
+							<li><a href="#eclub">E-Club</a></li>
 						</ul>
 					</nav>
 				</div>
@@ -95,16 +96,16 @@
 							<p> Subscribe to any club here to never miss any updates.</p>
 							<span id = "mobile-nav">
 								<ul class="actions vertical">
-								<li><a href="#cse" class="button fit scrolly">NJACK</a></li>
-								<li><a href="#ee" class="button fit scrolly">Sparkonics</a></li>
-								<li><a href="#me" class="button fit scrolly">SCME</a></li>
-								<li><a href="#ce" class="button fit scrolly">E-Club</a></li>
+								<li><a href="#njack" class="button fit scrolly">NJACK</a></li>
+								<li><a href="#sparkonics" class="button fit scrolly">Sparkonics</a></li>
+								<li><a href="#scme" class="button fit scrolly">SCME</a></li>
+								<li><a href="#eclub" class="button fit scrolly">E-Club</a></li>
 								</ul>
 							</span>
 						</div>
 					</section>
-				<!-- Computer Science Header -->
-					<section id="cse" class="wrapper style2 fade-up">
+				<!-- NJACK Header -->
+					<section id="njack" class="wrapper style2 fade-up">
 						<div class="inner">
 							<h2>NJACK</h2>
 							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -115,8 +116,8 @@
 					</section>
 
 				
-				<!-- Electrical Header -->
-					<section id="ee" class="wrapper style2 fade-up">
+				<!-- Sparkonics Header -->
+					<section id="sparkonics" class="wrapper style2 fade-up">
 						<div class="inner">
 							<h2>Sparkonics</h2>
 							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -126,8 +127,8 @@
 						</div>
 					</section>
 
-				<!-- Mechanical Header -->
-					<section id="me" class="wrapper style2 fade-up">
+				<!-- SCME Header -->
+					<section id="scme" class="wrapper style2 fade-up">
 						<div class="inner">
 							<h2>SCME</h2>
 							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -138,7 +139,7 @@
 					</section>
 
 				<!-- E-Club Header -->
-				<section id="ce" class="wrapper style2 fade-up">
+				<section id="eclub" class="wrapper style2 fade-up">
 						<div class="inner">
 							<h2>E-Club</h2>
 							<p>Phasellus convallis elit id ullamcorper pulvinar. Duis aliquam turpis mauris, eu ultricies erat malesuada quis. Aliquam dapibus, lacus eget hendrerit bibendum, urna est aliquam sem, sit amet imperdiet est velit quis lorem.</p>
@@ -159,8 +160,8 @@
 			<script src="assets/courses/js/main.js"></script>
 			<script src="assets/js/classie.js"></script>
 		<script src="assets/js/menu.js"></script>
-</div></div>
-<nav class="outer-nav right vertical">
+		</div></div>
+		<nav class="outer-nav right vertical">
 				<a href="#" class="icon-home">Home</a>
 				<a href="#" class="icon-news">News</a>
 				<a href="#" class="icon-image">Images</a>
@@ -168,7 +169,7 @@
 				<a href="#" class="icon-star">Favorites</a>
 				<a href="#" class="icon-mail">Messages</a>
 				<a href="#" class="icon-lock">Security</a>
-			</nav>
+		</nav>
 </div>
 	</body>
 </html>

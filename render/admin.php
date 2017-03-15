@@ -1,9 +1,4 @@
 <!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>Admin</title>
@@ -19,6 +14,26 @@
 
 		<!-- Wrapper -->
 			<div id="wrapper">
+				<!-- Header -->
+					<header id="header">
+						<nav>
+							<a href="#menu">Menu</a>
+						</nav>
+					</header>
+
+				<!-- Menu -->
+					<nav id="menu">
+						<ul class="links">
+							<li><a href="index.html">Home</a></li>
+							<li><a href="landing.html">Landing</a></li>
+							<li><a href="generic.html">Generic</a></li>
+							<li><a href="elements.html">Elements</a></li>
+						</ul>
+						<ul class="actions vertical">
+							<li><a href="#" class="button special fit">Get Started</a></li>
+							<li><a href="#" class="button fit">Log In</a></li>
+						</ul>
+					</nav>
 				<!-- Main -->
 					<div id="main" class="alt">
 
@@ -27,7 +42,7 @@
 								<div class="inner">
 											<div class="6u$ 12u$(medium)">
 												<!-- Form -->
-													<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:-2em;border-bottom: solid 0.5vh #847171;">
+													<div style="margin-left:-2.75vw; margin-right:0; width : 96vw; margin-bottom:2em;margin-top:1em;border-bottom: solid 0.5vh #847171;">
 													<h3 style="padding-top : 0;">New Course</h3>
 													</div>
 

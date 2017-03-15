@@ -7,6 +7,6 @@ echo '<nav class="outer-nav right vertical">
  				<a href="#" class="icon-star">Favorites</a>
  				<a href="#" class="icon-mail">Messages</a>
  				<a href="#" class="icon-lock">Security</a>
- 			</nav>
- </div>';
+ 	</nav>
+';
 ?>

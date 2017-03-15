@@ -217,31 +217,55 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 			}
 ?>
 <!DOCTYPE HTML>
-<!--
-	Forty by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Timetable::iWebApp</title>
-		<meta charset="utf-8" />
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+ 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+ 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/timetable/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="assets/js/modernizr.custom.25376.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#showMenu').click(function(){
+					$('.outer-nav').fadeOut(0).fadeIn(400);
+				});
+				$(".container").click(function(){
+					$('.outer-nav').fadeOut(100);
+				});
+			});
+		</script>
+		<style>
+				.wrapper.fullscreen {
+					min-height: 40vh !important;
+				}
+				.outer-nav.right {
+					left:10%;
+				}
+				.container {
+					background: #242943;
+				}
+		</style>
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-airbnb">
+			<div class="container">
+				<div class="wrapper">
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						
-							<a href="#menu" style="margin-left:30px ;">Menu</a>
+						<nav>
+							<a href="#back" id="showMenu" style="margin-left:30px ;">Menu</a>
 						</nav>
 					</header>
 
@@ -362,6 +386,10 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 			<script src="assets/timetable/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/timetable/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/timetable/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+			<script src="assets/js/menu.js"></script>
+		</div></div>
+		<?php require('render/menu.php');?>
+		</div>
 	</body>
 </html>

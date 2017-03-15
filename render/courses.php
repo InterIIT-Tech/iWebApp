@@ -1,14 +1,56 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>IWA - Courses</title>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<title>Courses::iWebApp</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+ 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+ 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				//alert("hi");
+				var stat=0;
+				$("#showMenu").click(function(){
+					$(".mysidebar").fadeOut();
+					stat=1;
+				});
+				$(".container").click(function(){
+					if(stat==1 && $(window).width()>723){
+						$(".mysidebar").fadeIn();
+						stat=0;
+					}
+				});
+				$("#mobile-show-menu").click(function(){
+					$('#showMenu').trigger('click');
+				});
+			});
+		</script>
 		<!--[if lte IE 8]><script src="assets/courses/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/courses/css/main.css" />
+		<script src="assets/js/modernizr.custom.25376.js"></script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/courses/css/ie8.css" /><![endif]-->
+		<style>
+				.wrapper.fullscreen {
+					min-height: 40vh !important;
+				}
+				.outer-nav.right {
+					left:10%;
+				}
+				#mobile-show-menu {
+					font-family: fontAwesome;
+					font-size: 30px;
+					position:fixed;
+					color: #312450;
+					right: 20px;
+					top: 10px; 
+					z-index: 1000;
+				}
+			}
+		</style>
 		<script>
 			function subscribe(type,course,sub){
 				var sendTo="cAPI/Subs";
@@ -154,12 +196,14 @@
 		</script>
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-airbnb">
+	<div id="mobile-show-menu" href="#back"></div>
 		<!-- Sidebar -->
-			<section id="sidebar">
+			<section id="sidebar" class="mysidebar">
 				<div class="inner">
 					<nav>
 						<ul>
+							<li><button class="button special" id="showMenu" style="margin:auto;" href="#back">Show Menu</button></li>
 							<li><a href="#intro">Welcome</a></li>
 							<li><a href="#cse">Computer Science and Engineering</a></li>
 							<li><a href="#ee">Electrical Engineering</a></li>
@@ -169,7 +213,22 @@
 					</nav>
 				</div>
 			</section>
-
+			<div class="container">
+				<div class="wrapper">
+		<!-- Sidebar -->
+			<section id="sidebar">
+				<div class="inner">
+					<nav>
+						<ul><li><button>Show Menu</button></li>
+							<li><a href="#intro">Welcome</a></li>
+							<li><a href="#cse">NJACK</a></li>
+							<li><a href="#ee">Sparkonics</a></li>
+							<li><a href="#me">SCME</a></li>
+							<li><a href="#ce">E-Club</a></li>
+						</ul>
+					</nav>
+				</div>
+			</section>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -244,6 +303,10 @@
 			<script src="assets/courses/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/courses/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/courses/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+		<script src="assets/js/menu.js"></script>
+		</div></div>
+		<?php require('render/menu.php');?>
+		</div>
 	</body>
 </html>

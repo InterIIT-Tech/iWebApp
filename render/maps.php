@@ -7,22 +7,52 @@
 <html>
 	<head>
 		<title>Getting around campus</title>
-		<meta charset="utf-8" />
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/timetable/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script src="assets/js/modernizr.custom.25376.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#showMenu').click(function(){
+					$('.outer-nav').fadeOut(0).fadeIn(400);
+				});
+				$(".container").click(function(){
+					$('.outer-nav').fadeOut(100);
+				});
+			});
+		</script>
+		<style>
+				.wrapper.fullscreen {
+					min-height: 40vh !important;
+				}
+				.outer-nav.right {
+					left:10%;
+				}
+				.container {
+					background: #242943;
+				}
+		</style>
+
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-airbnb">
+			<div class="container">
+				<div class="wrapper">
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
 						
-							<a href="#menu" style="margin-left:30px ;">Menu :: iWebApp</a>
+							<a href="#back" id="showMenu" style="margin-left:30px ;">Menu :: iWebApp</a>
 						</nav>
 					</header>
 
@@ -104,6 +134,10 @@
 			<script src="assets/timetable/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/timetable/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/timetable/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+			<script src="assets/js/menu.js"></script>
+		</div></div>
+		<?php require('render/menu.php');?>
+		</div>
 	</body>
 </html>

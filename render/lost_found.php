@@ -2,7 +2,12 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Lost_found</title>
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/lost_found/js/ie/html5shiv.js"></script><![endif]-->
@@ -10,20 +15,45 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/lost_found/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/lost_found/css/ie8.css" /><![endif]-->
+		<script src="assets/js/modernizr.custom.25376.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#showMenu').click(function(){
+					$('.outer-nav').fadeOut(0).fadeIn(400);
+				});
+				$(".container").click(function(){
+					$('.outer-nav').fadeOut(100);
+				});
+			});
+		</script>
+		<style>
+				.wrapper.fullscreen {
+					min-height: 40vh !important;
+				}
+				.outer-nav.right {
+					left:10%;
+				}
+				.container {
+					background: #242943;
+				}
+		</style>
 	<script>
 		//alert('<?php echo $_POST['lName']; ?>');
 	</script>
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-airbnb">
+			<div class="container">
+				<div class="wrapper">
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<a href="index.html" class="logo"></a>
+						<a href="index.html"  class="logo"></a>
 						<nav>
-							<a href="#menu">Menu</a>
+							<a href="#back" id="showMenu">Menu</a>
 						</nav>
 					</header>
 
@@ -165,6 +195,10 @@
 			<script src="assets/lost_found/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/lost_found/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/lost_found/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+			<script src="assets/js/menu.js"></script>
+		</div></div>
+		<?php require('render/menu.php');?>
+		</div>
 	</body>
 </html>

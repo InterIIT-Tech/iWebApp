@@ -223,8 +223,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Timetable::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
- 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
- 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->

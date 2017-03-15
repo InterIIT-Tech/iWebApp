@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<title>Clubs - IWA</title>
+		<title>Clubs::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />

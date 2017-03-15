@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
-		<title>Courses - IWA</title>
+		<title>Courses::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
  		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
  		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
@@ -11,7 +11,7 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				alert("hi");
+				//alert("hi");
 				var stat=0;
 				$("#showMenu").click(function(){
 					$(".mysidebar").fadeOut();
@@ -302,7 +302,6 @@
 			<script src="assets/courses/js/skel.min.js"></script>
 			<script src="assets/courses/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/courses/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/courses/js/main.js"></script>
 			<script src="assets/courses/js/main.js"></script>
 			<script src="assets/js/classie.js"></script>
 		<script src="assets/js/menu.js"></script>

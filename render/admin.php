@@ -1,23 +1,52 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Admin</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/admin/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+ 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+ 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<link rel="stylesheet" href="assets/admin/css/main.css" />
-
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/admin/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/admin/css/ie8.css" /><![endif]-->
+		<script src="assets/js/modernizr.custom.25376.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script>
+			$(document).ready(function(){
+				$('#showMenu').click(function(){
+					$('.outer-nav').fadeOut(0).fadeIn(400);
+				});
+				$(".container").click(function(){
+					$('.outer-nav').fadeOut(100);
+				});
+			});
+		</script>
+		<style>
+				.wrapper.fullscreen {
+					min-height: 40vh !important;
+				}
+				.outer-nav.right {
+					left:10%;
+				}
+				.container {
+					background: #242943;
+				}
+		</style>
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-airbnb">
+			<div class="container">
+				<div class="wrapper">
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Header -->
 					<header id="header">
 						<nav>
-							<a href="#menu">Menu</a>
+							<a href="#back" id="showMenu" >Menu</a>
 						</nav>
 					</header>
 
@@ -351,6 +380,18 @@
 			<script src="assets/admin/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/admin/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/admin/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+			<script src="assets/js/menu.js"></script>
+		</div></div>
+		<nav class="outer-nav right vertical">
+				<a href="#" class="icon-home">Home</a>
+				<a href="#" class="icon-news">News</a>
+				<a href="#" class="icon-image">Images</a>
+				<a href="#" class="icon-upload">Uploads</a>
+				<a href="#" class="icon-star">Favorites</a>
+				<a href="#" class="icon-mail">Messages</a>
+				<a href="#" class="icon-lock">Security</a>
+		</nav>
+		</div>
 	</body>
 </html>

@@ -161,15 +161,7 @@
 			<script src="assets/js/classie.js"></script>
 		<script src="assets/js/menu.js"></script>
 		</div></div>
-		<nav class="outer-nav right vertical">
-				<a href="#" class="icon-home">Home</a>
-				<a href="#" class="icon-news">News</a>
-				<a href="#" class="icon-image">Images</a>
-				<a href="#" class="icon-upload">Uploads</a>
-				<a href="#" class="icon-star">Favorites</a>
-				<a href="#" class="icon-mail">Messages</a>
-				<a href="#" class="icon-lock">Security</a>
-		</nav>
-</div>
+		<?php require('render/menu.php');?>
+		</div>
 	</body>
 </html>

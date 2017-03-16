@@ -6,25 +6,44 @@
 -->
 <html>
 	<head>
-		<title>Gallery</title>
-		<meta charset="utf-8" />
+		<title>Gallery::iWebApp</title>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/gallery/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/gallery/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/gallery/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/gallery/css/ie8.css" /><![endif]-->
+		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
+		<script src="assets/js/modernizr.custom.25376.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<style>
+				.wrapper.fullscreen {
+					min-height: 40vh !important;
+				}
+				.outer-nav.right {
+					left:10%;
+				}
+				.container {
+					background: #242943;
+				}
+		</style>
 	</head>
 	<body>
-
+	<div id="perspective" class="perspective effect-airbnb">
+			<div class="container">
+				<div class="wrapper">
 		<!-- Wrapper -->
 			<div id="wrapper">
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="index.html"><strong>Multiverse</strong> by HTML5 UP</a></h1>
+						<h1><a href="."><strong>Gallery </strong><span style="text-transform: none;"> :: iWebApp</span></a></h1>
 						<nav>
 							<ul>
-								<li><a href="#footer" class="icon fa-info-circle">About</a></li>
+								<li><a href="#back" class="icon fa-bars" id="showMenu" >Menu</a></li>
 							</ul>
 						</nav>
 					</header>
@@ -148,6 +167,10 @@
 			<script src="assets/gallery/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/gallery/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/gallery/js/main.js"></script>
-
+			<script src="assets/js/classie.js"></script>
+			<script src="assets/js/menu.js"></script>
+		</div></div>
+		<?php require('render/menu.php');?>
+		</div>
 	</body>
 </html>

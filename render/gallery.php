@@ -30,24 +30,47 @@
 					background: #242943;
 				}
 		</style>
+		<script>
+			$(document).ready(function(){
+				//alert("hi");
+				var stat=0;
+				$("#showMenu").click(function(){
+					$('#header').fadeOut();
+					stat=1;
+				});
+				$(".container").click(function(){
+					if(stat==1){
+						$('#header').fadeIn()
+						stat=0;
+					}
+				});
+			});
+		</script>
 	</head>
 	<body>
+	<!-- Header -->
+	<header id="header">
+		<h1><a href="."><strong>Gallery </strong><span style="text-transform: none;"> :: iWebApp</span></a></h1>
+		<nav>
+			<ul>
+				<li><a href="#back" class="icon fa-bars" id="showMenu" >Menu</a></li>
+			</ul>
+		</nav>
+	</header>
 	<div id="perspective" class="perspective effect-airbnb">
 			<div class="container">
 				<div class="wrapper">
 		<!-- Wrapper -->
 			<div id="wrapper">
-
 				<!-- Header -->
-					<header id="header">
+<!-- 					<header id="header">
 						<h1><a href="."><strong>Gallery </strong><span style="text-transform: none;"> :: iWebApp</span></a></h1>
 						<nav>
 							<ul>
-								<li><a href="#back" class="icon fa-bars" id="showMenu" >Menu</a></li>
+								<li><a href="#back" class="icon fa-bars" >Menu</a></li>
 							</ul>
 						</nav>
-					</header>
-
+					</header> -->
 				<!-- Main -->
 					<div id="main">
 						<article class="thumb">
@@ -111,53 +134,6 @@
 							<p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
 						</article>
 					</div>
-
-				<!-- Footer -->
-					<footer id="footer" class="panel">
-						<div class="inner split">
-							<div>
-								<section>
-									<h2>Magna feugiat sed adipiscing</h2>
-									<p>Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum eget quis orci mattis aliquet. Maecenas fringilla et ante at lorem et ipsum. Dolor nulla eu bibendum sapien. Donec non pharetra dui. Nulla consequat, ex ut suscipit rutrum, mi dolor tincidunt erat, et scelerisque turpis ipsum.</p>
-								</section>
-								<section>
-									<h2>Follow me on ...</h2>
-									<ul class="icons">
-										<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
-										<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
-										<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
-										<li><a href="#" class="icon fa-github"><span class="label">GitHub</span></a></li>
-										<li><a href="#" class="icon fa-dribbble"><span class="label">Dribbble</span></a></li>
-										<li><a href="#" class="icon fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									</ul>
-								</section>
-								<p class="copyright">
-									&copy; Unttled. Design: <a href="http://html5up.net">HTML5 UP</a>.
-								</p>
-							</div>
-							<div>
-								<section>
-									<h2>Get in touch</h2>
-									<form method="post" action="#">
-										<div class="field half first">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="field half">
-											<input type="text" name="email" id="email" placeholder="Email" />
-										</div>
-										<div class="field">
-											<textarea name="message" id="message" rows="4" placeholder="Message"></textarea>
-										</div>
-										<ul class="actions">
-											<li><input type="submit" value="Send" class="special" /></li>
-											<li><input type="reset" value="Reset" /></li>
-										</ul>
-									</form>
-								</section>
-							</div>
-						</div>
-					</footer>
-
 			</div>
 
 		<!-- Scripts -->

@@ -5,6 +5,12 @@
 		<link rel="icon" type="image/png" href="favicon.png" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<script>
+		 if (location.protocol != 'http:' && ( window.location.hostname=="iwebapp.ml"|| window.location.hostname=="www.iwebapp.ml"))
+		 {
+		  location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
+		 }
+	</script>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/home/css/main.css" />
 
@@ -40,6 +46,29 @@
                             }
                     }
 		        ,"json");
+		$.post("cAPI/getNotif",
+                        {},
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                        var href=null;
+                            if(status=='success'){//$("#myloader").fadeOut();
+                                if(data[0]==1){
+                            	var dataObject=data[2];
+                            	for(var i=0;i<data[1];i++){
+                            		href=(dataObject[i]['url'])?"href="+dataObject[i]['url']:"";
+	                               $("#notifPanel").append('<li><a target="_blank" '+href+' alt="Notification sent by:'+dataObject[i]['author']+'">'+dataObject[i]['title']+'</a></li>');
+
+                            	}
+                            }
+                            }else{
+                            	// window.location="";
+                            	// location.reload(true);
+                            	window.location.reload();
+
+                            }
+                    }
+		        ,"json");
 
 	$.post("cAPI/getPermissions",
                         {},
@@ -52,7 +81,7 @@
                                	var ourData=data[2];
                                	for(var i=0;i<data[1];i++){
                                		var type=(ourData[i]['type']==1)?"Course: ":"Club: ";
-	                               	$("#scope").append("<option value='"+ourData[i]['type']+'_'+ourData[i]['cID']+"'>"+type+ourData[i]['cName']+"</option>");
+	                               	$("#scope").append("<option value='"+ourData[i]['cID']+"'>"+type+ourData[i]['cName']+"</option>");
                                	}
                                }else if(data[0]==0){
                                	$(".adminRadio").hide();
@@ -112,6 +141,44 @@
 				}
 				
 		</script>
+		<script>
+				function notif(){
+					console.log("submit button clicked!");
+			$.post("cAPI/sendNotif",
+                        {
+                        content:$("#demo-name").val(),
+                        audience:$("#scope").val(),
+                        url:$("#url").val()},
+                        function(data, status){
+						console.log("Notif data:"+data);
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                               if(data[0]==1){
+                               	$(".form-el").hide();
+                               	$("#new-post-form").html("<h3>Notif sent!</h3>");
+                               	$("#modal-1").fadeOut(3000);
+                               	// $("#no").fadeOut();
+                               	//add another post 
+                               	// setTimeout(function(){
+                               	// $(".form-el").show();
+
+                               	// $("#modal-1").show();
+                               	// 	$("#new-post-form").html($("#hiddenC").html());
+                               	// },3000);
+                               }
+                            }else{
+                            	// window.location="";
+                            	// location.reload(true);
+                            	window.location.reload();
+
+                            }
+                    }
+		        ,"json");
+				}
+				
+		</script>
+		
 		<style>
 			#new-post-form *:not(#selectScope){
 				margin:10px;
@@ -124,10 +191,11 @@
 				<h3 >New Post:</h3>
 				
 				<div id="new-post-form">
-				<span  class="adminRadio" class="form-el">
-					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL').fadeIn();$('#scopeSelect').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL').fadeOut();$('#scopeSelect').fadeIn();" name="pType" value="notif"> Notify</span>
-					<input type="text" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important">
+				<span  class="adminRadio">
+					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
+					<input type="text"  class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important">
 					<input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
+					<input type="text" name="demo-name" id="url" value="" placeholder="Link URL? Default:none" class="form-el" style="display:none;color:#000000 !important">
 					<textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea>
 					
 					<div id="scopeSelect" class="form-el" style="display: none;">
@@ -140,6 +208,7 @@
 					</div>
 					
 					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
+					<button class="" id="submitnotif" onclick="notif();" class="form-el" style="color: #fff !important;display:none;">Notify!</button>
 					<button onclick="$('#modal-1').removeClass('md-show');">Close me!</button>
 				</div>
 			</div>
@@ -232,12 +301,8 @@
 									<header class="major">
 										<h2>Notifications</h2>
 									</header>
-									<ul>
-										<li><a>Alert 1</a></li>
-										<li><a>Alert 2</a></li>
-										<li><a>Alert 3</a></li>
-										<li><a>Alert 4</a></li>
-										<li><a>Alert 5</a></li>
+									<ul id="notifPanel">
+										
 									</ul>
 								</nav>
 						

@@ -8,6 +8,7 @@ $action = $match[1];
 $userAPI= new userAPI($webRoot);
 $post= new postAPI();
 $subs= new subsAPI();
+$notif= new notifAPI();
 
 switch($action){
 	//userAPI
@@ -43,6 +44,14 @@ switch($action){
 	case "getPermissions"://need seperate
 		//some rendering reequired
 		echo json_encode($userAPI->perms());//$_SESSION['uYear']
+		break;
+	case "sendNotif"://need seperate
+		//some rendering reequired
+		echo json_encode($notif->send($_POST['content'],$_POST['audience'],$_POST['url'],$_SESSION['uID']));//$_SESSION['uYear']
+		break;
+	case "getNotif"://need seperate
+		//some rendering reequired
+		echo json_encode($notif->get());//$_SESSION['uYear']
 		break;
 	case "logout":
 		$_SESSION['uID']=null;

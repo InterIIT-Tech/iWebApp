@@ -42,7 +42,7 @@ $conn = mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
 class userAPI {
 	public $webRoot;
 
-	function __construct($IwebRoot) {
+	function __construct($IwebRoot = null) {
 		if(!isset($IwebRoot)) exit;
 		$this->webRoot=$IwebRoot;
 	}
@@ -60,6 +60,22 @@ class userAPI {
 		
 	}
 
+	public function whoIs($display,$query,$queryParam){
+		$ret = array();
+		//advanced queries, use different display var.
+		$sql = "SELECT `$display` FROM `users`  WHERE `$query`= '$queryParam'";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		return $row[$display];
+            	}
+            
+			}else{
+				return(-1);
+			}
+			return $ret;
+	}
 
 	/**
 	 * @var username and pass 
@@ -316,12 +332,26 @@ class subsAPI{
         return $ret;
 	}
 
+	public function getSubs(){
+		//mysql
+		$out=array();
+		$i=0;
+		$sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					$out[]=$row['coID'];
+            	}
+            	return $out;
+			}
+	}
 
 	public function checkSub($type){
 		//mysql
 		$out=array();
 		$i=0;
-		$t=($type>1)?"clID":"coID";
+		$t=($type>1)?"clID":"coID";//depreciated.
 		$sql = "SELECT `$t` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
@@ -334,7 +364,7 @@ class subsAPI{
 			}
 	}
 
-	//notification table update
+	//notification table update //moved to notifAPI
 	public function updateSubs($audience,$title,$content){
 		//@todo
 	}
@@ -382,6 +412,58 @@ class subsAPI{
  * Notification API
  */
 class notifAPI{
+
+	public function send($content,$audience,$url,$sender){
+		$sql = "INSERT INTO `notify`(nContent,nGroup,nSender,url) VALUES ('".$content."', '".$audience."', '".$sender."', '".$url."')";
+		$link = mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$ret[]=1;
+        	$ret[]="Successfully Notified";
+        	return $ret;
+        	exit;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
+        mysqli_close($link);
+        return $ret;
+	}
+
+	public function get(){
+		require_once('servConf.php');
+		//array containing all subscribed courses and clubs
+		$NoifyList=array();
+		$userAPI=new userAPI(webRoot);
+		$subAPI = new subsAPI;
+		$subsList = $subAPI->getSubs();
+		// print_r($subsList) ;
+		$sql = "SELECT `nContent`,`nSender`,`url` FROM `notify`  WHERE ( `nGroup`= '1'";
+		//loop
+		foreach ($subsList as &$sub) {
+		    $sql .= " OR `nGroup`='$sub'";
+		}
+		$sql .=	" ) ORDER BY `nID` DESC LIMIT 10";
+		// echo $sql;
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	// echo mysqli_num_rows($result);
+        	if($result && mysqli_num_rows($result)>0){
+        		$ret[]=1;
+        		$ret[]=mysqli_num_rows($result);
+        		$i=0;
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+						$NoifyList[$i]['title'] = $row['nContent']; 
+						$NoifyList[$i]['url'] = $row['url']; 
+						$NoifyList[$i++]['author'] =$userAPI->whoIs('uName','uID',$row['nSender']); 
+            		}
+            
+            $ret[]=$NoifyList;
+			}else{
+				$ret[]=-1;
+				$ret[] = "None";
+			}
+			// return $ret[2][0]['author'];
+			return $ret;
+	}
+
 
 }
 //gallery let ppl upload photos in their usrname folders

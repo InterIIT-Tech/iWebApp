@@ -13,7 +13,7 @@
     font-family: 'Catamaran', sans-serif;
 }
 body{
-	background-image: url('img/404_3.png');
+	background-image: url('<?php require_once('servConf.php'); echo webRoot;?>/img/404_3.png');
 	/*background-size: cover;*/
 	background-position: center;
 	background-repeat: no-repeat;

@@ -233,6 +233,7 @@
 										<header>
 											<h1>Hi, <?php $name=explode(" ", $_SESSION['uName']); echo $name[0];?>!</h1>
 											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">New Post</button>
+											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Add Event</button>
 										</header>
 									</div>
 								</section>
@@ -306,44 +307,28 @@
 									</ul>
 								</nav>
 						
-							<!-- Section -->
-								<!-- <section>
-									<header class="major">
-										<h2>Gallery</h2>
-									</header>
-									<div class="mini-posts">
-										<article>
-											<a href="#" class="image"><img src="img/home/pic07.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="img/home/pic08.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-										<article>
-											<a href="#" class="image"><img src="img/home/pic09.jpg" alt="" /></a>
-											<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore aliquam.</p>
-										</article>
-									</div>
-									<ul class="actions">
-										<li><a href="#" class="button">More</a></li>
-									</ul>
-								</section> -->
-
-                            <!-- Section -->
+							
 <section>                                     <header class="major">
-<h2>Contact</h2>                                     </header>
-<ul class="contact">                                         <li class="fa-
-envelope-o"><a href="#">information@untitled.tld</a></li>
-<li class="fa-phone">(000) 000-0000</li>
-<li class="fa-home">1234 Somewhere Road #8254<br />
-Nashville, TN 00000-0000</li>                                     </ul>
+<h2>Classes tomorrow</h2>                                     </header>
+<ul class="contact">
+<li class="fa-arrow-circle-right"><a href="timetable/">View Full Timetable:</a></li></ul>
+</section>
+<section><header class="major"><h2>Pending Assignments</h2></header>
+<ul class="contact">
+<li class=""><a href="assignments/">CS101 1</a></li>
+<li class="fa-arrow-circle-right"><a href="assignments">Assignment Portal</a></li>
+</ul>
+</section>
+<section>
+<header class="major"><h2>Upcomming events</h2></header>
+<ul class="contact">
+<li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul>
 </section>
 
-							<!-- Footer -->
+							<!-- Footer 
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
-								</footer>
+								</footer>-->
 
 						</div>
 					</div>

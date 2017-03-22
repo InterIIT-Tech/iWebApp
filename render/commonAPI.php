@@ -9,6 +9,7 @@ $userAPI= new userAPI($webRoot);
 $post= new postAPI();
 $subs= new subsAPI();
 $notif= new notifAPI();
+$assign= new assignAPI();
 
 switch($action){
 	//userAPI
@@ -52,6 +53,10 @@ switch($action){
 	case "getNotif"://need seperate
 		//some rendering reequired
 		echo json_encode($notif->get());//$_SESSION['uYear']
+		break;
+	case "listAssign"://need seperate
+		//some rendering reequired
+		echo json_encode($assign->listAssign());//$_SESSION['uYear']
 		break;
 	case "logout":
 		$_SESSION['uID']=null;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 09, 2017 at 07:26 PM
+-- Generation Time: Mar 22, 2017 at 07:41 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -19,6 +19,72 @@ SET time_zone = "+00:00";
 --
 -- Database: `iwa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admins`
+--
+
+CREATE TABLE `admins` (
+  `uID` int(11) NOT NULL,
+  `type` int(11) NOT NULL COMMENT '1=course;2=club',
+  `cID` int(11) NOT NULL,
+  `cName` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admins`
+--
+
+INSERT INTO `admins` (`uID`, `type`, `cID`, `cName`) VALUES
+(1, 1, 1, 'Intro to CS');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `around`
+--
+
+CREATE TABLE `around` (
+  `pID` int(11) NOT NULL,
+  `pName` varchar(2000) NOT NULL,
+  `pX` varchar(200) NOT NULL,
+  `pY` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `around`
+--
+
+INSERT INTO `around` (`pID`, `pName`, `pX`, `pY`) VALUES
+(1, 'Main Gate', '25.533542', '84.855469'),
+(2, 'Admin Block', '25.535587', '84.851309'),
+(3, 'Tutorial Block 9', '25.532431', '84.851975'),
+(4, 'Mechanical Workshop', '25.532693', '84.849391'),
+(5, 'IITP Canteen', '25.537215', '84.851754'),
+(6, 'Boys\' Hostel', '25.540570', '84.851472');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `assign`
+--
+
+CREATE TABLE `assign` (
+  `aID` int(11) NOT NULL,
+  `aName` varchar(200) NOT NULL,
+  `aScope` int(11) NOT NULL,
+  `dir` varchar(2000) NOT NULL,
+  `lastdate` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `assign`
+--
+
+INSERT INTO `assign` (`aID`, `aName`, `aScope`, `dir`, `lastdate`) VALUES
+(1, 'lol', 1, 'cs', '2017-03-24');
 
 -- --------------------------------------------------------
 
@@ -78,6 +144,19 @@ INSERT INTO `courses` (`cCode`, `cID`, `cName`, `Description`, `year`, `branch`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `events`
+--
+
+CREATE TABLE `events` (
+  `eID` int(11) NOT NULL,
+  `eName` varchar(200) NOT NULL,
+  `eDate` date NOT NULL,
+  `eScope` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `notify`
 --
 
@@ -85,8 +164,16 @@ CREATE TABLE `notify` (
   `nID` int(11) NOT NULL,
   `nContent` varchar(2000) NOT NULL,
   `nGroup` int(11) NOT NULL,
-  `nSender` int(11) NOT NULL
+  `nSender` int(11) NOT NULL,
+  `url` varchar(2000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `notify`
+--
+
+INSERT INTO `notify` (`nID`, `nContent`, `nGroup`, `nSender`, `url`) VALUES
+(1, 'New Assignment!', 1, 1, 'http://gmail.com');
 
 -- --------------------------------------------------------
 
@@ -110,13 +197,21 @@ CREATE TABLE `posts` (
   `audience` varchar(10) NOT NULL DEFAULT '1' COMMENT '1 for all and cID for course and clubid for clubs'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `posts`
+--
+
+INSERT INTO `posts` (`postID`, `postTitle`, `postContent`, `postType`, `featured`, `postAuthor`, `postDate`, `notice`, `priority`, `hidden`, `image`, `notify`, `audience`) VALUES
+(8, 'Test Post1', 'Hello World!', 1, 1, 1, '2017-03-12 05:19:03', 0, 1, 0, 'http://cdn01.androidauthority.net/wp-content/uploads/2015/11/00-best-backgrounds-and-wallpaper-apps-for-android.jpg', 0, '1'),
+(9, 'test', 'test', 1, 1, 1, '2017-03-12 05:20:13', 0, 1, 0, 'http://media02.hongkiat.com/ww-flower-wallpapers/dandelion.jpg', 0, '1');
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rev`
+-- Table structure for table `reviews`
 --
 
-CREATE TABLE `rev` (
+CREATE TABLE `reviews` (
   `cID` int(11) NOT NULL,
   `uID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -139,8 +234,25 @@ CREATE TABLE `sublist` (
 --
 
 INSERT INTO `sublist` (`subID`, `uID`, `coID`, `clID`) VALUES
-(38, 1, 1, NULL),
-(39, 1, 2, NULL);
+(59, 11, 1, NULL),
+(60, 11, 2, NULL),
+(61, 11, 3, NULL),
+(62, 1, 1, NULL),
+(63, 1, 2, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `submission`
+--
+
+CREATE TABLE `submission` (
+  `aID` int(11) NOT NULL,
+  `date` date NOT NULL,
+  `filename` int(11) NOT NULL,
+  `marks` int(11) DEFAULT NULL,
+  `uID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -171,7 +283,8 @@ CREATE TABLE `ttable` (
 
 INSERT INTO `ttable` (`cID`, `cName`, `cCode`, `cColor`, `mon`, `mon_`, `tue`, `tue_`, `wed`, `wed_`, `thur`, `thur_`, `fri`, `fri_`) VALUES
 (1, 'Intro to CS', 'CS101', '35ad5d', 900, 1100, 900, 1100, NULL, NULL, 900, 1100, 900, 1100),
-(2, 'Intro to CS lab', 'CS112', '6398ed', 1400, 1700, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(2, 'Intro to CS lab', 'CS112', '6398ed', 1400, 1700, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(3, 'Electrical Circuits', 'EE101', 'b25520', NULL, NULL, 1100, 1300, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,25 +299,44 @@ CREATE TABLE `users` (
   `email` varchar(2000) DEFAULT NULL,
   `year` int(11) NOT NULL DEFAULT '1',
   `uRole` int(11) NOT NULL,
-  `uAlias` varchar(200) NOT NULL
+  `uAlias` varchar(200) NOT NULL,
+  `lsn` int(11) DEFAULT NULL COMMENT 'Last seen notification ID'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`uID`, `SHA_pswd`, `uName`, `email`, `year`, `uRole`, `uAlias`) VALUES
-(1, '9d516530dba7ae296eac0599b016c6038f230397', 'Tameesh Biswas', 'biswas.cs16@iitp.ac.in', 1, 0, 'tameeshb'),
-(3, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test User', 'test.cs16@iitp.ac.in', 1, 0, 'test007'),
-(5, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', 1, 0, ''),
-(7, '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 'Full name', 'email', 1, 0, 'usrname'),
-(8, '3c363836cf4e16666669a25da280a1865c2d2874', 'a', 'c', 1, 0, 'b'),
-(9, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'test', 1, 0, 'test'),
-(11, 'b444ac06613fc8d63795be9ad0beaf55011936ac', 'test1', 'test1', 1, 0, 'test1');
+INSERT INTO `users` (`uID`, `SHA_pswd`, `uName`, `email`, `year`, `uRole`, `uAlias`, `lsn`) VALUES
+(1, '9d516530dba7ae296eac0599b016c6038f230397', 'Tameesh Biswas', 'biswas.cs16@iitp.ac.in', 1, 0, 'tameeshb', 0),
+(3, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test User', 'test.cs16@iitp.ac.in', 1, 0, 'test007', 0),
+(5, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', 1, 0, '', 0),
+(7, '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 'Full name', 'email', 1, 0, 'usrname', 0),
+(8, '3c363836cf4e16666669a25da280a1865c2d2874', 'a', 'c', 1, 0, 'b', 0),
+(9, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'test', 1, 0, 'test', 0),
+(11, 'b444ac06613fc8d63795be9ad0beaf55011936ac', 'test1', 'test1', 1, 0, 'test1', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `admins`
+--
+ALTER TABLE `admins`
+  ADD PRIMARY KEY (`cID`);
+
+--
+-- Indexes for table `around`
+--
+ALTER TABLE `around`
+  ADD UNIQUE KEY `pID` (`pID`);
+
+--
+-- Indexes for table `assign`
+--
+ALTER TABLE `assign`
+  ADD PRIMARY KEY (`aID`);
 
 --
 -- Indexes for table `clubs`
@@ -223,6 +355,12 @@ ALTER TABLE `comments`
 --
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`cID`);
+
+--
+-- Indexes for table `events`
+--
+ALTER TABLE `events`
+  ADD UNIQUE KEY `eID` (`eID`);
 
 --
 -- Indexes for table `notify`
@@ -263,6 +401,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `around`
+--
+ALTER TABLE `around`
+  MODIFY `pID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `assign`
+--
+ALTER TABLE `assign`
+  MODIFY `aID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
@@ -278,20 +426,25 @@ ALTER TABLE `comments`
 ALTER TABLE `courses`
   MODIFY `cID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT for table `events`
+--
+ALTER TABLE `events`
+  MODIFY `eID` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `nID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `nID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `sublist`
 --
 ALTER TABLE `sublist`
-  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
 --
 -- AUTO_INCREMENT for table `users`
 --

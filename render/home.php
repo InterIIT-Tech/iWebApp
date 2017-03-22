@@ -46,6 +46,28 @@
                             }
                     }
 		        ,"json");
+
+		$.post("cAPI/listAssign",
+                        {},
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){
+                                if(data[0]==1){
+                            	var dataObject=data[2];
+                            	for(var i=0;i<data[1];i++){
+	                               $("#assign").prepend('<li><a class="assignments_left" href="assignments/view/'+dataObject[i]['aID']+'">'+dataObject[i]['aName']+'</a></li>');
+
+                            	}
+                            }
+                            }else{
+                            	// window.location="";
+                            	// location.reload(true);
+                            	window.location.reload();
+
+                            }
+                    }
+		        ,"json");
 		$.post("cAPI/getNotif",
                         {},
                         function(data, status){
@@ -183,6 +205,9 @@
 			#new-post-form *:not(#selectScope){
 				margin:10px;
 			}
+			.assignments_left{
+				cursor: pointer !important;
+			}
 		</style>
 	</head>
 	<body>
@@ -234,6 +259,8 @@
 											<h1>Hi, <?php $name=explode(" ", $_SESSION['uName']); echo $name[0];?>!</h1>
 											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">New Post</button>
 											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Add Event</button>
+											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Assignment Portal</button>
+											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Account Settings</button>
 										</header>
 									</div>
 								</section>
@@ -296,33 +323,42 @@
 				<!-- Sidebar -->
 					<div id="sidebar">
 						<div class="inner">
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Notifications</h2>
-									</header>
-									<ul id="notifPanel">
-										
-									</ul>
-								</nav>
+	<section><header class="major"><h2>Navigation</h2></header>
+	<ul class="contact">
+	<li class="fa-arrow-circle-right"><a href="timetable">Timetable</a></li>
+	<li class="fa-arrow-circle-right"><a href="courses">Courses</a></li>
+	<li class="fa-arrow-circle-right"><a href="clubs">Clubs</a></li>
+	<li class="fa-arrow-circle-right"><a href="getting-around">Getting Around Campus</a></li>
+	<li class="fa-arrow-circle-right"><a href="lost-found">Lost and Found</a></li>
+	</ul>
+	</section>
+<!-- Menu -->
+	<nav id="menu">
+		<header class="major">
+			<h2>Notifications</h2>
+		</header>
+		<ul id="notifPanel">
+			
+		</ul>
+	</nav>
 						
 							
 <section>                                     <header class="major">
 <h2>Classes tomorrow</h2>                                     </header>
-<ul class="contact">
+<ul class="classes_tmw contact">
 <li class="fa-arrow-circle-right"><a href="timetable/">View Full Timetable:</a></li></ul>
 </section>
+
 <section><header class="major"><h2>Pending Assignments</h2></header>
-<ul class="contact">
-<li class=""><a href="assignments/">CS101 1</a></li>
+<ul id="assign" class="contact">
+
 <li class="fa-arrow-circle-right"><a href="assignments">Assignment Portal</a></li>
 </ul>
 </section>
 <section>
 <header class="major"><h2>Upcomming events</h2></header>
 <ul class="contact">
-<li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul>
+<li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul><br><br><br><br>
 </section>
 
 							<!-- Footer 

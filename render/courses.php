@@ -179,6 +179,12 @@
                             }else{
                             	window.location.reload();	
                             }
+                            setTimeout(function(){
+                            	var text =$("#cseCourses").html();
+	                            text = text.replace(/\s/g,'');
+	                            if(text==""){window.location.reload();	}
+                            },1000);
+                            
                     }
 		        ,"json");
 		$(".subs").text("Subscribed");

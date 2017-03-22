@@ -1,0 +1,123 @@
+<!doctype html>
+<!--
+ This page is shown when the extension button is clicked, because the
+ "browser_action" field in manifest.json contains the "default_popup" key with
+ value "popup.html".
+ -->
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Droid+Sans:700" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <title>IIT Patna</title>
+    <style>
+      body {
+        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-size: 100%;
+        min-width: 100vw;
+        background-color: #F1F1F1;
+      }
+
+      #header{
+        border-bottom: 1px solid black;
+      }
+
+      li{
+        margin-bottom: 1em;
+        list-style-type: none;
+        font-family: 'Raleway', sans-serif;
+        margin-left:-2em !important;
+      }
+
+      .fa{
+        color: red !important;
+        display: block !important;
+      }
+
+      a{
+        text-decoration: none;
+        color: black;
+      }
+
+      a:hover{
+        color: #797575;
+      }
+
+      h3{
+        text-align: center;
+        font-size: 110%;
+        font-family: 'Droid Sans', sans-serif;
+      }
+
+      #header-wrapper{
+        margin-top: -0.5em;
+        margin-bottom: -0.5em;
+
+      }
+
+      .ul-list{
+        margin-left:-5px;
+      }
+    </style>
+
+    <!--
+      - JavaScript and HTML must be in separate files: see our Content Security
+      - Policy documentation[1] for details and explanation.
+      -
+      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+     -->
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <div id="header-wrapper" style="margin-left:-10%">
+      <a style="cursor:pointer;"> <img id="icon1" src="icon.png" style="height:100px; display:block; margin:auto;"></a>
+    </div>
+    <div id="notifications-wrapper">
+      <h4 id="header">
+        Notifications
+      </h4>
+    </div>
+    <div id="notifications-body">
+      <ul id="notifPanel" class="ul-list">
+        <li class="fa fa-arrow-circle-right">
+          <a href="#">Test 1</a>
+        </li>
+        <li class="fa fa-arrow-circle-right">
+          <a href="#">Test 1</a>
+        </li>
+        <li class="fa fa-arrow-circle-right">
+          <a href="#">Test 1</a>
+        </li>
+      </ul>
+    </div>
+
+    <div id="notifications-wrapper">
+      <h4 id="header">
+        Classes Tomorrow
+      </h4>
+      <ul class="contact" class="ul-list">
+      <li class="fa fa-arrow-circle-right"><a href="timetable/">View Full Timetable:</a></li>
+    </ul>
+    </div>
+
+    <div id="notifications-wrapper">
+      <h4 id="header">
+        Pending Assignments
+      </h4>
+      <ul class="contact" class="ul-list">
+      <li class="fa fa-arrow-circle-right"><a href="timetable/">Assignment Portal</a></li>
+    </ul>
+    </div>
+
+    <div id="notifications-wrapper">
+      <h4 id="header">
+        Upcoming events
+      </h4>
+      <ul class="contact" class="ul-list">
+      <li class="fa fa-arrow-circle-right"><a href="timetable/">Get High</a></li>
+    </ul>
+    </div>
+
+    </body>
+</html>

@@ -60,7 +60,7 @@ switch($action){
 		break;
 	case "classTmw"://need seperate
 		//some rendering reequired
-		echo json_encode($userAPI->classTmw("mon"));//$_SESSION['uYear']
+		echo json_encode($userAPI->classTmw());//$_SESSION['uYear']
 		break;
 	case "logout":
 		$_SESSION['uID']=null;

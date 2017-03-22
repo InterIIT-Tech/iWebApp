@@ -226,7 +226,15 @@ public function decodeTime($hrs){
 	if($hrs>12){ $hrs-=12; return "$hrs:$mins_ pm"; }
 	else if($hrs<12){ return "$hrs:$mins_ am"; }
 }
-	public function classTmw($day){
+	public function classTmw(){
+		$datetime = new DateTime('tomorrow');
+		$dayName = $datetime->format('l');
+		// echo $dayName;
+		$dayName=substr(strtolower($dayName), 0,3);
+		// echo $dayName;
+		$dayName.=($dayName=="thu")?"r":"";
+		// echo $dayName;
+		$day=$dayName;
 		$data=array();
 		$data2=array();
 		$sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";

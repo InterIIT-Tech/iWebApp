@@ -466,5 +466,50 @@ class notifAPI{
 
 
 }
+
+/**
+ *Class API handling all event related operations
+ */
+// class eveAPI{
+// 	getEvent(){
+
+// 	}
+// 	newEvent(){
+
+// 	}
+// }
+
+/**
+ *Class API handling all assignment related operations
+ */
+
+class assignAPI{
+	
+	public function listAssign(){
+		$asList=array();
+		$sql="select A.aID,A.aName from users U,assign A LEFT JOIN  submission S on S.aID=A.aID where U.uID=".$_SESSION['uID']." and S.aID is NULL";
+		$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$asList[]=$row;
+            	}
+            $ret[]=1;
+            $ret[]=mysqli_num_rows($result);
+            $ret[]=$asList;
+			}else{
+				$ret[]=-1;
+				$ret[]=($result)?mysqli_error($link):"<1";
+			}
+			return $ret;
+	}
+
+	public function newAssign(){
+		
+	}
+
+	public function subAssign(){
+	
+	}
+}
 //gallery let ppl upload photos in their usrname folders
 ?>

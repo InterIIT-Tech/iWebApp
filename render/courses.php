@@ -179,11 +179,7 @@
                             }else{
                             	window.location.reload();	
                             }
-                            setTimeout(function(){
-                            	var text =$("#cseCourses").html();
-	                            text = text.replace(/\s/g,'');
-	                            if(text==""){window.location.reload();	}
-                            },1000);
+
                             
                     }
 		        ,"json");
@@ -194,9 +190,13 @@
 		</script>
 		<script>
 			$(document).ready(function(){
+
 				setTimeout(function(){
 					$(".subs").text("Subscribed");
-				},500); 
+					var text =$("#cseCourses").html();
+	                            text = text.replace(/\s/g,'');
+	                            if(text==""){window.location.reload();	}
+				},1000); 
 				
 			});
 		</script>

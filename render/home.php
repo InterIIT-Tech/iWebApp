@@ -126,13 +126,18 @@
                                		var type=(ourData[i]['type']==1)?"Course: ":"Club: ";
 	                               	$("#scope").append("<option value='"+ourData[i]['cID']+"'>"+type+ourData[i]['cName']+"</option>");
                                	}
+                               	$("#add-event-btn").show();
                                }else if(data[0]==0){
+                               	// If non-admin
                                	$(".adminRadio").hide();
+                               	// $("#add-event-btn").hide();
                                }
                             }else{
                             	console.log("ajax request error");
+                            	// If non-admin
                             	$(".adminRadio").hide();
-                            	// window.location="";
+                               	// $("#add-event-btn").hide();
+                               	// window.location="";
                             	// location.reload(true);
                             	// window.location.reload();
 
@@ -221,7 +226,25 @@
 				}
 				
 		</script>
-		
+		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
+		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+		<script>
+		   $( function() {
+		    $( "#datepicker" ).datepicker({
+		      changeMonth: true,
+		      changeYear: true,
+		      minDate: new Date(1910,0,1),
+		      maxDate: new Date(2017,1,22),
+		      yearRange: '1910:2017',
+		      dateFormat:'yy-mm-dd',
+		      defaultDate: new Date(1998, 01, 23)
+		    });
+		  } );
+		   $(document).ready(function(){
+			$("#datepicker").keydown(function(e){e.preventDefault();});
+			});
+		  </script>
+	
 		<style>
 			#new-post-form *:not(#selectScope){
 				margin:10px;
@@ -264,6 +287,30 @@
 				</div>
 			</div>
 		</div>
+	<div class="md-modal md-effect-1" id="modal-2">
+		<div class="md-content">
+				<h3>Add Event:</h3>
+				
+				<div id="new-post-form">
+					<input type="text" class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" style="color:#000000 !important">
+					
+					<input type="text" name="demo-name" id="datepicker" value="" placeholder="Date" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
+					
+					<div id="scopeSelect" class="form-el" style="display: block;">
+						scopeSelect:
+							<div class="select-wrapper" id="selectScope">
+								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
+									<option value="">- Whom to notify -</option>
+								<option value="1">Course: Intro to CS</option></select>
+							</div>
+					</div>
+					
+					<button class="" id="submitpost" onclick="submitForm();" style="color: rgb(255, 255, 255) !important; display: none;">Post!</button>
+					<button class="" id="submitnotif" onclick="notif();" style="color: rgb(255, 255, 255) !important; display: block;">Add event</button>
+					<button onclick="$('#modal-2').removeClass('md-show');">Close me!</button>
+				</div>
+		</div>
+	</div>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -283,10 +330,12 @@
 									<div class="content">
 										<header>
 											<h1>Hi, <?php $name=explode(" ", $_SESSION['uName']); echo $name[0];?>!</h1>
-											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">New Post</button>
-											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Add Event</button>
-											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Assignment Portal</button>
-											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Account Settings</button>
+											
+											<button style="color: #fff !important;" class="md-trigger" data-modal="modal-1" id="new-post-btn">New Post</button>
+											<button style="color: #fff !important; display: none;" class="md-trigger" onclick="$('#modal-2').addClass('md-show');" data-modal="modal-2" id="add-event-btn">Add Event</button>
+<!-- 											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Assignment Portal</button>
+											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Account Settings</button> -->
+
 										</header>
 									</div>
 								</section>
@@ -402,7 +451,7 @@
 				// this is important for IEs
 				var polyfilter_scriptpath = 'assets/modal/js/';
 			</script>
-			<script src="assets/home/js/jquery.min.js"></script>
+			<!-- <script src="assets/home/js/jquery.min.js"></script> -->
 			<script src="assets/home/js/skel.min.js"></script>
 			<script src="assets/home/js/util.js"></script>
 			<script src="assets/modal/js/classie.js"></script>

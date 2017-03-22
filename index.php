@@ -65,7 +65,7 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/clubs.php');
 } elseif (preg_match($base . 'gallery?$@', $url, $match)) {
 	require ('render/gallery.php');
-} elseif (preg_match($base . 'lost_found?$@', $url, $match)) {
+} elseif (preg_match($base . 'lost-found?$@', $url, $match)) {
 	require ('render/lost_found.php');
 
 } elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {

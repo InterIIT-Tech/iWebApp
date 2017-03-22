@@ -296,16 +296,24 @@
 				<!-- Sidebar -->
 					<div id="sidebar">
 						<div class="inner">
-
-							<!-- Menu -->
-								<nav id="menu">
-									<header class="major">
-										<h2>Notifications</h2>
-									</header>
-									<ul id="notifPanel">
-										
-									</ul>
-								</nav>
+	<section><header class="major"><h2>Navigation</h2></header>
+	<ul class="contact">
+	<li class="fa-arrow-circle-right"><a href="timetable">Timetable</a></li>
+	<li class="fa-arrow-circle-right"><a href="courses">Courses</a></li>
+	<li class="fa-arrow-circle-right"><a href="clubs">Clubs</a></li>
+	<li class="fa-arrow-circle-right"><a href="getting-around">Getting Around Campus</a></li>
+	<li class="fa-arrow-circle-right"><a href="lost-found">Lost and Found</a></li>
+	</ul>
+	</section>
+<!-- Menu -->
+	<nav id="menu">
+		<header class="major">
+			<h2>Notifications</h2>
+		</header>
+		<ul id="notifPanel">
+			
+		</ul>
+	</nav>
 						
 							
 <section>                                     <header class="major">
@@ -313,6 +321,7 @@
 <ul class="contact">
 <li class="fa-arrow-circle-right"><a href="timetable/">View Full Timetable:</a></li></ul>
 </section>
+
 <section><header class="major"><h2>Pending Assignments</h2></header>
 <ul class="contact">
 <li class=""><a href="assignments/">CS101 1</a></li>

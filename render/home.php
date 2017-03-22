@@ -127,6 +127,7 @@
 	                               	$("#scope").append("<option value='"+ourData[i]['cID']+"'>"+type+ourData[i]['cName']+"</option>");
                                	}
                                	$("#add-event-btn").show();
+																$("#add-image-btn").show();
                                }else if(data[0]==0){
                                	// If non-admin
                                	$(".adminRadio").hide();
@@ -170,7 +171,7 @@
                                	$("#new-post-form").html("<h3>Post added!</h3>");
                                	$("#modal-1").fadeOut(3000);
                                	$("#new-post-btn").fadeOut();
-                               	//add another post 
+                               	//add another post
                                	// setTimeout(function(){
                                	// $(".form-el").show();
 
@@ -187,7 +188,7 @@
                     }
 		        ,"json");
 				}
-				
+
 		</script>
 		<script>
 				function notif(){
@@ -207,7 +208,7 @@
                                	$("#new-post-form").html("<h3>Notif sent!</h3>");
                                	$("#modal-1").fadeOut(3000);
                                	// $("#no").fadeOut();
-                               	//add another post 
+                               	//add another post
                                	// setTimeout(function(){
                                	// $(".form-el").show();
 
@@ -224,7 +225,7 @@
                     }
 		        ,"json");
 				}
-				
+
 		</script>
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
@@ -244,7 +245,7 @@
 			$("#datepicker").keydown(function(e){e.preventDefault();});
 			});
 		  </script>
-	
+
 		<style>
 			#new-post-form *:not(#selectScope){
 				margin:10px;
@@ -252,18 +253,18 @@
 			.assignments_left{
 				cursor: pointer !important;
 			}
-			
+
 			#clTmw a:link {
 			    text-decoration: none;
 			}
-			
+
 		</style>
 	</head>
 	<body>
 	<div class="md-modal md-effect-1" id="modal-1">
 			<div class="md-content">
 				<h3 >New Post:</h3>
-				
+
 				<div id="new-post-form">
 				<span  class="adminRadio">
 					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
@@ -271,7 +272,7 @@
 					<input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
 					<input type="text" name="demo-name" id="url" value="" placeholder="Link URL? Default:none" class="form-el" style="display:none;color:#000000 !important">
 					<textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea>
-					
+
 					<div id="scopeSelect" class="form-el" style="display: none;">
 						scopeSelect:
 							<div class="select-wrapper" id="selectScope" >
@@ -280,7 +281,7 @@
 								</select>
 							</div>
 					</div>
-					
+
 					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
 					<button class="" id="submitnotif" onclick="notif();" class="form-el" style="color: #fff !important;display:none;">Notify!</button>
 					<button onclick="$('#modal-1').removeClass('md-show');">Close me!</button>
@@ -290,12 +291,12 @@
 	<div class="md-modal md-effect-1" id="modal-2">
 		<div class="md-content">
 				<h3>Add Event:</h3>
-				
+
 				<div id="new-post-form">
 					<input type="text" class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" style="color:#000000 !important">
-					
+
 					<input type="text" name="demo-name" id="datepicker" value="" placeholder="Date" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
-					
+
 					<div id="scopeSelect" class="form-el" style="display: block;">
 						scopeSelect:
 							<div class="select-wrapper" id="selectScope">
@@ -304,13 +305,51 @@
 								<option value="1">Course: Intro to CS</option></select>
 							</div>
 					</div>
-					
+
 					<button class="" id="submitpost" onclick="submitForm();" style="color: rgb(255, 255, 255) !important; display: none;">Post!</button>
 					<button class="" id="submitnotif" onclick="notif();" style="color: rgb(255, 255, 255) !important; display: block;">Add event</button>
 					<button onclick="$('#modal-2').removeClass('md-show');">Close me!</button>
 				</div>
 		</div>
 	</div>
+	<div class="md-modal md-effect-1" id="modal-3">
+			<div class="md-content">
+				<h3 >Upload Image:</h3>
+
+				<div id="new-post-form">
+				<span  class="adminRadio">
+					<!-- <input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
+					<input type="text"  class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important"> -->
+					<!-- <input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important"> -->
+					<input type="text" name="demo-name" id="url" value="" placeholder="Link URL? Default:none" class="form-el" style="display:none;color:#000000 !important">
+					<!-- <textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea> -->
+
+					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
+					<div id="image_preview"><img id="previewing" src="favicon.png" /></div>
+					<hr id="line">
+					<div id="selectImage">
+					<label>Select Your Image</label><br/>
+					<input type="file" name="file" id="file" required />
+					</div>
+					 <input type="submit" value="Submit">
+					</form>
+					<h4 id='loading' style="display:none;" >loading..</h4>
+					<div id="message"></div>
+
+					<!-- <div id="scopeSelect" class="form-el" style="display: none;">
+						scopeSelect:
+							<div class="select-wrapper" id="selectScope" >
+								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
+									<option value="">- Whom to notify -</option>
+								</select>
+							</div>
+					</div> -->
+
+					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
+					<button onclick="$('#modal-3').removeClass('md-show');">Close me!</button>
+				</div>
+			</div>
+		</div>
 		<!-- Wrapper -->
 			<div id="wrapper">
 
@@ -322,7 +361,7 @@
 							<!-- Header -->
 								<header id="header">
 									<p class="logo"><strong>DASHBOARD</strong> </p>
-									
+
 								</header>
 
 							<!-- Banner -->
@@ -330,9 +369,10 @@
 									<div class="content">
 										<header>
 											<h1>Hi, <?php $name=explode(" ", $_SESSION['uName']); echo $name[0];?>!</h1>
-											
+
 											<button style="color: #fff !important;" class="md-trigger" data-modal="modal-1" id="new-post-btn">New Post</button>
 											<button style="color: #fff !important; display: none;" class="md-trigger" onclick="$('#modal-2').addClass('md-show');" data-modal="modal-2" id="add-event-btn">Add Event</button>
+											<button style="color: #fff !important;" class="md-trigger" onclick="$('#modal-3').addClass('md-show');" data-modal="modal-3" id="add-upload-btn">Upload Image</button>
 <!-- 											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Assignment Portal</button>
 											<button style="color: #fff !important;" id="new-post-btn" class="md-trigger" data-modal="modal-1">Account Settings</button> -->
 
@@ -388,7 +428,7 @@
 										<h2>Campus Updates</h2>
 									</header>
 									<div class="posts" id="news-feed">
-										
+
 									</div>
 								</section>
 
@@ -413,11 +453,11 @@
 			<h2>Notifications</h2>
 		</header>
 		<ul id="notifPanel">
-			
+
 		</ul>
 	</nav>
-						
-							
+
+
 <section>                                     <header class="major">
 <h2>Classes tomorrow</h2>                                     </header>
 <ul class="classes_tmw contact" id="clTmw">
@@ -436,7 +476,7 @@
 <li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul>
 </section>
 
-							<!-- Footer 
+							<!-- Footer
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>-->
@@ -460,6 +500,58 @@
 			<script src="assets/modal/js/css-filters-polyfill.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/home/js/main.js"></script>
+			<script>
 
+				$(document).ready(function (e) {
+				$("#uploadimage").on('submit',(function(e) {
+				e.preventDefault();
+				$("#message").empty();
+				$('#loading').show();
+				$.ajax({
+				url: "file_upload.php", // Url to which the request is send
+				type: "POST",             // Type of request to be send, called as method
+				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+				contentType: false,       // The content type used when sending data to the server.
+				cache: false,             // To unable request pages to be cached
+				processData:false,        // To send DOMDocument or non processed data file it is set to false
+				success: function(data)   // A function to be called if request succeeds
+				{
+				$('#loading').hide();
+				$("#message").html(data);
+				}
+				});
+				}));
+
+				// Function to preview image after validation
+				$(function() {
+				$("#file").change(function() {
+				$("#message").empty(); // To remove the previous error message
+				var file = this.files[0];
+				var imagefile = file.type;
+				var match= ["image/jpeg","image/png","image/jpg"];
+				if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+				{
+				$('#previewing').attr('src','noimage.png');
+				$("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+				return false;
+				}
+				else
+				{
+				var reader = new FileReader();
+				reader.onload = imageIsLoaded;
+				reader.readAsDataURL(this.files[0]);
+				}
+				});
+				});
+				function imageIsLoaded(e) {
+				$("#file").css("color","green");
+				$('#image_preview').css("display", "block");
+				$('#previewing').attr('src', e.target.result);
+				$('#previewing').attr('width', '250px');
+				$('#previewing').attr('height', '230px');
+				$('#previewing').attr('margin', 'auto');
+				};
+				});
+</script>
 	</body>
 </html>

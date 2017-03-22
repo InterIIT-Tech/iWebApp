@@ -10,10 +10,20 @@
  */
 
  $(document).ready(function(){
-         console.log("ASAS");
+
          $("#icon1").click(function(){
          chrome.tabs.create({active: true, url: "http://iwebapp.ml"});
          return false;
+       });
+
+       $('button').click(function(){
+         var opt = {
+         type: "basic",
+         title: "Primary Title",
+         message: "Primary message to display",
+         iconUrl: "icon.png"
+         };
+         chrome.notifications.create(opt);
        });
    });
 
@@ -73,4 +83,5 @@ document.addEventListener('DOMContentLoaded', function() {
   //   // Put the image URL in Google search.
   //   renderStatus('Performing Google Image search for ' + url);
   // });
+
 });

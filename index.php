@@ -61,6 +61,8 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/maps.php');
 } elseif (preg_match($base . 'courses?$@', $url, $match)) {
 	require ('render/courses.php');
+} elseif (preg_match($base . 'events?$@', $url, $match)) {
+	require ('render/events.php');
 } elseif (preg_match($base . 'clubs?$@', $url, $match)) {
 	require ('render/clubs.php');
 } elseif (preg_match($base . 'gallery?$@', $url, $match)) {

@@ -265,7 +265,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 				<!-- Header -->
 					<header id="header">
 						<nav>
-							<a href="#back" id="showMenu" style="margin-left:30px ;">Menu</a>
+							<a href="#back" id="showMenu" style="margin-left:30px ;">Menu::iWebApp</a>
 						</nav>
 					</header>
 

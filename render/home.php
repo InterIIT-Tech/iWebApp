@@ -56,7 +56,28 @@
                                 if(data[0]==1){
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
-	                               $("#assign").prepend('<li><a class="assignments_left" href="assignments/view/'+dataObject[i]['aID']+'">'+dataObject[i]['aName']+'</a></li>');
+	                               $("#assign").prepend('<li><a class="assignments_left " href="assignments/view/'+dataObject[i]['aID']+'">'+dataObject[i]['aName']+'</a></li>');
+
+                            	}
+                            }
+                            }else{
+                            	// window.location="";
+                            	// location.reload(true);
+                            	window.location.reload();
+
+                            }
+                    }
+		        ,"json");
+		$.post("cAPI/classTmw",
+                        {},
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){
+                                if(data[0]==1){
+                            	var dataObject=data[2];
+                            	for(var i=0;i<data[1];i++){
+	                               $("#clTmw").prepend('<li>'+dataObject[i]+'</li>');
 
                             	}
                             }
@@ -208,6 +229,11 @@
 			.assignments_left{
 				cursor: pointer !important;
 			}
+			
+			#clTmw a:link {
+			    text-decoration: none;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -345,8 +371,8 @@
 							
 <section>                                     <header class="major">
 <h2>Classes tomorrow</h2>                                     </header>
-<ul class="classes_tmw contact">
-<li class="fa-arrow-circle-right"><a href="timetable/">View Full Timetable:</a></li></ul>
+<ul class="classes_tmw contact" id="clTmw">
+<li class="fa-arrow-circle-right"><a href="timetable">View Full Timetable:</a></li></ul>
 </section>
 
 <section><header class="major"><h2>Pending Assignments</h2></header>
@@ -357,8 +383,8 @@
 </section>
 <section>
 <header class="major"><h2>Upcomming events</h2></header>
-<ul class="contact">
-<li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul><br><br><br><br>
+<ul class="contact ">
+<li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul>
 </section>
 
 							<!-- Footer 

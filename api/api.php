@@ -218,6 +218,38 @@ class userAPI {
 			}
 			return $ret;
 	}
+
+public function decodeTime($hrs){
+	$mins=$hrs%100;
+	$mins_ = sprintf("%02d", $mins);
+	$hrs=(int)$hrs/100;
+	if($hrs>12){ $hrs-=12; return "$hrs:$mins_ pm"; }
+	else if($hrs<12){ return "$hrs:$mins_ am"; }
+}
+	public function classTmw($day){
+		$data=array();
+		$data2=array();
+		$sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					$sql_ = "SELECT `cCode`,`".$day."`,`".$day."_` FROM `ttable`  WHERE `cID`= '".$row['coID']."'";
+		        	$result_ = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql_);
+		        	if($result_){
+						while ($row_ = mysqli_fetch_array($result_, MYSQL_ASSOC)) {
+							$data2[]=$row_['cCode']." from ".$this->decodeTime($row_[$day])." to ".$this->decodeTime($row_[$day.'_']);
+					}
+				}
+			}
+
+			$data[]=1;
+			$data[]=mysqli_num_rows($result);
+			$data[]=$data2;
+	}else{
+		$data[]=-1;
+	}
+	return $data;
+}
 }
 
 
@@ -504,7 +536,7 @@ class assignAPI{
 	}
 
 	public function newAssign(){
-		
+
 	}
 
 	public function subAssign(){

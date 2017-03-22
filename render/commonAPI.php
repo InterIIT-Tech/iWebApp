@@ -58,6 +58,10 @@ switch($action){
 		//some rendering reequired
 		echo json_encode($assign->listAssign());//$_SESSION['uYear']
 		break;
+	case "classTmw"://need seperate
+		//some rendering reequired
+		echo json_encode($userAPI->classTmw("mon"));//$_SESSION['uYear']
+		break;
 	case "logout":
 		$_SESSION['uID']=null;
 		$_SESSION['uRole']=null;

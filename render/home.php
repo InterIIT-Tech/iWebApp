@@ -237,8 +237,7 @@
 		      minDate: new Date(1910,0,1),
 		      maxDate: new Date(2017,1,22),
 		      yearRange: '1910:2017',
-		      dateFormat:'yy-mm-dd',
-		      defaultDate: new Date(1998, 01, 23)
+		      dateFormat:'yy-mm-dd'
 		    });
 		  } );
 		   $(document).ready(function(){
@@ -302,7 +301,7 @@
 							<div class="select-wrapper" id="selectScope">
 								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
 									<option value="">- Whom to notify -</option>
-								<option value="1">Course: Intro to CS</option></select>
+								</select>
 							</div>
 					</div>
 
@@ -314,37 +313,23 @@
 	</div>
 	<div class="md-modal md-effect-1" id="modal-3">
 			<div class="md-content">
-				<h3 >Upload Image:</h3>
+				<h3 >Upload Image for Gallery:</h3>
 
 				<div id="new-post-form">
 				<span  class="adminRadio">
-					<!-- <input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
-					<input type="text"  class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important"> -->
-					<!-- <input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important"> -->
-					<input type="text" name="demo-name" id="url" value="" placeholder="Link URL? Default:none" class="form-el" style="display:none;color:#000000 !important">
-					<!-- <textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea> -->
-
 					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
-					<div id="image_preview"><img id="previewing" src="favicon.png" /></div>
+					
+					<input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">
+					<div id="image_preview"><img id="previewing" src="favicon.png" style="max-width: 90%; max-height: 200px;" /></div>
 					<hr id="line">
 					<div id="selectImage">
-					<label>Select Your Image</label><br/>
-					<input type="file" name="file" id="file" required />
+					<label>Select Your Image</label>
+					<input type="file" class="form-el" style="    padding: 10px;background-color: #b1330d;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
 					</div>
-					 <input type="submit" value="Submit">
+					 <input type="submit" class="form-el" style="background-color: #A5281B;" value="Submit">
 					</form>
-					<h4 id='loading' style="display:none;" >loading..</h4>
+					<div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
 					<div id="message"></div>
-
-					<!-- <div id="scopeSelect" class="form-el" style="display: none;">
-						scopeSelect:
-							<div class="select-wrapper" id="selectScope" >
-								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
-									<option value="">- Whom to notify -</option>
-								</select>
-							</div>
-					</div> -->
-
 					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
 					<button onclick="$('#modal-3').removeClass('md-show');">Close me!</button>
 				</div>
@@ -508,7 +493,7 @@
 				$("#message").empty();
 				$('#loading').show();
 				$.ajax({
-				url: "file_upload.php", // Url to which the request is send
+				url: "upl", // Url to which the request is send
 				type: "POST",             // Type of request to be send, called as method
 				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
 				contentType: false,       // The content type used when sending data to the server.
@@ -516,8 +501,14 @@
 				processData:false,        // To send DOMDocument or non processed data file it is set to false
 				success: function(data)   // A function to be called if request succeeds
 				{
+					console.log(data);
 				$('#loading').hide();
-				$("#message").html(data);
+				if(data==1){
+					$('#modal-3').removeClass('md-show');
+					// console.log("works");
+				}else{
+					$("#message").html(data);
+				}
 				}
 				});
 				}));
@@ -547,8 +538,6 @@
 				$("#file").css("color","green");
 				$('#image_preview').css("display", "block");
 				$('#previewing').attr('src', e.target.result);
-				$('#previewing').attr('width', '250px');
-				$('#previewing').attr('height', '230px');
 				$('#previewing').attr('margin', 'auto');
 				};
 				});

@@ -63,14 +63,15 @@ class userAPI {
 	public function whoIs($display,$query,$queryParam){
 		$ret = array();
 		//advanced queries, use different display var.
-		$sql = "SELECT `$display` FROM `users`  WHERE `$query`= '$queryParam'";
+		$sql = "SELECT `uAlias` FROM `users`  WHERE `uID`= 1";
 			// global $conn;
+		echo $sql;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result && mysqli_num_rows($result)>0){
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
             		return $row[$display];
             	}
-            
+            print_r($result);
 			}else{
 				return(-1);
 			}
@@ -229,11 +230,8 @@ public function decodeTime($hrs){
 	public function classTmw(){
 		$datetime = new DateTime('tomorrow');
 		$dayName = $datetime->format('l');
-		// echo $dayName;
 		$dayName=substr(strtolower($dayName), 0,3);
-		// echo $dayName;
 		$dayName.=($dayName=="thu")?"r":"";
-		// echo $dayName;
 		$day=$dayName;
 		$data=array();
 		$data2=array();
@@ -445,6 +443,10 @@ class subsAPI{
 			}
 			$result = array($cse,$elec,$mech,$civil);
 			return $result;//cName
+	}
+
+	public function rate($cID,$rating){
+		return $cID." ... ".$rating;
 	}
 }
 

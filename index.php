@@ -69,7 +69,8 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/gallery.php');
 } elseif (preg_match($base . 'lost-found?$@', $url, $match)) {
 	require ('render/lost_found.php');
-
+} elseif (preg_match($base . 'upl?$@', $url, $match)) {
+	require ('render/fUpload.php');
 } elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {

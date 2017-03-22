@@ -62,6 +62,10 @@ switch($action){
 		//some rendering reequired
 		echo json_encode($userAPI->classTmw());//$_SESSION['uYear']
 		break;
+	case "rate"://need seperate
+		//some rendering reequired
+		echo json_encode($subs->rate($_POST['cid'],$_POST['rate']));//$_SESSION['uYear']
+		break;
 	case "logout":
 		$_SESSION['uID']=null;
 		$_SESSION['uRole']=null;

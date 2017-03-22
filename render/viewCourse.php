@@ -67,7 +67,34 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="../../assets/courses/js/ie/html5shiv.js"></script><![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="../../assets/courses/css/main.css" />
+		<script>
+		function rate(){
+            console.log("inFunction");
+			$.post("cAPI/rate",
+                        {
+                        	cid:<?php echo $cID;?>,
+                        	rate:$("#rating").val()
+                        },
+                        function(data, status){
+                        console.log("Response");
+                        console.log("Data: " + data + "\nStatus: " + status);
+                            if(status=='success'){//$("#myloader").fadeOut();
+                                // if(data[0]==1){
+                            	alert(data);
+                            // }
+                            }else{
+                            	// window.location="";
+                            	// location.reload(true);
+                            	window.location.reload();
+
+                            }
+                    }
+		        ,"json");
+		}
+	
+		</script>
 		<!--[if lte IE 9]><link rel="stylesheet" href="../../assets/courses/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="../../assets/courses/css/ie8.css" /><![endif]-->
 	</head>
@@ -93,6 +120,18 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 							<p><?php echo $desc;?></p>
 							<h2>About Timings:</h2>
 							<ul><?php echo $timings;?></ul>
+							<h2>Rate Course:</h2>
+							<div class="select-wrapper" >
+																	<select name="demo-category" style="width:200px" id="rating" onchange="rate();">
+																		<option value="" style="background-color: #2a2f4a ;">- Select Rating -</option>
+																		<option value="1" style="background-color: #2a2f4a ;">1</option>
+																		<option value="2" style="background-color: #2a2f4a ;">2</option>
+																		<option value="3" style="background-color: #2a2f4a ;">3</option>
+																		<option value="4" style="background-color: #2a2f4a ;">4</option>
+																		<option value="5" style="background-color: #2a2f4a ;">5</option>
+																	</select>/5
+																</div>
+																<h3 style="color: green">Review Sent!</h3>
 							<h2>Course Reviews:</h2>
 						<div id="disqus_thread"></div>
 <script>

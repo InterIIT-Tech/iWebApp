@@ -10,7 +10,7 @@
 		 {
 		  location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
 		 }
-	</script>
+		</script>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/home/css/main.css" />
 
@@ -230,8 +230,9 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 		<script>
-		   $( function() {
-		    $( "#datepicker" ).datepicker({
+
+			//Datepicker for the forms
+			$( "#datepicker" ).datepicker({
 		      changeMonth: true,
 		      changeYear: true,
 		      minDate: new Date(1910,0,1),
@@ -239,11 +240,10 @@
 		      yearRange: '1910:2017',
 		      dateFormat:'yy-mm-dd'
 		    });
-		  } );
 		   $(document).ready(function(){
 			$("#datepicker").keydown(function(e){e.preventDefault();});
 			});
-		  </script>
+		</script>
 
 		<style>
 			#new-post-form *:not(#selectScope){

@@ -19,8 +19,8 @@
        $('button').click(function(){
          var opt = {
          type: "basic",
-         title: "Primary Title",
-         message: "Primary message to display",
+         title: "iWebApp",
+         message: "iWebApp",
          iconUrl: "icon.png"
          };
          chrome.notifications.create(opt);

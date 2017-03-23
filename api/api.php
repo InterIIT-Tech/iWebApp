@@ -65,7 +65,7 @@ class userAPI {
 		//advanced queries, use different display var.
 		$sql = "SELECT `uAlias` FROM `users`  WHERE `uID`= 1";
 			// global $conn;
-		echo $sql;
+		// echo $sql;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result && mysqli_num_rows($result)>0){
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
@@ -512,14 +512,15 @@ class notifAPI{
 /**
  *Class API handling all event related operations
  */
-// class eveAPI{
-// 	getEvent(){
-
-// 	}
-// 	newEvent(){
-
-// 	}
-// }
+class eveAPI{
+	
+	public function getEvent(){
+		
+	}
+	public function	newEvent(){
+		
+	}
+}
 
 /**
  *Class API handling all assignment related operations

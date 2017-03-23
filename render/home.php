@@ -26,7 +26,7 @@
 		 {
 		  location.href = 'http:' + window.location.href.substring(window.location.protocol.length);
 		 }
-	</script>
+		</script>
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/home/css/main.css" />
 
@@ -246,21 +246,21 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 		<script>
-		   $( function() {
-		    $( "#datepicker" ).datepicker({
-		      changeMonth: true,
-		      changeYear: true,
-		      minDate: new Date(1910,0,1),
-		      maxDate: new Date(2017,1,22),
-		      yearRange: '1910:2017',
-		      dateFormat:'yy-mm-dd'
-		    });
-		  });
-		   $(document).ready(function(){
-			$("#datepicker").keydown(function(e){e.preventDefault();});
-			});
-		  </script>
-
+			//Datepicker for the forms
+				// $( function() {
+			 //    $( "#datepicker" ).datepicker({
+			 //      changeMonth: true,
+			 //      changeYear: true,
+			 //      minDate: new Date(1910,0,1),
+			 //      maxDate: new Date(2017,1,22),
+			 //      yearRange: '1910:2017',
+			 //      dateFormat:'yy-mm-dd'
+			 //    });
+			 //  } );
+		 //   $(document).ready(function(){
+			// $("#datepicker").keydown(function(e){e.preventDefault();});
+			// });
+		</script>
 		<style>
 			#new-post-form *:not(#selectScope){
 				margin:10px;
@@ -324,7 +324,7 @@
 				<div id="new-post-form">
 					<input type="text" class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" style="color:#000000 !important">
 
-					<input type="text" name="demo-name" id="datepicker" value="" placeholder="Date" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
+					<input type="text" name="demo-name" id="datepicker" value="" placeholder="yyyy-mm-dd" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
 
 					<div id="scopeSelect" class="form-el" style="display: block;">
 						scopeSelect:
@@ -486,7 +486,7 @@
 </ul>
 </section>
 <section>
-<header class="major"><h2>Upcomming events</h2></header>
+<header class="major"><h2>Upcoming events</h2></header>
 <ul class="contact ">
 <li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul>
 </section>

@@ -266,9 +266,17 @@
 
 				<div id="new-post-form">
 				<span  class="adminRadio">
-					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
-					<input type="text"  class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important">
-					<input type="text" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
+					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost,#uploadimage_').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost,#uploadimage_').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
+					<input type="text"  class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important" required>
+					<input type="hidden" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
+					<form id="uploadimage_" action="" method="post" enctype="multipart/form-data">
+					<div id="selectImage"><h4>Upload Image:</h4>
+					<input type="file" class="form-el" style="    padding: 10px;background-color: #b1330d;color: #FFFFFF;border-radius: 10px;" name="file" id="file_" required />
+					</div>
+					 <input type="submit" id="subbtn" class="form-el" style="display: none; background-color: #A5281B;" value="Submit">
+					</form>
+					<div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
+					<div id="message"></div>
 					<input type="text" name="demo-name" id="url" value="" placeholder="Link URL? Default:none" class="form-el" style="display:none;color:#000000 !important">
 					<textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea>
 
@@ -488,12 +496,44 @@
 			<script>
 
 				$(document).ready(function (e) {
+				
+				$("#file_").change(function(e){
+					e.preventDefault();
+					$("#subbtn").click();
+				});
+				$("#uploadimage_").on('submit',(function(e) {
+				e.preventDefault();
+				$("#message").empty();
+				$('#loading').show();
+				$.ajax({
+				url: "upl/post", // Url to which the request is send
+				type: "POST",             // Type of request to be send, called as method
+				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+				contentType: false,       // The content type used when sending data to the server.
+				cache: false,             // To unable request pages to be cached
+				processData:false,        // To send DOMDocument or non processed data file it is set to false
+				success: function(data)   // A function to be called if request succeeds
+				{
+					console.log(data);
+				$('#loading').hide();
+				if(data!=-1){
+					$("#selectImage").empty();
+					$("#selectImage").html("<h4>Image uploaded</h4>");
+					$("#imgURL").val(data);
+					console.log("works");
+				}else{
+					$("#message_").html(data);
+				}
+				}
+				});
+				}));
+
 				$("#uploadimage").on('submit',(function(e) {
 				e.preventDefault();
 				$("#message").empty();
 				$('#loading').show();
 				$.ajax({
-				url: "upl", // Url to which the request is send
+				url: "upl/gallery", // Url to which the request is send
 				type: "POST",             // Type of request to be send, called as method
 				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
 				contentType: false,       // The content type used when sending data to the server.

@@ -546,7 +546,10 @@
 					console.log(data);
 				$('#loading').hide();
 				if(data==1){
-					$('#modal-3').removeClass('md-show');
+					$("#modal-3").fadeOut(1000);
+					$("#modal-3 .md-content h3").text("Uploaded!");
+                    $("#new-post-form").hide();
+                    $("#add-upload-btn").hide();
 					// console.log("works");
 				}else{
 					$("#message").html(data);

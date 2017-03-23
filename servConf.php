@@ -9,7 +9,7 @@ if($_SERVER['HTTP_HOST']!="iwebapp.ml" || $_SERVER['HTTP_HOST']!="www.iwebapp.ml
 	$webRoot .="/iwa";
 }
 define("webRoot", $webRoot);
- // ini_set('display_errors', 'Off'); 
+ ini_set('display_errors', 'Off'); 
 define('MYSQL_BOTH',MYSQLI_BOTH);
 define('MYSQL_NUM',MYSQLI_NUM);
 define('MYSQL_ASSOC',MYSQLI_ASSOC);

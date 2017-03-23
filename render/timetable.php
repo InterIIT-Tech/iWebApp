@@ -30,8 +30,8 @@ $days=['mon','tue','wed','thur','fri'];
 								if($row__[$days[$dayy]]==1500 || ($row__[$days[$dayy]]<1500 && $row__[$days[$dayy].'_']>1500 ) ){
 									$stor[5]=array($row__['cCode'],$row__['cColor']);
 								}
-								
-								
+
+
 							}else{
 								for($i=0;$i<6;$i++){
 									$stor[]=['',''];
@@ -49,7 +49,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 		        	$result_ = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql_);
 		        	if($result_){
 						while ($row_ = mysqli_fetch_array($result_, MYSQL_ASSOC)) {
-							
+
 							if($row_[$days[0]]){
 								if($row_[$days[0]]==900){
 									$mon[0]=array($row_['cCode'],$row_['cColor']);
@@ -69,8 +69,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 								if($row_[$days[0]]==1500 || ($row_[$days[0]]<1500 && $row_[$days[0].'_']>1500 ) ){
 									$mon[5]=array($row_['cCode'],$row_['cColor']);
 								}
-								
-								
+
+
 							}else{
 								for($i=0;$i<6;$i++){
 									$mon[]=['',''];
@@ -96,8 +96,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 								if($row_[$days[1]]==1500 || ($row_[$days[1]]<1500 && $row_[$days[1].'_']>1500 ) ){
 									$tue[5]=array($row_['cCode'],$row_['cColor']);
 								}
-								
-								
+
+
 							}else{
 								for($i=0;$i<6;$i++){
 									$tue[]=['',''];
@@ -123,8 +123,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 								if($row_[$days[2]]==1500 || ($row_[$days[2]]<1500 && $row_[$days[2].'_']>1500 ) ){
 									$wed[5]=array($row_['cCode'],$row_['cColor']);
 								}
-								
-								
+
+
 							}else{
 								for($i=0;$i<6;$i++){
 									$wed[]=['',''];
@@ -150,8 +150,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 								if($row_[$days[3]]==1500 || ($row_[$days[3]]<1500 && $row_[$days[3].'_']>1500 ) ){
 									$thur[5]=array($row_['cCode'],$row_['cColor']);
 								}
-								
-								
+
+
 							}else{
 								for($i=0;$i<6;$i++){
 									$thur[]=['',''];
@@ -177,8 +177,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 								if($row_[$days[4]]==1500 || ($row_[$days[4]]<1500 && $row_[$days[4].'_']>1500 ) ){
 									$fri[5]=array($row_['cCode'],$row_['cColor']);
 								}
-								
-								
+
+
 							}else{
 								for($i=0;$i<6;$i++){
 									$fri[]=['',''];
@@ -305,7 +305,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 																	<th>12-1pm</th>
 																	<th>2-5pm LAB</th>
 																	<th>5-6pm</th>
-																	
+
 																</tr>
 															</thead>
 															<tbody>
@@ -317,8 +317,8 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 																	<?php echo"<td style='background:#".$mon[3][1]."'>".$mon[3][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$mon[4][1]."'>".$mon[4][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$mon[5][1]."'>".$mon[5][0]."</td>";  ?>
-																	
-																	
+
+
 																</tr>
 																<tr>
 																	<td>Tuesday</td>
@@ -328,7 +328,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 																	<?php echo"<td style='background:#".$tue[3][1]."'>".$tue[3][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$tue[4][1]."'>".$tue[4][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$tue[5][1]."'>".$tue[5][0]."</td>";  ?>
-																	
+
 																</tr>
 
 																<tr>
@@ -339,7 +339,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 																	<?php echo"<td style='background:#".$wed[3][1]."'>".$wed[3][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$wed[4][1]."'>".$wed[4][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$wed[5][1]."'>".$wed[5][0]."</td>";  ?>
-																	
+
 																</tr>
 																<tr>
 																	<td>Thursday</td>
@@ -349,7 +349,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 																	<?php echo"<td style='background:#".$thur[3][1]."'>".$thur[3][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$thur[4][1]."'>".$thur[4][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$thur[5][1]."'>".$thur[5][0]."</td>";  ?>
-																	
+
 																</tr>
 																<tr>
 																	<td>Friday</td>
@@ -359,15 +359,15 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 																	<?php echo"<td style='background:#".$fri[3][1]."'>".$fri[3][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$fri[4][1]."'>".$fri[4][0]."</td>";  ?>
 																	<?php echo"<td style='background:#".$fri[5][1]."'>".$fri[5][0]."</td>";  ?>
-																	
+
 																</tr>
 															</tbody>
-														
+
 														</table>
 													</div>
 
 											</div>
-										
+
 										</div>
 
 								</div>
@@ -375,7 +375,7 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 
 					</div>
 
-		
+
 			</div>
 
 		<!-- Scripts -->

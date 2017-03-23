@@ -350,7 +350,7 @@
 					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
 
 					<input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">
-					<div id="image_preview"><img id="previewing" src="favicon.png" style="max-width: 90%; max-height: 200px;" /></div>
+					<div id="image_preview"><img id="previewing" src="favicon.png" style="max-width: 90%; max-height: 200px;display:block;margin:auto" /></div>
 					<hr id="line">
 					<div id="selectImage">
 					<label>Select Your Image</label>

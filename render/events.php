@@ -85,15 +85,15 @@
 															<tbody>
 																<tr>
 																	<td>1st Jan 2017</td>
-																	<td style="background:#"></td>												
+																	<td style="background:#"></td>
 																</tr>
 															</tbody>
-														
+
 														</table>
 													</div>
 
 											</div>
-										
+
 										</div>
 
 								</div>
@@ -101,7 +101,7 @@
 
 					</div>
 
-		
+
 			</div>
 
 		<!-- Scripts -->

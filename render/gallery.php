@@ -73,7 +73,7 @@
 					</header> -->
 				<!-- Main -->
 					<div id="main">
-					<?php 
+					<?php
 						$sql = "SELECT `title`,`user`,`path` FROM `gallery` ";
 						// global $conn;
 			        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
@@ -82,12 +82,12 @@
 			            		echo "<article class='thumb'>";
 			            		echo "<a href='".$row['path']."' class='image'><img src='".$row['path']."' /></a>
 							<h2>".$row['title']."</h2>
-							
+
 						</article>";
 			            	}
 			            }
 					?>
-						
+
 					</div>
 			</div>
 

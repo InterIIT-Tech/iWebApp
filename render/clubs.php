@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Clubs::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
@@ -46,7 +46,7 @@
 				position:fixed;
 				color: #312450;
 				right: 20px;
-				top: 10px; 
+				top: 10px;
 				z-index: 1000;
 			}
 		}
@@ -115,7 +115,7 @@
 						</div>
 					</section>
 
-				
+
 				<!-- Sparkonics Header -->
 					<section id="sparkonics" class="wrapper style2 fade-up">
 						<div class="inner">

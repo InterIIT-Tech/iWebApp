@@ -554,5 +554,17 @@ class assignAPI{
 	
 	}
 }
+
+class lostAPI{
+	public function lost(){
+
+	}
+	public function found(){
+
+	}
+	public function notify(){
+
+	}
+}
 //gallery let ppl upload photos in their usrname folders
 ?>

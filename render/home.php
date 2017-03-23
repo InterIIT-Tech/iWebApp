@@ -1,6 +1,22 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<style media="screen" type="text/css">
+			.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: rgba(107, 107, 107, 0.51);}
+			.layer2_class { position: absolute; z-index: 2; top: 10px; left: 10px; visibility: hidden }
+		</style>
+		<script>
+			function downLoad(){
+				$("body").css("overflow","auto");
+				if (document.all){
+						document.all["layer1"].style.visibility="hidden";
+						document.all["layer2"].style.visibility="visible";
+				} else if (document.getElementById){
+						node = document.getElementById("layer1").style.visibility='hidden';
+						node = document.getElementById("layer2").style.visibility='visible';
+				}
+			}
+		</script>
 		<title>Home::iWebApp</title>
 		<link rel="icon" type="image/png" href="favicon.png" />
 		<meta charset="utf-8" />
@@ -230,7 +246,6 @@
 		<link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
 		<script>
-
 			//Datepicker for the forms
 				// $( function() {
 			 //    $( "#datepicker" ).datepicker({
@@ -246,7 +261,6 @@
 			// $("#datepicker").keydown(function(e){e.preventDefault();});
 			// });
 		</script>
-
 		<style>
 			#new-post-form *:not(#selectScope){
 				margin:10px;
@@ -261,7 +275,13 @@
 
 		</style>
 	</head>
-	<body>
+	<body style="overflow:hidden;" onload="downLoad()">
+		<div id="layer1" class="layer1_class">
+			<img src="favicon.png" style=" display: block;position: fixed;left: 50%;top:17%;transform: translate(-50%,-50%);">
+			<img src="loading.gif" style="display:block;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:20%;">
+		</div>
+
+	<div id="layer2" class="layer2_class">
 	<div class="md-modal md-effect-1" id="modal-1">
 			<div class="md-content">
 				<h3 >New Post:</h3>
@@ -328,7 +348,7 @@
 				<div id="new-post-form">
 				<span  class="adminRadio">
 					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
-					
+
 					<input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">
 					<div id="image_preview"><img id="previewing" src="favicon.png" style="max-width: 90%; max-height: 200px;" /></div>
 					<hr id="line">
@@ -481,6 +501,8 @@
 
 			</div>
 
+		</div>
+
 		<!-- Scripts -->
 			<script>
 				// this is important for IEs
@@ -498,7 +520,7 @@
 			<script>
 
 				$(document).ready(function (e) {
-				
+
 				$("#file_").change(function(e){
 					e.preventDefault();
 					$("#subbtn").click();

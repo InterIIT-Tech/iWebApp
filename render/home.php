@@ -484,7 +484,7 @@
 				// this is important for IEs
 				var polyfilter_scriptpath = 'assets/modal/js/';
 			</script>
-			<!-- <script src="assets/home/js/jquery.min.js"></script> -->
+			<script src="assets/home/js/jquery.min.js"></script>
 			<script src="assets/home/js/skel.min.js"></script>
 			<script src="assets/home/js/util.js"></script>
 			<script src="assets/modal/js/classie.js"></script>

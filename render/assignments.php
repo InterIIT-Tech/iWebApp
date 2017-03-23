@@ -37,16 +37,20 @@
                             if(status=='success'){//$("#myloader").fadeOut();
                                console.log(data);
                                if(data[0]==1){
+                               	//if admin 
                                	var ourData=data[2];
                                	for(var i=0;i<data[1];i++){
                                		var type=(ourData[i]['type']==1)?"Course: ":"Club: ";
 	                               	$("#scope").append("<option value='"+ourData[i]['cID']+"'>"+type+ourData[i]['cName']+"</option>");
                                	}
-                               	$("#add-event-btn").show();
-																$("#add-image-btn").show();
+                               	$("#a_part").show();
+								$("#s_part").hide();	
+								
+
                                }else if(data[0]==0){
                                	// If non-admin
-                               	$(".adminRadio").hide();
+                               	$("#a_part").hide();
+                               	$("#s_part").show();
                                	// $("#add-event-btn").hide();
                                }
                             }else{
@@ -89,6 +93,7 @@
 						</nav>
 					</header>
 
+
 				<!-- Menu -->
 					<nav id="menu">
 						<ul class="links">
@@ -107,10 +112,10 @@
 					<div id="main" class="alt">
 
 						<!-- One -->
-							<section id="one">
+							
 								<div class="inner">
 
-
+                                     <section id=a_part style="display: none ;">
 										<header class="major">
 										<h1>Your Assignments</h1><hr style="width: 30%">
 										<h3>This section is to upload assignments</h3>
@@ -202,10 +207,10 @@
 										<hr width="100% ;"></form>
 										</section>
 								
-
+</section>
 <!-- This is end of prof part  -->
+<!--  The section below this shows the   Student part <-->
 <section id="one">
-<!--  The section below this shows the   Student part -->
 <section id="s_part">
 									<header class="major">
 										<h1>Your Assignments</h1><hr style="width: 30%">

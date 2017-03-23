@@ -9,6 +9,7 @@ if($result && mysqli_num_rows($result)>0){
 		$list.= "<option pxcoord='".$row['pX']."' pycoord='".$row['pY']."' style='background-color: #2a2f4a ;'>".$row['pName']."</option>";
 		
 	}
+}
 		
 ?>
 <!DOCTYPE HTML>

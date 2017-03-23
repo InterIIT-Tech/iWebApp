@@ -513,12 +513,12 @@ class notifAPI{
  *Class API handling all event related operations
  */
 class eveAPI{
-	
-	public function getEvent(){
-		
+
+	public function getEvents(){
+
 	}
 	public function	newEvent(){
-		
+
 	}
 }
 

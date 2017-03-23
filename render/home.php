@@ -232,17 +232,19 @@
 		<script>
 
 			//Datepicker for the forms
-			$( "#datepicker" ).datepicker({
-		      changeMonth: true,
-		      changeYear: true,
-		      minDate: new Date(1910,0,1),
-		      maxDate: new Date(2017,1,22),
-		      yearRange: '1910:2017',
-		      dateFormat:'yy-mm-dd'
-		    });
-		   $(document).ready(function(){
-			$("#datepicker").keydown(function(e){e.preventDefault();});
-			});
+				// $( function() {
+			 //    $( "#datepicker" ).datepicker({
+			 //      changeMonth: true,
+			 //      changeYear: true,
+			 //      minDate: new Date(1910,0,1),
+			 //      maxDate: new Date(2017,1,22),
+			 //      yearRange: '1910:2017',
+			 //      dateFormat:'yy-mm-dd'
+			 //    });
+			 //  } );
+		 //   $(document).ready(function(){
+			// $("#datepicker").keydown(function(e){e.preventDefault();});
+			// });
 		</script>
 
 		<style>
@@ -302,7 +304,7 @@
 				<div id="new-post-form">
 					<input type="text" class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" style="color:#000000 !important">
 
-					<input type="text" name="demo-name" id="datepicker" value="" placeholder="Date" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
+					<input type="text" name="demo-name" id="datepicker" value="" placeholder="yyyy-mm-dd" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
 
 					<div id="scopeSelect" class="form-el" style="display: block;">
 						scopeSelect:

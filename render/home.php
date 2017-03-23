@@ -466,7 +466,7 @@
 </ul>
 </section>
 <section>
-<header class="major"><h2>Upcomming events</h2></header>
+<header class="major"><h2>Upcoming events</h2></header>
 <ul class="contact ">
 <li class="fa-arrow-circle-right"><a href="callender">View Full Event callender</a></li></ul>
 </section>

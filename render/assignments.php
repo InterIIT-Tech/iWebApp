@@ -113,7 +113,7 @@
 
 										<header class="major">
 										<h1>Your Assignments</h1><hr style="width: 30%">
-										<h3>This section shows you your's Assignments</h3>
+										<h3>This section is to upload assignments</h3>
 										</header><hr style="width: 90%">
 
 
@@ -136,7 +136,7 @@
 										<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
 										<option value="">- Whom to notify -    </option>
 								</select>
-							</div>
+							</div>	
 						</div>
 
 
@@ -201,12 +201,12 @@
 										</div>
 										<hr width="100% ;"></form>
 										</section>
+								
 
 <!-- This is end of prof part  -->
-
+<section id="one">
 <!--  The section below this shows the   Student part -->
-<!--  The section below this shows the   Student part -->
-<!--  The section below this shows the   Student part -->
+<section id="s_part">
 									<header class="major">
 										<h1>Your Assignments</h1><hr style="width: 30%">
 										<h3>This section shows you your's Assignments</h3>

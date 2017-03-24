@@ -58,15 +58,6 @@ if(isset($_POST['lName'])){
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script>
 			$(document).ready(function(){
-				$('#showMenu').click(function(){
-					$('.outer-nav').fadeIn(500);
-				});
-				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100);
-					if($(window).width()<800){
-						window.location.reload();
-					}
-				});
 				<?php
 					if($flag==1){
 						echo '$("#lostForm").hide();'.PHP_EOL;
@@ -94,9 +85,7 @@ if(isset($_POST['lName'])){
 					background: #242943;
 				}
 		</style>
-	<script>
-
-	</script>
+	<script src="assets/js/fortyNav.js"></script>
 	</head>
 	<body style="overflow:hidden;" onload="downLoad()">
 

@@ -1,5 +1,6 @@
 
-
+# Project still in pre-alpha stage.  
+## Todo: Readme markdown
 ##Contents
  * Login page 
  * About page 

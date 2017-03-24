@@ -50,6 +50,11 @@
 				z-index: 1000;
 				cursor: pointer;
 			}
+			@media screen and (min-width: 736px) {
+				#mobile-show-menu {
+					display:none;
+				}
+			}
 		}
 	</style>
 	</head>

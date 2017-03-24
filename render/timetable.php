@@ -236,10 +236,10 @@ $sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 		<script>
 			$(document).ready(function(){
 				$('#showMenu').click(function(){
-					$('.outer-nav').fadeOut(0).fadeIn(400);
+					$('.outer-nav').hide().fadeIn(500);
 				});
 				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100);
+					$('.outer-nav').fadeOut(100).fadeIn(1000);
 				});
 			});
 		</script>

@@ -100,20 +100,7 @@ if($result && mysqli_num_rows($result)>0){
 						</nav>
 					</header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions vertical">
-							<li><a href="#" class="button special fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
-
+				
 				<!-- Main -->
 					<div id="main" class="alt">
 
@@ -130,7 +117,6 @@ if($result && mysqli_num_rows($result)>0){
 									<h3>Take me:</h3>
                                                                  <div class="select-wrapper" >
 																	<select name="demo-category" id="demo-category">
-																	
 																		<option value="" style="background-color: #2a2f4a ;">- From -</option>
 																		<?php echo $list;?>
 																	</select>

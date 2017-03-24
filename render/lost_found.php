@@ -1,4 +1,25 @@
+<?php
+require_once('servConf.php');
+require_once('api/api.php');
+$flag=0;
+$lost=new lostAPI;
 
+if(isset($_POST['lName'])){
+	$lost->lost($_POST['lContact'],$_POST['lName']);
+	// echo $_POST['lContact'].$_POST['lName'];
+	// $store = $lost->search(-1);
+	$flag=1;//flag to let later part of html render know that certain parts need to be shown
+
+}else if(isset($_POST['fName'])){
+	$flag=2;
+	$lost->found($_POST['fContact'],$_POST['fName'],$_POST['fPlace']);
+	//flag to let later part of html render know that certain parts need to be shown
+}else{
+	//default
+	$temp = $lost->getAll();
+	$store =$temp[2];
+} 
+?>
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -25,7 +46,21 @@
 				$(".container").click(function(){
 					$('.outer-nav').fadeOut(100);
 				});
+				<?php
+					if($flag==1){
+						echo '$("#lostForm").hide();'.PHP_EOL;
+						echo '$("#foundForm").hide();'.PHP_EOL;
+						echo '$("#info2").html("We have registered your query.<br>So far, the following match your query. We\'ll notify you once some more posts match your query.")'.PHP_EOL;
+					}
+					if($flag==2){
+						echo '$("#info").html("Thanks for finding the lost item. You will soon be contacted.")'.PHP_EOL;
+						echo '$("#lostForm").hide();'.PHP_EOL;
+						echo '$("#foundForm").hide();'.PHP_EOL;
+						echo '$("#lTable").hide();'.PHP_EOL;
+					}
+				?>
 			});
+
 		</script>
 		<style>
 				.wrapper.fullscreen {
@@ -39,7 +74,7 @@
 				}
 		</style>
 	<script>
-		//alert('<?php echo $_POST['lName']; ?>');
+	
 	</script>
 	</head>
 	<body>
@@ -57,120 +92,118 @@
 						</nav>
 					</header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions vertical">
-							<li><a href="#" class="button special fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
+				
 
 			<!-- Main -->
 					<div id="main" class="alt">
 
-						<!-- One -->
-							<section id="one">
-								<div class="inner">
+				<!-- One -->
+					<section id="one">
+						<div class="inner">
 
-									<header class="major">
-										<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
-									
-									</header>	
-                                    <section>
+							<header class="major">
+								<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
+							
+							</header>	
+							<span id="info" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;"></span>
+                            <section id="lostForm">
 
-										<form action="" method="POST" id="form1">
-   									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
-									
-										<div class="col-sm-5" style="margin-left: 4.5vw;">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something :</label>
-										<input type="text" name="lName" id="name" placeholder="ObjectName">
-										</div>
+								<form action="" method="POST" id="form1">
+								 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
+							
+								<div class="col-sm-5" style="margin-left: 4.5vw;">
+								<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something :</label>
+								<input type="text" name="lName" id="name" placeholder="ObjectName">
+								</div>
 
-										<div class=" col-sm-5" style="margin-left: 4vw ;">
-										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
-										<input type="text" name="lContact" id="name" placeholder="Number">
-										</div>
+								<div class=" col-sm-5" style="margin-left: 4vw ;">
+								<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
+								<input type="text" name="lContact" id="name" placeholder="Number">
+								</div>
 
-										<div class=col-sm-2 style="margin-top: 9vh ;margin-left:5vw ;border-radius: 5% ;">
-										
-										<button type="submit" form="form1"  class="button special" value="Submit">Submit!</button>
-										</div>
-									
-									</div>
-
-
-									<hr width="100% ;"></form>
-									</section>
-
-                                    <section>
-
-										<form action="" method="POST" id="form2">
-   									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
-
-										<div class="col-sm-2" style="margin-left: 4vw;border-bottom: 2vw ;">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
-										<input type="text" name="fName" id="name" placeholder="ObjectName">
-										</div>
-                                                 
-											<div class="col-sm-2" style="margin-left: 3vw;">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
-										<input type="text" name="fPlace" id="name" placeholder="Where??">
-										</div>
+								<div class=col-sm-2 style="margin-top: 9vh ;margin-left:5vw ;border-radius: 5% ;">
+								
+								<button type="submit" form="form1"  class="button special" value="Submit">Submit!</button>
+								</div>
+							
+							</div>
+								</form>
 
 
+							<hr width="100% ;">
+							</section>
 
-										<div class=" col-sm-3" style="margin-left:4vw;">
-										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
-										<input type="text" name="fContact" id="name" placeholder="Number">
-										</div>
+                            <section id="foundForm">
 
-										<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.5vw; ;border-radius: 5% ;">
-										<button type="submit" form="form2"  class="button special" value="Submit">Submit!</button>
-										
-										</div>
+								<form action="" method="POST" id="form2">
+								 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
 
-									</div>
+								<div class="col-sm-2" style="margin-left: 4vw;border-bottom: 2vw ;">
+								<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
+								<input type="text" name="fName" id="name" placeholder="ObjectName">
+								</div>
+                                         
+									<div class="col-sm-2" style="margin-left: 3vw;">
+								<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
+								<input type="text" name="fPlace" id="name" placeholder="Where??">
+								</div>
 
 
-									<hr width="100% ;"></form>
-									</section>
-													<div class="table-wrapper">
-														<table class="alt">
-															<thead>
-																<tr>
-																	<th>Sr.no</th>
-																	<th>Item</th>
-																	<th>Contact</th>
-																	
-																
-																	
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>Not intrested</td>
-																	<td>911</td>
-																	<td>Get Lost</td>
+
+								<div class=" col-sm-3" style="margin-left:4vw;">
+								<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
+								<input type="text" name="fContact" id="name" placeholder="Number">
+								</div>
+
+								<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.5vw; ;border-radius: 5% ;">
+								<button type="submit" form="form2"  class="button special" value="Submit">Submit!</button>
+								
+								</div>
+
+							</div>
+
+
+						<hr width="100% ;"></form>
+						</section>
+						<span id="info2" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;"></span>
+										<div class="table-wrapper" id="lTable">
+									<table class="alt">
+										<thead>
+											<tr>
+												<th>Sr.no</th>
+												<th>Item</th>
+												<th>Contact</th>
+												<th>Place</th>
 												
-																</tr>
-																
-															</tbody>
-														
-														</table>
-													</div>
+											
+												
+											</tr>
+										</thead>
+										<tbody>
+										<?php
+										if($flag!=2){
 
-											</div>
-										
-										</div>
+											foreach ($store as $key=>$value) {
+												echo "<tr>";
+												echo "<td>".$key."</td>";
+												echo "<td>".$value['name']."</td>";
+												echo "<td>".$value['contact']."</td>";
+												echo "<td>".$value['place']."</td>";
+												echo "</tr>";
+											}
+										}
+										?>
+											
+										</tbody>
+									
+									</table>
+								</div>
 
 								</div>
+							
+							</div>
+
+					</div>
 						
 
 					</div>

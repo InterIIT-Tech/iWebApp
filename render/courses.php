@@ -24,7 +24,7 @@
 					}
 				});
 				$("#mobile-show-menu").click(function(){
-					$('#showMenu').trigger('click');
+					$('#perspective').addClass('modalview animate');
 				});
 			});
 		</script>

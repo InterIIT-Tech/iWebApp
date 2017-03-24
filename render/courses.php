@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Courses::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
  		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
@@ -24,7 +24,7 @@
 					}
 				});
 				$("#mobile-show-menu").click(function(){
-					$('#showMenu').trigger('click');
+					$('#perspective').addClass('modalview animate');
 				});
 			});
 		</script>
@@ -46,9 +46,14 @@
 					position:fixed;
 					color: #312450;
 					right: 20px;
-					top: 10px; 
+					top: 10px;
 					z-index: 1000;
 				}
+				@media screen and (min-width: 736px) {
+					#mobile-show-menu {
+					display:none;
+				}
+			}
 			}
 		</style>
 		<script>
@@ -99,7 +104,7 @@
                         console.log("Data: " + data + "\nStatus: " + status);
                             if(status=='success'){//$("#myloader").fadeOut();
                                 cSubs = data;
-                               
+
                             }else{
                             	window.location="";
 
@@ -128,7 +133,7 @@
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';
                                 	i++;
                                 	$("#cseCourses").append(courseData);
                                 }
@@ -142,7 +147,7 @@
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';  
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';
                                 	i++;
                                 	$("#eeCourses").append(courseData);
                                 }
@@ -156,7 +161,7 @@
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
                                 	}
-                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
+                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';
                                 	i++;
                                 	$("#meCourses").append(courseData);
                                 }
@@ -166,26 +171,26 @@
                                 	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'" ';
                                 	if(cSubs[currElement[0]]==1){
 	                                	courseData+='onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
-	                                	courseData+='Subscribed!</a></li></ul></div></div></section>'; 
+	                                	courseData+='Subscribed!</a></li></ul></div></div></section>';
 
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';
-    
+
                                 	}
-	                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>'; 
+	                                	courseData+='Subscribe</a></li><li><a id="buttonI" href="courses/view/'+currElement[1]+'" target="_blank" class="button">Course Info</a></li></ul></div></div></section>';
                                 	i++;
                                 	$("#ceCourses").append(courseData);
                                 }
                             }else{
-                            	window.location.reload();	
+                            	window.location.reload();
                             }
 
-                            
+
                     }
 		        ,"json");
 		$(".subs").text("Subscribed");
-		        
-		    
+
+
 		});
 		</script>
 		<script>
@@ -196,8 +201,8 @@
 					var text =$("#cseCourses").html();
 	                            text = text.replace(/\s/g,'');
 	                            if(text==""){window.location.reload();	}
-				},1000); 
-				
+				},1000);
+
 			});
 		</script>
 	</head>
@@ -263,7 +268,7 @@
 
 				<!-- Computer Science Course List -->
 					<section class="wrapper style2 spotlights" id="cseCourses">
-						
+
 					</section>
 				<!-- Electrical Header -->
 					<section id="ee" class="wrapper style3 fade-up">
@@ -275,7 +280,7 @@
 
 				<!-- Electrical Course List -->
 					<section class="wrapper style2 spotlights" id="eeCourses">
-					
+
 					</section>
 				<!-- Mechanical Header -->
 					<section id="me" class="wrapper style3 fade-up">

@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Clubs::iWebApp</title>
 		<link rel="stylesheet" type="text/css" href="assets/css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
@@ -27,7 +27,7 @@
 					}
 				});
 				$("#mobile-show-menu").click(function(){
-					$('#showMenu').trigger('click');
+					$('#perspective').addClass('modalview animate');
 				});
 			});
 		</script>
@@ -46,8 +46,14 @@
 				position:fixed;
 				color: #312450;
 				right: 20px;
-				top: 10px; 
+				top: 10px;
 				z-index: 1000;
+				cursor: pointer;
+			}
+			@media screen and (min-width: 736px) {
+				#mobile-show-menu {
+					display:none;
+				}
 			}
 		}
 	</style>
@@ -115,7 +121,7 @@
 						</div>
 					</section>
 
-				
+
 				<!-- Sparkonics Header -->
 					<section id="sparkonics" class="wrapper style2 fade-up">
 						<div class="inner">

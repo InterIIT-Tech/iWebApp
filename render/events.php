@@ -18,10 +18,10 @@
 		<script>
 			$(document).ready(function(){
 				$('#showMenu').click(function(){
-					$('.outer-nav').fadeOut(0).fadeIn(400);
+					$('.outer-nav').hide().fadeIn(500);
 				});
 				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100);
+					$('.outer-nav').fadeOut(100).fadeIn(1000);
 				});
 			});
 		</script>
@@ -85,15 +85,15 @@
 															<tbody>
 																<tr>
 																	<td>1st Jan 2017</td>
-																	<td style="background:#"></td>												
+																	<td style="background:#"></td>
 																</tr>
 															</tbody>
-														
+
 														</table>
 													</div>
 
 											</div>
-										
+
 										</div>
 
 								</div>
@@ -101,7 +101,7 @@
 
 					</div>
 
-		
+
 			</div>
 
 		<!-- Scripts -->

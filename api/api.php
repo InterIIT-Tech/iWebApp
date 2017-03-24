@@ -574,13 +574,47 @@ class lostAPI{
 	}
 
 	public function search($iID){
-		if($iID==-1){
+		$querStr=array();
+		$resArr=array();
+		$ret=array();
+		$resArr[]=-1;
+		if($iID==-1 || !isset($iID)){
+			$sql = "SELECT `iName` FROM `lnf`  WHERE `type`= '1' ORDER BY `iID` DESC LIMIT 1";
 
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$querStr=$row['iName'];            	}
+            }
 		}else{
+			$sql = "SELECT `iName` FROM `lnf`  WHERE `iID`= '$iID'";
+
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$querStr=$row['iName'];            	}
+            }
+
 
 		}
+		$sql = "SELECT `contact`,`iName`,`iPlace` FROM `lnf`  WHERE `type`= '2'";
 
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		similar_text($row['iName'],$querStr,$perc);
+            		if($perc>50){
+            			if($resArr[0]==-1)$resArr[0]=1;
+
+            			$resArr[]=$row;
+            		}
+            	}
+        }
+        return $resArr;
 	}
+
+
+
 	public function found($cont,$name,$place){
 		$sql = "INSERT INTO `lnf`(type,contact,iName,iPlace,uID) VALUES ('2', '".$cont."', '".$name."', '".$place."','".$_SESSION['uID']."')";
 		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);

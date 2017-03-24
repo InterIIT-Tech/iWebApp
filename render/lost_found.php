@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php
 require_once('servConf.php');
 require_once('api/api.php');
@@ -8,7 +7,7 @@ $lost=new lostAPI;
 if(isset($_POST['lName'])){
 	$lost->lost($_POST['lContact'],$_POST['lName']);
 	// echo $_POST['lContact'].$_POST['lName'];
-	// $store = $lost->search(-1);
+	$store=$lost->search(-1);
 	$flag=1;//flag to let later part of html render know that certain parts need to be shown
 
 }else if(isset($_POST['fName'])){
@@ -102,37 +101,8 @@ if(isset($_POST['lName'])){
 					<section id="one">
 						<div class="inner">
 
-							<header class="major">
-								<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
 							
-							</header>	
 							<span id="info" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;"></span>
-                            <section id="lostForm">
-
-								<form action="" method="POST" id="form1">
-								 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
-							
-								<div class="col-sm-5" style="margin-left: 4.5vw;">
-								<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something :</label>
-								<input type="text" name="lName" id="name" placeholder="ObjectName">
-								</div>
-
-								<div class=" col-sm-5" style="margin-left: 4vw ;">
-								<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
-								<input type="text" name="lContact" id="name" placeholder="Number">
-								</div>
-
-								<div class=col-sm-2 style="margin-top: 9vh ;margin-left:5vw ;border-radius: 5% ;">
-								
-								<button type="submit" form="form1"  class="button special" value="Submit">Submit!</button>
-								</div>
-							
-							</div>
-								</form>
-
-
-							<hr width="100% ;">
-							</section>
 
                             <section id="foundForm">
 
@@ -153,7 +123,7 @@ if(isset($_POST['lName'])){
 										</div>
 
 										<div class=" col-sm-5" style="margin-left: 4vw ;">
-										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
+										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp;</label>
 										<input type="text" name="lContact" id="name" placeholder="Number">
 										</div>
 
@@ -167,66 +137,6 @@ if(isset($_POST['lName'])){
 
 									<hr width="100% ;"></form>
 									</section>
-
-                                    <section>
-
-										<form action="" method="POST" id="form2">
-   									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
-
-										<div class="col-sm-2" style="margin-left: 4.5vw;border-bottom: 2vw ;">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
-										<input type="text" name="fName" id="name" placeholder="ObjectName">
-										</div>
-                                                 
-											<div class="col-sm-2" style="margin-left: 3vw;">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
-										<input type="text" name="fPlace" id="name" placeholder="Where??">
-										</div>
-
-
-
-										<div class=" col-sm-3" style="margin-left:4vw;">
-										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
-										<input type="text" name="fContact" id="name" placeholder="Number">
-										</div>
-
-										<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.8vw; ;border-radius: 5% ;">
-										<button type="submit" form="form2"  class="button special" value="Submit">Submit!</button>
-										
-										</div>
-
-									</div>
-
-
-									<hr width="100% ;"></form>
-									</section>
-													<div class="table-wrapper">
-														<table class="alt">
-															<thead>
-																<tr>
-																	<th>Sr.no</th>
-																	<th>Item</th>
-																	<th>Contact</th>
-																	
-																
-																	
-																</tr>
-															</thead>
-															<tbody>
-																<tr>
-																	<td>1</td>
-																	<td>Not intrested</td>
-																	<td>911</td>
-																	<td>Get Lost</td>
-												
-																</tr>
-																
-															</tbody>
-														
-														</table>
-													</div>
->>>>>>> 99ffd62dd427c81e6c1def2f60a0e0f10233c58e
-
 								<form action="" method="POST" id="form2">
 								 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
 
@@ -258,7 +168,9 @@ if(isset($_POST['lName'])){
 						<hr width="100% ;"></form>
 						</section>
 						<span id="info2" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;"></span>
+									
 										<div class="table-wrapper" id="lTable">
+					<span  style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">All found items:</span>
 									<table class="alt">
 										<thead>
 											<tr>
@@ -278,9 +190,9 @@ if(isset($_POST['lName'])){
 											foreach ($store as $key=>$value) {
 												echo "<tr>";
 												echo "<td>".$key."</td>";
-												echo "<td>".$value['name']."</td>";
+												echo "<td>".$value['iName']."</td>";
 												echo "<td>".$value['contact']."</td>";
-												echo "<td>".$value['place']."</td>";
+												echo "<td>".$value['iPlace']."</td>";
 												echo "</tr>";
 											}
 										}

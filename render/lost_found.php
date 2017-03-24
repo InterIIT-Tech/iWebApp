@@ -1,4 +1,3 @@
-
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -36,10 +35,10 @@
 		<script>
 			$(document).ready(function(){
 				$('#showMenu').click(function(){
-					$('.outer-nav').fadeOut(0).fadeIn(400);
+					$('.outer-nav').hide().fadeIn(500);
 				});
 				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100);
+					$('.outer-nav').fadeOut(100).fadeIn(1000);
 				});
 			});
 		</script>
@@ -76,7 +75,7 @@
 					<header id="header">
 						<a href="index.html"  class="logo"></a>
 						<nav>
-							<a href="#back" id="showMenu">Menu</a>
+								<a href="#back" id="showMenu" style="margin-right:98vw ; ">Menu::iWebapp</a>
 						</nav>
 					</header>
 
@@ -101,6 +100,9 @@
 							<section id="one">
 								<div class="inner">
 
+
+								<div class=panel style="width: 100% ;"></div>
+
 									<header class="major">
 										<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
 
@@ -120,8 +122,8 @@
 										<input type="text" name="lContact" id="name" placeholder="Number">
 										</div>
 
-										<div class=col-sm-2 style="margin-top: 9vh ;margin-left:5vw ;border-radius: 5% ;">
-
+										<div class=col-sm-2 style="margin-top: 7.9vh ;margin-left:5vw ;border-radius: 5% ;">
+										
 										<button type="submit" form="form1"  class="button special" value="Submit">Submit!</button>
 										</div>
 
@@ -136,7 +138,7 @@
 										<form action="" method="POST" id="form2">
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
 
-										<div class="col-sm-2" style="margin-left: 4vw;border-bottom: 2vw ;">
+										<div class="col-sm-2" style="margin-left: 4.5vw;border-bottom: 2vw ;">
 										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
 										<input type="text" name="fName" id="name" placeholder="ObjectName">
 										</div>
@@ -153,7 +155,7 @@
 										<input type="text" name="fContact" id="name" placeholder="Number">
 										</div>
 
-										<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.5vw; ;border-radius: 5% ;">
+										<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.8vw; ;border-radius: 5% ;">
 										<button type="submit" form="form2"  class="button special" value="Submit">Submit!</button>
 
 										</div>

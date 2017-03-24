@@ -41,6 +41,23 @@
 	<script>
 		//alert('<?php echo $_POST['lName']; ?>');
 	</script>
+<!-- 	<script >
+		// $(document).ready( function(){
+		// 	$('#panel').click(function()
+		// 	{ $('#flip').slideUp("slow") ;
+				
+
+		// 		});
+		// 		$('#panel').click(function()
+		// 	{ $('#flip').slide("slow") ;
+				
+
+		// 		});
+		// });
+
+
+
+	</script> -->
 	</head>
 	<body>
 	<div id="perspective" class="perspective effect-airbnb">
@@ -79,13 +96,13 @@
 								<div class="inner">
 
 
-								<div class=panel style="width: 100% ;"></div>
+							
 
-									<header class="major">
+									<header class="major" >
 										<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
 									
 									</header>	
-                                    <section>
+                                    <section >
 
 										<form action="" method="POST" id="form1">
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
@@ -121,14 +138,14 @@
 										<input type="text" name="fName" id="name" placeholder="ObjectName">
 										</div>
                                                  
-											<div class="col-sm-2" style="margin-left: 3vw;">
-										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
+											<div class="col-sm-2" style="margin-left: 6vw;">
+										<label for="name" style="font-size: 3.3vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
 										<input type="text" name="fPlace" id="name" placeholder="Where??">
 										</div>
 
 
 
-										<div class=" col-sm-3" style="margin-left:4vw;">
+										<div class=" col-sm-3" style="margin-left:5vw;">
 										<label for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;">Your contact: &nbsp</label>
 										<input type="text" name="fContact" id="name" placeholder="Number">
 										</div>

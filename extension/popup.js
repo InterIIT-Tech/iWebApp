@@ -25,7 +25,7 @@
           $.post("http://www.iwebapp.ml/cAPI/listAssign",
                               {},
                               function(data, status){
-                              console.log("Response");
+                              console.log("Response1");
                               console.log(data[2]);
                               console.log("Data: " + data[2] + "\nStatus: " + status);
                                   if(status=='success'){
@@ -47,7 +47,7 @@
           $.post("http://www.iwebapp.ml/cAPI/classTmw",
                               {},
                               function(data, status){
-                              console.log("Response");
+                              console.log("Response2");
                               console.log(data[2]);
                               console.log("Data: " + data + "\nStatus: " + status);
                               var href=null;
@@ -71,7 +71,7 @@
           $.post("http://www.iwebapp.ml/cAPI/getNotif",
                               {},
                               function(data, status){
-                              console.log("Response");
+                              console.log("Response3");
                               console.log(data[2]);
                               console.log("Data: " + data + "\nStatus: " + status);
                               var href=null;

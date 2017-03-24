@@ -27,7 +27,7 @@
 					}
 				});
 				$("#mobile-show-menu").click(function(){
-					$('#showMenu').trigger('click');
+					$('#perspective').addClass('modalview animate');
 				});
 			});
 		</script>
@@ -48,6 +48,7 @@
 				right: 20px;
 				top: 10px;
 				z-index: 1000;
+				cursor: pointer;
 			}
 		}
 	</style>

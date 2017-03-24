@@ -1,6 +1,22 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+	<style media="screen" type="text/css">
+		.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: rgba(107, 107, 107, 0.51);}
+		.layer2_class { visibility: hidden }
+	</style>
+	<script>
+		function downLoad(){
+			$("body").css("overflow","auto");
+			if (document.all){
+					document.all["layer1"].style.visibility="hidden";
+					document.all["layer2"].style.visibility="visible";
+			} else if (document.getElementById){
+					node = document.getElementById("layer1").style.visibility='hidden';
+					node = document.getElementById("layer2").style.visibility='visible';
+			}
+		}
+	</script>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Courses::iWebApp</title>
@@ -206,7 +222,14 @@
 			});
 		</script>
 	</head>
-	<body>
+	<body style="overflow:hidden;" onload="downLoad()">
+
+		<div id="layer1" class="layer1_class">
+			<img src="favicon.png" style=" display: block;position: fixed;left: 50%;top:17%;transform: translate(-50%,-50%);">
+			<img src="loading.gif" style="display:block;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:20%;">
+		</div>
+
+		<div id="layer2" class="layer2_class">
 	<div id="perspective" class="perspective effect-airbnb">
 	<div id="mobile-show-menu" href="#back"></div>
 		<!-- Sidebar -->
@@ -319,5 +342,6 @@
 		</div></div>
 		<?php require('render/menu.php');?>
 		</div>
+	</div>
 	</body>
 </html>

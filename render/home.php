@@ -3,7 +3,7 @@
 	<head>
 		<style media="screen" type="text/css">
 			.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: rgba(107, 107, 107, 0.51);}
-			.layer2_class { position: absolute; z-index: 2; top: 10px; left: 10px; visibility: hidden }
+			.layer2_class { visibility: hidden }
 		</style>
 		<script>
 			function downLoad(){

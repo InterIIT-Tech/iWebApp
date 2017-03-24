@@ -2,6 +2,22 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+	<style media="screen" type="text/css">
+		.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: rgba(107, 107, 107, 0.51);}
+		.layer2_class { visibility: hidden }
+	</style>
+	<script>
+		function downLoad(){
+			$("body").css("overflow","auto");
+			if (document.all){
+					document.all["layer1"].style.visibility="hidden";
+					document.all["layer2"].style.visibility="visible";
+			} else if (document.getElementById){
+					node = document.getElementById("layer1").style.visibility='hidden';
+					node = document.getElementById("layer2").style.visibility='visible';
+			}
+		}
+	</script>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Lost_found</title>
@@ -42,7 +58,14 @@
 		//alert('<?php echo $_POST['lName']; ?>');
 	</script>
 	</head>
-	<body>
+	<body style="overflow:hidden;" onload="downLoad()">
+
+		<div id="layer1" class="layer1_class">
+			<img src="favicon.png" style=" display: block;position: fixed;left: 50%;top:17%;transform: translate(-50%,-50%);">
+			<img src="loading.gif" style="display:block;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:20%;">
+		</div>
+
+		<div id="layer2" class="layer2_class">
 	<div id="perspective" class="perspective effect-airbnb">
 			<div class="container">
 				<div class="wrapper">
@@ -80,13 +103,13 @@
 
 									<header class="major">
 										<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
-									
-									</header>	
+
+									</header>
                                     <section>
 
 										<form action="" method="POST" id="form1">
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
-									
+
 										<div class="col-sm-5" style="margin-left: 4.5vw;">
 										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something :</label>
 										<input type="text" name="lName" id="name" placeholder="ObjectName">
@@ -98,10 +121,10 @@
 										</div>
 
 										<div class=col-sm-2 style="margin-top: 9vh ;margin-left:5vw ;border-radius: 5% ;">
-										
+
 										<button type="submit" form="form1"  class="button special" value="Submit">Submit!</button>
 										</div>
-									
+
 									</div>
 
 
@@ -117,7 +140,7 @@
 										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
 										<input type="text" name="fName" id="name" placeholder="ObjectName">
 										</div>
-                                                 
+
 											<div class="col-sm-2" style="margin-left: 3vw;">
 										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
 										<input type="text" name="fPlace" id="name" placeholder="Where??">
@@ -132,7 +155,7 @@
 
 										<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.5vw; ;border-radius: 5% ;">
 										<button type="submit" form="form2"  class="button special" value="Submit">Submit!</button>
-										
+
 										</div>
 
 									</div>
@@ -147,9 +170,9 @@
 																	<th>Sr.no</th>
 																	<th>Item</th>
 																	<th>Contact</th>
-																	
-																
-																	
+
+
+
 																</tr>
 															</thead>
 															<tbody>
@@ -158,35 +181,35 @@
 																	<td>Not intrested</td>
 																	<td>911</td>
 																	<td>Get Lost</td>
-												
+
 																</tr>
-																
+
 															</tbody>
-														
+
 														</table>
 													</div>
 
 											</div>
-										
+
 										</div>
 
 								</div>
-						
+
 
 					</div>
-											
 
-				
+
+
 					</div>
 
-				
 
-			
+
+
 			</div>
 
-			                   
+
 </div>
-</div>     					
+</div>
 		<!-- Scripts -->
 			<script src="assets/lost_found/js/jquery.min.js"></script>
 			<script src="assets/lost_found/js/jquery.scrolly.min.js"></script>
@@ -200,5 +223,6 @@
 		</div></div>
 		<?php require('render/menu.php');?>
 		</div>
+	</div>
 	</body>
 </html>

@@ -18,11 +18,29 @@ if(isset($_POST['lName'])){
 	//default
 	$temp = $lost->getAll();
 	$store =$temp[2];
-} 
+}
 ?>
 <!DOCTYPE HTML>
 <html>
 	<head>
+	<style media="screen" type="text/css">
+		.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: white;}
+		.layer2_class { visibility: hidden }
+	</style>
+	<script>
+		function downLoad(){
+			$("body").css("overflow","auto");
+			$("body").animate("left:0px",1750,function(){
+			if (document.all){
+					document.all["layer1"].style.visibility="hidden";
+					document.all["layer2"].style.visibility="visible";
+			} else if (document.getElementById){
+					node = document.getElementById("layer1").style.visibility='hidden';
+					node = document.getElementById("layer2").style.visibility='visible';
+			}
+		});
+		}
+	</script>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<title>Lost_found</title>
@@ -41,10 +59,13 @@ if(isset($_POST['lName'])){
 		<script>
 			$(document).ready(function(){
 				$('#showMenu').click(function(){
-					$('.outer-nav').hide().fadeIn(500);
+					$('.outer-nav').fadeIn(500);
 				});
 				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100).fadeIn(1000);
+					$('.outer-nav').fadeOut(100);
+					if($(window).width()<800){
+						window.location.reload();
+					}
 				});
 				<?php
 					if($flag==1){
@@ -74,10 +95,17 @@ if(isset($_POST['lName'])){
 				}
 		</style>
 	<script>
-	
+
 	</script>
 	</head>
-	<body>
+	<body style="overflow:hidden;" onload="downLoad()">
+
+		<div id="layer1" class="layer1_class">
+			<img src="favicon.png" style=" display: block;position: fixed;left: 50%;top:17%;transform: translate(-50%,-50%);">
+			<img src="loading.gif" style="display:block;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:20%;">
+		</div>
+
+		<div id="layer2" class="layer2_class">
 	<div id="perspective" class="perspective effect-airbnb">
 			<div class="container">
 				<div class="wrapper">
@@ -92,7 +120,7 @@ if(isset($_POST['lName'])){
 						</nav>
 					</header>
 
-				
+
 
 			<!-- Main -->
 					<div id="main" class="alt">
@@ -101,7 +129,6 @@ if(isset($_POST['lName'])){
 					<section id="one">
 						<div class="inner">
 
-							
 							<span id="info" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;"></span>
 
                             <section id="foundForm">
@@ -110,13 +137,13 @@ if(isset($_POST['lName'])){
 
 									<header class="major">
 										<h1>Lost and Found</h1><hr style="width: 30% ;position: relative; top:-35px ;">
-									
-									</header>	
+
+									</header>
                                     <section>
 
 										<form action="" method="POST" id="form1">
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
-									
+
 										<div class="col-sm-5" style="margin-left: 4.5vw;">
 										<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Lost  Something :</label>
 										<input type="text" name="lName" id="name" placeholder="ObjectName">
@@ -128,10 +155,10 @@ if(isset($_POST['lName'])){
 										</div>
 
 										<div class=col-sm-2 style="margin-top: 7.9vh ;margin-left:5vw ;border-radius: 5% ;">
-										
+
 										<button type="submit" form="form1"  class="button special" value="Submit">Submit!</button>
 										</div>
-									
+
 									</div>
 
 
@@ -144,12 +171,11 @@ if(isset($_POST['lName'])){
 								<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Found Something :</label>
 								<input type="text" name="fName" id="name" placeholder="ObjectName">
 								</div>
-                                         
+
 									<div class="col-sm-2" style="margin-left: 3vw;">
 								<label for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;">Place:</label>
 								<input type="text" name="fPlace" id="name" placeholder="Where??">
 								</div>
-
 
 
 								<div class=" col-sm-3" style="margin-left:4vw;">
@@ -159,7 +185,7 @@ if(isset($_POST['lName'])){
 
 								<div class=col-sm-5	 style="margin-top: 9vh ;margin-left:3.5vw; ;border-radius: 5% ;">
 								<button type="submit" form="form2"  class="button special" value="Submit">Submit!</button>
-								
+
 								</div>
 
 							</div>
@@ -178,9 +204,9 @@ if(isset($_POST['lName'])){
 												<th>Item</th>
 												<th>Contact</th>
 												<th>Place</th>
-												
-											
-												
+
+
+
 											</tr>
 										</thead>
 										<tbody>
@@ -197,33 +223,32 @@ if(isset($_POST['lName'])){
 											}
 										}
 										?>
-											
+
 										</tbody>
-									
+
 									</table>
 								</div>
 
 								</div>
-							
+
 							</div>
 
 					</div>
-						
 
 					</div>
-											
 
-				
+
+
 					</div>
 
-				
 
-			
+
+
 			</div>
 
-			                   
+
 </div>
-</div>     					
+</div>
 		<!-- Scripts -->
 			<script src="assets/lost_found/js/jquery.min.js"></script>
 			<script src="assets/lost_found/js/jquery.scrolly.min.js"></script>
@@ -237,5 +262,6 @@ if(isset($_POST['lName'])){
 		</div></div>
 		<?php require('render/menu.php');?>
 		</div>
+	</div>
 	</body>
 </html>

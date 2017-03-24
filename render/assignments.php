@@ -19,10 +19,13 @@
 		<script>
 			$(document).ready(function(){
 				$('#showMenu').click(function(){
-					$('.outer-nav').hide().fadeIn(500);
+					$('.outer-nav').fadeIn(500);
 				});
 				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100).fadeIn(1000);
+					$('.outer-nav').fadeOut(100);
+					if($(window).width()<800){
+						window.location.reload();
+					}
 				});
 			});
 		</script>

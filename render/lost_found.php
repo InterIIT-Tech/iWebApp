@@ -25,12 +25,13 @@ if(isset($_POST['lName'])){
 <html>
 	<head>
 	<style media="screen" type="text/css">
-		.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: rgba(107, 107, 107, 0.51);}
+		.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: white;}
 		.layer2_class { visibility: hidden }
 	</style>
 	<script>
 		function downLoad(){
 			$("body").css("overflow","auto");
+			$("body").animate("left:0px",1750,function(){
 			if (document.all){
 					document.all["layer1"].style.visibility="hidden";
 					document.all["layer2"].style.visibility="visible";
@@ -38,6 +39,7 @@ if(isset($_POST['lName'])){
 					node = document.getElementById("layer1").style.visibility='hidden';
 					node = document.getElementById("layer2").style.visibility='visible';
 			}
+		});
 		}
 	</script>
 		<meta charset="UTF-8" />

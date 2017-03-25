@@ -30,8 +30,13 @@ $base = '@^'. $mat[1] ;
 		$_SESSION['uID']=null;
 	}
 
-
-if (preg_match($base . '$@', $url, $match)) {
+if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
+	if(isset($_SESSION['uID'])){
+			echo json_encode(array(1,$_SESSION['uID'],$_SESSION['uName'])) ;
+		}else{
+			echo json_encode(array(0)) ;
+		}
+}elseif (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){
 		require ('render/home.php');
 	} else{

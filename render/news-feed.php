@@ -398,7 +398,7 @@ textarea{
 .desc-post{
   margin-left: 1em;
   padding: 1em;
-  max-height: 10em;
+  /*max-height: 10em;*/
   overflow: auto;
 }
 </style>

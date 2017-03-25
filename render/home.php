@@ -2,12 +2,18 @@
 <html>
 	<head>
 		<style media="screen" type="text/css">
-			.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: rgba(107, 107, 107, 0.51);}
-			.layer2_class { position: absolute; z-index: 2; top: 10px; left: 10px; visibility: hidden }
+			.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;}
+			.layer2_class { visibility: hidden }
 		</style>
 		<script>
 			function downLoad(){
 				$("body").css("overflow","auto");
+				if(localStorage.getItem("lastPage")==window.location){
+					var del = 0;	
+				}else{
+					var del = 750;	
+				}
+				$("body").animate("left:0px",del,function(){
 				if (document.all){
 						document.all["layer1"].style.visibility="hidden";
 						document.all["layer2"].style.visibility="visible";
@@ -15,6 +21,8 @@
 						node = document.getElementById("layer1").style.visibility='hidden';
 						node = document.getElementById("layer2").style.visibility='visible';
 				}
+				localStorage.setItem("lastPage",window.location);
+			});
 			}
 		</script>
 		<title>Home::iWebApp</title>
@@ -50,8 +58,11 @@
                                 if(data[0]==1){
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
-	                               $("#news-feed").append('<article><a href="#" class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
+                            		if(dataObject[i]['title']!=""){
+                            			
+	                               $("#news-feed").append('<article><a class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
 
+                            		}
                             	}
                             }
                             }else{

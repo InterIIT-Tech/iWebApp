@@ -1,4 +1,3 @@
-<!DOCTYPE HTML>
 <html>
 	<head>
 		<meta charset="UTF-8" />
@@ -16,16 +15,8 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<script src="assets/js/modernizr.custom.25376.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('#showMenu').click(function(){
-					$('.outer-nav').fadeOut(0).fadeIn(400);
-				});
-				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100);
-				});
-			});
-		</script>
+
+		<script src="assets/js/fortyNav.js"></script>
 		<script >
 			
 
@@ -67,6 +58,7 @@
 		        ,"json");
 
 		</script>
+		<script src="assets/js/fortyNav.js"></script>
 		<style>
 				.wrapper.fullscreen {
 					min-height: 40vh !important;
@@ -138,59 +130,30 @@
 										<div id="scopeSelect" class="form-el col-sm-2" style="margin-left: 4vw; ">
 						  				<h2  style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.0900em ;" >Scope  Select:  </h2>
 										<div class="select-wrapper" id="selectScope" style="width: 89% ;">
-										<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
+										<select name="demo-category" id="scope" placeholder="Scope" style="background-color:#22263c !important">
 										<option value="">- Whom to notify -    </option>
 								</select>
 							</div>	
 						</div>
-
-
-										<div class=" col-sm-3" style="margin-left:3.5vw;">
-										<h2 for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.1225em;">Upload Date : &nbsp</h2>
-										<input type="text" name="fContact" id="name" placeholder="dd/mm/yyyy">
-										</div>
-
-
-
 									</div>
-
-
-									<hr width="100% ;"></form>
-									</section>
-				
-
-									 <section>
-
-										<form action="" method="POST" id="form1">
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
 									
 
 										<div class=" col-sm-3" style="margin-left:4vw;">
 										<h2 for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.1225em;">Deadline : &nbsp</h2>
-										<input type="text" name="fContact" id="name" placeholder="dd/mm/yyyy">
+										<input type="text" name="fContact" id="name" placeholder="dd-mm-yyyy">
 										</div>
 
 										<div class="col-sm-5" style="margin-left: 3.7vw;">
 										<h2 for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500; letter-spacing: 0.1000em ;">Upload :</h2>
-									
-											<div class="md-modal md-effect-1" id="modal-3">
-											<div class="md-content">
-		
-	
-									<div id="new-post-form">
-									<span  class="adminRadio">
-									<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
-					
-
-				
-				
-									<div id="selectImage " >
-				
-									<input type="file" class="form-el" style=" cursor: pointer;   padding: 10px;background-color: #22263c;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
+									<input type="hidden" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
+									<form id="uploadimage_" action="" method="post" enctype="multipart/form-data">
+									<div id="selectImage"><h4>Upload File:</h4>
+									<input type="file" class="form-el" style="    padding: 10px;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
 									</div>
-					
+									 <input type="submit" id="subbtn" class="form-el" style=" background-color: #A5281B;" value="Submit">
 									</form>
-				
+									
 					
 					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
 				
@@ -199,10 +162,8 @@
 				</div>
 	
 										</div>
-										<div class=col-sm-2 style="margin-top: 8.5vh ;margin-left:4vw ;border-radius: 5% ;">
 										
-										<button type="submit" form="form1"   value="Submit" style="color: #000000 ;height: 6vh ;background-color: #ffffff ;">Submit</button>
-										</div>
+										<button type="submit" form="form2"   value="Submit" style="color: #000000 ;height: 6vh ;background-color: #ffffff ;">Submit</button>
 										</div>
 										<hr width="100% ;"></form>
 										</section>
@@ -308,5 +269,45 @@
 		</div></div>
 		<?php require('render/menu.php');?>
 		</div>
+		<script>
+
+				$(document).ready(function (e) {
+
+				$("#file").change(function(e){
+					e.preventDefault();
+					// $("#subbtn").click();
+					$("#uploadimage_").submit();
+				});
+				$("#uploadimage_").on('submit',(function(e) {
+					console.log("dot");
+				e.preventDefault();
+				$("#message").empty();
+				$('#loading').show();
+				$.ajax({
+				url: "upl/aCS102", // Url to which the request is send
+				type: "POST",             // Type of request to be send, called as method
+				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+				contentType: false,       // The content type used when sending data to the server.
+				cache: false,             // To unable request pages to be cached
+				processData:false,        // To send DOMDocument or non processed data file it is set to false
+				success: function(data)   // A function to be called if request succeeds
+				{
+					console.log(data);
+				$('#loading').hide();
+				if(data!=-1){
+					$("#imgURL").val(data);
+					console.log("works");
+				}else{
+					$("#message_").html(data);
+				}
+				}
+				});
+				}));
+
+
+				// Function to preview image after validation
+				
+				});
+	</script>
 	</body>
 </html>

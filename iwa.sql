@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 22, 2017 at 07:41 PM
+-- Generation Time: Mar 25, 2017 at 02:41 PM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -84,7 +84,8 @@ CREATE TABLE `assign` (
 --
 
 INSERT INTO `assign` (`aID`, `aName`, `aScope`, `dir`, `lastdate`) VALUES
-(1, 'lol', 1, 'cs', '2017-03-24');
+(1, 'lol', 1, 'cs', '2017-03-24'),
+(2, 'Data Structures', 1, '1111\r\n', '2017-03-01');
 
 -- --------------------------------------------------------
 
@@ -96,20 +97,6 @@ CREATE TABLE `clubs` (
   `clID` int(11) NOT NULL,
   `clName` varchar(200) NOT NULL,
   `clOwner` int(11) NOT NULL COMMENT 'ID of admin of the club'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `comments`
---
-
-CREATE TABLE `comments` (
-  `comID` int(11) NOT NULL,
-  `comOn` int(11) NOT NULL COMMENT '1=post,2=course',
-  `comTitle` varchar(2000) NOT NULL,
-  `comContent` varchar(2000) NOT NULL,
-  `hidden` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -153,6 +140,71 @@ CREATE TABLE `events` (
   `eDate` date NOT NULL,
   `eScope` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `gID` int(11) NOT NULL,
+  `title` varchar(200) DEFAULT NULL,
+  `user` int(11) NOT NULL,
+  `path` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gallery`
+--
+
+INSERT INTO `gallery` (`gID`, `title`, `user`, `path`) VALUES
+(10, 'Auroras<3', 1, 'gallery/1490229837.0172_1_a9eced2a0014bf18c7c0fcf713cb36147791254f.jpg'),
+(11, 'NY', 1, 'gallery/1490229852.0565_1_c633844bb97edfc9c7776861fcdf281a2b9c347d.jpg'),
+(12, 'Some random Mountains', 1, 'gallery/1490263538.7904_1_45c1243c8f7f2084fbaf559396bdd1354df392b3.jpg'),
+(13, 'Some random Mountains', 1, 'gallery/1490263542.3684_1_45c1243c8f7f2084fbaf559396bdd1354df392b3.jpg'),
+(14, 'Some random Mountains', 1, 'gallery/1490263545.8233_1_45c1243c8f7f2084fbaf559396bdd1354df392b3.jpg'),
+(15, 'Some random image', 1, 'gallery/1490263828.5857_1_b712857b069893c93bc60c578923be4c0afc2260.jpg'),
+(16, 'This is some text', 1, 'gallery/1490263930.0124_1_512b750ae8061f8bf29d8c85251cb7afb5319d0c.jpg'),
+(17, 'Random', 1, 'gallery/1490263972.7397_1_c6ec3a5b817feb32dafdab422116de69b5dc5de2.jpg'),
+(18, '', 1, 'gallery/1490286489.79_1_406b4bca34125d7b1bf530d18a572daeeba36522.png'),
+(19, '', 1, 'gallery/1490368877.1498_1_39c9f0e980faa7dbdf5b3480f3fe07c5197b4346.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `lnf`
+--
+
+CREATE TABLE `lnf` (
+  `iID` int(11) NOT NULL,
+  `uID` int(11) NOT NULL,
+  `type` int(11) NOT NULL COMMENT '1 for lost 2 for found',
+  `contact` varchar(20) NOT NULL,
+  `iName` varchar(200) NOT NULL,
+  `iPlace` varchar(2000) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lnf`
+--
+
+INSERT INTO `lnf` (`iID`, `uID`, `type`, `contact`, `iName`, `iPlace`) VALUES
+(1, 1, 2, '99', 'Thing', 'Placelol'),
+(2, 1, 1, '3', '4', NULL),
+(3, 1, 1, '3', '4', NULL),
+(4, 1, 2, '9920126830', 'Mobile Phone', 'Canteen'),
+(22, 1, 1, '99', 'mobile', NULL),
+(23, 1, 1, '99', 'mobile', NULL),
+(24, 1, 1, '', '', NULL),
+(25, 1, 1, '', '', NULL),
+(26, 1, 2, '9920126830', 'Mobile', 'Canteen'),
+(27, 1, 1, '0', 'Mobile', NULL),
+(28, 1, 1, '0', 'Mobile', NULL),
+(29, 1, 1, '0', 'Mobile', NULL),
+(30, 1, 1, '0', 'Umbrella', NULL),
+(31, 1, 2, 'lol', 'Water Bottle', 'canteen'),
+(32, 1, 1, 'sef', 'bottle', NULL);
 
 -- --------------------------------------------------------
 
@@ -203,7 +255,9 @@ CREATE TABLE `posts` (
 
 INSERT INTO `posts` (`postID`, `postTitle`, `postContent`, `postType`, `featured`, `postAuthor`, `postDate`, `notice`, `priority`, `hidden`, `image`, `notify`, `audience`) VALUES
 (8, 'Test Post1', 'Hello World!', 1, 1, 1, '2017-03-12 05:19:03', 0, 1, 0, 'http://cdn01.androidauthority.net/wp-content/uploads/2015/11/00-best-backgrounds-and-wallpaper-apps-for-android.jpg', 0, '1'),
-(9, 'test', 'test', 1, 1, 1, '2017-03-12 05:20:13', 0, 1, 0, 'http://media02.hongkiat.com/ww-flower-wallpapers/dandelion.jpg', 0, '1');
+(9, 'test', 'test', 1, 1, 1, '2017-03-12 05:20:13', 0, 1, 0, 'http://media02.hongkiat.com/ww-flower-wallpapers/dandelion.jpg', 0, '1'),
+(12, 'Hey ! New Post!', 'Check if this works?', 1, 1, 1, '2017-03-23 05:58:00', 0, 1, 0, 'gallery/1490228869.3927_1_c19b2a6ac3b9450cdc276a0c4b417ecf84c99a1cpng', 0, '1'),
+(13, '', '', 1, 1, 1, '2017-03-24 01:55:51', 0, 1, 0, '', 0, '1');
 
 -- --------------------------------------------------------
 
@@ -234,11 +288,10 @@ CREATE TABLE `sublist` (
 --
 
 INSERT INTO `sublist` (`subID`, `uID`, `coID`, `clID`) VALUES
-(59, 11, 1, NULL),
-(60, 11, 2, NULL),
-(61, 11, 3, NULL),
-(62, 1, 1, NULL),
-(63, 1, 2, NULL);
+(67, 1, 4, NULL),
+(68, 1, 1, NULL),
+(69, 1, 2, NULL),
+(70, 1, 3, NULL);
 
 -- --------------------------------------------------------
 
@@ -253,6 +306,13 @@ CREATE TABLE `submission` (
   `marks` int(11) DEFAULT NULL,
   `uID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `submission`
+--
+
+INSERT INTO `submission` (`aID`, `date`, `filename`, `marks`, `uID`) VALUES
+(1, '2017-03-22', 1, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -345,12 +405,6 @@ ALTER TABLE `clubs`
   ADD PRIMARY KEY (`clID`);
 
 --
--- Indexes for table `comments`
---
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`comID`);
-
---
 -- Indexes for table `courses`
 --
 ALTER TABLE `courses`
@@ -361,6 +415,18 @@ ALTER TABLE `courses`
 --
 ALTER TABLE `events`
   ADD UNIQUE KEY `eID` (`eID`);
+
+--
+-- Indexes for table `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`gID`);
+
+--
+-- Indexes for table `lnf`
+--
+ALTER TABLE `lnf`
+  ADD UNIQUE KEY `iID` (`iID`);
 
 --
 -- Indexes for table `notify`
@@ -409,17 +475,12 @@ ALTER TABLE `around`
 -- AUTO_INCREMENT for table `assign`
 --
 ALTER TABLE `assign`
-  MODIFY `aID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `aID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `clubs`
 --
 ALTER TABLE `clubs`
   MODIFY `clID` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `comments`
---
-ALTER TABLE `comments`
-  MODIFY `comID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `courses`
 --
@@ -431,6 +492,16 @@ ALTER TABLE `courses`
 ALTER TABLE `events`
   MODIFY `eID` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT for table `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `gID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+--
+-- AUTO_INCREMENT for table `lnf`
+--
+ALTER TABLE `lnf`
+  MODIFY `iID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+--
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
@@ -439,12 +510,12 @@ ALTER TABLE `notify`
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `sublist`
 --
 ALTER TABLE `sublist`
-  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `subID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
 --
 -- AUTO_INCREMENT for table `users`
 --

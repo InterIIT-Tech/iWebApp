@@ -228,6 +228,7 @@ public function decodeTime($hrs){
 	else if($hrs<12){ return "$hrs:$mins_ am"; }
 }
 	public function classTmw(){
+
 		$datetime = new DateTime('tomorrow');
 		$dayName = $datetime->format('l');
 		$dayName=substr(strtolower($dayName), 0,3);
@@ -240,8 +241,10 @@ public function decodeTime($hrs){
         	if($result){
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 					$sql_ = "SELECT `cCode`,`".$day."`,`".$day."_` FROM `ttable`  WHERE `cID`= '".$row['coID']."'";
+					echo $sql_;
 		        	$result_ = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql_);
 		        	if($result_){
+		        		echo json_encode($result_);
 						while ($row_ = mysqli_fetch_array($result_, MYSQL_ASSOC)) {
 							$data2[]=$row_['cCode']." from ".$this->decodeTime($row_[$day])." to ".$this->decodeTime($row_[$day.'_']);
 					}
@@ -249,7 +252,7 @@ public function decodeTime($hrs){
 			}
 
 			$data[]=1;
-			$data[]=mysqli_num_rows($result);
+			$data[]=mysqli_num_rows($result);//bug
 			$data[]=$data2;
 	}else{
 		$data[]=-1;
@@ -258,7 +261,7 @@ public function decodeTime($hrs){
 }
 }
 
-
+ 
 /**
  * posts API
  */
@@ -446,7 +449,10 @@ class subsAPI{
 	}
 
 	public function rate($cID,$rating){
-		return $cID." ... ".$rating;
+		$ret=array();
+		$ret[]=$cID;
+		$ret[]=$rating;
+		return $ret;
 	}
 }
 
@@ -556,14 +562,100 @@ class assignAPI{
 }
 
 class lostAPI{
-	public function lost(){
+
+	public function lost($cont,$name){
+		$sql = "INSERT INTO `lnf` (`uID`, `type`, `contact`, `iName`, `iPlace`) VALUES ('".$_SESSION['uID']."', '1', '".$cont."', '".$name."' , NULL);";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$ret[]=1;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
+        mysqli_close($link);
+        return $ret;
+        //display list of simmilar items?
 
 	}
-	public function found(){
 
+	public function search($iID){
+		$querStr=array();
+		$resArr=array();
+		$ret=array();
+		$resArr[]=-1;
+		if($iID==-1 || !isset($iID)){
+			$sql = "SELECT `iName` FROM `lnf`  WHERE `type`= '1' ORDER BY `iID` DESC LIMIT 1";
+
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$querStr=$row['iName'];            	}
+            }
+		}else{
+			$sql = "SELECT `iName` FROM `lnf`  WHERE `iID`= '$iID'";
+
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$querStr=$row['iName'];            	}
+            }
+
+
+		}
+		$sql = "SELECT `contact`,`iName`,`iPlace` FROM `lnf`  WHERE `type`= '2'";
+
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		similar_text(str_replace(" ","",strtolower($row['iName'])),str_replace(" ","",strtolower($querStr)),$perc);
+            		if($perc>50){
+            			if($resArr[0]==-1)$resArr[0]=1;
+
+            			$resArr[]=$row;
+            		}
+            	}
+        }
+        return $resArr;
 	}
+
+
+
+	public function found($cont,$name,$place){
+		$sql = "INSERT INTO `lnf`(type,contact,iName,iPlace,uID) VALUES ('2', '".$cont."', '".$name."', '".$place."','".$_SESSION['uID']."')";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$ret[]=1;
+        	return $ret;
+        	exit;
+        } else { $ret[]=-1;$ret[]= mysqli_error($link);}
+        mysqli_close($link);
+        return $ret;
+	}
+
 	public function notify(){
 
+	}
+
+	public function getAll(){//works
+		$ret = array();
+		$sql = "SELECT `contact`,`iName`,`iPlace` FROM `lnf`  WHERE `type`= '2'";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result && mysqli_num_rows($result)>0){
+        		$ret[]=1;
+        		$ret[]=mysqli_num_rows($result);
+        		$i=0;
+            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            		$perms[$i]['name']=$row['iName'];
+            		$perms[$i]['contact']=$row['contact'];
+            		$perms[$i++]['place']=$row['iPlace'];
+            	}
+            
+            $ret[]=$perms;
+			}else{
+				$ret[]=-1;
+				$ret[] =($result)? "0 rows":"Query error";
+			}
+			return $ret;
 	}
 }
 //gallery let ppl upload photos in their usrname folders

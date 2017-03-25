@@ -9,20 +9,31 @@
  *   is found.
  */
 
+// webRoot = "http://localhost/~muks/iwa/";
+webRoot = "http://www.iwebapp.ml/";
  $(document).ready(function(){
 
          $("#icon1").click(function(){
          chrome.tabs.create({active: true, url: "http://iwebapp.ml"});
          return false;
-       });
-         $(".itemAssign").click(function(e){
-          // e.preventDefault();
-          console.log("uhuhuh");
-         chrome.tabs.create({active: true, url: "http://iwebapp.ml/assignments/view/"+$(this).attr(data)});
-         return false;
-       });
+         });
 
-          $.post("http://www.iwebapp.ml/cAPI/listAssign",
+         $.post(webRoot + "cAPI/checkLogin",
+                              {},
+                              function(data, status){
+                              console.log("Checklogin Data: " + data + "\nStatus: " + status);
+                              if(status=='success'){
+                                  if(data[0]==0){
+                                    $('#content').hide();
+                                    $('#login').show();
+                                  }
+                                }else{
+                                window.location.reload();
+                              }
+                          }
+                  ,"json");
+
+          $.post(webRoot + "cAPI/listAssign",
                               {},
                               function(data, status){
                               console.log("Response1");
@@ -44,7 +55,7 @@
                                   }
                           }
                   ,"json");
-          $.post("http://www.iwebapp.ml/cAPI/classTmw",
+          $.post(webRoot + "cAPI/classTmw",
                               {},
                               function(data, status){
                               console.log("Response2");
@@ -68,7 +79,7 @@
                           }
                   ,"json");
 
-          $.post("http://www.iwebapp.ml/cAPI/getNotif",
+          $.post(webRoot + "cAPI/getNotif",
                               {},
                               function(data, status){
                               console.log("Response3");

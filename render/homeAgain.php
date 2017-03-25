@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<style media="screen" type="text/css">
+  .layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;background-color: white;}
+  .layer2_class { visibility: hidden }
+</style>
+<script>
+  function downLoad(){
+    $("body").css("overflow","auto");
+    if(localStorage.getItem("lastPage")==window.location){
+      var del = 0;
+    }else{
+      var del = 750;
+    }
+    $("body").animate("left:0px",del,function(){
+    if (document.all){
+        document.all["layer1"].style.visibility="hidden";
+        document.all["layer2"].style.visibility="visible";
+    } else if (document.getElementById){
+        node = document.getElementById("layer1").style.visibility='hidden';
+        node = document.getElementById("layer2").style.visibility='visible';
+    }
+    localStorage.setItem("lastPage",window.location);
+  });
+  }
+</script>
 <title>Matrix Admin</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -199,22 +223,33 @@ $.post("cAPI/getPermissions",
 
 </style>
 </head>
-<body>
+<body style="overflow:hidden;" onload="downLoad()">
+  <div id="layer1" class="layer1_class">
+    <img src="favicon.png" style=" display: block;position: fixed;left: 50%;top:17%;transform: translate(-50%,-50%);">
+    <img src="loading.gif" style="display:block;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:20%;">
+  </div>
 
+<div id="layer2" class="layer2_class">
 <!--Header-part-->
 <div id="header">
   <h1><a href="dashboard.html"></a></h1>
 </div>
 <!--close-Header-part-->
 
+
+
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-    <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
-    <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
-    <li><a href="tables.html"><i class="icon icon-th"></i> <span>Getting Around The Campus</span></a></li>
-    <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
+    <li class="active"><a href="."><i class="icon icon-home"></i> <span>Home</span></a> </li>
+    <li class="active"><a href="news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
+    <li> <a href="clubs"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
+    <li> <a href="courses"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
+    <li><a href="getting-around"><i class="icon icon-th"></i> <span>Getting Around</span></a></li>
+    <li><a href="gallery"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
+    <li><a href="timetable"><i class="icon icon-fullscreen"></i> <span>Time Table</span></a></li>
+    <li><a href="assignments"><i class="icon icon-fullscreen"></i> <span>Assignments</span></a></li>
+    <li><a href="lost-found"><i class="icon icon-fullscreen"></i> <span>Lost and Found</span></a></li>
     <li class="content"> <span>Attendance</span>
       <div class="progress progress-mini progress-danger active progress-striped">
         <div style="width: 77%;" class="bar"></div>
@@ -344,98 +379,7 @@ textarea{
       				</div>
       			</div>
       		</div>
-  <script>
 
-        $(document).ready(function (e) {
-
-        $("#file_").change(function(e){
-          e.preventDefault();
-          $("#subbtn").click();
-        });
-        $("#uploadimage_").on('submit',(function(e) {
-        e.preventDefault();
-        $("#message").empty();
-        $('#loading').show();
-        $.ajax({
-        url: "upl/post", // Url to which the request is send
-        type: "POST",             // Type of request to be send, called as method
-        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-        contentType: false,       // The content type used when sending data to the server.
-        cache: false,             // To unable request pages to be cached
-        processData:false,        // To send DOMDocument or non processed data file it is set to false
-        success: function(data)   // A function to be called if request succeeds
-        {
-          console.log(data);
-        $('#loading').hide();
-        if(data!=-1){
-          $("#selectImage").empty();
-          $("#selectImage").html("<h4>Image uploaded</h4>");
-          $("#imgURL").val(data);
-          console.log("works");
-        }else{
-          $("#message_").html(data);
-        }
-        }
-        });
-        }));
-
-        $("#uploadimage").on('submit',(function(e) {
-        e.preventDefault();
-        $("#message").empty();
-        $('#loading').show();
-        $.ajax({
-        url: "upl/gallery", // Url to which the request is send
-        type: "POST",             // Type of request to be send, called as method
-        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-        contentType: false,       // The content type used when sending data to the server.
-        cache: false,             // To unable request pages to be cached
-        processData:false,        // To send DOMDocument or non processed data file it is set to false
-        success: function(data)   // A function to be called if request succeeds
-        {
-          console.log(data);
-        $('#loading').hide();
-        if(data==1){
-          $("#modal-3").fadeOut(1000);
-          $("#modal-3 .md-content h3").text("Uploaded!");
-                    $("#new-post-form").hide();
-                    $("#add-upload-btn").hide();
-          // console.log("works");
-        }else{
-          $("#message").html(data);
-        }
-        }
-        });
-        }));
-
-        // Function to preview image after validation
-        $(function() {
-        $("#file").change(function() {
-        $("#message").empty(); // To remove the previous error message
-        var file = this.files[0];
-        var imagefile = file.type;
-        var match= ["image/jpeg","image/png","image/jpg"];
-        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
-        {
-        $('#previewing').attr('src','noimage.png');
-        $("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
-        return false;
-        }
-        else
-        {
-        var reader = new FileReader();
-        reader.onload = imageIsLoaded;
-        reader.readAsDataURL(this.files[0]);
-        }
-        });
-        });
-        function imageIsLoaded(e) {
-        $("#file").css("color","green");
-        $('#image_preview').css("display", "block");
-        $('#previewing').attr('src', e.target.result);
-        $('#previewing').attr('margin', 'auto');
-        };
-        });
-</script>
           <div class="md-modal md-effect-1" id="modal-2">
         		<div class="md-content">
         				<h3>Add Event:</h3>
@@ -740,7 +684,100 @@ textarea{
 <script src="assets/modal/js/classie.js"></script>
 <script src="assets/modal/js/modalEffects.js"></script>
 <script src="assets/modal/js/cssParser.js"></script>
-<script type="text/javascript">
+<script>
+
+  $(document).ready(function (e) {
+
+  $("#file_").change(function(e){
+    e.preventDefault();
+    $("#subbtn").click();
+  });
+  $("#uploadimage_").on('submit',(function(e) {
+  e.preventDefault();
+  $("#message").empty();
+  $('#loading').show();
+  $.ajax({
+  url: "upl/post", // Url to which the request is send
+  type: "POST",             // Type of request to be send, called as method
+  data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+  contentType: false,       // The content type used when sending data to the server.
+  cache: false,             // To unable request pages to be cached
+  processData:false,        // To send DOMDocument or non processed data file it is set to false
+  success: function(data)   // A function to be called if request succeeds
+  {
+    console.log(data);
+  $('#loading').hide();
+  if(data!=-1){
+    $("#selectImage").empty();
+    $("#selectImage").html("<h4>Image uploaded</h4>");
+    $("#imgURL").val(data);
+    console.log("works");
+  }else{
+    $("#message_").html(data);
+  }
+  }
+  });
+  }));
+
+  $("#uploadimage").on('submit',(function(e) {
+  e.preventDefault();
+  $("#message").empty();
+  $('#loading').show();
+  $.ajax({
+  url: "upl/gallery", // Url to which the request is send
+  type: "POST",             // Type of request to be send, called as method
+  data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+  contentType: false,       // The content type used when sending data to the server.
+  cache: false,             // To unable request pages to be cached
+  processData:false,        // To send DOMDocument or non processed data file it is set to false
+  success: function(data)   // A function to be called if request succeeds
+  {
+    console.log(data);
+  $('#loading').hide();
+  if(data==1){
+    $("#modal-3").fadeOut(1000);
+    $("#modal-3 .md-content h3").text("Uploaded!");
+              $("#new-post-form").hide();
+              $("#add-upload-btn").hide();
+    // console.log("works");
+  }else{
+    $("#message").html(data);
+  }
+  }
+  });
+  }));
+
+  // Function to preview image after validation
+  $(function() {
+  $("#file").change(function() {
+    console.log("dasdsad");
+  $("#message").empty(); // To remove the previous error message
+  var file = this.files[0];
+  var imagefile = file.type;
+  var match= ["image/jpeg","image/png","image/jpg"];
+  if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+  {
+  $('#previewing').attr('src','noimage.png');
+  $("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+  return false;
+  }
+  else
+  {
+  var reader = new FileReader();
+  reader.onload = imageIsLoaded;
+  reader.readAsDataURL(this.files[0]);
+  }
+  });
+  });
+  function imageIsLoaded(e) {
+  $("#file").css("color","green");
+  $('#image_preview').css("display", "block");
+  $('#previewing').attr('src', e.target.result);
+  $('#previewing').attr('margin', 'auto');
+  };
+  });
+</script>
+<!-- <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
   function goPage (newURL) {
@@ -748,7 +785,7 @@ textarea{
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
 
-          // if url is "-", it is this page -- reset the menu:
+          // if url is "-", it is this page - reset the menu:
           if (newURL == "-" ) {
               resetMenu();
           }
@@ -763,6 +800,7 @@ textarea{
 function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
-</script>
+</script> -->
+</div>
 </body>
 </html>

@@ -77,7 +77,7 @@ if($result && mysqli_num_rows($result)>0){
 
 	</script>
 	<script>
-      function initMap() {
+      function callme() {
         var bounds = new google.maps.LatLngBounds;
         var markersArray = [];
 

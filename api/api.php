@@ -576,7 +576,7 @@ class assignAPI{
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result){
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-            			if($row['COUNT(*)']==1){
+            			if($row['COUNT(*)']>0){
             				return 1;
             			}		else{
             				return 0;

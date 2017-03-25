@@ -9,9 +9,9 @@
 			function downLoad(){
 				$("body").css("overflow","auto");
 				if(localStorage.getItem("lastPage")==window.location){
-					var del = 0;	
+					var del = 0;
 				}else{
-					var del = 750;	
+					var del = 750;
 				}
 				$("body").animate("left:0px",del,function(){
 				if (document.all){
@@ -59,7 +59,7 @@
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
                             		if(dataObject[i]['title']!=""){
-                            			
+
 	                               $("#news-feed").append('<article><a class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
 
                             		}
@@ -357,7 +357,7 @@
 				<h3 >Upload Image for Gallery:</h3>
 
 				<div id="new-post-form">
-				<span  class="adminRadio">
+				
 					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
 
 					<input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">

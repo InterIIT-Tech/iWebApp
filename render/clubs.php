@@ -69,8 +69,8 @@
 				font-size: 30px;
 				position:fixed;
 				color: #312450;
-				right: 20px;
-				top: 10px;
+				right: 1em;
+				top: 0.5em;
 				z-index: 1000;
 				cursor: pointer;
 			}

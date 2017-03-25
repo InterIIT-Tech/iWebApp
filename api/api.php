@@ -63,7 +63,7 @@ class userAPI {
 	public function whoIs($display,$query,$queryParam){
 		$ret = array();
 		//advanced queries, use different display var.
-		$sql = "SELECT `uAlias` FROM `users`  WHERE `uID`= 1";
+		$sql = "SELECT `$display` FROM `users`  WHERE `uID`= $queryParam";
 			// global $conn;
 		// echo $sql;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
@@ -500,7 +500,7 @@ class notifAPI{
 		$subAPI = new subsAPI;
 		$subsList = $subAPI->getSubs();
 		// print_r($subsList) ;
-		$sql = "SELECT `nContent`,`nSender`,`url` FROM `notify`  WHERE ( `nGroup`= '1'";
+		$sql = "SELECT `nContent`,`nSender`,`url`,`timestr` FROM `notify`  WHERE ( `nGroup`= '1'";
 		//loop
 		foreach ($subsList as &$sub) {
 		    $sql .= " OR `nGroup`='$sub'";
@@ -515,8 +515,9 @@ class notifAPI{
         		$ret[]=mysqli_num_rows($result);
         		$i=0;
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-						$NoifyList[$i]['title'] = $row['nContent']; 
+						$NoifyList[$i]['title'] = $row['nContent'];
 						$NoifyList[$i]['url'] = $row['url']; 
+						$NoifyList[$i]['timestr'] = $row['timestr']; 
 						$NoifyList[$i++]['author'] =$userAPI->whoIs('uName','uID',$row['nSender']); 
             		}
             
@@ -553,7 +554,7 @@ class assignAPI{
 	
 	public function listAssign(){
 		$asList=array();
-		$sql="select A.aID,A.aName from users U,assign A LEFT JOIN  submission S on S.aID=A.aID where U.uID=".$_SESSION['uID']." and S.aID is NULL";
+		$sql="select A.aID,A.aName,A.uploaded from users U,assign A LEFT JOIN  submission S on S.aID=A.aID where U.uID=".$_SESSION['uID']." and S.aID is NULL";
 		$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result && mysqli_num_rows($result)>0){
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {

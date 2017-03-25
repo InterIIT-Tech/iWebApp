@@ -22,8 +22,6 @@ class Routing
 }
 // echo "check";
 $url = $_SERVER['REQUEST_URI'];
-// $url = rtrim($url,'/');
-// $url = rtrim($url,"/");
 preg_match('@(.*)index.php(.*)$@', $_SERVER['PHP_SELF'], $mat );
 $base = '@^'. $mat[1] ;
 	if(!isset($_SESSION['f403'])){

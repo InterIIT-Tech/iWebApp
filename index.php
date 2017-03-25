@@ -59,7 +59,9 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 	require ('render/home2.php');
 } elseif (preg_match($base . 'admin?$@', $url, $match)) {
 	require ('render/admin.php');
-} elseif (preg_match($base . 'getting-around?$@', $url, $match)) {
+}elseif (preg_match($base . 'news-feed?$@', $url, $match)) {
+	require ('render/news-feed.php');
+}elseif (preg_match($base . 'getting-around?$@', $url, $match)) {
 	require ('render/maps.php');
 } elseif (preg_match($base . 'courses?$@', $url, $match)) {
 	require ('render/courses.php');

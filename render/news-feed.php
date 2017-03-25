@@ -263,6 +263,12 @@ $.post("cAPI/getPermissions",
       text-decoration: none;
   }
 
+  h2{
+    position: fixed;
+    left: 45%;
+    top: 5%;
+    font-size: 5em;
+  }
 </style>
 </head>
 <body style="overflow:hidden;" onload="downLoad()">
@@ -279,11 +285,13 @@ $.post("cAPI/getPermissions",
 </div>
 <!--close-Header-part-->
 
+
+
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-    <li class="active"><a href="."><i class="icon icon-home"></i> <span>Home</span></a> </li>
-    <li><a href="news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
+    <li><a href="homeAgain"><i class="icon icon-home"></i> <span>Home</span></a> </li>
+    <li class="active"><a href="news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
     <li> <a href="clubs"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
     <li> <a href="courses"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
     <li><a href="getting-around"><i class="icon icon-th"></i> <span>Getting Around</span></a></li>
@@ -305,6 +313,7 @@ $.post("cAPI/getPermissions",
 <!--main-container-part-->
 <div id="content">
 <!--breadcrumbs-->
+
 <!--End-breadcrumbs-->
 <style>
 input[type="text"]{
@@ -337,13 +346,6 @@ textarea{
     text-decoration: none;
     width: 100%;
     padding:0.75em 1em;
-}
-
-h2{
-  position: fixed;
-  left: 45%;
-  top: 5%;
-  font-size: 5em;
 }
 
 #submitpost, #submitnotif, #bb{
@@ -386,285 +388,65 @@ h2{
 }
 </style>
 <!--Action boxes-->
-  <div class="container-fluid">
-    <div class="quick-actions_homepage">
-      <ul class="quick-actions">
-        <div class="md-modal md-effect-1" id="modal-1">
-      			<div class="md-content">
-      				<h3 >New Post:</h3>
 
-      				<div id="new-post-form">
-      				<span  class="adminRadio">
-      					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost,#uploadimage_').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost,#uploadimage_').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
-      					<input type="text"  class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" class="form-el" style="color:#000000 !important" required>
-      					<input type="hidden" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
-      					<form id="uploadimage_" action="" method="post" enctype="multipart/form-data">
-      					<div id="selectImage"><h4 style="font-size:1.1em;text-align:left;margin-left:-0.3em;margin-top:1em;">Upload Image:</h4>
-      					<input type="file" class="form-el" style="    padding: 10px;background-color: #b1330d;color: #FFFFFF;border-radius: 10px;height:auto;" name="file" id="file_" required />
-      					</div>
-      					 <input type="submit" id="subbtn" class="form-el" style="display: none; background-color: #A5281B;" value="Submit">
-      					</form>
-      					<div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
-      					<div id="message"></div>
-      					<input type="text" name="demo-name" id="url" value="" placeholder="Link URL? Default:none" class="form-el" style="display:none;color:#000000 !important">
-      					<textarea name="demo-message" id="demo-message" placeholder="Text for new Post" class="form-el" rows="6" style="color:#000000 !important"></textarea>
-
-      					<div id="scopeSelect" class="form-el" style="display: none;">
-      						scopeSelect:
-      							<div class="select-wrapper" id="selectScope" >
-      								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
-      									<option value="">- Whom to notify -</option>
-      								</select>
-      							</div>
-      					</div>
-
-      					<button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Post!</button>
-      					<button class="" id="submitnotif" onclick="notif();" class="form-el" style="color: #fff !important;display:none;">Notify!</button>
-      					<button id="bb" onclick="$('#modal-1').removeClass('md-show');">Close me!</button>
-      				</div>
-      			</div>
-      		</div>
-
-          <div class="md-modal md-effect-1" id="modal-2">
-        		<div class="md-content">
-        				<h3>Add Event:</h3>
-
-        				<div id="new-post-form">
-        					<input type="text" class="form-el" name="demo-name" id="demo-name" value="" placeholder="Title" style="color:#000000 !important">
-
-        					<input type="text" name="demo-name" id="datepicker" value="" placeholder="yyyy-mm-dd" class="form-el" style="color: rgb(0, 0, 0) !important; display: block;">
-
-        					<div id="scopeSelect" class="form-el" style="display: block;">
-        						scopeSelect:
-        							<div class="select-wrapper" id="selectScope">
-        								<select name="demo-category" id="scope" placeholder="Scope" style="color:#000000 !important">
-        									<option value="">- Whom to notify -</option>
-        								</select>
-        							</div>
-        					</div>
-
-        					<button class="" id="submitpost" onclick="submitForm();" style="color: rgb(255, 255, 255) !important; display: none;">Post!</button>
-        					<button class="" id="submitnotif" onclick="notif();" style="color: rgb(255, 255, 255) !important; display: block;">Add event</button>
-        					<button onclick="$('#modal-2').removeClass('md-show');">Close me!</button>
-        				</div>
-        		</div>
-        	</div>
-
-          <div class="md-modal md-effect-1" id="modal-3">
-              <div class="md-content">
-                <h3 >Upload Image for Gallery:</h3>
-
-                <div id="new-post-form">
-
-                  <form id="uploadimage" action="" method="post" enctype="multipart/form-data">
-
-                  <input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">
-                  <div id="image_preview"><img id="previewing" src="favicon.png" style="max-width: 90%; max-height: 200px;display:block;margin:auto" /></div>
-                  <hr id="line">
-                  <div id="selectImage">
-                  <label>Select Your Image</label>
-                  <input type="file" class="form-el" style="padding: 10px;background-color: #b1330d;color: #FFFFFF;border-radius: 10px;height:auto;" name="file" id="file" required />
-                  </div>
-                   <input id="bb" type="submit" class="form-el" style="background-color: #A5281B;" value="Submit">
-                  </form>
-                  <div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
-                  <div id="message"></div>
-                  <!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
-                  <button id="bb" onclick="$('#modal-3').removeClass('md-show');" style="margin-left:0.8em !important;">Close me!</button>
-                </div>
-              </div>
-            </div>
-         <li class="bg_lb md-trigger" id="new-post-btn" data-modal="modal-1" onclick="$('#modal-1').addClass('md-show');"> <a> <i class="icon-dashboard"></i>   <!--<span class="label label-important">20</span> --> Add Post </a> </li>
-        <li class="bg_ly md-trigger" style="display: none;" id="new-post-btn" data-modal="modal-2" onclick="$('#modal-2').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>-->Add Event</a> </li>
-        <li class="bg_ly md-trigger" id="new-post-btn" data-modal="modal-3" onclick="$('#modal-3').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>--> Upload Image </a> </li>
-      </ul>
-    </div>
 <!--End-Action boxes-->
-
+<style>
+.img-post{
+  margin: 1em auto;
+  display: block;
+}
+.desc-post{
+  margin-left: 1em;
+  padding: 1em;
+  max-height: 10em;
+  overflow: auto;
+}
+</style>
 <!--Chart-box-->
 <!--End-Chart-box-->
     <div class="row-fluid">
       <div class="span6">
         <div class="widget-box">
-          <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
-            <h5>Notifications</h5>
+          <div class="widget-title bg_ly">
+            <h4 style="text-align:center">Title1</h4>
           </div>
-          <div class="widget-content nopadding collapse in" id="collapseG2">
-            <ul class="recent-posts">
-              <li>
-                <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
-                  <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
-                </div>
-              </li>
-              <li>
-                <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
-                  <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
-                </div>
-              </li>
-              <li>
-                <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
-                  <p><a href="#">This is a much longer one that will go on for a few lines.Itaffle to pad out the comment.</a> </p>
-                </div>
-              <li>
-                <!-- <button class="btn btn-warning btn-mini">View All</button> -->
-              </li>
-            </ul>
-          </div>
+          <div>
+          <img class="img-post" src="favicon.png">
         </div>
-      <div class="widget-box">
-          <div class="widget-title bg_lo"  data-toggle="collapse" href="#collapseG3" > <span class="icon"> <i class="icon-chevron-down"></i> </span>
-            <h5>Upcoming Events</h5>
+          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
           </div>
-          <div class="widget-content nopadding updates collapse in" id="collapseG3">
-            <div class="new-update clearfix"><i class="icon-ok-sign"></i>
-              <div class="update-done"><a title="" href="#"><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></a> <span>dolor sit amet, consectetur adipiscing eli</span> </div>
-              <div class="update-date"><span class="update-day">20</span>jan</div>
-            </div>
-            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a title="" href="#"><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a title="" href="#"><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a title="" href="#"><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a title="" href="#"><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
-          </div>
-        </div>
 
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-ok"></i></span>
-            <h5>Courses</h5>
-          </div>
-          <div class="widget-content">
-            <div class="todo">
-              <ul>
-                <li class="clearfix">
-                  <div class="txt"> Luanch This theme on Themeforest <span class="by label">Alex</span></div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> Manage Pending Orders <span class="date badge badge-warning">Today</span> </div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> MAke your desk clean <span class="by label">Admin</span></div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> Today we celebrate the theme <span class="date badge badge-info">08.03.2013</span> </div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> Manage all the orders <span class="date badge badge-important">12.03.2013</span> </div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-              </ul>
+          <div class="widget-box">
+            <div class="widget-title bg_ly">
+              <h4 style="text-align:center">Title1</h4>
             </div>
+            <div>
+            <img class="img-post" src="favicon.png">
           </div>
-        </div>
-      </div>
+            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+
+    </div>
       <div class="span6">
         <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-repeat"></i></span>
-            <h5>Assignments</h5>
+          <div class="widget-title bg_ly">
+            <h4 style="text-align:center">Title1</h4>
           </div>
-          <div class="widget-content nopadding">
-            <ul class="activity-list">
-              <li><a href="#"> <i class="icon-user"></i> <strong>Themeforest</strong>Approved My college theme <strong>1 user</strong> <span>2 hours ago</span> </a></li>
-              <li><a href="#"> <i class="icon-file"></i> <strong>My College is PSD Template </strong> Theme <strong>Psd Theme</strong> <span>2months ago</span> </a></li>
-              <li><a href="#"> <i class="icon-envelope"></i> <strong>Lorem ipsum doler set</strong> adag<strong>agg</strong> <span>2 days ago</span> </a></li>
-              <li><a href="#"> <i class="icon-picture"></i> <strong>ITs my First Admin</strong> so very<strong>exited</strong> <span>2 days ago</span> </a></li>
-              <li><a href="#"> <i class="icon-user"></i> <strong>Admin</strong> bans <strong>3 users</strong> <span>week ago</span> </a></li>
-            </ul>
-          </div>
+          <div>
+          <img class="img-post" src="favicon.png">
         </div>
+          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          </div>
 
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"><i class="icon-repeat"></i></span>
-            <h5>Tomorrow's Classes</h5>
+          <div class="widget-box">
+            <div class="widget-title bg_ly">
+              <h4 style="text-align:center">Title1</h4>
+            </div>
+            <div>
+            <img class="img-post" src="favicon.png">
           </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Timing</th>
-                  <th>Subjectx</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td><span class="label">Default</span></td>
-                  <td><code>&lt;span class="label"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-success">Success</span></td>
-                  <td><code>&lt;span class="label label-success"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-warning">Warning</span></td>
-                  <td><code>&lt;span class="label label-warning"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-important">Important</span></td>
-                  <td><code>&lt;span class="label label-important"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-info">Info</span></td>
-                  <td><code>&lt;span class="label label-info"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-inverse">Inverse</span></td>
-                  <td><code>&lt;span class="label label-inverse"&gt;</code></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class="widget-box">
-          <div class="widget-title"> <span class="icon"> <i class="icon-th"></i> </span>
-            <h5>Bus Time Table</h5>
-          </div>
-          <div class="widget-content nopadding">
-            <table class="table table-bordered table-striped">
-              <thead>
-                <tr>
-                  <th>Destination</th>
-                  <th>1st</th>
-                  <th>2nd</th>
-                  <th>3rd</th>
-                  <th>4th</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="odd gradeX">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
-                </tr>
-                <tr class="even gradeC">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
-                </tr>
-                <tr class="odd gradeA">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
-                </tr>
-                <tr class="even gradeA">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
+            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+            </div>
         </div>
     </div>
   </div>

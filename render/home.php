@@ -91,7 +91,6 @@
                             	// window.location="";
                             	// location.reload(true);
                             	window.location.reload();
-
                             }
                     }
 		        ,"json");
@@ -421,7 +420,7 @@
 											</a>
 											</div>
 										</article>
-										
+
 										<article>
 											<a href="assignments">
 											<span class="icon fa-diamond"></span>
@@ -534,7 +533,6 @@
 			<script src="assets/modal/js/classie.js"></script>
 			<script src="assets/modal/js/modalEffects.js"></script>
 			<script src="assets/modal/js/cssParser.js"></script>
-			<script src="assets/modal/js/css-filters-polyfill.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/home/js/main.js"></script>
 			<script>

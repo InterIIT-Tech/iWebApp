@@ -36,7 +36,6 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 		}else{
 			echo json_encode(array(0)) ;
 		}
-		break;
 }elseif (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){
 		require ('render/home.php');

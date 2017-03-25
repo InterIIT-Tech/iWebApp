@@ -80,6 +80,6 @@ switch($action){
 		break;
 
 }
- 
+
 // echo "plain text";
 ?>

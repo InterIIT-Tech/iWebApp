@@ -22,8 +22,6 @@ class Routing
 }
 // echo "check";
 $url = $_SERVER['REQUEST_URI'];
-// $url = rtrim($url,'/');
-// $url = rtrim($url,"/");
 preg_match('@(.*)index.php(.*)$@', $_SERVER['PHP_SELF'], $mat );
 $base = '@^'. $mat[1] ;
 	if(!isset($_SESSION['f403'])){
@@ -79,6 +77,12 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 	require ('render/viewCourse.php');
 } elseif (preg_match($base . 'assignments?$@', $url, $match)) {
 	require ('render/assignments.php');
+} elseif (preg_match($base . 'mpr(.*)$@', $url, $match)) {
+	require ('render/mpr-grp.php');
+} elseif (preg_match($base . 'Njack(.*)$@', $url, $match)) {
+	require ('render/Njack-GSOC.php');
+} elseif (preg_match($base . 'Byte(.*)$@', $url, $match)) {
+	require ('render/Byterace.php');
 } elseif (preg_match($base . 'assignments/dl/(.*)$@', $url, $match)) {
 	require ('render/assignmentDL.php');
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {

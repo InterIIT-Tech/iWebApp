@@ -70,26 +70,7 @@ $.post("cAPI/viewPost",
                 }
         ,"json");
 
-$.post("cAPI/listAssign",
-                    {},
-                    function(data, status){
-                    console.log("Response");
-                    console.log("Data: " + data + "\nStatus: " + status);
-                        if(status=='success'){
-                            if(data[0]==1){
-                          var dataObject=data[2];
-                          for(var i=0;i<data[1];i++){
-                             $("#assign").prepend('<li><a class="assignments_left " href="assignments/view/'+dataObject[i]['aID']+'">'+dataObject[i]['aName']+'</a></li>');
 
-                          }
-                        }
-                        }else{
-                          // window.location="";
-                          // location.reload(true);
-                          window.location.reload();
-                        }
-                }
-        ,"json");
 $.post("cAPI/classTmw",
                     {},
                     function(data, status){
@@ -100,29 +81,6 @@ $.post("cAPI/classTmw",
                           var dataObject=data[2];
                           for(var i=0;i<data[1];i++){
                              $("#clTmw").prepend('<li>'+dataObject[i]+'</li>');
-
-                          }
-                        }
-                        }else{
-                          // window.location="";
-                          // location.reload(true);
-                          window.location.reload();
-
-                        }
-                }
-        ,"json");
-$.post("cAPI/getNotif",
-                    {},
-                    function(data, status){
-                    console.log("Response");
-                    console.log("Data: " + data + "\nStatus: " + status);
-                    var href=null;
-                        if(status=='success'){//$("#myloader").fadeOut();
-                            if(data[0]==1){
-                          var dataObject=data[2];
-                          for(var i=0;i<data[1];i++){
-                            href=(dataObject[i]['url'])?"href="+dataObject[i]['url']:"";
-                             $("#notifPanel").append('<li><a target="_blank" '+href+' alt="Notification sent by:'+dataObject[i]['author']+'">'+dataObject[i]['title']+'</a></li>');
 
                           }
                         }
@@ -487,25 +445,39 @@ h2{
       <div class="span6">
         <div class="widget-box">
           <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
+          <script>
+            $(document).ready(function(){
+              $.post("cAPI/getNotif",
+                    {},
+                    function(data, status){
+                    console.log("Response");
+                    console.log("Data: " + data + "\nStatus: " + status);
+                    var href=null;
+                        if(status=='success'){//$("#myloader").fadeOut();
+                            if(data[0]==1){
+                          var dataObject=data[2];
+                          for(var i=0;i<data[1];i++){
+                            href=(dataObject[i]['url'])?"href="+dataObject[i]['url']:"";
+                
+                             $("#notifylist").append('<li><div class="article-post"> <span class="user-info"> By: '+dataObject[i]['author']+' / Date & Time :  '+ dataObject[i]['timestr']+'</span><p><a '+href+'>'+dataObject[i]['title']+'</a> </p></div></li>');
+
+                          }
+                        }
+                        }else{
+                          // window.location="";
+                          // location.reload(true);
+                          window.location.reload();
+
+                        }
+                }
+        ,"json");
+
+            });
+          </script>
             <h5>Notifications</h5>
           </div>
           <div class="widget-content nopadding collapse in" id="collapseG2">
-            <ul class="recent-posts">
-              <li>
-                <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
-                  <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
-                </div>
-              </li>
-              <li>
-                <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
-                  <p><a href="#">This is a much longer one that will go on for a few lines.It has multiple paragraphs and is full of waffle to pad out the comment.</a> </p>
-                </div>
-              </li>
-              <li>
-                <div class="article-post"> <span class="user-info"> By: john Deo / Date: 2 Aug 2012 / Time:09:27 AM </span>
-                  <p><a href="#">This is a much longer one that will go on for a few lines.Itaffle to pad out the comment.</a> </p>
-                </div>
-              <li>
+            <ul id="notifylist" class="recent-posts">
                 <!-- <button class="btn btn-warning btn-mini">View All</button> -->
               </li>
             </ul>
@@ -565,12 +537,27 @@ h2{
             <h5>Assignments</h5>
           </div>
           <div class="widget-content nopadding">
-            <ul class="activity-list">
-              <li><a href="#"> <i class="icon-user"></i> <strong>Themeforest</strong>Approved My college theme <strong>1 user</strong> <span>2 hours ago</span> </a></li>
-              <li><a href="#"> <i class="icon-file"></i> <strong>My College is PSD Template </strong> Theme <strong>Psd Theme</strong> <span>2months ago</span> </a></li>
-              <li><a href="#"> <i class="icon-envelope"></i> <strong>Lorem ipsum doler set</strong> adag<strong>agg</strong> <span>2 days ago</span> </a></li>
-              <li><a href="#"> <i class="icon-picture"></i> <strong>ITs my First Admin</strong> so very<strong>exited</strong> <span>2 days ago</span> </a></li>
-              <li><a href="#"> <i class="icon-user"></i> <strong>Admin</strong> bans <strong>3 users</strong> <span>week ago</span> </a></li>
+          <script type="text/javascript">
+            $(document).ready(function(){
+              $.post("cAPI/listAssign",
+                    {},
+                    function(data, status){
+                    console.log("Response");
+                    console.log(data);
+                        if(status=='success'){
+                            if(data[0]==1){
+                          var dataObject=data[2];
+                          for(var i=0;i<data[1];i++){
+                             $("#assignList").append('<li><a href="assignments"> '+dataObject[i]['aName']+' <span> Uploaded:'+dataObject[i]['uploaded']+'</span> </a></li>');
+                          }
+                        }
+                        }
+                }
+        ,"json");
+            });
+          </script>
+            <ul id="assignList" class="activity-list">
+              
             </ul>
           </div>
         </div>

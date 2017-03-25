@@ -421,6 +421,15 @@
 											</a>
 											</div>
 										</article>
+										
+										<article>
+											<a href="assignments">
+											<span class="icon fa-diamond"></span>
+											<div class="content">
+												<h3>Assignments</h3>
+											</a>
+											</div>
+										</article>
 										<article>
 											<a href="timetable">
 											<span class="icon fa-paper-plane"></span>

@@ -78,6 +78,7 @@ class userAPI {
 			return $ret;
 	}
 
+
 	/**
 	 * @var username and pass 
 	 * Function only checks for correct password

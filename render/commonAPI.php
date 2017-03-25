@@ -16,6 +16,13 @@ switch($action){
 	case "userLogin":
 		echo json_encode($userAPI->checkAuth($_POST['username'],$_POST['pswd']));
 		break;
+	case "checkLogin":
+		if(isset($_SESSION['uID'])){
+			echo json_encode(array(1,$_SESSION['uID'],$_SESSION['uName'])) ;
+		}else{
+			echo json_encode(array(0)) ;
+		}
+		break;
 	case "regUser": 
 		echo json_encode($userAPI->regUser($_POST['name'],$_POST['role']=0,$_POST['uAlias'],$_POST['pswd'],$_POST['email']));
 		break;

@@ -386,7 +386,98 @@ textarea{
       				</div>
       			</div>
       		</div>
+  <script>
 
+        $(document).ready(function (e) {
+
+        $("#file_").change(function(e){
+          e.preventDefault();
+          $("#subbtn").click();
+        });
+        $("#uploadimage_").on('submit',(function(e) {
+        e.preventDefault();
+        $("#message").empty();
+        $('#loading').show();
+        $.ajax({
+        url: "upl/post", // Url to which the request is send
+        type: "POST",             // Type of request to be send, called as method
+        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false,       // The content type used when sending data to the server.
+        cache: false,             // To unable request pages to be cached
+        processData:false,        // To send DOMDocument or non processed data file it is set to false
+        success: function(data)   // A function to be called if request succeeds
+        {
+          console.log(data);
+        $('#loading').hide();
+        if(data!=-1){
+          $("#selectImage").empty();
+          $("#selectImage").html("<h4>Image uploaded</h4>");
+          $("#imgURL").val(data);
+          console.log("works");
+        }else{
+          $("#message_").html(data);
+        }
+        }
+        });
+        }));
+
+        $("#uploadimage").on('submit',(function(e) {
+        e.preventDefault();
+        $("#message").empty();
+        $('#loading').show();
+        $.ajax({
+        url: "upl/gallery", // Url to which the request is send
+        type: "POST",             // Type of request to be send, called as method
+        data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
+        contentType: false,       // The content type used when sending data to the server.
+        cache: false,             // To unable request pages to be cached
+        processData:false,        // To send DOMDocument or non processed data file it is set to false
+        success: function(data)   // A function to be called if request succeeds
+        {
+          console.log(data);
+        $('#loading').hide();
+        if(data==1){
+          $("#modal-3").fadeOut(1000);
+          $("#modal-3 .md-content h3").text("Uploaded!");
+                    $("#new-post-form").hide();
+                    $("#add-upload-btn").hide();
+          // console.log("works");
+        }else{
+          $("#message").html(data);
+        }
+        }
+        });
+        }));
+
+        // Function to preview image after validation
+        $(function() {
+        $("#file").change(function() {
+        $("#message").empty(); // To remove the previous error message
+        var file = this.files[0];
+        var imagefile = file.type;
+        var match= ["image/jpeg","image/png","image/jpg"];
+        if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+        {
+        $('#previewing').attr('src','noimage.png');
+        $("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+        return false;
+        }
+        else
+        {
+        var reader = new FileReader();
+        reader.onload = imageIsLoaded;
+        reader.readAsDataURL(this.files[0]);
+        }
+        });
+        });
+        function imageIsLoaded(e) {
+        $("#file").css("color","green");
+        $('#image_preview').css("display", "block");
+        $('#previewing').attr('src', e.target.result);
+        $('#previewing').attr('margin', 'auto');
+        };
+        });
+</script>
           <div class="md-modal md-effect-1" id="modal-2">
         		<div class="md-content">
         				<h3>Add Event:</h3>
@@ -662,99 +753,6 @@ textarea{
 <script src="assets/modal/js/classie.js"></script>
 <script src="assets/modal/js/modalEffects.js"></script>
 <script src="assets/modal/js/cssParser.js"></script>
-<script>
-
-  $(document).ready(function (e) {
-
-  $("#file_").change(function(e){
-    e.preventDefault();
-    $("#subbtn").click();
-  });
-  $("#uploadimage_").on('submit',(function(e) {
-  e.preventDefault();
-  $("#message").empty();
-  $('#loading').show();
-  $.ajax({
-  url: "upl/post", // Url to which the request is send
-  type: "POST",             // Type of request to be send, called as method
-  data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-  contentType: false,       // The content type used when sending data to the server.
-  cache: false,             // To unable request pages to be cached
-  processData:false,        // To send DOMDocument or non processed data file it is set to false
-  success: function(data)   // A function to be called if request succeeds
-  {
-    console.log(data);
-  $('#loading').hide();
-  if(data!=-1){
-    $("#selectImage").empty();
-    $("#selectImage").html("<h4>Image uploaded</h4>");
-    $("#imgURL").val(data);
-    console.log("works");
-  }else{
-    $("#message_").html(data);
-  }
-  }
-  });
-  }));
-
-  $("#uploadimage").on('submit',(function(e) {
-  e.preventDefault();
-  $("#message").empty();
-  $('#loading').show();
-  $.ajax({
-  url: "upl/gallery", // Url to which the request is send
-  type: "POST",             // Type of request to be send, called as method
-  data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-  contentType: false,       // The content type used when sending data to the server.
-  cache: false,             // To unable request pages to be cached
-  processData:false,        // To send DOMDocument or non processed data file it is set to false
-  success: function(data)   // A function to be called if request succeeds
-  {
-    console.log(data);
-  $('#loading').hide();
-  if(data==1){
-    $("#modal-3").fadeOut(1000);
-    $("#modal-3 .md-content h3").text("Uploaded!");
-              $("#new-post-form").hide();
-              $("#add-upload-btn").hide();
-    // console.log("works");
-  }else{
-    $("#message").html(data);
-  }
-  }
-  });
-  }));
-
-  // Function to preview image after validation
-  $(function() {
-  $("#file").change(function() {
-    console.log("dasdsad");
-  $("#message").empty(); // To remove the previous error message
-  var file = this.files[0];
-  var imagefile = file.type;
-  var match= ["image/jpeg","image/png","image/jpg"];
-  if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
-  {
-  $('#previewing').attr('src','noimage.png');
-  $("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
-  return false;
-  }
-  else
-  {
-  var reader = new FileReader();
-  reader.onload = imageIsLoaded;
-  reader.readAsDataURL(this.files[0]);
-  }
-  });
-  });
-  function imageIsLoaded(e) {
-  $("#file").css("color","green");
-  $('#image_preview').css("display", "block");
-  $('#previewing').attr('src', e.target.result);
-  $('#previewing').attr('margin', 'auto');
-  };
-  });
-</script>
 <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:

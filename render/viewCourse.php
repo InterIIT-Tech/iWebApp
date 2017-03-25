@@ -118,7 +118,7 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major"><?php echo $code.' : '.$name;?></h1>
-							<span class="image fit"><img src="../../img/courses/<?php echo $img;?>" alt="" style="height: 45vw ; " /></span>
+							<span class="image fit" ><img src="../../img/courses/<?php echo $img;?>" alt="" style="height: 20vw ;overflow: hidden; " /></span>
 							<h2>About Course</h2>
 							<p><?php echo $desc;?></p>
 							<h2>About Timings:</h2>

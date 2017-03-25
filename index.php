@@ -70,6 +70,12 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/viewCourse.php');
 } elseif (preg_match($base . 'assignments(.*)$@', $url, $match)) {
 	require ('render/assignments.php');
+} elseif (preg_match($base . 'mpr(.*)$@', $url, $match)) {
+	require ('render/mpr-grp.php');
+} elseif (preg_match($base . 'Njack(.*)$@', $url, $match)) {
+	require ('render/Njack-GSOC.php');
+} elseif (preg_match($base . 'Byte(.*)$@', $url, $match)) {
+	require ('render/Byterace.php');
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {

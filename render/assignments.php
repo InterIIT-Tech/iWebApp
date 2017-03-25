@@ -38,7 +38,33 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
         } else { $msg="error!".mysqli_error($link);}
         mysqli_close($link);
     }
-}else{
+}
+elseif(isset($_POST['dirval'])){
+	$validextensions = array("pdf", "doc", "docx","c","cpp","py","java");
+	$temporary = explode(".", $_FILES["file"]["name"]);
+	$file_extension = end($temporary);
+	$dir= $_POST['dirval'].'_'.$_SESSION['uName'].'_'.str_replace(".", "", strval(microtime(true))).'.'.$file_extension;
+	if (($_FILES["file"]["size"] < 10000000) && in_array($file_extension, $validextensions)) {
+
+		if ($_FILES["file"]["error"] > 0){
+			$msg = "Return Code: " . $_FILES["file"]["error"] . "<br/><br/>";
+		} else {
+			$sourcePath = $_FILES['file']['tmp_name'];
+
+			$targetPath = "files/".$dir;
+			$sql = "INSERT INTO `submission`(`aID`,`date`,`uID`,`filename`) VALUES ('".$_POST['aidval']."', DATE(NOW()), '". $_SESSION['uID'] ."','".$targetPath."')";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$status= "1";
+        	move_uploaded_file($sourcePath,$targetPath) ;
+        	// mkdir("gallery/$alias", 0777);
+        } else { $msg="error!".mysqli_error($link);}
+        mysqli_close($link);
+		}
+	}
+}
+else if(isset($_FILES["file"]["type"])){
 	$msg="Details Incomplete.";
 }
 // echo $_POST['fName'];
@@ -57,6 +83,9 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="assets/modal/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="assets/modal/css/component.css" />
+		<script src="assets/modal/js/modernizr.custom.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/timetable/css/main.css" />
@@ -101,7 +130,11 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
                             }
                     }
 		        ,"json");
-
+			function subm(dir,aID){
+				$('#modal-1').addClass('md-show');
+				$("#dirval").val(dir);
+				$("#aidval").val(aID);
+			}
 		</script>
 		<script src="assets/js/fortyNav.js"></script>
 		<style>
@@ -117,6 +150,29 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
 		</style>
 	</head>
 	<body>
+
+	<div class="md-modal md-effect-1" id="modal-1">
+			<div class="md-content">
+				<h3 >Submission:</h3>
+
+				<div id="new-post-form">
+
+					<form  action="" method="post" enctype="multipart/form-data">
+					<div id="selectImage">
+					<input type="hidden" id="dirval" name="dirval" value="">
+					<input type="hidden" id="aidval" name="aidval" value="">
+					<label>Select File:</label>
+					<input type="file" class="form-el" style="    padding: 10px;background-color: #b1330d;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
+					</div>
+					 <input type="submit" class="" style="background-color: #c0392b; font-family: 'Lato', Calibri, Arial, sans-serif;     border: none;    margin: 10px;    font-weight: bold;    margin-left: 20px;    padding-top: 5px;    padding-left: 10px;padding-right: 10px;" value="SUBMIT">
+					<button onclick="$('#modal-1').removeClass('md-show');" style="margin-left:1.5em">Close</button>
+					</form>
+					<div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
+					<div id="message"></div>
+					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
+				</div>
+			</div>
+		</div>
 	<div id="perspective" class="perspective effect-airbnb">
 			<div class="container">
 				<div class="wrapper">
@@ -202,7 +258,7 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
 										<h1>Your Assignments</h1><hr style="width: 30%">
 										<h3>This section shows you your's Assignments</h3>
 									</header><hr style="width: 90%">
-
+										<h3 style="color:red"><?php echo (isset($msg))?$msg:""; ?></h3>
 									<h3>Assignments with upcoming deadlines:</h3>
 													<div class="table-wrapper">
 														<table class="alt">
@@ -233,8 +289,8 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
 															            		$print.="<td>".$row['lastdate']."</td>";
 															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href ='.$row['filename'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>';
 															        			$print.='
-																  <td style="width:13% ; text-align: center;background-color: #000000 ; ">
-															        <a onclick ="subm('.$row['dir'].')" >Submit</a>   </td>	';
+																  <td onclick ="subm('.$row['dir'].','.$row['aID'].')"  style="cursor:pointer;width:13% ; text-align: center;background-color: #000000 ; ">
+															        <a  >Submit</a>   </td>	';
 															            	}
 															            	echo $print;
 															            
@@ -259,8 +315,6 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
 																	<th>Name</th>
 																	<th>Deadline</th>
 																	<th>Download</th>
-																	<th style="text-align: center;">  Submit</th>
-																
 																	
 																</tr>
 															</thead>
@@ -279,9 +333,7 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
 															            		$print.="<td>".$row['aName']."</td>";
 															            		$print.="<td>".$row['lastdate']."</td>";
 															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href ='.$row['filename'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i></a></td>';
-															        			$print.='
-																   <td style="width:13% ; text-align: center;background-color: #000000 ; ">
-															        <a onclick ="subm('.$row['dir'].')" >Submit</a>   </td>		';
+															        			//$print.='<td style="width:13% ; text-align: center;background-color: #000000 ; "><a onclick ="subm('.$row['dir'].')" >Submit</a></td>';
 															            	}
 															            	echo $print;
 															            

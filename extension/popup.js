@@ -9,8 +9,8 @@
  *   is found.
  */
 
-webRoot = "http://localhost/~muks/iwa/";
-
+// webRoot = "http://localhost/~muks/iwa/";
+webRoot = "http://www.iwebapp.ml/";
  $(document).ready(function(){
 
          $("#icon1").click(function(){

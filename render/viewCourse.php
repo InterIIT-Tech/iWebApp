@@ -118,14 +118,14 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 					<section id="main" class="wrapper">
 						<div class="inner">
 							<h1 class="major"><?php echo $code.' : '.$name;?></h1>
-							<span class="image fit"><img src="../../img/courses/<?php echo $img;?>" alt="" /></span>
+							<span class="image fit"><img src="../../img/courses/<?php echo $img;?>" alt="" style="height: 45vw ; " /></span>
 							<h2>About Course</h2>
 							<p><?php echo $desc;?></p>
 							<h2>About Timings:</h2>
 							<ul><?php echo $timings;?></ul>
 							<h2>Rate Course:</h2>
-							<div class="select-wrapper" >
-						<select name="demo-category" style="width:200px" id="rating" onchange="rate();">
+							<div class="select-wrapper"  style="width:200px">
+						<select name="demo-category"  id="rating" onchange="rate();">
 							<option value="" style="background-color: #2a2f4a ;">- Select Rating -</option>
 							<option value="1" style="background-color: #2a2f4a ;">1</option>
 							<option value="2" style="background-color: #2a2f4a ;">2</option>

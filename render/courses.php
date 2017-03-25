@@ -70,8 +70,8 @@
 					font-size: 30px;
 					position:fixed;
 					color: #312450;
-					right: 20px;
-					top: 10px;
+					right: 1em;
+					top: 0.5px;
 					z-index: 1000;
 				}
 				@media screen and (min-width: 736px) {
@@ -190,13 +190,14 @@
                                 	i++;
                                 	$("#meCourses").append(courseData);
                                 }
+                                i=0 ;
                                  while(ce[i]){
                                 	currElement = ce[i];
                                 	console.log(currElement);
                                 	courseData ='<section class="">	<a  class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'" ';
                                 	if(cSubs[currElement[0]]==1){
 	                                	courseData+='onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
-	                                	courseData+='Subscribed!</a></li></ul></div></div></section>';
+	                                
 
                                 	}else {
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',1);" class="button">';

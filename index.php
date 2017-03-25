@@ -42,12 +42,14 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/commonAPI.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {
 	require ('render/login.php');
-} /*elseif (preg_match($base . 'register?$@', $url, $match)) {
+} elseif (preg_match($base . 'register?$@', $url, $match)) {
 	require ('render/register.php');//depreciates
-} */elseif( !isset($_SESSION['uID']) ) {
+} elseif( !isset($_SESSION['uID']) ) {
 	header("Location: ".$webRoot);
 } elseif (preg_match($base . 'timetable?$@', $url, $match)) {
 	require ('render/timetable.php');
+} elseif (preg_match($base . 'home?$@', $url, $match)) {
+	require ('render/home2.php');
 } elseif (preg_match($base . 'admin?$@', $url, $match)) {
 	require ('render/admin.php');
 } elseif (preg_match($base . 'getting-around?$@', $url, $match)) {

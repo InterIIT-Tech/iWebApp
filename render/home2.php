@@ -4,14 +4,39 @@
 		<style media="screen" type="text/css">
 			.layer1_class { position: absolute; z-index: 1; top: 0px; left: 0px; visibility: visible;height: 100%;width: 100%;}
 			.layer2_class { visibility: hidden }
+			.box {
+				padding: 1em !important;
+				box-shadow: 5px 4px 3px 0px rgba(201, 199, 196, 0.45);
+				height: 23em;
+			}
+			.cardHead {
+				line-height: 1 !important; 
+				margin-bottom: 0.5em !important;
+			}
+			.box > ul {
+				font-size: 1.3em; 
+				text-decoration: none;
+				padding: 0;
+
+			}
+			a {
+				border-bottom: none !important;
+			}
+
+			@media screen and (max-width: 800px) {
+				.box{
+					width:95% !important;
+					margin: 0.4em 2.5% !important;
+				}
+			}
 		</style>
 		<script>
 			function downLoad(){
 				$("body").css("overflow","auto");
 				if(localStorage.getItem("lastPage")==window.location){
-					var del = 0;
+					var del = 0;	
 				}else{
-					var del = 750;
+					var del = 750;	
 				}
 				$("body").animate("left:0px",del,function(){
 				if (document.all){
@@ -59,7 +84,7 @@
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
                             		if(dataObject[i]['title']!=""){
-
+                            			
 	                               $("#news-feed").append('<article><a class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
 
                             		}
@@ -83,7 +108,7 @@
                                 if(data[0]==1){
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
-	                               $("#assign").prepend('<li><a class="assignments_left " href="assignments/view/'+dataObject[i]['aID']+'">'+dataObject[i]['aName']+'</a></li>');
+	                               $("#assign").prepend('<li class="fa fa-arrow-circle-right"><a class="assignments_left " href="assignments/view/'+dataObject[i]['aID']+'"> '+dataObject[i]['aName']+'</a></li>');
 
                             	}
                             }
@@ -104,7 +129,7 @@
                                 if(data[0]==1){
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
-	                               $("#clTmw").prepend('<li>'+dataObject[i]+'</li>');
+	                               $("#classTmw").prepend('<li class="fa fa-arrow-circle-right">'+dataObject[i]+'</li>');
 
                             	}
                             }
@@ -127,7 +152,7 @@
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
                             		href=(dataObject[i]['url'])?"href="+dataObject[i]['url']:"";
-	                               $("#notifPanel").append('<li><a target="_blank" '+href+' alt="Notification sent by:'+dataObject[i]['author']+'">'+dataObject[i]['title']+'</a></li>');
+	                               $("#notifPanel").append('<li class="fa fa-arrow-circle-right"><a target="_blank" '+href+' alt="Notification sent by:'+dataObject[i]['author']+'"> '+dataObject[i]['title']+'</a></li><br>');
 
                             	}
                             }
@@ -357,7 +382,7 @@
 				<h3 >Upload Image for Gallery:</h3>
 
 				<div id="new-post-form">
-				
+				<span  class="adminRadio">
 					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
 
 					<input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">
@@ -407,7 +432,7 @@
 								</section>
 
 							<!-- Section -->
-								<section>
+								<!-- <section>
 									<header class="major">
 										<h2>Navigation</h2>
 									</header>
@@ -447,8 +472,54 @@
 										</article>
 									</div>
 								</section>
-
+ -->
 							<!-- Section -->
+								<section class="row">
+									<div class="box" style="margin-left: 4%; width: 45%;">
+										<header class="major">
+											<h2 class="cardHead">Notifications</h2>
+										</header>
+										<ul id="notifPanel">
+										<!-- <li class="fa fa-arrow-circle-right"><a href="timetable"> tatata</a></li><br> -->
+										</ul>
+									</div>
+									<div class="box" style="margin-left: 4%;  width: 45%;">
+										<header class="major">
+											<h2 class="cardHead">Assignments</h2>
+										</header>
+										<ul id="assign">
+										</ul>
+									</div>
+									<div class="box" style="margin-left: 4%;  width: 45%;">
+										<header class="major">
+											<h2 class="cardHead">Classes Tomorrow</h2>
+										</header>
+										<ul id="classTmw">
+										</ul>
+									</div>
+									<div class="box" style="margin-left: 4%;  width: 45%;">
+										<header class="major">
+											<h2 class="cardHead">Upcoming Events</h2>
+										</header>
+										<ul id="events">
+										</ul>
+									</div>
+									<div class="box" style="margin-left: 4%;  width: 45%;">
+										<header class="major">
+											<h2 class="cardHead">Courses</h2>
+										</header>
+										<ul id="courses">
+										</ul>
+									</div>
+									<div class="box" style="margin-left: 4%;  width: 45%;">
+										<header class="major">
+											<h2 class="cardHead">Clubs</h2>
+										</header>
+										<ul id="clubs">
+										</ul>
+									</div>
+								</section>
+
 								<section>
 									<header class="major">
 										<h2>Campus Updates</h2>
@@ -457,7 +528,6 @@
 
 									</div>
 								</section>
-
 						</div>
 					</div>
 

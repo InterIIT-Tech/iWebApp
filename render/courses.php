@@ -70,8 +70,8 @@
 					font-size: 30px;
 					position:fixed;
 					color: #312450;
-					right: 20px;
-					top: 10px;
+					right: 1em;
+					top: 0.5px;
 					z-index: 1000;
 				}
 				@media screen and (min-width: 736px) {

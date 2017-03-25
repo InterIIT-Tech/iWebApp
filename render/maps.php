@@ -28,19 +28,7 @@ if($result && mysqli_num_rows($result)>0){
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		<script src="assets/js/modernizr.custom.25376.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('#showMenu').click(function(){
-					$('.outer-nav').fadeIn(500);
-				});
-				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100);
-					if($(window).width()<800){
-						window.location.reload();
-					}
-				});
-			});
-		</script>
+		<script src="assets/js/fortyNav.js"></script>
 		<style>
 				.wrapper.fullscreen {
 					min-height: 40vh !important;

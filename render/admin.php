@@ -15,16 +15,7 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/admin/css/ie8.css" /><![endif]-->
 		<script src="assets/js/modernizr.custom.25376.js"></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script>
-			$(document).ready(function(){
-				$('#showMenu').click(function(){
-					$('.outer-nav').hide().fadeIn(500);
-				});
-				$(".container").click(function(){
-					$('.outer-nav').fadeOut(100).fadeIn(1000);
-				});
-			});
-		</script>
+		<script src="assets/js/fortyNav.js"></script>
 		<style>
 				.wrapper.fullscreen {
 					min-height: 40vh !important;

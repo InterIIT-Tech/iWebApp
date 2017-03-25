@@ -75,11 +75,11 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 	require ('render/viewCourse.php');
 } elseif (preg_match($base . 'assignments?$@', $url, $match)) {
 	require ('render/assignments.php');
-} elseif (preg_match($base . 'mpr(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'groups/mpr(.*)$@', $url, $match)) {
 	require ('render/mpr-grp.php');
-} elseif (preg_match($base . 'Njack(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'groups/Njack(.*)$@', $url, $match)) {
 	require ('render/Njack-GSOC.php');
-} elseif (preg_match($base . 'Byte(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'groups/Byte(.*)$@', $url, $match)) {
 	require ('render/Byterace.php');
 } elseif (preg_match($base . 'assignments/dl/(.*)$@', $url, $match)) {
 	require ('render/assignmentDL.php');

@@ -4,9 +4,9 @@
 		<title>Group posts  </title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="assets/mpr-grps/js/ie/html5shiv.js"></script><![endif]-->
-		<link rel="stylesheet" href="assets/mpr-grp/css/main.css" />
-		<!--[if lte IE 8]><link rel="stylesheet" href="assets/mpr-grp/css/ie8.css" /><![endif]-->
+		<!--[if lte IE 8]><script src="../assets/mpr-grps/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="../assets/mpr-grp/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="../assets/mpr-grp/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
 
@@ -165,11 +165,11 @@
 			</div>
 
 		<!-- Scripts -->
-			<script src="assets/mpr-grp/js/jquery.min.js"></script>
-			<script src="assets/mpr-grp/js/skel.min.js"></script>
-			<script src="assets/mpr-grp/js/util.js"></script>
-			<!--[if lte IE 8]><script src="assets/mpr-grp/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/mpr-grp/js/main.js"></script>
+			<script src="../assets/mpr-grp/js/jquery.min.js"></script>
+			<script src="../assets/mpr-grp/js/skel.min.js"></script>
+			<script src="../assets/mpr-grp/js/util.js"></script>
+			<!--[if lte IE 8]><script src="../assets/mpr-grp/js/ie/respond.min.js"></script><![endif]-->
+			<script src="../assets/mpr-grp/js/main.js"></script>
 
 	</body>
 </html>

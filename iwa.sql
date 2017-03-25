@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Mar 25, 2017 at 02:41 PM
+-- Generation Time: Mar 26, 2017 at 04:37 AM
 -- Server version: 5.7.17-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -76,16 +76,19 @@ CREATE TABLE `assign` (
   `aName` varchar(200) NOT NULL,
   `aScope` int(11) NOT NULL,
   `dir` varchar(2000) NOT NULL,
-  `lastdate` date NOT NULL
+  `lastdate` date NOT NULL,
+  `filename` varchar(2000) NOT NULL,
+  `uploaded` date DEFAULT '2000-11-11'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `assign`
 --
 
-INSERT INTO `assign` (`aID`, `aName`, `aScope`, `dir`, `lastdate`) VALUES
-(1, 'lol', 1, 'cs', '2017-03-24'),
-(2, 'Data Structures', 1, '1111\r\n', '2017-03-01');
+INSERT INTO `assign` (`aID`, `aName`, `aScope`, `dir`, `lastdate`, `filename`, `uploaded`) VALUES
+(19, 'sdga', 1, '14904472655165', '2098-10-10', 'files/14904472655165_TameeshBiswas_dc9904b050f9a412551b56e7850cc78546ada92a.pdf', '2000-11-11'),
+(20, 'sdga', 1, '14904473973426', '1998-10-10', 'files/14904473973426_TameeshBiswas_dc9904b050f9a412551b56e7850cc78546ada92a.pdf', '2000-11-11'),
+(21, 'sdga', 1, '14904479333528', '1998-10-10', 'files/14904479333528_TameeshBiswas_dc9904b050f9a412551b56e7850cc78546ada92a.pdf', '2000-11-11');
 
 -- --------------------------------------------------------
 
@@ -168,7 +171,10 @@ INSERT INTO `gallery` (`gID`, `title`, `user`, `path`) VALUES
 (16, 'This is some text', 1, 'gallery/1490263930.0124_1_512b750ae8061f8bf29d8c85251cb7afb5319d0c.jpg'),
 (17, 'Random', 1, 'gallery/1490263972.7397_1_c6ec3a5b817feb32dafdab422116de69b5dc5de2.jpg'),
 (18, '', 1, 'gallery/1490286489.79_1_406b4bca34125d7b1bf530d18a572daeeba36522.png'),
-(19, '', 1, 'gallery/1490368877.1498_1_39c9f0e980faa7dbdf5b3480f3fe07c5197b4346.jpg');
+(19, '', 1, 'gallery/1490368877.1498_1_39c9f0e980faa7dbdf5b3480f3fe07c5197b4346.jpg'),
+(20, 'Title', 11, 'gallery/1490474458.3411_11_47d20c428676b585e44f1f521a4889518651c865.jpg'),
+(21, '', 11, 'gallery/1490474473.5703_11_47d20c428676b585e44f1f521a4889518651c865.jpg'),
+(22, '11', 11, 'gallery/1490474503.095_11_47d20c428676b585e44f1f521a4889518651c865.jpg');
 
 -- --------------------------------------------------------
 
@@ -217,15 +223,17 @@ CREATE TABLE `notify` (
   `nContent` varchar(2000) NOT NULL,
   `nGroup` int(11) NOT NULL,
   `nSender` int(11) NOT NULL,
-  `url` varchar(2000) DEFAULT NULL
+  `url` varchar(2000) DEFAULT NULL,
+  `timestr` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `notify`
 --
 
-INSERT INTO `notify` (`nID`, `nContent`, `nGroup`, `nSender`, `url`) VALUES
-(1, 'New Assignment!', 1, 1, 'http://gmail.com');
+INSERT INTO `notify` (`nID`, `nContent`, `nGroup`, `nSender`, `url`, `timestr`) VALUES
+(2, 'New Assignment Uploaded sdga in courseCS101', 1, 1, 'assignments/dl/14904472655165', '2017-03-25 21:35:30'),
+(3, 'New Assignment Uploaded \'sdga\' in course CS101', 1, 1, 'assignments/dl/14904473973426', '2017-03-25 21:35:30');
 
 -- --------------------------------------------------------
 
@@ -257,7 +265,11 @@ INSERT INTO `posts` (`postID`, `postTitle`, `postContent`, `postType`, `featured
 (8, 'Test Post1', 'Hello World!', 1, 1, 1, '2017-03-12 05:19:03', 0, 1, 0, 'http://cdn01.androidauthority.net/wp-content/uploads/2015/11/00-best-backgrounds-and-wallpaper-apps-for-android.jpg', 0, '1'),
 (9, 'test', 'test', 1, 1, 1, '2017-03-12 05:20:13', 0, 1, 0, 'http://media02.hongkiat.com/ww-flower-wallpapers/dandelion.jpg', 0, '1'),
 (12, 'Hey ! New Post!', 'Check if this works?', 1, 1, 1, '2017-03-23 05:58:00', 0, 1, 0, 'gallery/1490228869.3927_1_c19b2a6ac3b9450cdc276a0c4b417ecf84c99a1cpng', 0, '1'),
-(13, '', '', 1, 1, 1, '2017-03-24 01:55:51', 0, 1, 0, '', 0, '1');
+(13, '', '', 1, 1, 1, '2017-03-24 01:55:51', 0, 1, 0, '', 0, '1'),
+(14, 'aeg', 'dga', 1, 1, 11, '2017-03-26 01:59:06', 0, 1, 0, '', 0, '1'),
+(15, '', '', 1, 1, 11, '2017-03-26 02:08:10', 0, 1, 0, '', 0, '1'),
+(16, '', '', 1, 1, 11, '2017-03-26 02:08:57', 0, 1, 0, '', 0, '1'),
+(17, 'sadga', 'sfgsfd', 1, 1, 11, '2017-03-26 02:10:28', 0, 1, 0, 'gallery/1490474417.5198_11_47d20c428676b585e44f1f521a4889518651c865.jpg', 0, '1');
 
 -- --------------------------------------------------------
 
@@ -302,7 +314,7 @@ INSERT INTO `sublist` (`subID`, `uID`, `coID`, `clID`) VALUES
 CREATE TABLE `submission` (
   `aID` int(11) NOT NULL,
   `date` date NOT NULL,
-  `filename` int(11) NOT NULL,
+  `filename` varchar(1000) NOT NULL,
   `marks` int(11) DEFAULT NULL,
   `uID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -312,7 +324,9 @@ CREATE TABLE `submission` (
 --
 
 INSERT INTO `submission` (`aID`, `date`, `filename`, `marks`, `uID`) VALUES
-(1, '2017-03-22', 1, 10, 1);
+(1, '2017-03-22', '1', 10, 1),
+(1, '2017-03-11', '1', 10, 11),
+(19, '2017-03-26', 'files/14904472655165_test1_14904735919746.pdf', NULL, 11);
 
 -- --------------------------------------------------------
 
@@ -370,7 +384,6 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`uID`, `SHA_pswd`, `uName`, `email`, `year`, `uRole`, `uAlias`, `lsn`) VALUES
 (1, '9d516530dba7ae296eac0599b016c6038f230397', 'Tameesh Biswas', 'biswas.cs16@iitp.ac.in', 1, 0, 'tameeshb', 0),
 (3, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'Test User', 'test.cs16@iitp.ac.in', 1, 0, 'test007', 0),
-(5, 'da39a3ee5e6b4b0d3255bfef95601890afd80709', '', '', 1, 0, '', 0),
 (7, '86f7e437faa5a7fce15d1ddcb9eaeaea377667b8', 'Full name', 'email', 1, 0, 'usrname', 0),
 (8, '3c363836cf4e16666669a25da280a1865c2d2874', 'a', 'c', 1, 0, 'b', 0),
 (9, 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', 'test', 'test', 1, 0, 'test', 0),
@@ -475,7 +488,7 @@ ALTER TABLE `around`
 -- AUTO_INCREMENT for table `assign`
 --
 ALTER TABLE `assign`
-  MODIFY `aID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `aID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `clubs`
 --
@@ -495,7 +508,7 @@ ALTER TABLE `events`
 -- AUTO_INCREMENT for table `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `gID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `gID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `lnf`
 --
@@ -505,12 +518,12 @@ ALTER TABLE `lnf`
 -- AUTO_INCREMENT for table `notify`
 --
 ALTER TABLE `notify`
-  MODIFY `nID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `nID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `postID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `sublist`
 --

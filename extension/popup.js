@@ -9,14 +9,16 @@
  *   is found.
  */
 
+webRoot = "http://localhost/~muks/iwa/";
+
  $(document).ready(function(){
 
          $("#icon1").click(function(){
          chrome.tabs.create({active: true, url: "http://iwebapp.ml"});
          return false;
-       });
+         });
 
-         $.post("http://localhost/~muks/iwa/cAPI/checkLogin",
+         $.post(webRoot + "cAPI/checkLogin",
                               {},
                               function(data, status){
                               console.log("Checklogin Data: " + data + "\nStatus: " + status);
@@ -31,7 +33,7 @@
                           }
                   ,"json");
 
-          $.post("http://www.iwebapp.ml/cAPI/listAssign",
+          $.post(webRoot + "cAPI/listAssign",
                               {},
                               function(data, status){
                               console.log("Response1");
@@ -53,7 +55,7 @@
                                   }
                           }
                   ,"json");
-          $.post("http://www.iwebapp.ml/cAPI/classTmw",
+          $.post(webRoot + "cAPI/classTmw",
                               {},
                               function(data, status){
                               console.log("Response2");
@@ -77,7 +79,7 @@
                           }
                   ,"json");
 
-          $.post("http://www.iwebapp.ml/cAPI/getNotif",
+          $.post(webRoot + "cAPI/getNotif",
                               {},
                               function(data, status){
                               console.log("Response3");

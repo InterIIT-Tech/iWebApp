@@ -152,7 +152,7 @@
                                 while(cse[i]){
                                 	currElement = cse[i];
                                 	console.log(currElement);
-                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
+                                	courseData ='<section class="">	<a class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
                                 	if(cSubs[currElement[0]]==1){
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
                                 	}else {
@@ -166,7 +166,7 @@
                                 while(ee[i]){
                                 	currElement = ee[i];
                                 	console.log(currElement);
-                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
+                                	courseData ='<section class="">	<a  class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
                                 	if(cSubs[currElement[0]]==1){
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
                                 	}else {
@@ -180,7 +180,7 @@
                                 while(me[i]){
                                 	currElement = me[i];
                                 	console.log(currElement);
-                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
+                                	courseData ='<section class="">	<a  class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'"';
                                 	if(cSubs[currElement[0]]==1){
 	                                	courseData+=' onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
                                 	}else {
@@ -193,7 +193,7 @@
                                  while(ce[i]){
                                 	currElement = ce[i];
                                 	console.log(currElement);
-                                	courseData ='<section class="">	<a href="#" class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'" ';
+                                	courseData ='<section class="">	<a  class="image" style="background-image: url(&quot;img/courses/'+currElement[4]+'&quot;); background-position: center center;"><img src="img/courses/'+currElement[4]+'" alt="" data-position="center center" style="display: none;"></a><div class="content"><div class="inner"><h2>'+currElement[1]+'</h2><h3>'+currElement[3]+'</h3><p><br>Course Rating : '+currElement[2]+'/5</p><ul class="actions"><li><a id="buttonC'+currElement[0]+'" ';
                                 	if(cSubs[currElement[0]]==1){
 	                                	courseData+='onclick="subscribe(1,'+currElement[0]+',2);" class="button subs">';
 	                                	courseData+='Subscribed!</a></li></ul></div></div></section>';

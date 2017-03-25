@@ -15,12 +15,21 @@
          chrome.tabs.create({active: true, url: "http://iwebapp.ml"});
          return false;
        });
-         $(".itemAssign").click(function(e){
-          // e.preventDefault();
-          console.log("uhuhuh");
-         chrome.tabs.create({active: true, url: "http://iwebapp.ml/assignments/view/"+$(this).attr(data)});
-         return false;
-       });
+
+         $.post("http://localhost/~muks/iwa/cAPI/checkLogin",
+                              {},
+                              function(data, status){
+                              console.log("Checklogin Data: " + data + "\nStatus: " + status);
+                              if(status=='success'){
+                                  if(data[0]==0){
+                                    $('#content').hide();
+                                    $('#login').show();
+                                  }
+                                }else{
+                                window.location.reload();
+                              }
+                          }
+                  ,"json");
 
           $.post("http://www.iwebapp.ml/cAPI/listAssign",
                               {},

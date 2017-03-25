@@ -79,9 +79,9 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 	require ('render/assignments.php');
 } elseif (preg_match($base . 'groups/mpr(.*)$@', $url, $match)) {
 	require ('render/mpr-grp.php');
-} elseif (preg_match($base . 'groups/Njack(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'groups/njack(.*)$@', $url, $match)) {
 	require ('render/Njack-GSOC.php');
-} elseif (preg_match($base . 'groups/Byte(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'groups/byte(.*)$@', $url, $match)) {
 	require ('render/Byterace.php');
 } elseif (preg_match($base . 'assignments/dl/(.*)$@', $url, $match)) {
 	require ('render/assignmentDL.php');

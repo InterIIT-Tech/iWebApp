@@ -220,7 +220,18 @@ $.post("cAPI/getPermissions",
   #clTmw a:link {
       text-decoration: none;
   }
-
+</style>
+<style>
+.img-post{
+  margin: 1em auto;
+  display: block;
+}
+.desc-post{
+  margin-left: 1em;
+  padding: 1em;
+  max-height: 10em;
+  overflow: auto;
+}
 </style>
 </head>
 <body style="overflow:hidden;" onload="downLoad()">
@@ -241,13 +252,13 @@ $.post("cAPI/getPermissions",
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li class="active"><a href="."><i class="icon icon-home"></i> <span>Home</span></a> </li>
-    <li><a href="news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
+    <li><a href="#news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
+    <li><a href="assignments"><i class="icon icon-fullscreen"></i> <span>Assignments</span></a></li>
     <li> <a href="clubs"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
     <li> <a href="courses"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
     <li><a href="getting-around"><i class="icon icon-th"></i> <span>Getting Around</span></a></li>
     <li><a href="gallery"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
     <li><a href="timetable"><i class="icon icon-fullscreen"></i> <span>Time Table</span></a></li>
-    <li><a href="assignments"><i class="icon icon-fullscreen"></i> <span>Assignments</span></a></li>
     <li><a href="lost-found"><i class="icon icon-fullscreen"></i> <span>Lost and Found</span></a></li>
     <li class="content"> <span>Attendance</span>
       <div class="progress progress-mini progress-danger active progress-striped">
@@ -432,9 +443,10 @@ h2{
                 </div>
               </div>
             </div>
-         <li class="bg_lb md-trigger" id="new-post-btn" data-modal="modal-1" onclick="$('#modal-1').addClass('md-show');"> <a> <i class="icon-dashboard"></i>   <!--<span class="label label-important">20</span> --> Add Post </a> </li>
-        <li class="bg_ly md-trigger" style="display: none;" id="new-post-btn" data-modal="modal-2" onclick="$('#modal-2').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>-->Add Event</a> </li>
-        <li class="bg_ly md-trigger" id="new-post-btn" data-modal="modal-3" onclick="$('#modal-3').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>--> Upload Image </a> </li>
+         <li style="cursor:pointer;" class="bg_lb md-trigger" id="new-post-btn" data-modal="modal-1" onclick="$('#modal-1').addClass('md-show');"> <a> <i class="icon-dashboard"></i>   <!--<span class="label label-important">20</span> --> Add Post </a> </li>
+        <li style="cursor:pointer;" class="bg_ly md-trigger" style="display: none;" id="new-post-btn" data-modal="modal-2" onclick="$('#modal-2').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>-->Add Event</a> </li>
+        <li style="cursor:pointer;" class="bg_ly md-trigger" id="new-post-btn" data-modal="modal-3" onclick="$('#modal-3').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>--> Upload Image </a> </li>
+        <div style="cursor:pointer;position: absolute; width:40px;height:40px;background-size: cover; top: 20px; right: 20px;background-image: url('img/logout.png');" onclick="window.location='logout'"></div>
       </ul>
     </div>
 <!--End-Action boxes-->
@@ -458,7 +470,7 @@ h2{
                           var dataObject=data[2];
                           for(var i=0;i<data[1];i++){
                             href=(dataObject[i]['url'])?"href="+dataObject[i]['url']:"";
-                
+
                              $("#notifylist").append('<li><div class="article-post"> <span class="user-info"> By: '+dataObject[i]['author']+' / Date & Time :  '+ dataObject[i]['timestr']+'</span><p><a '+href+'>'+dataObject[i]['title']+'</a> </p></div></li>');
 
                           }
@@ -525,7 +537,7 @@ h2{
             });
           </script>
               <ul id="courselist">
-               
+
               </ul>
             </div>
           </div>
@@ -557,7 +569,7 @@ h2{
             });
           </script>
             <ul id="assignList" class="activity-list">
-              
+
             </ul>
           </div>
         </div>
@@ -596,7 +608,7 @@ h2{
                 });
               </script>
               <tbody id="clstmw">
-               
+
               </tbody>
             </table>
           </div>
@@ -650,9 +662,72 @@ h2{
             </table>
           </div>
         </div>
+
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"><i class="icon-repeat"></i></span>
+            <h5>Admin</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <ul class="activity-list">
+              <li><a href="#"> <i class="icon-user"></i> <strong>Themeforest</strong>Approved My college theme <strong>1 user</strong> </a></li>
+              <li><a href="#"> <i class="icon-file"></i> <strong>My College is PSD Template </strong> Theme <strong>Psd Theme</strong></a></li>
+              <li><a href="#"> <i class="icon-envelope"></i> <strong>Lorem ipsum doler set</strong> adag<strong>agg</strong></a></li>
+              <li><a href="#"> <i class="icon-picture"></i> <strong>ITs my First Admin</strong> so very<strong>exited</strong> </a></li>
+              <li><a href="#"> <i class="icon-user"></i> <strong>Admin</strong> bans <strong>3 users</strong></a></li>
+            </ul>
+          </div>
+        </div>
         </div>
     </div>
   </div>
+
+<hr>
+    <h1 id="news-feed" style="margin-left:1em;">News Feed</h1>
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title bg_ly">
+            <h4 style="text-align:center">Title1</h4>
+          </div>
+          <div>
+          <img class="img-post" src="favicon.png">
+        </div>
+          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+          </div>
+
+          <div class="widget-box">
+            <div class="widget-title bg_ly">
+              <h4 style="text-align:center">Title1</h4>
+            </div>
+            <div>
+            <img class="img-post" src="favicon.png">
+          </div>
+            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+            </div>
+
+    </div>
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title bg_ly">
+            <h4 style="text-align:center">Title1</h4>
+          </div>
+          <div>
+          <img class="img-post" src="favicon.png">
+        </div>
+          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+          </div>
+
+          <div class="widget-box">
+            <div class="widget-title bg_ly">
+              <h4 style="text-align:center">Title1</h4>
+            </div>
+            <div>
+            <img class="img-post" src="favicon.png">
+          </div>
+            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!--end-main-container-part-->

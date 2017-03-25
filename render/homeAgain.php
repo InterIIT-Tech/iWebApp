@@ -284,6 +284,7 @@ $.post("cAPI/getPermissions",
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
     <li class="active"><a href="."><i class="icon icon-home"></i> <span>Home</span></a> </li>
+    <li class="active"><a href="news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
     <li> <a href="clubs"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
     <li> <a href="courses"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
     <li><a href="getting-around"><i class="icon icon-th"></i> <span>Getting Around</span></a></li>

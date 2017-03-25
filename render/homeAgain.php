@@ -249,14 +249,19 @@ $.post("cAPI/getPermissions",
 </div>
 <!--close-Header-part-->
 
+
+
 <!--sidebar-menu-->
-<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+<div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
   <ul>
-    <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-    <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
-    <li> <a href="widgets.html"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
-    <li><a href="tables.html"><i class="icon icon-th"></i> <span>Getting Around The Campus</span></a></li>
-    <li><a href="grid.html"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
+    <li class="active"><a href="."><i class="icon icon-home"></i> <span>Home</span></a> </li>
+    <li> <a href="clubs"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
+    <li> <a href="courses"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
+    <li><a href="getting-around"><i class="icon icon-th"></i> <span>Getting Around</span></a></li>
+    <li><a href="gallery"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
+    <li><a href="timetable"><i class="icon icon-fullscreen"></i> <span>Time Table</span></a></li>
+    <li><a href="assignments"><i class="icon icon-fullscreen"></i> <span>Assignments</span></a></li>
+    <li><a href="lost-found"><i class="icon icon-fullscreen"></i> <span>Lost and Found</span></a></li>
     <li class="content"> <span>Attendance</span>
       <div class="progress progress-mini progress-danger active progress-striped">
         <div style="width: 77%;" class="bar"></div>
@@ -755,7 +760,7 @@ textarea{
   };
   });
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
   // This function is called from the pop-up menus to transfer to
   // a different page. Ignore if the value returned is a null string:
   function goPage (newURL) {
@@ -763,7 +768,7 @@ textarea{
       // if url is empty, skip the menu dividers and reset the menu selection to default
       if (newURL != "") {
 
-          // if url is "-", it is this page -- reset the menu:
+          // if url is "-", it is this page - reset the menu:
           if (newURL == "-" ) {
               resetMenu();
           }
@@ -778,6 +783,6 @@ textarea{
 function resetMenu() {
    document.gomenu.selector.selectedIndex = 2;
 }
-</script>
+</script> -->
 </body>
 </html>

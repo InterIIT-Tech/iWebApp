@@ -22,16 +22,19 @@ class Routing
 }
 // echo "check";
 $url = $_SERVER['REQUEST_URI'];
-// $url = rtrim($url,'/');
-// $url = rtrim($url,"/");
 preg_match('@(.*)index.php(.*)$@', $_SERVER['PHP_SELF'], $mat );
 $base = '@^'. $mat[1] ;
 	if(!isset($_SESSION['f403'])){
 		$_SESSION['uID']=null;
 	}
 
-
-if (preg_match($base . '$@', $url, $match)) {
+if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
+	if(isset($_SESSION['uID'])){
+			echo json_encode(array(1,$_SESSION['uID'],$_SESSION['uName'])) ;
+		}else{
+			echo json_encode(array(0)) ;
+		}
+}elseif (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){
 		require ('render/home.php');
 	} else{
@@ -48,6 +51,8 @@ if (preg_match($base . '$@', $url, $match)) {
 	header("Location: ".$webRoot);
 } elseif (preg_match($base . 'timetable?$@', $url, $match)) {
 	require ('render/timetable.php');
+}elseif (preg_match($base . 'homeAgain?$@', $url, $match)) {
+	require ('render/homeAgain.php');
 } elseif (preg_match($base . 'home?$@', $url, $match)) {
 	require ('render/home2.php');
 } elseif (preg_match($base . 'admin?$@', $url, $match)) {
@@ -68,7 +73,7 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/fUpload.php');
 } elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
-} elseif (preg_match($base . 'assignments(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'assignments?$@', $url, $match)) {
 	require ('render/assignments.php');
 } elseif (preg_match($base . 'mpr(.*)$@', $url, $match)) {
 	require ('render/mpr-grp.php');
@@ -76,6 +81,8 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/Njack-GSOC.php');
 } elseif (preg_match($base . 'Byte(.*)$@', $url, $match)) {
 	require ('render/Byterace.php');
+} elseif (preg_match($base . 'assignments/dl/(.*)$@', $url, $match)) {
+	require ('render/assignmentDL.php');
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {

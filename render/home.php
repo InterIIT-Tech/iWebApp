@@ -357,7 +357,7 @@
 				<h3 >Upload Image for Gallery:</h3>
 
 				<div id="new-post-form">
-				
+
 					<form id="uploadimage" action="" method="post" enctype="multipart/form-data">
 
 					<input type="text" name="title_name" id="url" value="" placeholder="Title of Image" class="form-el" style="color:#000000 !important">
@@ -372,7 +372,7 @@
 					<div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
 					<div id="message"></div>
 					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
-					<button onclick="$('#modal-3').removeClass('md-show');">Close me!</button>
+					<button onclick="$('#modal-3').removeClass('md-show');" style="margin-left:1.5em">Close me!</button>
 				</div>
 			</div>
 		</div>
@@ -418,6 +418,15 @@
 											<span class="icon fa-diamond"></span>
 											<div class="content">
 												<h3>Courses</h3>
+											</a>
+											</div>
+										</article>
+										
+										<article>
+											<a href="assignments">
+											<span class="icon fa-diamond"></span>
+											<div class="content">
+												<h3>Assignments</h3>
 											</a>
 											</div>
 										</article>

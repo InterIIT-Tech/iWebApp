@@ -1,3 +1,78 @@
+<?php
+require_once('servConf.php');
+require_once('api/api.php');
+$notif=new notifAPI;
+$subs=new subsAPI;
+$msg=null;
+$status="";
+if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['course']) && isset($_POST['lastdate'])){
+	$validextensions = array("pdf", "doc", "docx");
+	$temporary = explode(".", $_FILES["file"]["name"]);
+	$file_extension = end($temporary);
+	$dir= str_replace(".", "", strval(microtime(true)));
+	if (($_FILES["file"]["size"] < 10000000) && in_array($file_extension, $validextensions)) {
+
+		if ($_FILES["file"]["error"] > 0){
+			$msg = "Return Code: " . $_FILES["file"]["error"] . "<br/><br/>";
+		} else {
+			$sourcePath = $_FILES['file']['tmp_name'];
+
+			$targetPath = "files/".$dir.'_'.preg_replace("/[^a-zA-Z]+/", "", $_SESSION['uName'])."_".sha1($_SESSION['uID'].$_FILES['file']['name']).'.'.$file_extension; // Target path where file is to be stored	
+		}
+	}
+	if(!isset($targetPath)){
+		$msg="Details Incomplete.";
+	}else{
+	$sql = "INSERT INTO `assign`(`aName`,`aScope`,`dir`,`lastdate`,`filename`) VALUES ('".$_POST['fName']."', '".$_POST['course']."', '". $dir ."', '". $_POST['lastdate'] ."','".$targetPath."')";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$status= "1";
+        	move_uploaded_file($sourcePath,$targetPath) ;
+        	//notification API trigger;
+        	$cname_=$subs->whatCourse($_POST['course']);
+        	$notify_msg="New Assignment Uploaded \'".$_POST['fName']."\' in course ".$cname_[1]['cCode'];
+        	$url = "assignments/dl/".$dir ;
+        	// mkdir('gallery/'.$alias);
+        	// mkdir("gallery/$alias", 0777);
+        } else { $msg="error!".mysqli_error($link);}
+        mysqli_close($link);
+    }
+}
+elseif(isset($_POST['dirval'])){
+	$validextensions = array("pdf", "doc", "docx","c","cpp","py","java");
+	$temporary = explode(".", $_FILES["file"]["name"]);
+	$file_extension = end($temporary);
+	$dir= $_POST['dirval'].'_'.$_SESSION['uName'].'_'.str_replace(".", "", strval(microtime(true))).'.'.$file_extension;
+	if (($_FILES["file"]["size"] < 10000000) && in_array($file_extension, $validextensions)) {
+
+		if ($_FILES["file"]["error"] > 0){
+			$msg = "Return Code: " . $_FILES["file"]["error"] . "<br/><br/>";
+		} else {
+			$sourcePath = $_FILES['file']['tmp_name'];
+
+			$targetPath = "files/".$dir;
+			$sql = "INSERT INTO `submission`(`aID`,`date`,`uID`,`filename`) VALUES ('".$_POST['aidval']."', DATE(NOW()), '". $_SESSION['uID'] ."','".$targetPath."')";
+		$link =mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE);
+		$result = mysqli_query($link,$sql);
+        if($result){
+        	$status= "1";
+        	move_uploaded_file($sourcePath,$targetPath) ;
+        	// mkdir("gallery/$alias", 0777);
+        } else { $msg="error!".mysqli_error($link);}
+        mysqli_close($link);
+		}
+	}
+}
+else if(isset($_FILES["file"]["type"])){
+	$msg="Details Incomplete.";
+}
+// echo $_POST['fName'];
+// echo $_FILES["file"]["type"];
+// echo $_FILES["file"]["name"];
+// echo $_POST['lastdate'];
+// echo $_POST['course'];
+?>
 <html>
 	<head>
 		<meta charset="UTF-8" />
@@ -8,6 +83,9 @@
 		<link rel="stylesheet" type="text/css" href="assets/css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="assets/css/component.css" />
 		<link rel="icon" type="image/png" href="http://iwebapp.ml/favicon.png" />
+		<link rel="stylesheet" type="text/css" href="assets/modal/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="assets/modal/css/component.css" />
+		<script src="assets/modal/js/modernizr.custom.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/timetable/css/main.css" />
@@ -48,15 +126,15 @@
                             	console.log("ajax request error");
                             	// If non-admin
                             	$(".adminRadio").hide();
-                               	// $("#add-event-btn").hide();
-                               	// window.location="";
-                            	// location.reload(true);
-                            	// window.location.reload();
 
                             }
                     }
 		        ,"json");
-
+			function subm(dir,aID){
+				$('#modal-1').addClass('md-show');
+				$("#dirval").val(dir);
+				$("#aidval").val(aID);
+			}
 		</script>
 		<script src="assets/js/fortyNav.js"></script>
 		<style>
@@ -72,6 +150,29 @@
 		</style>
 	</head>
 	<body>
+
+	<div class="md-modal md-effect-1" id="modal-1">
+			<div class="md-content">
+				<h3 >Submission:</h3>
+
+				<div id="new-post-form">
+
+					<form  action="" method="post" enctype="multipart/form-data">
+					<div id="selectImage">
+					<input type="hidden" id="dirval" name="dirval" value="">
+					<input type="hidden" id="aidval" name="aidval" value="">
+					<label>Select File:</label>
+					<input type="file" class="form-el" style="    padding: 10px;background-color: #b1330d;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
+					</div>
+					 <input type="submit" class="" style="background-color: #c0392b; font-family: 'Lato', Calibri, Arial, sans-serif;     border: none;    margin: 10px;    font-weight: bold;    margin-left: 20px;    padding-top: 5px;    padding-left: 10px;padding-right: 10px;" value="SUBMIT">
+					<button onclick="$('#modal-1').removeClass('md-show');" style="margin-left:1.5em">Close</button>
+					</form>
+					<div id="loading" style="display:none;background-image:url('img/load.gif'); background-position: center; width:100px;height: 100px;margin:auto; "></div>
+					<div id="message"></div>
+					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
+				</div>
+			</div>
+		</div>
 	<div id="perspective" class="perspective effect-airbnb">
 			<div class="container">
 				<div class="wrapper">
@@ -84,22 +185,6 @@
 							<a href="#back" id="showMenu" style="margin-right:92vw ; ">Menu::iWebapp</a>
 						</nav>
 					</header>
-
-
-				<!-- Menu -->
-					<nav id="menu">
-						<ul class="links">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="landing.html">Landing</a></li>
-							<li><a href="generic.html">Generic</a></li>
-							<li><a href="elements.html">Elements</a></li>
-						</ul>
-						<ul class="actions vertical">
-							<li><a href="#" class="button special fit">Get Started</a></li>
-							<li><a href="#" class="button fit">Log In</a></li>
-						</ul>
-					</nav>
-
 				<!-- Main -->
 					<div id="main" class="alt">
 
@@ -112,79 +197,75 @@
 										<h1>Your Assignments</h1><hr style="width: 30%">
 										<h3>This section is to upload assignments</h3>
 										</header><hr style="width: 90%">
-
+									
+												<h3><?php echo (isset($msg))?$msg:""; ?></h3>
 
 
 
                                     <section>
 
-										<form action="" method="POST" id="form2">
+										<form action="" method="POST" id="form2" enctype="multipart/form-data">
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
 
 										<div class="col-sm-2" style="margin-left: 4vw;border-bottom: 2vw ;">
 										<h2 style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.1225em ;">Assignment :  </h2>	
-										<input type="text" name="fName" id="name" placeholder="Title">
+										<input type="text" name="fName" id="name" placeholder="Title" required>
 										</div>
                                                  
 											
 										<div id="scopeSelect" class="form-el col-sm-2" style="margin-left: 4vw; ">
 						  				<h2  style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.0900em ;" >Scope  Select:  </h2>
-										<div class="select-wrapper" id="selectScope" style="width: 89% ;">
-										<select name="demo-category" id="scope" placeholder="Scope" style="background-color:#22263c !important">
-										<option value="">- Whom to notify -    </option>
+										<div class="select-wrapper" id="selectScope" required style="width: 89% ;">
+										<select name="course" id="scope" placeholder="Scope" style="background-color:#22263c !important">
+										<option value="">- Assignment for ? -</option>
 								</select>
 							</div>	
 						</div>
 									</div>
+
    									 <div class="row" style="margin:auto;  ;margin-top:5vh; ">
 									
 
 										<div class=" col-sm-3" style="margin-left:4vw;">
 										<h2 for="name" style="font-size: 3.5vh;font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.1225em;">Deadline : &nbsp</h2>
-										<input type="text" name="fContact" id="name" placeholder="dd-mm-yyyy">
+										<input type="text" name="lastdate" id="name" placeholder="yyyy-mm-dd">
 										</div>
 
-										<div class="col-sm-5" style="margin-left: 3.7vw;">
-										<h2 for="name" style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500; letter-spacing: 0.1000em ;">Upload :</h2>
-									<input type="hidden" name="demo-name" id="imgURL" value="" placeholder="Image URL" class="form-el" style="color:#000000 !important">
-									<form id="uploadimage_" action="" method="post" enctype="multipart/form-data">
-									<div id="selectImage"><h4>Upload File:</h4>
+									<h4>Upload File:</h4><br>
 									<input type="file" class="form-el" style="    padding: 10px;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
-									</div>
-									 <input type="submit" id="subbtn" class="form-el" style=" background-color: #A5281B;" value="Submit">
-									</form>
 									
+									<button type="submit" form="form2"   value="Submit" style="color: #000000 ;height: 6vh ;background-color: #ffffff ;">Submit</button>
+										</div>
 					
+										<hr width="100% ;"></form>
+									
 					<!-- <button class="" id="submitpost" onclick="submitForm();" class="form-el" style="color: #fff !important;">Upload!</button> -->
 				
-				</div>
-				</div>
-				</div>
+									</div>
+									</div>
+									</div>
 	
 										</div>
 										
-										<button type="submit" form="form2"   value="Submit" style="color: #000000 ;height: 6vh ;background-color: #ffffff ;">Submit</button>
-										</div>
-										<hr width="100% ;"></form>
+										
 										</section>
-								
-</section>
+	
 <!-- This is end of prof part  -->
 <!--  The section below this shows the   Student part <-->
-<section id="one">
+<section id="one" style="margin-left:10%;margin-right:10%;">
 <section id="s_part">
 									<header class="major">
 										<h1>Your Assignments</h1><hr style="width: 30%">
 										<h3>This section shows you your's Assignments</h3>
 									</header><hr style="width: 90%">
-
-
+										<h3 style="color:red"><?php echo (isset($msg))?$msg:""; ?></h3>
+									<h3>Assignments with upcoming deadlines:</h3>
 													<div class="table-wrapper">
 														<table class="alt">
 															<thead>
 																<tr>
 																	<th>Course</th>
-																	<th>Assignments</th>
+																	<th>Name</th>
 																	<th>Deadline</th>
 																	<th>Download</th>
 																	<th style="text-align: center;">  Submit</th>
@@ -193,56 +274,81 @@
 																</tr>
 															</thead>
 															<tbody>
-																<tr>
-																	<td>CS102</td>
-																<td></td>
-																<td></td>
-																	<td style="width: 11% ; text-align: center ;"> <a href =## ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>
-																  <td style="width:13% ; text-align: center;background-color: #000000 ; "> 		
-															        <a href="#" >Submit</a>   </td>	
-													
-																	
-																</tr>
-																<tr>
-																	<td>CS112</td>
-															        <td></td>
-															        <td></td>
-																	<td style="width: 11% ; text-align: center ;"> <a href =## ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>
-																  <td style="width:13% ; text-align: center;background-color: #000000 ; "> 		
-															        <a href="#" >Submit</a>   </td>	
-																	
-																</tr>
-
-																<tr>
-																	<td>CS132</td>
-															 		<td></td>
-															 		<td></td>
-															 			<td style="width: 11% ; text-align: center ;"> <a href =## ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>
-																  <td style="width:13% ; text-align: center;background-color: #000000 ; "> 		
-															        <a href="#" >Submit</a>   </td>	
-																	
-																</tr>
-																<tr>
-																	<td>CS122</td>
-																	<td></td>
-																	<td></td>
-																	<td style="width: 11% ; text-align: center ;"> <a href =## ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>
-																  <td style="width:13% ; text-align: center;background-color: #000000 ; "> 		
-															        <a href="#" >Submit</a>   </td>	
-																	
-																</tr>
-																<tr>
-																	<td>CS112</td>
-																	<td></td>
-																	<td></td>
-																	<td style="width: 11% ; text-align: center ;"> <a href =## ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>
-																  <td style="width:13% ; text-align: center;background-color: #000000 ; "> 		
-															        <a href="#" >Submit</a>   </td>	
-																</tr>
+																<?php
+																	$assign=new assignAPI;
+																	$print="";
+																	$sql="SELECT `aID`,`aName`,`aScope`,`dir`,`lastdate`,`filename` FROM `assign` WHERE lastdate > DATE(NOW())";
+																	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+															        	if($result && mysqli_num_rows($result)>0){
+															            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+															        		$cname_=$subs->whatCourse($row['aScope']);
+															            		$color=($assign->checkstat($row['aID'])==1)?"style='background-color: rgba(0, 228, 0, 0.12);'":"style='background-color:rgba(218, 56, 56, 0.46);'";
+															            		$print.="<tr $color >";	
+															            		$print.="<td>".$cname_[1]['cCode']."</td>";
+															            		$print.="<td>".$row['aName']."</td>";
+															            		$print.="<td>".$row['lastdate']."</td>";
+															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href ='.$row['filename'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>';
+															        			$print.='
+																  <td onclick ="subm('.$row['dir'].','.$row['aID'].')"  style="cursor:pointer;width:13% ; text-align: center;background-color: #000000 ; ">
+															        <a  >Submit</a>   </td>	';
+															            	}
+															            	echo $print;
+															            
+																		}else{
+																			
+																		}
+																?>
+																
+																
+																
 															</tbody>
 														
 														</table>
 													</div>
+
+									<h3>Assignments with past deadlines:</h3>
+													<div class="table-wrapper">
+														<table class="alt">
+															<thead>
+																<tr>
+																	<th>Course</th>
+																	<th>Name</th>
+																	<th>Deadline</th>
+																	<th>Download</th>
+																	
+																</tr>
+															</thead>
+															<tbody>
+																<?php
+																	$print="";
+																	$sql="SELECT `aID`,`aName`,`aScope`,`dir`,`lastdate`,`filename` FROM `assign` WHERE lastdate < DATE(NOW())";
+																	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+															        	if($result && mysqli_num_rows($result)>0){
+															            	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+															        		$cname_=$subs->whatCourse($row['aScope']);
+															            		
+															            		$color=($assign->checkstat($row['aID'])==1)?"style='background-color: rgba(0, 228, 0, 0.12);'":"style='background-color: rgba(218, 56, 56, 0.46);'";
+															            		$print.="<tr $color >";	
+															            		$print.="<td>".$cname_[1]['cCode']."</td>";
+															            		$print.="<td>".$row['aName']."</td>";
+															            		$print.="<td>".$row['lastdate']."</td>";
+															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href ='.$row['filename'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i></a></td>';
+															        			//$print.='<td style="width:13% ; text-align: center;background-color: #000000 ; "><a onclick ="subm('.$row['dir'].')" >Submit</a></td>';
+															            	}
+															            	echo $print;
+															            
+																		}else{
+																			
+																		}
+																?>
+																
+																
+																
+															</tbody>
+														
+														</table>
+													</div>
+
 
 											</div>
 										
@@ -250,7 +356,7 @@
 
 								</div>
 							</section>
-
+					</section>
 					</div>
 
 <!-- This is end of student part  -->		
@@ -269,45 +375,6 @@
 		</div></div>
 		<?php require('render/menu.php');?>
 		</div>
-		<script>
-
-				$(document).ready(function (e) {
-
-				$("#file").change(function(e){
-					e.preventDefault();
-					// $("#subbtn").click();
-					$("#uploadimage_").submit();
-				});
-				$("#uploadimage_").on('submit',(function(e) {
-					console.log("dot");
-				e.preventDefault();
-				$("#message").empty();
-				$('#loading').show();
-				$.ajax({
-				url: "upl/aCS102", // Url to which the request is send
-				type: "POST",             // Type of request to be send, called as method
-				data: new FormData(this), // Data sent to server, a set of key/value pairs (i.e. form fields and values)
-				contentType: false,       // The content type used when sending data to the server.
-				cache: false,             // To unable request pages to be cached
-				processData:false,        // To send DOMDocument or non processed data file it is set to false
-				success: function(data)   // A function to be called if request succeeds
-				{
-					console.log(data);
-				$('#loading').hide();
-				if(data!=-1){
-					$("#imgURL").val(data);
-					console.log("works");
-				}else{
-					$("#message_").html(data);
-				}
-				}
-				});
-				}));
-
-
-				// Function to preview image after validation
-				
-				});
-	</script>
+		<!--  -->
 	</body>
 </html>

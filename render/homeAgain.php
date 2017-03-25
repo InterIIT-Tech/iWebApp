@@ -233,7 +233,7 @@ $.post("cAPI/getPermissions",
 <!--Header-part-->
 <div id="header">
   <h1></h1>
-  <h2><?php $temp= explode(" ", $_SESSION['uName']);echo $_SESSION['uAlias'];?>::iWebApp</h2>
+  <h2><?php $temp= explode(" ", $_SESSION['uName']);echo $temp[0];?>::iWebApp</h2>
 </div>
 <!--close-Header-part-->
 

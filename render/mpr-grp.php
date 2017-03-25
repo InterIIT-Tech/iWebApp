@@ -122,9 +122,9 @@
 				<!-- Nav -->
 					<nav id="nav">
 						<ul>
-							<li class="current"><a href="#">MPR - Techkriti</a></li>
-							<li class="current"><a href="#">NJACK-GSOC</a></li>
-							<li class="current"><a href="#">Byterace</a></li>
+							<li class="current"><a href="mpr">MPR - Techkriti</a></li>
+							<li class="current"><a href="njack">NJACK-GSOC</a></li>
+							<li class="current"><a href="byte">Byterace</a></li>
 
 						</ul>
 					</nav>

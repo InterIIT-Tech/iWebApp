@@ -66,8 +66,10 @@ if (preg_match($base . '$@', $url, $match)) {
 	require ('render/fUpload.php');
 } elseif (preg_match($base . 'courses/view/(.*)$@', $url, $match)) {
 	require ('render/viewCourse.php');
-} elseif (preg_match($base . 'assignments(.*)$@', $url, $match)) {
+} elseif (preg_match($base . 'assignments?$@', $url, $match)) {
 	require ('render/assignments.php');
+} elseif (preg_match($base . 'assignments/dl/(.*)$@', $url, $match)) {
+	require ('render/assignmentDL.php');
 } elseif (preg_match($base . 'post/new?$@', $url, $match)) {
 	require ('render/newPost.php');//depreciated
 } elseif (preg_match($base . 'post/JSON/(.*)/(.*)/(.*)$@', $url, $match)) {

@@ -448,6 +448,22 @@ class subsAPI{
 			return $result;//cName
 	}
 
+	public function whatCourse($cID){
+		//@todo
+		$res=array();
+		$sql = "SELECT `cCode`,`branch`,`rating`,`cName`,`img` FROM `courses`  WHERE `cID`= '".$cID."' LIMIT 1";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+        		$res[]=1;
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					$res[]=$row;
+            	}
+			}else{$res[]=-1;}
+
+			return $res;//cName
+	}
+
 	public function rate($cID,$rating){
 		$ret=array();
 		$ret[]=$cID;
@@ -550,6 +566,25 @@ class assignAPI{
 				$ret[]=($result)?mysqli_error($link):"<1";
 			}
 			return $ret;
+	}
+
+	public function checkstat($aID){
+		// echo $_SESSION['uID'];
+			$sql = "SELECT COUNT(*) FROM `submission`  WHERE (`aID`= ".$aID." AND `uID` = ".$_SESSION['uID'].")";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+            			if($row['COUNT(*)']==1){
+            				return 1;
+            			}		else{
+            				return 0;
+            			}
+            		}
+            	
+			}else {
+				return 0;
+			}
 	}
 
 	public function newAssign(){

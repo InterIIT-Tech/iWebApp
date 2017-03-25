@@ -449,7 +449,10 @@ class subsAPI{
 	}
 
 	public function rate($cID,$rating){
-		return $cID." ... ".$rating;
+		$ret=array();
+		$ret[]=$cID;
+		$ret[]=$rating;
+		return $ret;
 	}
 }
 
@@ -602,7 +605,7 @@ class lostAPI{
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result && mysqli_num_rows($result)>0){
             	while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
-            		similar_text($row['iName'],$querStr,$perc);
+            		similar_text(str_replace(" ","",strtolower($row['iName'])),str_replace(" ","",strtolower($querStr)),$perc);
             		if($perc>50){
             			if($resArr[0]==-1)$resArr[0]=1;
 

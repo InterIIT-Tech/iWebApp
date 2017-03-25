@@ -1,16 +1,9 @@
 <?php
 // ini_set( "display_errors", 0); 
 /**
-* New request lands in this class. After that it is routed accordingly to the respective controller.
-* 
+* New request lands in this class.
+* After that it is routed accordingly to the respective controller. 
 */
-//to do
-//////////////subscribe method
-//send and write notif hook
-//userrating
-//map api
-//events as posts
-
 require_once('servConf.php');
 // echo "id=".$_SESSION['uID'];
 class Routing

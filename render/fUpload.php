@@ -1,22 +1,27 @@
 <?php
 require_once('servConf.php');
-
-if(isset($_FILES["file"]["type"]))
-{
-$validextensions = array("jpeg", "jpg", "png");
+$dir="";
+if(isset($_FILES["file"]["type"])){
+if(substr($match[1], 0,1)=="a"){
+	$validextensions = array("pdf", "doc", "docx");
+}else{
+	$validextensions = array("jpeg", "jpg", "png");
+}
 $temporary = explode(".", $_FILES["file"]["name"]);
 $file_extension = end($temporary);
-if ((($_FILES["file"]["type"] == "image/png") || ($_FILES["file"]["type"] == "image/jpg") || ($_FILES["file"]["type"] == "image/jpeg")
-) && ($_FILES["file"]["size"] < 10000000)//Approx. 100kb files can be uploaded.
-&& in_array($file_extension, $validextensions)) {
-if ($_FILES["file"]["error"] > 0)
-{
+if (($_FILES["file"]["size"] < 10000000) && in_array($file_extension, $validextensions)) {
+if ($_FILES["file"]["error"] > 0){
 	echo "Return Code: " . $_FILES["file"]["error"] . "<br/><br/>";
-}
-else
-{
-$sourcePath = $_FILES['file']['tmp_name']; // Storing source path of the file in a variable
+} else {
+$sourcePath = $_FILES['file']['tmp_name'];
+if(substr($match[1], 0,1)=="a"){
+	$dir="files/".$match[1];
+	mkdir($dir,0777);	
+$targetPath = $dir."/".$_FILES['file']['name'].microtime(true).'_'.$_SESSION['uID']."_".substr(sha1($_SESSION['uName'].$_FILES['file']['name']),0,10).'.'.$file_extension; // Target path where file is to be stored
+}else{
+
 $targetPath = "gallery/".microtime(true).'_'.$_SESSION['uID']."_".sha1($_SESSION['uName'].$_FILES['file']['name']).'.'.$file_extension; // Target path where file is to be stored
+}
  // Moving Uploaded file
 if($match[1]=="gallery"){
 	$sql = "INSERT INTO `gallery`(`title`,`user`,`path`) VALUES ('".$_POST['title_name']."', '".$_SESSION['uID']."', '".$targetPath ."')";
@@ -30,6 +35,9 @@ if($match[1]=="gallery"){
         } else { echo"error!".mysqli_error($link);}
         mysqli_close($link);	
 } else if($match[1]=="post"){
+	move_uploaded_file($sourcePath,$targetPath) ;
+	echo $targetPath;
+}else if(substr($match[1], 0,1)=="a"){
 	move_uploaded_file($sourcePath,$targetPath) ;
 	echo $targetPath;
 }

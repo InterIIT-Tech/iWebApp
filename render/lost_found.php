@@ -30,7 +30,12 @@ if(isset($_POST['lName'])){
 	<script>
 		function downLoad(){
 			$("body").css("overflow","auto");
-			$("body").animate("left:0px",1750,function(){
+			if(localStorage.getItem("lastPage")==window.location){
+					var del = 0;	
+				}else{
+					var del = 750;	
+				}
+				$("body").animate("left:0px",del,function(){
 			if (document.all){
 					document.all["layer1"].style.visibility="hidden";
 					document.all["layer2"].style.visibility="visible";
@@ -38,6 +43,7 @@ if(isset($_POST['lName'])){
 					node = document.getElementById("layer1").style.visibility='hidden';
 					node = document.getElementById("layer2").style.visibility='visible';
 			}
+				localStorage.setItem("lastPage",window.location);
 		});
 		}
 	</script>

@@ -70,12 +70,15 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<link rel="stylesheet" href="../../assets/courses/css/main.css" />
 		<script>
+		
 		function rate(){
-            console.log("inFunction");
+			// $("#rating").hide();
+			var valu=$("#rating").val();
+			console.log(valu);
 			$.post("cAPI/rate",
                         {
                         	cid:<?php echo $cID;?>,
-                        	rate:$("#rating").val()
+                        	rate:valu
                         },
                         function(data, status){
                         console.log("Response");
@@ -122,16 +125,16 @@ $sql = "SELECT `mon`,`mon_`,`tue`,`tue_`,`wed`,`wed_`,`thur`,`thur_`,`fri`,`fri_
 							<ul><?php echo $timings;?></ul>
 							<h2>Rate Course:</h2>
 							<div class="select-wrapper" >
-																	<select name="demo-category" style="width:200px" id="rating" onchange="rate();">
-																		<option value="" style="background-color: #2a2f4a ;">- Select Rating -</option>
-																		<option value="1" style="background-color: #2a2f4a ;">1</option>
-																		<option value="2" style="background-color: #2a2f4a ;">2</option>
-																		<option value="3" style="background-color: #2a2f4a ;">3</option>
-																		<option value="4" style="background-color: #2a2f4a ;">4</option>
-																		<option value="5" style="background-color: #2a2f4a ;">5</option>
-																	</select>/5
-																</div>
-																<h3 style="color: green">Review Sent!</h3>
+						<select name="demo-category" style="width:200px" id="rating" onchange="rate();">
+							<option value="" style="background-color: #2a2f4a ;">- Select Rating -</option>
+							<option value="1" style="background-color: #2a2f4a ;">1</option>
+							<option value="2" style="background-color: #2a2f4a ;">2</option>
+							<option value="3" style="background-color: #2a2f4a ;">3</option>
+							<option value="4" style="background-color: #2a2f4a ;">4</option>
+							<option value="5" style="background-color: #2a2f4a ;">5</option>
+						</select>/5
+					</div>
+					<h3 style="color: green; display: none;">Review Sent!</h3>
 							<h2>Course Reviews:</h2>
 						<div id="disqus_thread"></div>
 <script>

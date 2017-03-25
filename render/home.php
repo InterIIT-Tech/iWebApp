@@ -8,7 +8,12 @@
 		<script>
 			function downLoad(){
 				$("body").css("overflow","auto");
-				$("body").animate("left:0px",1750,function(){
+				if(localStorage.getItem("lastPage")==window.location){
+					var del = 0;	
+				}else{
+					var del = 750;	
+				}
+				$("body").animate("left:0px",del,function(){
 				if (document.all){
 						document.all["layer1"].style.visibility="hidden";
 						document.all["layer2"].style.visibility="visible";
@@ -16,6 +21,7 @@
 						node = document.getElementById("layer1").style.visibility='hidden';
 						node = document.getElementById("layer2").style.visibility='visible';
 				}
+				localStorage.setItem("lastPage",window.location);
 			});
 			}
 		</script>
@@ -52,8 +58,11 @@
                                 if(data[0]==1){
                             	var dataObject=data[2];
                             	for(var i=0;i<data[1];i++){
-	                               $("#news-feed").append('<article><a href="#" class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
+                            		if(dataObject[i]['title']!=""){
+                            			
+	                               $("#news-feed").append('<article><a class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
 
+                            		}
                             	}
                             }
                             }else{

@@ -242,12 +242,13 @@ public function decodeTime($hrs){
         	if($result){
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 					$sql_ = "SELECT `cCode`,`".$day."`,`".$day."_` FROM `ttable`  WHERE `cID`= '".$row['coID']."'";
-					echo $sql_;
+					// echo $sql_;
 		        	$result_ = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql_);
 		        	if($result_){
-		        		echo json_encode($result_);
+		        		// echo json_encode($result_);
 						while ($row_ = mysqli_fetch_array($result_, MYSQL_ASSOC)) {
-							$data2[]=$row_['cCode']." from ".$this->decodeTime($row_[$day])." to ".$this->decodeTime($row_[$day.'_']);
+							$temparr=array('code'=>$row_['cCode'],'time'=>$this->decodeTime($row_[$day])." to ".$this->decodeTime($row_[$day.'_']));
+							$data2[]=$temparr;
 					}
 				}
 			}
@@ -373,18 +374,47 @@ class subsAPI{
         mysqli_close($link);
         return $ret;
 	}
-
-	public function getSubs(){
-		//mysql
+	public function viewC(){
 		$out=array();
 		$i=0;
+		//depreciated.
 		$sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
         	if($result){
 				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
 					$out[]=$row['coID'];
+					$out[$temp]=1;
             	}
+            	return $out;
+			}
+	}
+	public function what($coID){
+		$sql = "SELECT `cCode`,`cName` FROM `courses`  WHERE `cID`=$coID";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					return $row;
+				}
+			}
+	}
+	public function getSubs($inp=0){
+		//mysql
+		$out=array();
+		$temp=array();
+		$i=0;
+		$sql = "SELECT `coID` FROM `sublist`  WHERE ( `uID`= '".$_SESSION['uID']."'";
+			$sql.=($inp==1)? " AND `coID`<1000)":")";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+					$out[]=1;
+					$out[]=mysqli_num_rows($result);
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					$temp[]=$this->what($row['coID']);
+            	}
+            	$out[]=$temp;
             	return $out;
 			}
 	}

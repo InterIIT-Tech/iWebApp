@@ -49,6 +49,10 @@ switch($action){
 		//some rendering reequired
 		echo json_encode($subs->checkSub($_POST['type']));//$_SESSION['uYear']
 		break;
+	case "getSubs":
+		echo json_encode($subs->getSubs(1));//$_SESSION['uYear']
+		break;
+	
 	case "getPermissions"://need seperate
 		//some rendering reequired
 		echo json_encode($userAPI->perms());//$_SESSION['uYear']

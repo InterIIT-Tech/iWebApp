@@ -25,7 +25,7 @@
   });
   }
 </script>
-<title>Matrix Admin</title>
+<title>iWebApp</title>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="stylesheet" href="assets/homeAgain/css/bootstrap.min.css" />
@@ -502,27 +502,27 @@ textarea{
           </div>
           <div class="widget-content">
             <div class="todo">
-              <ul>
-                <li class="clearfix">
-                  <div class="txt"> Luanch This theme on Themeforest <span class="by label">Alex</span></div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> Manage Pending Orders <span class="date badge badge-warning">Today</span> </div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> MAke your desk clean <span class="by label">Admin</span></div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> Today we celebrate the theme <span class="date badge badge-info">08.03.2013</span> </div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
-                <li class="clearfix">
-                  <div class="txt"> Manage all the orders <span class="date badge badge-important">12.03.2013</span> </div>
-                  <div class="pull-right"> <a class="tip" href="#" title="Edit Task"><i class="icon-pencil"></i></a> <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a> </div>
-                </li>
+              <script type="text/javascript">
+            $(document).ready(function(){
+              $.post("cAPI/getSubs",
+                    {},
+                    function(data, status){
+                    console.log("Response");
+                        if(status=='success'){
+                            if(data[0]==1){
+                          var dataObject=data[2];
+                          for(var i=0;i<data[1];i++){
+                            console.log('12314312');
+                             $("#courselist").append('<li class="clearfix"><div class="txt">'+dataObject[i]['cName']+'<span class="by label">'+dataObject[i]['cCode']+'</span></div></li>');
+                          }
+                        }
+                        }
+                }
+        ,"json");
+            });
+          </script>
+              <ul id="courselist">
+               
               </ul>
             </div>
           </div>
@@ -571,31 +571,29 @@ textarea{
                   <th>Subjectx</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td><span class="label">Default</span></td>
-                  <td><code>&lt;span class="label"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-success">Success</span></td>
-                  <td><code>&lt;span class="label label-success"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-warning">Warning</span></td>
-                  <td><code>&lt;span class="label label-warning"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-important">Important</span></td>
-                  <td><code>&lt;span class="label label-important"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-info">Info</span></td>
-                  <td><code>&lt;span class="label label-info"&gt;</code></td>
-                </tr>
-                <tr>
-                  <td><span class="label label-inverse">Inverse</span></td>
-                  <td><code>&lt;span class="label label-inverse"&gt;</code></td>
-                </tr>
+
+          <div class="widget-content">
+            <div class="todo">
+              <script type="text/javascript">
+                $(document).ready(function(){
+                  $.post("cAPI/classTmw",
+                        {},
+                        function(data, status){
+                        console.log("Response");
+                            if(status=='success'){
+                                if(data[0]==1){
+                              var dataObject=data[2];
+                              for(var i=0;i<data[1];i++){
+                                 $("#clstmw").append('<tr><td><span class="label label-success">'+dataObject[i]['code']+'</span></td><td>'+dataObject[i]['time']+'</td></tr>');
+                              }
+                            }
+                            }
+                    }
+            ,"json");
+                });
+              </script>
+              <tbody id="clstmw">
+               
               </tbody>
             </table>
           </div>

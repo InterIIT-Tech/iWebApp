@@ -1,8 +1,12 @@
-
-# Project still in pre-alpha stage.  
-# Contents
+# i-WebApp
+Insti-Web app is an opensource tool for networking between institutions
+## Project wiki [here](https://github.com/InterIIT-Tech/iWebApp/wiki).
+## For core API reference refer to API documentation on the wiki. 
+## Project still in pre-alpha stage.  
+## Contents
  * Login page 
- * About page 
+ * Registration
+ * Implementing Google Map's Matrix API getting around.
  * gallery
  * News Feed
  * Curated content

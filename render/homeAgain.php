@@ -76,6 +76,7 @@ $.post("cAPI/getPermissions",
                             var ourData=data[2];
                             for(var i=0;i<data[1];i++){
                               var type=(ourData[i]['type']==1)?"Course: ":"Club: ";
+                              scopes=ourData;
                               $("#scope").append("<option value='"+ourData[i]['cID']+"'>"+type+ourData[i]['cName']+"</option>");
                             }
                             $("#add-event-btn").show();
@@ -83,12 +84,14 @@ $.post("cAPI/getPermissions",
                            }else if(data[0]==0){
                             // If non-admin
                             $(".adminRadio").hide();
+                          $("#admins").hide();
                             // $("#add-event-btn").hide();
                            }
                         }else{
                           console.log("ajax request error");
                           // If non-admin
                           $(".adminRadio").hide();
+                          $("#admins").hide();
                             // $("#add-event-btn").hide();
                             // window.location="";
                           // location.reload(true);
@@ -657,17 +660,14 @@ h2{
           </div>
         </div>
 
-        <div class="widget-box">
+        <div class="widget-box" id="admins">
           <div class="widget-title"> <span class="icon"><i class="icon-repeat"></i></span>
             <h5>Admin</h5>
           </div>
           <div class="widget-content nopadding">
             <ul class="activity-list">
-              <li><a href="#"> <i class="icon-user"></i> <strong>Themeforest</strong>Approved My college theme <strong>1 user</strong> </a></li>
-              <li><a href="#"> <i class="icon-file"></i> <strong>My College is PSD Template </strong> Theme <strong>Psd Theme</strong></a></li>
-              <li><a href="#"> <i class="icon-envelope"></i> <strong>Lorem ipsum doler set</strong> adag<strong>agg</strong></a></li>
-              <li><a href="#"> <i class="icon-picture"></i> <strong>ITs my First Admin</strong> so very<strong>exited</strong> </a></li>
-              <li><a href="#"> <i class="icon-user"></i> <strong>Admin</strong> bans <strong>3 users</strong></a></li>
+              <li><a href="#"> <i class="icon-user"></i> <strong>CID</strong>Course name</a></li>
+              
             </ul>
           </div>
         </div>

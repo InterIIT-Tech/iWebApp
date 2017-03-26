@@ -33,6 +33,7 @@ if(isset($_POST['fName']) && isset($_FILES["file"]["type"]) && isset($_POST['cou
         	$cname_=$subs->whatCourse($_POST['course']);
         	$notify_msg="New Assignment Uploaded \'".$_POST['fName']."\' in course ".$cname_[1]['cCode'];
         	$url = "assignments/dl/".$dir ;
+        	$notif->send($notify_msg,$_POST['course'],$url,$_SESSION['uID']);
         	// mkdir('gallery/'.$alias);
         	// mkdir("gallery/$alias", 0777);
         } else { $msg="error!".mysqli_error($link);}
@@ -287,7 +288,7 @@ else if(isset($_FILES["file"]["type"])){
 															            		$print.="<td>".$cname_[1]['cCode']."</td>";
 															            		$print.="<td>".$row['aName']."</td>";
 															            		$print.="<td>".$row['lastdate']."</td>";
-															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href ='.$row['filename'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>';
+															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href=assignments/dl/'.$row['dir'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i>  </a>   </td>';
 															        			$print.='
 																  <td onclick ="subm('.$row['dir'].','.$row['aID'].')"  style="cursor:pointer;width:13% ; text-align: center;background-color: #000000 ; ">
 															        <a  >Submit</a>   </td>	';
@@ -332,7 +333,7 @@ else if(isset($_FILES["file"]["type"])){
 															            		$print.="<td>".$cname_[1]['cCode']."</td>";
 															            		$print.="<td>".$row['aName']."</td>";
 															            		$print.="<td>".$row['lastdate']."</td>";
-															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href ='.$row['filename'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i></a></td>';
+															            		$print.='<td style="width: 11% ; text-align: center ;"> <a href =assignments/dl/'.$row['dir'].' target="_blank" ><i class="fa fa-download" aria-hidden="true" style="text-align: center ;">  </i></a></td>';
 															        			//$print.='<td style="width:13% ; text-align: center;background-color: #000000 ; "><a onclick ="subm('.$row['dir'].')" >Submit</a></td>';
 															            	}
 															            	echo $print;

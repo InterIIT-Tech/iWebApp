@@ -389,6 +389,21 @@ class subsAPI{
             	return $out;
 			}
 	}
+
+	public function viewwwwC(){
+		$out=array();
+		$i=0;
+		//depreciated.
+		$sql = "SELECT `coID` FROM `sublist`  WHERE `uID`= '".$_SESSION['uID']."'";
+			// global $conn;
+        	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);
+        	if($result){
+				while ($row = mysqli_fetch_array($result, MYSQL_ASSOC)) {
+					$out[]=$row['coID'];
+            	}
+            	return $out;
+			}
+	}
 	public function what($coID){
 		$sql = "SELECT `cCode`,`cName` FROM `courses`  WHERE `cID`=$coID";
 			// global $conn;
@@ -528,7 +543,7 @@ class notifAPI{
 		$NoifyList=array();
 		$userAPI=new userAPI(webRoot);
 		$subAPI = new subsAPI;
-		$subsList = $subAPI->getSubs();
+		$subsList = $subAPI->viewwwwC();
 		// print_r($subsList) ;
 		$sql = "SELECT `nContent`,`nSender`,`url`,`timestr` FROM `notify`  WHERE ( `nGroup`= '1'";
 		//loop
@@ -536,6 +551,8 @@ class notifAPI{
 		    $sql .= " OR `nGroup`='$sub'";
 		}
 		$sql .=	" ) ORDER BY `nID` DESC LIMIT 10";
+		// print_r($subsList);
+		// echo $sql;
 		// echo $sql;
 			// global $conn;
         	$result = mysqli_query(mysqli_connect(SERVER_ADDRESS,USER_NAME,PASSWORD,DATABASE), $sql);

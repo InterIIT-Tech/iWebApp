@@ -17,11 +17,12 @@ $sql = "SELECT `aName`,`dir`,`filename` FROM `assign` WHERE (`dir`= ".$match[1].
 			}
 
 $file = $filename;
-
+$ext=explode(".", $file);
+$aname.='.'.$ext[1];
 if (file_exists($file)) {
     header('Content-Description: File Transfer');
     header('Content-Type: application/octet-stream');
-    header('Content-Disposition: attachment; filename="'.basename($file).'"');
+    header('Content-Disposition: attachment; filename="'.basename($aname).'"');
     header('Expires: 0');
     header('Cache-Control: must-revalidate');
     header('Pragma: public');

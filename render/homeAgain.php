@@ -41,34 +41,6 @@
 <link rel="stylesheet" type="text/css" href="assets/modal/css/component.css" />
 <script src="assets/modal/js/modernizr.custom.js"></script>
 <script>
-$.post("cAPI/viewPost",
-                    {
-                      scope:1,
-                      from:'2016-12-11',
-                      to:'2017-10-11'
-                    },
-                    function(data, status){
-                    console.log("Response");
-                    console.log("Data: " + data + "\nStatus: " + status);
-                        if(status=='success'){//$("#myloader").fadeOut();
-                            if(data[0]==1){
-                          var dataObject=data[2];
-                          for(var i=0;i<data[1];i++){
-                            if(dataObject[i]['title']!=""){
-
-                             $("#news-feed").append('<article><a class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
-
-                            }
-                          }
-                        }
-                        }else{
-                          // window.location="";
-                          // location.reload(true);
-                          window.location.reload();
-
-                        }
-                }
-        ,"json");
 
 
 $.post("cAPI/classTmw",
@@ -250,7 +222,7 @@ $.post("cAPI/getPermissions",
 .desc-post{
   margin-left: 1em;
   padding: 1em;
-  max-height: 10em;
+  /*max-height: 10em;*/
   overflow: auto;
 }
 </style>
@@ -704,50 +676,46 @@ h2{
   </div>
 
 <hr>
-    <h1 id="news-feed" style="margin-left:1em;">News Feed</h1>
+    <h1 id="news-feed" style="    text-align: center;  font-size: 5em;  margin: 1em;">News Feed</h1>
+    <script>
+      $.post("cAPI/viewPost",
+                    {
+                      scope:1,
+                      from:'2016-12-11',
+                      to:'2017-10-11'
+                    },
+                    function(data, status){
+                    console.log("Response");
+                    console.log("Data: " + data + "\nStatus: " + status);
+                        if(status=='success'){//$("#myloader").fadeOut();
+                            if(data[0]==1){
+                              var tofill="";
+                          var dataObject=data[2];
+                          for(var i=0;i<data[1];i++){
+                            if(dataObject[i]['title']!=""){
+                              tofill=(i%2==0)?"left":"right";
+                              $("#"+tofill+"news").append('<div class="widget-box"><div class="widget-title bg_ly"><h4 style="text-align:center">'+dataObject[i]['title']+'</h4></div><div><img class="img-post" src="'+dataObject[i]['image']+'"></div><p class="desc-post">'+dataObject[i]['content']+'</p></div>');
+
+                            }
+                          }
+                        }
+                        }else{
+                          // window.location="";
+                          // location.reload(true);
+                          window.location.reload();
+
+                        }
+                }
+        ,"json");
+
+    </script>
     <div class="row-fluid">
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title bg_ly">
-            <h4 style="text-align:center">Title1</h4>
-          </div>
-          <div>
-          <img class="img-post" src="favicon.png">
-        </div>
-          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
-          </div>
-
-          <div class="widget-box">
-            <div class="widget-title bg_ly">
-              <h4 style="text-align:center">Title1</h4>
-            </div>
-            <div>
-            <img class="img-post" src="favicon.png">
-          </div>
-            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-
+      <div class="span6" id="leftnews">
+      
     </div>
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title bg_ly">
-            <h4 style="text-align:center">Title1</h4>
-          </div>
-          <div>
-          <img class="img-post" src="favicon.png">
-        </div>
-          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-          </div>
-
-          <div class="widget-box">
-            <div class="widget-title bg_ly">
-              <h4 style="text-align:center">Title1</h4>
-            </div>
-            <div>
-            <img class="img-post" src="favicon.png">
-          </div>
-            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
-            </div>
+      <div class="span6" id="rightnews">
+       
+          
         </div>
     </div>
 </div>

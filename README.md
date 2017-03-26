@@ -1,7 +1,6 @@
 
 # Project still in pre-alpha stage.  
-## Todo: Readme markdown
-##Contents
+# Contents
  * Login page 
  * About page 
  * gallery
@@ -13,4 +12,8 @@
  * share auto/taxi, some good script
  * in-campus event calendar
 
-##To contribute, read CONTRIBUTING.md
+# Documentation
+  To read the documentation, please start by reading our [Wiki](https://github.com/InterIIT-Tech/iWebApp/wiki) .
+     
+
+# To contribute, please read CONTRIBUTING.md

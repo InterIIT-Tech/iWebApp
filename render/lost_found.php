@@ -7,6 +7,7 @@ $lost=new lostAPI;
 if(isset($_POST['lName'])){
 	$lost->lost($_POST['lContact'],$_POST['lName']);
 	// echo $_POST['lContact'].$_POST['lName'];
+	
 	$store=$lost->search(-1);
 	$flag=1;//flag to let later part of html render know that certain parts need to be shown
 
@@ -19,6 +20,7 @@ if(isset($_POST['lName'])){
 	$temp = $lost->getAll();
 	$store =$temp[2];
 }
+// print_r($store);
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -209,12 +211,23 @@ if(isset($_POST['lName'])){
 										if($flag!=2){
 
 											foreach ($store as $key=>$value) {
+												if(isset($_POST['lName'])){
+
+													if($key==0) continue;
 												echo "<tr>";
 												echo "<td>".$key."</td>";
 												echo "<td>".$value['iName']."</td>";
 												echo "<td>".$value['contact']."</td>";
 												echo "<td>".$value['iPlace']."</td>";
 												echo "</tr>";
+												}else{
+													echo "<tr>";
+													echo "<td>".$key."</td>";
+													echo "<td>".$value['name']."</td>";
+													echo "<td>".$value['contact']."</td>";
+													echo "<td>".$value['place']."</td>";
+													echo "</tr>";
+												}
 											}
 										}
 										?>

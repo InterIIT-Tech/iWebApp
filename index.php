@@ -41,6 +41,9 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 		require ('render/login.html');
 	}
 }
+elseif (preg_match($base . 'home?$@', $url, $match)) {
+	require ('render/home.php');
+}
  elseif (preg_match($base . 'cAPI/(.*)$@', $url, $match)) {
 	require ('render/commonAPI.php');
 } elseif (preg_match($base . 'login?$@', $url, $match)) {

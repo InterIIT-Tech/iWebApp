@@ -254,7 +254,7 @@ $.post("cAPI/getPermissions",
     <li> <a href="clubs"><i class="icon icon-signal"></i> <span>Clubs</span></a> </li>
     <li> <a href="courses"><i class="icon icon-inbox"></i> <span>Courses</span></a> </li>
     <li><a href="getting-around"><i class="icon icon-th"></i> <span>Getting Around</span></a></li>
-    <li><a href="gallery"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
+    <li><a href="gall"><i class="icon icon-fullscreen"></i> <span>Gallery</span></a></li>
     <li><a href="timetable"><i class="icon icon-fullscreen"></i> <span>Time Table</span></a></li>
     <li><a href="lost-found"><i class="icon icon-fullscreen"></i> <span>Lost and Found</span></a></li>
     <li class="content"> <span>Attendance</span>
@@ -453,7 +453,7 @@ h2{
     <div class="row-fluid">
       <div class="span6">
         <div class="widget-box">
-          <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2"><span class="icon"><i class="icon-chevron-down"></i></span>
+          <div class="widget-title bg_ly" data-toggle="collapse" href="#collapseG2" ><span class="icon"><i class="icon-chevron-down"></i></span>
           <script>
             $(document).ready(function(){
               $.post("cAPI/getNotif",
@@ -694,7 +694,7 @@ h2{
                           for(var i=0;i<data[1];i++){
                             if(dataObject[i]['title']!=""){
                               tofill=(i%2==0)?"left":"right";
-                              $("#"+tofill+"news").append('<div class="widget-box"><div class="widget-title bg_ly"><h4 style="text-align:center">'+dataObject[i]['title']+'</h4></div><div><img class="img-post" src="'+dataObject[i]['image']+'"></div><p class="desc-post">'+dataObject[i]['content']+'</p></div>');
+                              $("#"+tofill+"news").append('<div class="widget-box"><div class="widget-title bg_ly"><h4 style="padding:10px;text-align:center">'+dataObject[i]['title']+'</h4></div><div><img class="img-post" src="'+dataObject[i]['image']+'"></div><p class="desc-post">'+dataObject[i]['content']+'</p></div>');
 
                             }
                           }

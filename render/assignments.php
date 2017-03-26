@@ -214,9 +214,9 @@ else if(isset($_FILES["file"]["type"])){
                                                  
 											
 										<div id="scopeSelect" class="form-el col-sm-2" style="margin-left: 4vw; ">
-						  				<h2  style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.0900em ;" >Scope  Select:  </h2>
+						  				<h2  style="font-size: 3.5vh;  font-family: 'Roboto', sans-serif;font-weight: 500;letter-spacing: 0.0900em ;margin-left: 9vw ;" >Scope  Select:  </h2>
 										<div class="select-wrapper" id="selectScope" required style="width: 89% ;">
-										<select name="course" id="scope" placeholder="Scope" style="background-color:#22263c !important">
+										<select name="course" id="scope" placeholder="Scope" style="background-color:#22263c !important ">
 										<option value="">- Assignment for ? -</option>
 								</select>
 							</div>	
@@ -231,10 +231,10 @@ else if(isset($_FILES["file"]["type"])){
 										<input type="text" name="lastdate" id="name" placeholder="yyyy-mm-dd">
 										</div>
 
-									<h4>Upload File:</h4><br>
-									<input type="file" class="form-el" style="    padding: 10px;color: #FFFFFF;border-radius: 10px;" name="file" id="file" required />
+									<h4 style="margin-top:12vh ;margin-left: 9vw ;">Upload File:</h4><br>
+									<input type="file" class="form-el" style="    padding: 10px;color: #FFFFFF;border-radius: 10px;margin-top: 6.1vh ;" name="file" id="file" required />
 									
-									<button type="submit" form="form2"   value="Submit" style="color: #000000 ;height: 6vh ;background-color: #ffffff ;">Submit</button>
+									<button type="submit" form="form2"   value="Submit" style="color: #000000 ;height: 6vh ;background-color: #ffffff ;margin-top: 6.1vh ;padding-right: 3.5vw ;padding-left: : 3.5vw ;margin-left: 8vw ;">Submit </button>
 										</div>
 					
 										<hr width="100% ;"></form>

@@ -41,34 +41,6 @@
 <link rel="stylesheet" type="text/css" href="assets/modal/css/component.css" />
 <script src="assets/modal/js/modernizr.custom.js"></script>
 <script>
-$.post("cAPI/viewPost",
-                    {
-                      scope:1,
-                      from:'2016-12-11',
-                      to:'2017-10-11'
-                    },
-                    function(data, status){
-                    console.log("Response");
-                    console.log("Data: " + data + "\nStatus: " + status);
-                        if(status=='success'){//$("#myloader").fadeOut();
-                            if(data[0]==1){
-                          var dataObject=data[2];
-                          for(var i=0;i<data[1];i++){
-                            if(dataObject[i]['title']!=""){
-
-                             $("#news-feed").append('<article><a class="image"><img src="'+dataObject[i]['image']+'" alt="" /></a><h3>'+dataObject[i]['title']+'</h3><p>'+dataObject[i]['content']+'</p></article>');
-
-                            }
-                          }
-                        }
-                        }else{
-                          // window.location="";
-                          // location.reload(true);
-                          window.location.reload();
-
-                        }
-                }
-        ,"json");
 
 
 $.post("cAPI/classTmw",
@@ -250,7 +222,7 @@ $.post("cAPI/getPermissions",
 .desc-post{
   margin-left: 1em;
   padding: 1em;
-  max-height: 10em;
+  /*max-height: 10em;*/
   overflow: auto;
 }
 </style>
@@ -523,13 +495,13 @@ h2{
           </div>
           <div class="widget-content nopadding updates collapse in" id="collapseG3">
             <div class="new-update clearfix"><i class="icon-ok-sign"></i>
-              <div class="update-done"><a title="" href="#"><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</strong></a> <span>dolor sit amet, consectetur adipiscing eli</span> </div>
+              <div class="update-done"><a title="" href="#"><strong>Invite to infinito</strong></a> <span>All students are invited to infinito, our sports fest.</span> </div>
               <div class="update-date"><span class="update-day">20</span>jan</div>
             </div>
-            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a title="" href="#"><strong>Congratulation Maruti, Happy Birthday </strong></a> <span>many many happy returns of the day</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a title="" href="#"><strong>Maruti is a Responsive Admin theme</strong></a> <span>But already everything was solved. It will ...</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a title="" href="#"><strong>Envato approved Maruti Admin template</strong></a> <span>i am very happy to approved by TF</span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
-            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a title="" href="#"><strong>I am alwayse here if you have any question</strong></a> <span>we glad that you choose our template</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-gift"></i> <span class="update-notice"> <a title="" href="#"><strong>Maruti, Happy Birthday </strong></a> <span>Hanuman Jayanti Celebrations to take place this weekend.</span> </span> <span class="update-date"><span class="update-day">11</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-move"></i> <span class="update-alert"> <a title="" href="#"><strong> Robocon selections</strong></a> <span> Contact Rishi Raj if interested.</span> </span> <span class="update-date"><span class="update-day">07</span>Jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-leaf"></i> <span class="update-done"> <a title="" href="#"><strong>DISHA, IITP training program</strong></a> <span> Approved by The govt. of India </span> </span> <span class="update-date"><span class="update-day">05</span>jan</span> </div>
+            <div class="new-update clearfix"> <i class="icon-question-sign"></i> <span class="update-notice"> <a title="" href="#"><strong> Maching Learning Workshow</strong></a> <span> Those interested contact Abhishek Jaiswal</span> </span> <span class="update-date"><span class="update-day">01</span>jan</span> </div>
           </div>
         </div>
 
@@ -704,50 +676,46 @@ h2{
   </div>
 
 <hr>
-    <h1 id="news-feed" style="margin-left:1em;">News Feed</h1>
+    <h1 id="news-feed" style="    text-align: center;  font-size: 5em;  margin: 1em;">News Feed</h1>
+    <script>
+      $.post("cAPI/viewPost",
+                    {
+                      scope:1,
+                      from:'2016-12-11',
+                      to:'2017-10-11'
+                    },
+                    function(data, status){
+                    console.log("Response");
+                    console.log("Data: " + data + "\nStatus: " + status);
+                        if(status=='success'){//$("#myloader").fadeOut();
+                            if(data[0]==1){
+                              var tofill="";
+                          var dataObject=data[2];
+                          for(var i=0;i<data[1];i++){
+                            if(dataObject[i]['title']!=""){
+                              tofill=(i%2==0)?"left":"right";
+                              $("#"+tofill+"news").append('<div class="widget-box"><div class="widget-title bg_ly"><h4 style="text-align:center">'+dataObject[i]['title']+'</h4></div><div><img class="img-post" src="'+dataObject[i]['image']+'"></div><p class="desc-post">'+dataObject[i]['content']+'</p></div>');
+
+                            }
+                          }
+                        }
+                        }else{
+                          // window.location="";
+                          // location.reload(true);
+                          window.location.reload();
+
+                        }
+                }
+        ,"json");
+
+    </script>
     <div class="row-fluid">
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title bg_ly">
-            <h4 style="text-align:center">Title1</h4>
-          </div>
-          <div>
-          <img class="img-post" src="favicon.png">
-        </div>
-          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
-          </div>
-
-          <div class="widget-box">
-            <div class="widget-title bg_ly">
-              <h4 style="text-align:center">Title1</h4>
-            </div>
-            <div>
-            <img class="img-post" src="favicon.png">
-          </div>
-            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-            </div>
-
+      <div class="span6" id="leftnews">
+      
     </div>
-      <div class="span6">
-        <div class="widget-box">
-          <div class="widget-title bg_ly">
-            <h4 style="text-align:center">Title1</h4>
-          </div>
-          <div>
-          <img class="img-post" src="favicon.png">
-        </div>
-          <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
-          </div>
-
-          <div class="widget-box">
-            <div class="widget-title bg_ly">
-              <h4 style="text-align:center">Title1</h4>
-            </div>
-            <div>
-            <img class="img-post" src="favicon.png">
-          </div>
-            <p class="desc-post">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries,</p>
-            </div>
+      <div class="span6" id="rightnews">
+       
+          
         </div>
     </div>
 </div>

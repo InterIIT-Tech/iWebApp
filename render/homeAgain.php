@@ -653,32 +653,32 @@ h2{
               </thead>
               <tbody>
                 <tr class="odd gradeX">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
+                  <td class="center">Girls' Hostel</td>
+                  <td class="center">10:00am</td>
+                  <td class="center">12:00pm</td>
+                  <td class="center">02:00pm</td>
+                  <td class="center">05:00pm</td>
                 </tr>
                 <tr class="even gradeC">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
+                  <td class="center">Boys' Hostel</td>
+                  <td class="center">10:15am</td>
+                  <td class="center">12:15pm</td>
+                  <td class="center">02:15pm</td>
+                  <td class="center">05:15pm</td>
                 </tr>
                 <tr class="odd gradeA">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
+                  <td class="center">Admin</td>
+                  <td class="center">10:25am</td>
+                  <td class="center">12:25pm</td>
+                  <td class="center">02:25pm</td>
+                  <td class="center">05:25pm</td>
                 </tr>
                 <tr class="even gradeA">
-                  <td class="center">D1</td>
-                  <td class="center">time1</td>
-                  <td class="center">time2</td>
-                  <td class="center">time3</td>
-                  <td class="center">time4</td>
+                  <td class="center">Tutorial Block</td>
+                  <td class="center">10:45am</td>
+                  <td class="center">12:45pm</td>
+                  <td class="center">02:45pm</td>
+                  <td class="center">05:45pm</td>
                 </tr>
               </tbody>
             </table>

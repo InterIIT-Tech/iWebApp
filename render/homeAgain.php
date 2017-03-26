@@ -220,6 +220,27 @@ $.post("cAPI/getPermissions",
   #clTmw a:link {
       text-decoration: none;
   }
+  @media (max-width: 800px) {
+     h1{
+      float: left !important;
+      display: block !important;
+    }
+
+    h2{
+      font-size: 2em !important;
+      top:0.3em !important;
+      left:9em !important;
+    }
+    #header{
+      height: 9.25em;
+    }
+    #logoutpc {
+      display: none;
+    }
+    #logoutMobile {
+      display: block !important;
+    }
+  }
 </style>
 <style>
 .img-post{
@@ -356,13 +377,13 @@ h2{
 }
 </style>
 <!--Action boxes-->
+<div id="logoutMobile" style="cursor:pointer;position: fixed; width:2em;height:2em;background-size: cover; z-index: 100000;top: 7.4em; right: 1em;;background-image: url('img/logout.png'); display:none;" onclick="window.location='logout'"></div>
   <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">
         <div class="md-modal md-effect-1" id="modal-1">
       			<div class="md-content">
       				<h3 >New Post:</h3>
-
       				<div id="new-post-form">
       				<span  class="adminRadio">
       					<input type="radio" class="form-el" name="pType" value="reg" onclick="$('#demo-message,#imgURL,#submitpost,#uploadimage_').fadeIn();$('#scopeSelect,#submitnotif,#url').fadeOut();" checked>Regular Post &nbsp;&nbsp;&nbsp;<input type="radio" onclick="$('#demo-message,#imgURL,#submitpost,#uploadimage_').fadeOut();$('#scopeSelect,#submitnotif,#url').fadeIn();" name="pType" class="form-el" value="notif"> Notify</span>
@@ -415,7 +436,7 @@ h2{
 
         					<button class="" id="submitpost" onclick="submitForm();" style="color: rgb(255, 255, 255) !important; display: none;">Post!</button>
         					<button class="" id="submitnotif" onclick="notif();" style="color: rgb(255, 255, 255) !important; display: block;">Add event</button>
-        					<button onclick="$('#modal-2').removeClass('md-show');">Close me!</button>
+        					<button id="bb" onclick="$('#modal-2').removeClass('md-show');">Close me!</button>
         				</div>
         		</div>
         	</div>
@@ -447,7 +468,7 @@ h2{
          <li style="cursor:pointer;" class="bg_lb md-trigger" id="new-post-btn" data-modal="modal-1" onclick="$('#modal-1').addClass('md-show');"> <a> <i class="icon-dashboard"></i>   <!--<span class="label label-important">20</span> --> Add Post </a> </li>
         <li style="cursor:pointer;" class="bg_ly md-trigger" style="display: none;" id="new-post-btn" data-modal="modal-2" onclick="$('#modal-2').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>-->Add Event</a> </li>
         <li style="cursor:pointer;" class="bg_ly md-trigger" id="new-post-btn" data-modal="modal-3" onclick="$('#modal-3').addClass('md-show');"> <a>  <i class="icon-inbox"></i><!--<span class="label label-success">101</span>--> Upload Image </a> </li>
-        <div style="cursor:pointer;position: absolute; width:40px;height:40px;background-size: cover; top: 20px; right: 20px;background-image: url('img/logout.png');" onclick="window.location='logout'"></div>
+        <div id="logoutpc" style="cursor:pointer;position: absolute; width:40px;height:40px;background-size: cover; top: 20px; right: 20px;background-image: url('img/logout.png');" onclick="window.location='logout'"></div>
       </ul>
     </div>
 <!--End-Action boxes-->

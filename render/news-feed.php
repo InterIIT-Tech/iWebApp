@@ -281,8 +281,8 @@ $.post("cAPI/getPermissions",
 <!--Header-part-->
 <div id="header">
   <h1></h1>
-  <h2>::iWebApp</h2>
-</div>
+  <h2><?php $temp= explode(" ", $_SESSION['uName']);echo $temp[0];?>::iWebApp</h2>
+ </div>
 <!--close-Header-part-->
 
 
@@ -398,7 +398,7 @@ textarea{
 .desc-post{
   margin-left: 1em;
   padding: 1em;
-  max-height: 10em;
+  /*max-height: 10em;*/
   overflow: auto;
 }
 </style>

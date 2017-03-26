@@ -1,7 +1,8 @@
 <?php
-echo '<nav class="outer-nav right vertical" style="font-size: 120%;" >
+echo '<nav class="outer-nav right vertical" style="font-size: 105%;" >
 				<a href="homeAgain" class="icon-home">Home</a>
-				<a href="news-feed" class="icon-news">News Feed</a>
+				<a href="homeAgain#news-feed" class="icon-news">News Feed</a>
+				<a href="assignments"><i class="fa fa-tasks" aria-hidden="true"></i> Assignments</a>
  				<a href="timetable" class="icon-news">Timetable</a>
 				<a href="courses"><i class="fa fa-book" aria-hidden="true"></i> Courses</a>
  				<a href="clubs" class="icon-star">Clubs</a>

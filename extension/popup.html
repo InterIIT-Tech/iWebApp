@@ -64,10 +64,24 @@
     <script src="popup.js"></script>
   </head>
   <body>
-  <div id="login" style="text-align: center; display: none";>
+<!--   <div id="login" style="text-align: center; display: none";>
     <p>Please Login:</p>
-    <button style="font-size: 1.4em;"><a target="_blank" href="http://www.iwebapp.ml">Login!</a></button>
-  </div>
+    <div style="font-size: 1.4em;"><a target="_blank" href="http://www.iwebapp.ml">Login!</a></div>
+  </div> -->
+  <section id="login" style="text-align: center; display: none";>
+    <p>Please Login:</p>
+    <form action="javascript:">
+        <input type="text" id="error" value="error!" disabled style="display:none;text-align: center;background-color: red;color:white" />
+        <input type="text" name="uname" id="uname" value="" placeholder="username" />
+        <input type="password" name="psw" id="pswd" value="" placeholder="******">
+
+        <ul class="actions">
+          <li><input type="submit" value="Login!" id="loginSubmit" class="special" /></li>
+          <!-- <li><input type="reset" value="Reset" /></li> -->
+        </ul>            
+    </form>
+  </section>
+
   <div id="content">
       <div id="header-wrapper" style="margin-left:-10%">
         <a style="cursor:pointer;"> <img id="icon1" src="icon.png" style="height:100px; display:block; margin:auto;"></a>
@@ -90,7 +104,7 @@
           Classes Tomorrow
         </h4>
         <ul class="classes" class="ul-list">
-        <li class="fa fa-arrow-circle-right"><a target="_blank" href="http://www.iwebapp.ml/timetable"> View Full Timetable:</a></li>
+        <li class="fa fa-arrow-circle-right"><a id="classesln" target="_blank" href="http://www.iwebapp.ml/timetable"> View Full Timetable:</a></li>
       </ul>
       </div>
 
@@ -99,10 +113,11 @@
           Pending Assignments
         </h4>
         <ul class="assign" class="ul-list">
-        <li class="fa fa-arrow-circle-right"><a target="_blank" href="http://www.iwebapp.ml/assignments"> Assignment Portal</a></li>
+        <li class="fa fa-arrow-circle-right"><a id="assignln" target="_blank" href="http://www.iwebapp.ml/assignments"> Assignment Portal</a></li>
       </ul>
       </div>
-
+      <!-- <div style="cursor: pointer; text-align: center;"><a id="logout" href="http://www.iwebapp.ml/assignments">Logout<a/></div> -->
+      
   <!--     <div id="notifications-wrapper">
         <h4 id="header">
           Upcoming events

@@ -15,6 +15,7 @@
     "tabs",
     "notifications",
     "https://ajax.googleapis.com/",
-    "http://www.iwebapp.ml/cAPI/*"
+    "http://www.iwebapp.ml/cAPI/*",
+    "http://localhost/*"
   ]
 }

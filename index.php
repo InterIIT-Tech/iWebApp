@@ -36,7 +36,7 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 		}
 }elseif (preg_match($base . '$@', $url, $match)) {
 	if(isset($_SESSION['uID'])){
-		require ('render/home.php');
+		require ('render/homeAgain.php');
 	} else{
 		require ('render/login.html');
 	}
@@ -53,8 +53,6 @@ if(preg_match($base . 'cAPI/checkLogin?$@', $url, $match)){
 	require ('render/timetable.php');
 }elseif (preg_match($base . 'homeAgain?$@', $url, $match)) {
 	require ('render/homeAgain.php');
-} elseif (preg_match($base . 'home?$@', $url, $match)) {
-	require ('render/home2.php');
 } elseif (preg_match($base . 'admin?$@', $url, $match)) {
 	require ('render/admin.php');
 }elseif (preg_match($base . 'news-feed?$@', $url, $match)) {

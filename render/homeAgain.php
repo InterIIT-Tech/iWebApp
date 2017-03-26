@@ -244,7 +244,7 @@ $.post("cAPI/getPermissions",
 <!--Header-part-->
 <div id="header">
   <h1></h1>
-  <h2>::iWebApp</h2>
+  <h2><?php $temp= explode(" ", $_SESSION['uName']);echo $temp[0];?>::iWebApp</h2>
 </div>
 <!--close-Header-part-->
 
@@ -310,7 +310,8 @@ textarea{
 
 h2{
   position: fixed;
-  left: 45%;
+  left:50%;
+  transform: translateX(-50%);
   top: 5%;
   font-size: 5em;
 }

@@ -271,6 +271,7 @@ $.post("cAPI/getPermissions",
 
 <!--sidebar-menu-->
 <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Menu</a>
+  <div id="logoutMobile" style="cursor:pointer;position: absolute; width:2em;height:2em;background-size: cover; top: 0.5em; right: 0.5em;background-image: url('img/logout.png'); display:none;" onclick="window.location='logout'"></div>
   <ul>
     <li class="active"><a href="."><i class="icon icon-home"></i> <span>Home</span></a> </li>
     <li><a href="#news-feed"><i class="icon icon-home"></i> <span>News Feed</span></a> </li>
@@ -377,7 +378,6 @@ h2{
 }
 </style>
 <!--Action boxes-->
-<div id="logoutMobile" style="cursor:pointer;position: fixed; width:2em;height:2em;background-size: cover; z-index: 100000;top: 7.4em; right: 1em;;background-image: url('img/logout.png'); display:none;" onclick="window.location='logout'"></div>
   <div class="container-fluid">
     <div class="quick-actions_homepage">
       <ul class="quick-actions">

@@ -1,13 +1,12 @@
 <?php
+
 session_start();
 define("USER_NAME", "iwa");
 define("PASSWORD", "toorToor123#");
 define("SERVER_ADDRESS", "localhost");
 define("DATABASE", "iwa");
+// include('top-cache.php'); 
 $webRoot="http://".$_SERVER['HTTP_HOST']."";
-if($_SERVER['HTTP_HOST']!="iwebapp.ml" || $_SERVER['HTTP_HOST']!="www.iwebapp.ml" ){
-	$webRoot .="/iwa";
-}
 define("webRoot", $webRoot);
  ini_set('display_errors', 'Off'); 
 define('MYSQL_BOTH',MYSQLI_BOTH);
@@ -24,4 +23,5 @@ define('MYSQL_ASSOC',MYSQLI_ASSOC);
         exit();
     }
 }*/
+
 ?>

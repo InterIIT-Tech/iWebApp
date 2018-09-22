@@ -1,7 +1,5 @@
 # i-WebApp
-Insti-Web app is an opensource tool for networking between institutions, which is implemented through a Web Application, and a Chrome/Firefox Extension
-  
-i-WebApp has been   
+instiWeb-app is an open-sourced tool for useful utilites and intra-institute networking, implemented as a Web Application, and a Chrome/Firefox Extension.
   
 ## Project wiki [here](https://github.com/InterIIT-Tech/iWebApp/wiki).
 ## For core API reference refer to API documentation on the wiki. 
